@@ -1,0 +1,86 @@
+#!/usr/bin/env python3
+
+import logging
+import argparse
+
+from udapi.core.run import Run
+
+# Parse command line arguments.
+argparser = argparse.ArgumentParser(
+    formatter_class=argparse.RawTextHelpFormatter,
+    usage="udapy [optional_arguments] scenario",
+    epilog="See http://udapi.github.io",
+    description="udapy - Python interface to Udapi - API for Universal Dependencies\n\n"
+                "Examples of usage:\n"
+                "  udapy -s read.Sentences udpipe.En < in.txt > out.conllu\n"
+                "  udapy -T < sample.conllu | less -R\n"
+                "  udapy -HAM ud.MarkBugs < sample.conllu > bugs.html\n")
+argparser.add_argument(
+    "-q", "--quiet", action="store_true",
+    help="Warning, info and debug messages are suppressed. Only fatal errors are reported.")
+argparser.add_argument(
+    "-v", "--verbose", action="store_true",
+    help="Warning, info and debug messages are printed to the STDERR.")
+argparser.add_argument(
+    "-s", "--save", action="store_true",
+    help="Add write.Conllu to the end of the scenario")
+argparser.add_argument(
+    "-T", "--save_text_mode_trees", action="store_true",
+    help="Add write.TextModeTrees color=1 to the end of the scenario")
+argparser.add_argument(
+    "-H", "--save_html", action="store_true",
+    help="Add write.TextModeTreesHtml color=1 to the end of the scenario")
+argparser.add_argument(
+    "-A", "--save_all_attributes", action="store_true",
+    help="Add attributes=form,lemma,upos,xpos,feats,deprel,misc (to be used after -T and -H)")
+argparser.add_argument(
+    "-C", "--save_comments", action="store_true",
+    help="Add print_comments=1 (to be used after -T and -H)")
+argparser.add_argument(
+    "-M", "--marked_only", action="store_true",
+    help="Add marked_only=1 to the end of the scenario (to be used after -T and -H)")
+argparser.add_argument(
+    "-N", "--no_color", action="store_true",
+    help="Add color=0 to the end of the scenario, this overrides color=1 of -T and -H")
+argparser.add_argument(
+    'scenario', nargs=argparse.REMAINDER, help="A sequence of blocks and their parameters.")
+
+args = argparser.parse_args()
+
+# Set the level of logs according to parameters.
+if args.verbose:
+    level = logging.DEBUG
+elif args.quiet:
+    level = logging.CRITICAL
+else:
+    level = logging.INFO
+
+logging.basicConfig(format='%(asctime)-15s [%(levelname)7s] %(funcName)s - %(message)s',
+                    level=level)
+
+# Process and provide the scenario.
+if __name__ == "__main__":
+    if args.save:
+        args.scenario = args.scenario + ['write.Conllu']
+    if args.save_text_mode_trees:
+        args.scenario = args.scenario + ['write.TextModeTrees', 'color=1']
+    if args.save_html:
+        args.scenario = args.scenario + ['write.TextModeTreesHtml', 'color=1']
+    if args.save_all_attributes:
+        args.scenario = args.scenario + ['attributes=form,lemma,upos,xpos,feats,deprel,misc']
+    if args.save_comments:
+        args.scenario = args.scenario + ['print_comments=1']
+    if args.marked_only:
+        args.scenario = args.scenario + ['marked_only=1']
+    if args.no_color:
+        args.scenario = args.scenario + ['color=0']
+
+    runner = Run(args)
+    # udapy is often piped to head etc., e.g.
+    # `seq 1000 | udapy -s read.Sentences | head`
+    # Let's prevent Python from reporting (with distracting stacktrace)
+    # "BrokenPipeError: [Errno 32] Broken pipe"
+    try:
+        runner.execute()
+    except BrokenPipeError:
+        pass

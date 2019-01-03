@@ -1,3 +1,0 @@
-[submodule "udapi-python"]
-	path = udapi-python
-	url = https://github.com/udapi/udapi-python.git

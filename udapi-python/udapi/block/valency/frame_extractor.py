@@ -3,9 +3,12 @@ from udapi.core.block import Block
 class Frame_argument:
     """ class representing verb frame argument """
     def __init__( self, deprel, case_feat, case_mark_rels):
-        self.deprel = deprel
+        self.deprel = deprel            
         self.case_feat = case_feat
+        if ( case_feat == "" ):
+            self.case_feat = "0"                
         self.case_mark_rels = case_mark_rels
+    
     def is_identical_with( self, another_frame_argument): # -> bool
         if ( self.deprel == another_frame_argument.deprel and
                 self.case_feat == another_frame_argument.case_feat and
@@ -15,53 +18,67 @@ class Frame_argument:
 
 
 class Frame:
-    """ classs representing verb frame with information about the verb and with a list of its arguments """
+    """ classs representing verb frame with information about the verb
+    and with a list of its arguments
+    """
     def __init__( self, verb_lemma, verb_form, voice):
         self.verb_lemma = verb_lemma
+            
         self.verb_form = verb_form
+        if ( verb_form == "" ):
+            self.verb_form = "0"        
+            
         self.voice = voice
+        if ( voice == "" ):
+            self.voice = "0"          
+        
         self.arguments = []
         self.frequency = 1 
+    
     def add_argument( self, new_argument): # void
         #for old_argument in self.arguments:
         #    if ( old_argument.is_identical_with( new_argument) ):
         #        return
         self.arguments.append( new_argument)
+    
     def has_identical_arguments_with( self, another_frame): # -> bool
+        """ chceks if this frame has identical arguments with another frame """
         if ( len( self.arguments) == len( another_frame.arguments) ):
-            sorted_self_arguments = sorted( self.arguments, key = lambda argument: ( argument.deprel, argument.case_feat, argument.case_mark_rels ))
-            sorted_another_frame_arguments = sorted( another_frame.arguments, key = lambda argument: ( argument.deprel, argument.case_feat, argument.case_mark_rels ))
-            for i in range( len( sorted_self_arguments)):
-                if not ( sorted_self_arguments[ i ].is_identical_with( sorted_another_frame_arguments[ i ]) ):
+            sorted_self_args = sorted( self.arguments, key =
+                    lambda arg:( arg.deprel, arg.case_feat, arg.case_mark_rels ))
+            sorted_another_frame_args = sorted( another_frame.arguments, key =
+                    lambda arg:( arg.deprel, arg.case_feat, arg.case_mark_rels ))
+            for i in range( len( sorted_self_args)):
+                if not ( sorted_self_args[ i ].is_identical_with( sorted_another_frame_args[ i ]) ):
                     return False
             return True
         return False
+    
     def is_identical_with( self, another_frame): # -> bool
+        """ chceks if this frame is identical with another frame """
         if ( self.verb_lemma == another_frame.verb_lemma and
                 self.verb_form == another_frame.verb_form and
                 self.voice == another_frame.voice and
                 self.has_identical_arguments_with( another_frame) ):
             return True
         return False
+    
     def increment_frequency( self): # void
         self.frequency += 1
+    
     def arguments_to_string( self): # -> str
         """ converts verb frame arguments to string
         called while printing frames to the output in after_process_document
         """
-        final_string = ""
+        argument_strings_list = []
         for argument in self.arguments:
-            final_string += ' '
-            final_string += argument.deprel + '-' + argument.case_feat
-            if ( argument.case_mark_rels != [] ):
-                final_string += '('
-                for case_mark_rel in argument.case_mark_rels:
-                    final_string += case_mark_rel + ','
-                final_string = final_string[ :-1 ]
-                final_string += ')'
-            final_string += ','
-        final_string = final_string[ :-1 ]
+            argument_string = argument.deprel + '-' + argument.case_feat
+            if ( argument.case_mark_rels != [] ):                
+                argument_string += '(' + ','.join( argument.case_mark_rels) + ')'
+            argument_strings_list.append(  argument_string)
+        final_string = ", ".join( argument_strings_list)
         return final_string
+
 
 class Verb_record:
     """ class representing one verb with possibly more verb frames """
@@ -140,8 +157,15 @@ class Frame_extractor( Block):
         sorted_verb_lemmas = sorted( self.dict_of_verbs.keys())
         for verb_lemma in sorted_verb_lemmas:
             verb_record = self.dict_of_verbs[ verb_lemma ]
-            verb_record.frames.sort( key = lambda frame: frame.frequency, reverse = True )
-            sorted_frames = sorted( verb_record.frames, key = lambda frame: ( frame.verb_form, frame.voice ))
+            verb_record.frames.sort( key =
+                    lambda frame: frame.frequency, reverse = True )
+            sorted_frames = sorted( verb_record.frames, key =
+                    lambda frame: ( frame.verb_form, frame.voice ))
             for frame in sorted_frames:            
-                print( "{:<20}{:<7}{:<7}{:<80}{:<7}".format( frame.verb_lemma, frame.verb_form, frame.voice, ":" + frame.arguments_to_string(), "= " + str( frame.frequency)))
-                #print( frame.verb_lemma + '\t' + frame.verb_form + '\t' + frame.voice + "\t:" + frame.arguments_to_string() + " = " + str( frame.frequency))
+                print( "{:<20}{:<7}{:<7}{:<80}{:<7}".format(                    
+                        frame.verb_lemma,
+                        frame.verb_form,
+                        frame.voice,
+                        ": " + frame.arguments_to_string(),
+                        "= " + str( frame.frequency))
+                )

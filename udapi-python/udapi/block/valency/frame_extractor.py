@@ -1,4 +1,5 @@
 from udapi.core.block import Block
+from udapi.block.valency.html_creator import HTML_creator
 
 class Frame_argument:
     """ class representing verb frame argument """
@@ -17,29 +18,58 @@ class Frame_argument:
         return False
 
 
+class Example_sentence:
+    """ class representing an example sentence for a verb frame
+    it contains list of word forms with some information
+    used in creation of HTML table
+    """
+    def __init__( self, actual_node, argument_nodes):
+        sentence_nodes = actual_node.root.descendants
+        self.tokens = []
+        for node in sentence_nodes:
+            token_dict = {}
+            token_dict[ "form" ] = node.form
+            
+            if ( node == actual_node ):
+                token_dict[ "highlight" ] = 2
+            elif ( node in argument_nodes ):
+                token_dict[ "highlight" ] = 1
+            else:
+                token_dict[ "highlight" ] = 0
+                
+            token_dict[ "space" ] = not node.no_space_after
+            
+            self.tokens.append( token_dict)            
+
+
 class Frame:
-    """ classs representing verb frame with information about the verb
+    """ class representing verb frame with information about the verb
     and with a list of its arguments
     """
-    def __init__( self, verb_lemma, verb_form, voice):
-        self.verb_lemma = verb_lemma
+    def __init__( self, node):          
+        self.verb_lemma = node.lemma
             
-        self.verb_form = verb_form
-        if ( verb_form == "" ):
+        self.verb_form = node.feats[ "VerbForm" ]
+        if ( self.verb_form == "" ):
             self.verb_form = "0"        
             
-        self.voice = voice
-        if ( voice == "" ):
-            self.voice = "0"          
-        
+        self.voice = node.feats[ "Voice" ]
+        if ( self.voice == "" ):
+            self.voice = "0"
+
+        self.example_sentences = []        
         self.arguments = []
-        self.frequency = 1 
+        self.frequency = 1
     
-    def add_argument( self, new_argument): # void
+    def add_argument( self, new_argument): # void        
         #for old_argument in self.arguments:
         #    if ( old_argument.is_identical_with( new_argument) ):
         #        return
         self.arguments.append( new_argument)
+    
+    def process_example_sentence( self, node, arguments): # void
+        sentence = Example_sentence( node, arguments)
+        self.example_sentences.append( sentence)
     
     def has_identical_arguments_with( self, another_frame): # -> bool
         """ chceks if this frame has identical arguments with another frame """
@@ -63,8 +93,9 @@ class Frame:
             return True
         return False
     
-    def increment_frequency( self): # void
+    def add_frame_instance( self, new_frame): # void
         self.frequency += 1
+        self.example_sentences.append( new_frame.example_sentences[ 0 ])
     
     def arguments_to_string( self): # -> str
         """ converts verb frame arguments to string
@@ -76,7 +107,7 @@ class Frame:
             if ( argument.case_mark_rels != [] ):                
                 argument_string += '(' + ','.join( argument.case_mark_rels) + ')'
             argument_strings_list.append(  argument_string)
-        final_string = ", ".join( argument_strings_list)
+        final_string = ' '.join( argument_strings_list)
         return final_string
 
 
@@ -89,7 +120,7 @@ class Verb_record:
     def add_frame( self, new_frame):
         for old_frame in self.frames:
             if ( old_frame.is_identical_with( new_frame) ):
-                old_frame.increment_frequency()
+                old_frame.add_frame_instance( new_frame)
                 return                
         self.frames.append( new_frame)
         
@@ -116,25 +147,25 @@ class Frame_extractor( Block):
 
     def select_arguments( self, node): # -> list of Frame_arguments
         """ iterates through verb children and calls create_argument for each of them """
-        arguments = []
+        frame_arguments = []
+        argument_nodes = []
         for child in node.children:
             if ( child.udeprel in self.appropriate_udeprels or 
                     child.deprel in self.appropriate_deprels ):
                 argument = self.create_argument( child)                
-                arguments.append( argument)
-        return arguments
+                frame_arguments.append( argument)
+                argument_nodes.append( child)
+        return ( frame_arguments, argument_nodes )
 
     def create_frame( self, node): # -> Frame
         """ creates a verb frame for a given verb node """
-        verb_lemma = node.lemma
-        verb_form = node.feats[ "VerbForm" ]
-        voice = node.feats[ "Voice" ]
-        frame = Frame( verb_lemma, verb_form, voice)
-
-        arguments = self.select_arguments( node)
-        for argument in arguments:
+        frame = Frame( node)
+        
+        ( frame_arguments, argument_nodes ) = self.select_arguments( node)
+        for argument in frame_arguments:
             frame.add_argument( argument)
-
+        
+        frame.process_example_sentence( node, argument_nodes)
         return frame
     
     def process_node( self, node): # void
@@ -154,18 +185,18 @@ class Frame_extractor( Block):
         """ overriden block method
         printing sorted verb frames to the standard output after document processing
         """
-        sorted_verb_lemmas = sorted( self.dict_of_verbs.keys())
-        for verb_lemma in sorted_verb_lemmas:
+        # sorting verb records and their frames
+        verb_lemmas = self.dict_of_verbs.keys()
+        for verb_lemma in verb_lemmas:
             verb_record = self.dict_of_verbs[ verb_lemma ]
             verb_record.frames.sort( key =
                     lambda frame: frame.frequency, reverse = True )
             sorted_frames = sorted( verb_record.frames, key =
                     lambda frame: ( frame.verb_form, frame.voice ))
-            for frame in sorted_frames:            
-                print( "{:<20}{:<7}{:<7}{:<80}{:<7}".format(                    
-                        frame.verb_lemma,
-                        frame.verb_form,
-                        frame.voice,
-                        ": " + frame.arguments_to_string(),
-                        "= " + str( frame.frequency))
-                )
+            verb_record.frames = sorted_frames
+            self.dict_of_verbs[ verb_lemma ] = verb_record
+        
+        # creating a html table    
+        html_creator = HTML_creator()
+        html_creator.create_table( self.dict_of_verbs)
+

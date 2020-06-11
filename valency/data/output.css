@@ -24,6 +24,7 @@ table, th, td {
 .examples {
     table-layout: fixed;
     background-color: #FFE4C4;
+    width: 300px;
 }
 
 .verb {

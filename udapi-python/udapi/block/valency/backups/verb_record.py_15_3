@@ -2,17 +2,23 @@ from udapi.block.valency.frame import Frame_type
 
 class Verb_record:
     """ class representing one verb with possibly more verb frames """
-    def __init__( self, lemma):
+    def __init__( self, lemma, frame_creator):
         """ called from Frame_extractor.process_node """
         self.lemma = lemma
         self.frame_types = []
 
-    def consider_new_frame_type( self, new_frame_type, new_frame_inst):  # void
-        """ called from Frame_extractor.process_frame
-        gets a Frame_type and its (first) Frame_inst
-        controls if this Frame_type is already present in the list and if yes,
+        self.frame_creator = frame_creator
+
+    def process_frame( self, verb_node):  # -> Frame_inst
+        """ called from Frame_extractor.process_node
+        creates a verb frame type for a given verb node, appends it to the list
+        and gets and returns the (first) instance of this frame type
+        it controls if such a frame already exists and if yes,
         the new instance is only added to it
         """
+        # new frame
+        new_frame_type, new_frame_inst = self.frame_creator.create_frame( verb_node)
+
         # comparing with already existing frames
         for frame_type in self.frame_types:
             if frame_type.is_identical_with( new_frame_type):

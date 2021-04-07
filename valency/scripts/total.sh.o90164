@@ -1,0 +1,35 @@
+AIC:ubuntu 18.04: SGE 8.1.9 configured...
+Preparation of the corpus
+Extraction of frames from a parallel corpus
+2021-03-06 19:49:30,372 [   INFO] execute -  ---- ROUND ----
+2021-03-06 19:49:30,372 [   INFO] execute - Janko: Conllu
+2021-03-06 19:49:30,372 [   INFO] execute - Janko: Cs_En_frame_aligner
+2021-03-06 19:49:30,372 [   INFO] execute - Executing block Conllu
+2021-03-06 19:50:55,199 [   INFO] execute - Finished block Conllu
+2021-03-06 19:50:55,199 [   INFO] execute - Executing block Cs_En_frame_aligner
+2021-03-06 19:51:35,865 [   INFO] _pickle_dict - 1000
+2021-03-06 19:51:35,865 [   INFO] _pickle_dict - 64
+2021-03-06 19:51:35,865 [   INFO] _pickle_dict - 50000
+2021-03-06 19:53:52,763 [   INFO] execute - Finished block Cs_En_frame_aligner
+11656
+11656
+11639
+4354
+4354
+4351
+Matching CS frames with CS CzEngVallex
+Matching EN frames with EN CzEngVallex
+Evaluation
+cs-en val pairs:  22164
+g_ext_fr_pairs 107248
+g_cs_ext_fr_num 1318
+g_en_ext_fr_num 2028
+a_cs_total 14505
+a_cs_visit 1318
+a_en_subtotal 4688
+a_en_visit 0
+======= EPILOG: So bře 6 20:03:55 CET 2021
+== Limits:   
+== Usage:    cpu=00:13:52, mem=6514.88970 GB s, io=16.05910 GB, vmem=14.102G, maxvmem=14.602G
+== Duration: 00:14:28 (868 s)
+== Server name: cpu-node19

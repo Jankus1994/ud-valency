@@ -39,32 +39,17 @@ class Cs_frame_type_arg( Frame_type_arg):
 
 class Cs_frame_type( Frame_type):
     def __init__( self, verb_node):
-        super().__init__( verb_node)
         self.elided_tokens = []
+        super().__init__( verb_node)
         self.arg_class = Cs_frame_type_arg
-
-    def process_first_verb_node( self, verb_node):
-        self.verb_lemma = verb_node.lemma
-        # not setting vf and voice - is it ok??
-        self.verb_form = "0"
+        self.verb_form = "0"  # not setting vf and voice - is it ok??
         self.voice = "0"
-        self.first_frame_inst = self.process_args_and_first_inst( verb_node)
-
-    def process_args_and_first_inst( self, verb_node):
-        first_frame_inst = self.frame_inst_class( self)
-        self.process_args( verb_node, first_frame_inst)
-        self.args_transform_reflex_passive()
-        self.sort_args()
-        first_frame_inst.process_sentence( verb_node, elided_tokens)
-
 
     def process_args( self, verb_node):
         super().process_args( verb_node)
-        old_args = self.args
-        transformed_args = self.transform_reflex_passive( old_args)
-        extended_args, elided_tokens = \
-                self.process_elided_args( verb_node, transformed_args)
-        self.args = extended_args
+        self.args = self.transform_reflex_passive( self.args)
+        self.args = self.process_elided_args( verb_node, self.args)
+        self.sort_args()
 
     def process_first_inst( self):
         # elided tokens filled in process_elided_args
@@ -97,16 +82,15 @@ class Cs_frame_type( Frame_type):
         return [ arg for arg in frame_args if not arg.is_identical_with( rem_arg) ]
 
     def process_elided_args( self, verb_node, frame_args):
-        elided_tokens = []
         elided_arg, elided_token = \
                 self.consider_elided_subject( verb_node, frame_args)
         if elided_arg is not None:
             frame_args.append( elided_arg)
-            elided_tokens.append( elided_token)
+            self.elided_tokens.append( elided_token)
         elif not self.args_include_subject( frame_args):
             subject_arg = Cs_frame_type_arg( None, "nsubj", "Nom", [])
             frame_args.append( subject_arg)
-        return frame_args, elided_tokens
+        return frame_args
 
     def consider_elided_subject( self, node, frame_args):
         for frame_arg in frame_args:
@@ -116,9 +100,7 @@ class Cs_frame_type( Frame_type):
         # the verb (node) does not have a subject:
         token_person_1_2 = self.get_token_of_person_1_2( node)
         if token_person_1_2 is not None:
-            token_person_1_2.mark_elision()
             elided_arg = Cs_frame_type_arg( None, "nsubj", "Nom", [])
-            token_person_1_2.set_arg( elided_arg)
             return elided_arg, token_person_1_2
 
         # looking for an auxiliary verb, which would confirm the 1./2. person
@@ -126,18 +108,14 @@ class Cs_frame_type( Frame_type):
             if child.upos == "AUX":
                 token_person_1_2 = self.get_token_of_person_1_2( child)
                 if token_person_1_2 is not None:
-                    token_person_1_2.mark_elision()
                     elided_arg = Cs_frame_type_arg( None, "nsubj", "Nom", [])
-                    token_person_1_2.set_arg( elided_arg)
                     return elided_arg, token_person_1_2
 
         # the node can be a complement of a parant verb, which could confirm the 1./2. person
         if node.deprel == "xcomp" and node.parent.upos == "VERB":
             token_person_1_2 = self.get_token_of_person_1_2( node.parent)
             if token_person_1_2 is not None:
-                token_person_1_2.mark_elision()
                 elided_arg = Cs_frame_type_arg( None, "nsubj", "Nom", [])
-                token_person_1_2.set_arg( elided_arg)
                 return elided_arg, token_person_1_2
 
         return None, None

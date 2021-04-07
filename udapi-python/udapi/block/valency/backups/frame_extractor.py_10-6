@@ -1,0 +1,114 @@
+import pickle
+
+from udapi.core.block import Block
+from udapi.block.valency.frame import Frame_type
+#from udapi.block.valency.html_creator import HTML_creator
+
+
+
+class Verb_record:
+    """ class representing one verb with possibly more verb frames """
+    def __init__( self, lemma):
+        self.frame_type_class = Frame_type
+
+        self.lemma = lemma
+        self.frame_types = []
+
+    def process_frame( self, verb_node):  # -> Frame
+        """ creates a verb frame for a given verb node """
+        new_frame_type = self.frame_type_class( verb_node)
+        #if new_frame_type.verb_lemma == "reduce":
+        #    print( "*** " + str( new_frame_type))
+        #    print( len( self.frame_types))
+        #    print( str( self))
+        #    print( self.lemma)
+        for frame_type in self.frame_types:
+            success = frame_type.try_merge_with( new_frame_type)
+            if success:
+                break
+        else:
+            self.frame_types.append( new_frame_type)
+            #if new_frame_type.verb_lemma == "reduce":
+            #    print( len( self.frame_types))
+        frame_instance = new_frame_type.get_instance()
+        return frame_instance
+
+
+class Frame_extractor( Block):
+    """ udapi block extracting frame from each verb node and printing results to output """
+    appropriate_udeprels = ["nsubj", "csubj", "obj", "iobj", "ccomp", "xcomp", "expl"]
+    appropriate_deprels = ["obl:arg", "obl:agent"]
+
+    def __init__( self, output = None, **kwargs):
+        self.verb_record_class = Verb_record
+
+        super().__init__( **kwargs)
+        self.output = output
+        self._dict_of_verbs = {}
+        self.actual_extractor_class = Frame_extractor
+
+    #@property
+    #def dict_of_verbs( self):
+    #    """ to be overriden by language specific dictionaries """
+    #    print("MUUU")
+    #    return self._dict_of_verbs
+    def write_verb_to_dict( self, lemma, verb_record):
+        """ to be overriden by language specific dictionaries """
+        self._dict_of_verbs[ lemma ] = verb_record
+    
+    def process_node( self, node): # void
+        """ overridden block method
+        searching verbs and calling create_frame for them
+        """
+        if node.upos == "VERB":
+            if node.lemma in self.dict_of_verbs:
+                verb_record = self.dict_of_verbs[ node.lemma ]
+            else:
+                verb_record = self.verb_record_class( node.lemma)
+                self.actual_extractor_class.write_verb_to_dict( \
+                        self, node.lemma, verb_record)
+            frame_instance = verb_record.process_frame( node)
+            return frame_instance
+        return None
+
+    def after_process_document( self, _): # void
+        """ overriden block method, processing output """
+        # sorting verb records and their frames
+        print( len( self.dict_of_verbs))
+        verb_lemmas = sorted( self.dict_of_verbs.keys())
+        for verb_lemma in verb_lemmas:
+            verb_record = self.dict_of_verbs[ verb_lemma ]
+            verb_record.frame_types.sort( key = \
+                    lambda frame_type: len( frame_type.instances), reverse = True )
+            sorted_frame_types = sorted( verb_record.frame_types, key = \
+                    lambda frame_type: ( frame_type.verb_form, frame_type.voice ))
+            verb_record.frame_types = sorted_frame_types
+            self.actual_extractor_class.write_verb_to_dict( self, verb_lemma, verb_record)
+
+        # two options of output, depending on if the output pickle file was specified
+        if self.output is None:
+            self.print_raw_frames( verb_lemmas)
+        else:
+            self.pickle_dict()
+
+    def print_raw_frames( self, verb_lemmas):
+        for verb_lemma in verb_lemmas:
+            verb_record = self.dict_of_verbs[ verb_lemma ]
+            for frame_type in verb_record.frame_types:            
+                print( "{:<20}{:<7}{:<7}{:<80}{:<7}".format(
+                        frame_type.verb_lemma,
+                        frame_type.verb_form,
+                        frame_type.voice,
+                        ": " + frame_type.args_to_one_string(),
+                        "= " + str( len( frame_type.instances)))
+                )
+    def pickle_dict( self):
+        p = pickle.dump( self.dict_of_verbs, open( self.output, 'wb'))
+
+    def process_tree( self, tree):
+        frame_instances = []
+        for node in tree.descendants:
+            frame_instance = self.process_node( node)
+            if frame_instance is not None:
+                frame_instances.append( frame_instance)
+        return frame_instances

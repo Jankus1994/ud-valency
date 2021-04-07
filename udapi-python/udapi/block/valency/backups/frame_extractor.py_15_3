@@ -1,0 +1,78 @@
+import pickle
+from udapi.block.valency.verb_record import Verb_record
+from udapi.block.valency.frame_creator import Frame_creator
+
+class Frame_extractor():
+    """ tool used by frame_aligner to extract frames from each verb node """
+    appropriate_udeprels = ["nsubj", "csubj", "obj", "iobj", "ccomp", "xcomp", "expl"]
+    appropriate_deprels = ["obl:arg", "obl:agent"]
+
+    def __init__( self, pickle_output = None):
+        """ called from Frame_aligner.__init__ """
+        self.verb_record_class = Verb_record
+        self.frame_creator = Frame_creator()
+        self.pickle_output = pickle_output
+        self.dict_of_verbs = {}
+
+    def process_tree( self, tree):  # -> list of Frame_inst
+        """ called from Frame_aligner.process_bundle """
+        frame_insts = []
+        for node in tree.descendants:
+            frame_inst = self._process_node( node)
+            if frame_inst is not None:
+                frame_insts.append( frame_inst)
+        return frame_insts
+    
+    def _process_node( self, node):  # void
+        """ called from process_tree
+        searching verbs and calling create_frame for them
+        """
+        if node.upos == "VERB":
+            if node.lemma in self.dict_of_verbs:
+                verb_record = self.dict_of_verbs[ node.lemma ]
+            else:
+                verb_record = self.verb_record_class( node.lemma, self.frame_creator)
+                self.dict_of_verbs[ node.lemma ] = verb_record
+            frame_inst = verb_record.process_frame( node)
+            return frame_inst
+        return None
+
+    def get_dict_of_verbs( self):
+        """ called from Frame_aligner._pickle_dict """
+        return self.dict_of_verbs
+
+    # the following methods were used for monolingual frame extraction
+    # and they are not used anymore
+
+    #def after_process_document( self, _): # void
+    #    # sorting verb records and their frames
+    #    print( len( self.dict_of_verbs))
+    #    verb_lemmas = sorted( self.dict_of_verbs.keys())
+    #    for verb_lemma in verb_lemmas:
+    #        verb_record = self.dict_of_verbs[ verb_lemma ]
+    #        verb_record.frame_types.sort( key = \
+    #                lambda frame_type: len( frame_type.insts), reverse = True )
+    #        sorted_frame_types = sorted( verb_record.frame_types, key = \
+    #                lambda frame_type: ( frame_type.verb_form, frame_type.voice ))
+    #        verb_record.frame_types = sorted_frame_types
+    #        self.dict_of_verbs[ verb_lemma ] = verb_record
+    #
+    #    # two options of output, depending on if the output pickle file was specified
+    #    if self.pickle_output is None:
+    #        self._print_raw_frames( verb_lemmas)
+    #    else:
+    #        self._pickle_dict()
+    #
+    #def _print_raw_frames( self, verb_lemmas):
+    #    for verb_lemma in verb_lemmas:
+    #        verb_record = self.dict_of_verbs[ verb_lemma ]
+    #        for frame_type in verb_record.frame_types:            
+    #            print( "{:<20}{:<7}{:<7}{:<80}{:<7}".format(
+    #                    frame_type.verb_lemma,
+    #                    frame_type.verb_form,
+    #                    frame_type.voice,
+    #                    ": " + frame_type.args_to_one_string(),
+    #                    "= " + str( len( frame_type.insts)))
+    #            )
+    #def _pickle_dict( self):
+    #    pickle.dump( self.dict_of_verbs, open( self.pickle_output, 'wb'))

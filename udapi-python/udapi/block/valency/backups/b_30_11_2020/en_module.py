@@ -1,8 +1,8 @@
 """
 overriden methods of general classes, specific for English
 """
-from udapi.block.valency.verb_record import Verb_record
-from udapi.block.valency.frame_extractor import Frame_extractor
+
+from udapi.block.valency.frame_extractor import *
 
 class En_verb_record( Verb_record):
     def __init__( self, lemma):

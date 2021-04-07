@@ -1,0 +1,169 @@
+import pickle
+
+from udapi.block.valency.cs_frame_extractor import Cs_frame_extractor, Cs_verb_record
+from udapi.block.valency.en_frame_extractor import En_frame_extractor, En_verb_record
+from udapi.block.valency.frame import Frame_link
+
+#class Cs_En_frame_link:
+#    def __init__( self, lang_code, a_frame_type, b_frame_type):
+#        self.cs_frame_type, self.en_frame_type = self.distinguish_lang_items( \
+#                                                    lang_code, a_frame_type, b_frame_type)
+#        self.frame_instance_pairs = []
+#
+#    def add_frame_instance_pair( self, lang_code, a_frame_instance, b_frame_instance):
+#        # !!! maybe make lang_code an attribute in init not to pass it with each instance
+#        cs_frame_instance, en_frame_instance = self.distinguish_lang_items( \
+#                                            lang_code, a_frame_instance, b_frame_instance)
+#        frame_instance_pair = cs_frame_instance, en_frame_instance
+#        self.frame_instance_pairs.append( frame_instance_pair)
+#
+#    @staticmethod
+#    def distinguish_lang_items( lang_code, a_item, b_item):
+#        if lang_code == "cs":
+#            cs_item = a_item
+#            en_item = b_item
+#        elif lang_code == "en":
+#            cs_item = b_item
+#            en_item = a_item
+#        return cs_item, en_item
+
+
+class Cs_En_frame_extractor( Cs_frame_extractor, En_frame_extractor):
+    def __init__( self, align_file_name="", output = None, **kwargs):
+        super().__init__( **kwargs)
+        
+        self.align_file = None
+        self.output = output
+        if align_file_name != "":
+            try:
+                self.align_file = open( align_file_name, 'r')
+            except FileNotFoundError:
+                print( "ERROR")
+                exit()
+        self.cs_and_en = 0
+        self.cs_only = 0
+        self.en_only = 0
+
+        self.direction = 0 # 0 .. both, 1 .. cs->en, 2 .. en->cs
+
+
+    def switch_language( self, lang_code):
+        if lang_code == "cs":
+            self.actual_extractor_class = Cs_frame_extractor
+            self.verb_record_class = Cs_verb_record
+            self.dict_of_verbs = self._cs_dict_of_verbs
+        elif lang_code == "en":
+            self.actual_extractor_class = En_frame_extractor
+            self.verb_record_class = En_verb_record
+            self.dict_of_verbs = self._en_dict_of_verbs
+
+    def process_bundle( self, bundle):
+        cs_root = None
+        en_root = None
+        cs_frame_instances = []
+        en_frame_instances = []
+        for tree_root in bundle.trees:
+            if tree_root.zone == "cs":
+                cs_root = tree_root
+                self.switch_language( "cs")
+                cs_frame_instances = \
+                        self.actual_extractor_class.process_tree( self, tree_root)
+                # self_as_cs_extractor = Cs_frame_extractor( self)
+                # Cs_frame_extractor.process_tree( self_as_cs_extractor, tree_root)
+            elif tree_root.zone == "en":
+                en_root = tree_root
+                self.switch_language( "en")
+                en_frame_instances = \
+                        self.actual_extractor_class.process_tree( self, tree_root)
+                #for instance in en_frame_instances:
+                #    if instance.frame_type.verb_lemma == "reduce":
+                #        print( str( instance.frame_type))
+                # self_as_en_extractor = En_frame_extractor( self)
+                # En_frame_extractor.process_tree( self_as_en_extractor, tree_root)
+
+        # reading alignment line
+        alignments = self.align_file.readline().split()
+        cs_en_ali_dict = {}
+        en_cs_ali_dict = {}
+        for alignment in alignments:
+            cs_index_str, en_index_str = alignment.split( '-')
+            try:
+                cs_index = int( cs_index_str)
+                en_index = int( en_index_str)
+            except:
+                print( "conv ERROR")
+                exit()
+            cs_en_ali_dict[ cs_index + 1 ] = en_index + 1
+            en_cs_ali_dict[ en_index + 1 ] = cs_index + 1
+
+        self.frame_alignment( "cs", cs_frame_instances, en_frame_instances, cs_en_ali_dict)
+    
+    def frame_alignment( self, lang_code, a_frame_instances, b_frame_instances, ab_ali_dict):
+        # aligning frame instances
+        for a_frame_instance in a_frame_instances:
+            a_frame_type = a_frame_instance.get_type()
+            a_verb_index = a_frame_instance.verb_node.ord
+            #print( cs_verb_index, cs_frame_instance.verb_node.form)
+            try:
+                b_verb_index = ab_ali_dict[ a_verb_index ]
+            except KeyError:  # this token was not aligned
+                #print( "    OOOO")
+                continue
+            for b_frame_instance in b_frame_instances:
+                if b_frame_instance.verb_node.ord == b_verb_index:
+                    chosen_b_frame_instance = b_frame_instance
+                    break
+            else:  # the token was not aligned to any verb token
+                #print( "    XXXX")
+                continue
+            #cs_lemma = cs_frame_instance.verb_node.lemma
+            #en_lemma = en_frame_instance.verb_node.lemma
+
+            # unmatched instances will have "frame_link" attribute still None
+            b_frame_type = chosen_b_frame_instance.get_type()
+            #if a_frame_type.verb_lemma == "snižovat":
+            #    print( "===")
+            #    print( str( a_frame_type))
+            #    print( str( b_frame_type))
+            #    print( str( chosen_b_frame_instance))
+            frame_link = a_frame_type.find_link_with( b_frame_type)
+            if frame_link is None:
+                frame_link = Frame_link( a_frame_type, b_frame_type)
+                # assymetric linking
+                a_frame_type.add_frame_link( frame_link)
+                #b_frame_type.add_frame_link( frame_link)
+            frame_link.add_frame_instance_pair( a_frame_instance, b_frame_instance)
+
+
+        self.pickle_dict()
+
+            #print( cs_frame_instance.verb_node.form)
+            #cs_arg_forms = [ arg.node.form for arg in \
+            #                 cs_frame_instance.arguments ]
+            #print( "   " + ' '.join( cs_arg_forms))
+
+            #print( en_frame_instance.verb_node.form)
+            #en_arg_forms = [ arg.node.form for arg in \
+            #                 en_frame_instance.arguments ]
+            #print( "   " + ' '.join( en_arg_forms))
+
+            #print( len( cs_frame_instance.arguments), len( en_frame_instance.arguments))
+            #print( "===")
+
+
+    def after_process_document( self, doc):
+        return
+        print( "=== pocty slovies ===")
+        print( "CS", len( self._cs_dict_of_verbs))
+        print( "EN", len( self._en_dict_of_verbs))
+        print(self.cs_and_en, self.cs_only, self.en_only)
+        #super().after_process_document( doc)
+
+    def pickle_dict( self):
+        cs_dict_of_verbs = self._cs_dict_of_verbs
+        en_dict_of_verbs = self._en_dict_of_verbs
+        cs_en_dicts_of_verbs = cs_dict_of_verbs, en_dict_of_verbs
+        #cs_en_dicts_of_verbs = en_dict_of_verbs
+        p = pickle.dump( cs_en_dicts_of_verbs, open( self.output, 'wb'))
+
+

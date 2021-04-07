@@ -1,0 +1,65 @@
+from udapi.block.valency.cs_frame_extractor import Cs_frame_extractor
+from udapi.block.valency.en_frame_extractor import En_frame_extractor
+
+class Cs_En_frame_extractor( Cs_frame_extractor, En_frame_extractor):
+    def __init__( self, align_file_name="", **kwargs):
+        super().__init__( **kwargs)
+        
+        self.align_file = None
+        if align_file_name != "":
+            try:
+                self.align_file = open( align_file_name, 'r')
+            except FileNotFoundError:
+                print( "ERROR")
+                exit()
+        self.cs_and_en = 0
+        self.cs_only = 0
+        self.en_only = 0
+
+
+    def process_bundle( self, bundle):
+        cs_tree_root = None
+        en_tree_root = None
+        for tree_root in bundle.trees:
+            if tree_root.zone == "cs":
+                #print( "CS", len( self._cs_dict_of_verbs))
+                cs_tree_root = tree_root
+                self.actual_parent_class = Cs_frame_extractor
+                self.actual_parent_class.process_tree( self, tree_root)
+                # self_as_cs_extractor = Cs_frame_extractor( self)
+                # Cs_frame_extractor.process_tree( self_as_cs_extractor, tree_root)
+            elif tree_root.zone == "en":
+                #print( "EN", len( self._en_dict_of_verbs))
+                en_tree_root = tree_root
+                self.actual_parent_class = En_frame_extractor
+                self.actual_parent_class.process_tree( self, tree_root)
+                # self_as_en_extractor = En_frame_extractor( self)
+                # En_frame_extractor.process_tree( self_as_en_extractor, tree_root)
+
+        alignments = self.align_file.readline().split()
+        for alignment in alignments:
+            cs_index_str, en_index_str = alignment.split( '-')
+            try:
+                cs_index = int( cs_index_str)
+                en_index = int( en_index_str)
+            except:
+                print("conv ERROR")
+                exit()
+            cs_node = cs_tree_root.descendants[ cs_index ]
+            en_node = en_tree_root.descendants[ en_index ]
+            if cs_node.upos == "VERB" and en_node.upos == "VERB":
+                self.cs_and_en+=1
+                print( cs_node.form, en_node.form)
+            elif cs_node.upos == "VERB":
+                self.cs_only += 1
+            elif en_node.upos == "VERB":
+                self.en_only += 1
+
+
+
+    def after_process_document( self, doc):
+        print( "=== pocty slovies ===")
+        print( "CS", len( self._cs_dict_of_verbs))
+        print( "EN", len( self._en_dict_of_verbs))
+        print(self.cs_and_en, self.cs_only, self.en_only)
+        #super().after_process_document( doc)

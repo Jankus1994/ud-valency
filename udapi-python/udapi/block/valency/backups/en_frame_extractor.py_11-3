@@ -1,0 +1,21 @@
+from udapi.block.valency.frame_extractor import *
+
+class En_frame_extractor( Frame_extractor):
+    def __init__( self, output=None, **kwargs):
+        super().__init__( output, **kwargs)
+        self._en_dict_of_verbs = {}
+
+        
+    def process_tree( self, tree):
+        #print( "EN", len( tree.descendants))
+        #print( "<<<", len( self._en_dict_of_verbs))
+        #super().process_tree(tree)
+        Frame_extractor.process_tree( self, tree)
+
+    @property
+    def dict_of_verbs( self):
+        return self._en_dict_of_verbs
+    def write_verb_to_dict( self, lemma, verb_record):
+        self._en_dict_of_verbs[ lemma ] = verb_record
+
+

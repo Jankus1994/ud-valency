@@ -1,0 +1,44 @@
+from udapi.block.valency.frame import *
+
+class Frame_creator:
+
+    def __init__( self):
+        """ called from Frame_extractor.__init__ """
+        self.appropriate_udeprels = \
+                [ "nsubj", "csubj", "obj", "iobj", "ccomp", "xcomp", "expl" ]
+        self.appropriate_deprels = [ "obl:arg", "obl:agent" ]
+
+        self.frame_type_class = Frame_type
+        self.frame_inst_class = Frame_inst
+        self.frame_type_arg_class = Frame_type_arg
+        self.frame_inst_arg_class = Frame_inst_arg
+
+    def create_frame( self, verb_node):  # -> pair ( Frame_type, Frame_inst )
+        """ called from Verb_record.process_frame """
+        frame_type = self.frame_type_class()
+        frame_type.set_verb_features( verb_node)
+        frame_inst = self.frame_inst_class()
+
+        # creating and adding args to the frame type/inst
+        self._process_args( frame_type, frame_inst, verb_node)
+
+        frame_type.sort_args()
+        frame_inst.process_sentence( verb_node)
+        frame_type.add_inst( frame_inst)
+
+        return frame_type, frame_inst
+
+    def _process_args( self, frame_type, frame_inst, verb_node):  # void
+        """ called from create_frame
+        creates args according to given requirements
+        and adds them to the type and inst
+        """
+        for child_node in verb_node.children:
+            if child_node.udeprel in self.appropriate_udeprels or \
+                    child_node.deprel in self.appropriate_deprels:
+                frame_type_arg = self.frame_type_arg_class( child_node)
+                frame_type.add_arg( frame_type_arg)
+                frame_inst_arg = self.frame_inst_arg_class( child_node)
+                frame_inst.add_arg( frame_inst_arg)
+                frame_type_arg.add_inst( frame_inst_arg)
+

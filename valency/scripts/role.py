@@ -1,1 +1,0 @@
-../../udapi-python/udapi/block/valency/role.py

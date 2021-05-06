@@ -91,7 +91,7 @@ class HTML_creator:
 
     def process_frame_type( self, a_frame_type, a_frame_type_number, a_lemma):
         examples_id = a_lemma + str( a_frame_type_number)
-        number_of_links = str( len( a_frame_type.frame_type_links))
+        number_of_links = str( len( a_frame_type.links))
         with tag( "tr"):
             with tag( "td", klass = "middle_col"):
                 # TU ASI BUDE TREBA DAT RAWSPAN
@@ -111,15 +111,15 @@ class HTML_creator:
             with tag( "td", klass = "large_col", colspan = str( 3)):
                 pass
             with tag( "td", klass = "small_col"):
-                text( "links: " + str( len( a_frame_type.frame_type_links)))
+                text( "links: " + str( len( a_frame_type.links)))
                 doc.stag( "br")
-                paired_insts = [ inst for inst in a_frame_type.insts \
-                                            if inst.frame_inst_link is not None ]
+                paired_insts = [ frame_inst for frame_inst in a_frame_type.insts \
+                                            if frame_inst.link is not None ]
                 text( "ex: " +  str( len( paired_insts)) + "/" + \
                         str( len( a_frame_type.insts)))
         
         frame_type_link_number = 0
-        for frame_type_link in a_frame_type.frame_type_links:
+        for frame_type_link in a_frame_type.links:
             link_examples_id = examples_id + str( frame_type_link_number)
             self.process_frame_type_link( frame_type_link, link_examples_id)
             frame_type_link_number += 1
@@ -194,7 +194,7 @@ class HTML_creator:
             with tag( "td", klass = "small_col"):
                 pass
 
-    def process_inst( self, inst):
+    def process_inst( self, frame_inst):
         """ auxiliary method for printing an example sentence
         with the discussed verb and its argments highlighted
         """
@@ -203,7 +203,7 @@ class HTML_creator:
         #return
         with tag( "p"):
             # suppose that inst.sentence is not None it was assigned 
-            for token in inst.sentence.tokens:
+            for token in frame_inst.sent_tokens:
                 if token.is_elided():
                     continue
                 token_form = token.get_form()
@@ -219,12 +219,12 @@ class HTML_creator:
                 else:
                     self.write_token( token, token_form)
             
-            elided_tokens = [ token for token in inst.sentence.tokens \
+            elided_tokens = [ token for token in frame_inst.sent_tokens \
                               if token.is_elided() ]
             elided_tokens_len = len( elided_tokens)
             if elided_tokens_len > 0:
                 text( " [")
-                for i, elided_token in enumerate( inst.sentence.elided_tokens):
+                for i, elided_token in enumerate( elided_tokens):
                     # we suppose that elided tokens are frame arguments
                     with tag( "font", klass = "arg"):
                         if elided_token.is_frame_predicate():

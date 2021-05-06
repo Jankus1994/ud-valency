@@ -1,7 +1,11 @@
- #!/bin/bash
+#!/bin/bash
 
 export PATH=../../fast_align/build:$PATH
 export PATH=../../udpipe/bin-linux64:$PATH
+
+: '
+script
+# '
 #python3 parallextract.py ../data/parallel/alignedCorpus_cs_en.xml ../data/ext_cs_en.cs ../data/ext_cs_en.en
 #cat ../data/ext_cs_en.cs | udpipe --tokenizer='presegmented' --output=horizontal ../../udpipe/models/czech-pdt-ud-2.3-181115.udpipe > ../data/cs_tokenized
 #cat ../data/ext_cs_en.en | udpipe --tokenizer='presegmented' --output=horizontal ../../udpipe/models/english-lines-ud-2.3-181115.udpipe > ../data/en_tokenized

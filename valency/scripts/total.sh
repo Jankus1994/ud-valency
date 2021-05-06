@@ -16,6 +16,10 @@ bash sent_selector.sh $sents_num $name > /dev/null
 echo "Extraction of frames from a parallel corpus"
 bash frame_extraction.sh $name > /dev/null
 
+# HTML DICTIONARY CREATION
+echo "Creation of HTML dictionary"
+bash html_creator.sh $name > /dev/null
+
 # ((CZ)ENG)VALLEX FRAMES LOADING
 #echo "Loading CS Vallexx frames"
 #bash vallex_loader.sh c

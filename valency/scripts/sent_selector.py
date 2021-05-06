@@ -1,3 +1,10 @@
+"""
+selects a given number of sentences from a parallel czech-english conllu file
+and prints them to output file
+used during development when not necessery to process the whole corpus
+run from sent_selector.sh
+"""
+
 import sys
 
 class Merged_selector:

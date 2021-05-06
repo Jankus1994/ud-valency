@@ -1,6 +1,12 @@
 export PATH=../../udapi-python/bin:$PATH
 export PYTHONPATH=../../udapi-python/:$PYTHONPATH
 
+: '
+runs alignment of czengvallex frames and evaluation of the extracted
+czech-english valency dictionary against czengvallex
+run from total.sh
+# '
+
 name=$1
 
 python3 vallex/czengvallex_evaluator.py \

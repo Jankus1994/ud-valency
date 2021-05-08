@@ -5,14 +5,19 @@ sents_num=$1
 name=$2
 
 # needed:
-# conllu file - data/cs_en_merged/cs_en_"$name"_merged.conllu
-# align  file - data/cs_en_align/cs-en_"$name".ali
+# cs conllu file - data/cs/cs_all.conllu
+# en conllu file - data/en/en_all.conllu
+# align file     - data/cs_en_align/cs-en_all.ali
 
-# PREPARING THE CORPUS
-echo "Preparation of the corpus"
+# >>> PREPARING THE CORPUS <<<
+
+
+
+# Sentences selection
+echo "Preparation of the corpus - selection of sentences"
 bash sent_selector.sh $sents_num $name > /dev/null
 
-# FRAME EXTRACTION FROM CORPUS
+# FRAME EXTRACTION
 echo "Extraction of frames from a parallel corpus"
 bash frame_extraction.sh $name > /dev/null
 

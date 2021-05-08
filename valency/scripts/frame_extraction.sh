@@ -8,6 +8,11 @@ script running the most important part of the program - the valency frame extrac
 uses Udapi scenario, which reads a parallel bilingual conllu file
 and then runs the extraction on it
 this script is run from total.sh
+input:
+    cs_en_merged/cs_en_"$name"_merged.conllu - bilingual conllu corpus 
+    cs_en_align/cs-en_"$name".ali - word alignment file
+output:
+    pic/ext_"$name".pic - binary file with extracted valency dictionary
 # '
 
 name=$1

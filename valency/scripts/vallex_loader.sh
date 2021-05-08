@@ -1,3 +1,16 @@
+export PATH=../../udapi-python/bin:$PATH
+export PYTHONPATH=../../udapi-python/:$PYTHONPATH
+
+: '
+script for loading individual vallex-style dictionaries
+they are used for evaluation
+run from total.sh
+input:
+    xml file containing particular vallex-style dictionary
+output:
+    binary file with loaded vallex-style dictionary structure
+# '
+
 type=$1
 
 # general, not used

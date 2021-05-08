@@ -4,20 +4,37 @@ export PATH=../../fast_align/build:$PATH
 export PATH=../../udpipe/bin-linux64:$PATH
 
 : '
-script
+script for preparing the corpus
+language-independent, accepts particular langage-specific parameters
+
+input: initial corpus file, as obtained from the corpus project
+output:
+    1) parallel bilingual UD annotated (tagged and parsed) corpus in conllu format
+    2) word alignment file
+
+parts:
+a) extracting the sentences from the corpus to plain text (for each language separately)
+b) [a] -> tokenization
+c) [b] -> word alignment using fast align tool 
+       -> output (2)
+d) [b] -> UD tagging and parsing using UDPipe tool to conllu files
+e) [d] -> merging the two conllu files into one bilingual conllu file
+       -> output (1)
 # '
 
 data=../data
 models=../../udpipe/models
 
-corp_name=acquis_cs_en
-corp_file=acquis/alignedCorpus_cs_en.xml
-L1=CS
-L2=EN
-udpipe_model_L1=czech-pdt-ud-2.3-181115.udpipe
-udpipe_model_L2=english-lines-ud-2.3-181115.udpipe
+# language-specific parameters
+L1=$1  # CS
+L2=$2  # EN
+udpipe_model_L1=$3  # czech-pdt-ud-2.3-181115.udpipe
+udpipe_model_L2=$4  # english-lines-ud-2.3-181115.udpipe
+corp_name=$5  # acquis_cs_en
+corp_file=$6  # acquis/alignedCorpus_cs_en.xml
 
 
+: '
 # >> Extraction of sentences from paralle corpus <<
 act_time=$(date +"%T")
 echo -e "\n$act_time\tCorpus preparation: extraction of sentences"
@@ -27,8 +44,9 @@ python3 acquis_extract.py \
 	$data/corpora/$corp_file \
 	$data/sents/$corp_name.$L1 \
 	$data/sents/$corp_name.$L2
+# '
 
-
+#: '
 # >> Tokenization <<
 act_time=$(date +"%T")
 echo -e "\n$act_time\tCorpus preparation: tokenization of senteces"
@@ -49,8 +67,9 @@ paste \
 	$data/toksents/$corp_name.$L2 \
 | sed 's/\t/ ||| /' \
 > $data/fast_align/$corp_name
+# '
 
-
+#: '
 # >> Word alignment using Fast align <<
 act_time=$(date +"%T")
 echo -e "\n$act_time\tCorpus preparation: word alignment"
@@ -70,8 +89,9 @@ atools \
 	-j $data/m_aligned/$corp_name.$L2 \
 	-c intersect \
 	> $data/b_aligned/$corp_name
+# '
 
-
+#: '
 # >> UD annotation: tagging and parsing <<
 act_time=$(date +"%T")
 echo -e "\n$act_time\tCorpus preparation: tagging and parsing"
@@ -95,8 +115,9 @@ cat \
 #    cat $data/cs/cs.tok.$i | udpipe --input=horizontal --tag --parse --output=conllu ../../udpipe/models/czech-pdt-ud-2.3-181115.udpipe > $data/cs/cs_$i.conllu
 #    cat $data/en/en.tok.$i | udpipe --input=horizontal --tag --parse --output=conllu ../../udpipe/models/english-lines-ud-2.3-181115.udpipe > $data/en/en_$i.conllu
 #done
+# '
 
-
+#: '
 # >> Merging two conllu files <<
 act_time=$(date +"%T")
 echo -e "\n$act_time\tCorpus preparation: merging two conllu files"
@@ -109,3 +130,4 @@ python3 merger.py \
 	$L2 \
 	$data/m_conllu/$corp_name.$L2.conllu \
 	$data/b_conllu/$corp_name.conllu
+# '

@@ -23,6 +23,8 @@ output (czengvallex):
 type=$1
 name=$2
 
+data=../data
+
 # vallex/match.py \
 #	type of matcher:
 #		c = vallex
@@ -36,32 +38,32 @@ name=$2
 if [[ $type == "c" ]]; then
         python3 vallex/match.py \
 		c \
-		../data/pic/cs_en_ext_"$name".pic \
-                ../data/pic/cs_vallex_frames.pic
+		$data/ext_pic/$name \
+                $data/val_pic/cs_vallex_frames
 # vallex EN (engvallex)
 elif [[ $type == "e" ]]; then
         python3 vallex/match.py \
 		e \
-                ../data/pic/cs_en_ext_"$name".pic \
-                ../data/pic/en_vallex_frames.pic
+		$data/ext_pic/$name \
+                $data/val_pic/en_vallex_frames
 # czengvallex CS
 elif [[ $type == "cc" ]]; then
         python3 vallex/match.py \
 		cc \
-                ../data/pic/cs_en_ext_"$name".pic \
-                ../data/pic/cs_czengvallex_frames.pic
+                $data/ext_pic/$name \
+                $data/val_pic/cs_czengvallex_frames
 # czengvallex EN
 elif [[ $type == "ee" ]]; then
         # not a mistake, "e" matcher also used for EN czengvallex
         python3 vallex/match.py \
 		e \
-		../data/pic/cs_en_ext_"$name".pic \
-                ../data/pic/en_czengvallex_frames.pic
+		$data/ext_pic/$name \
+                $data/val_pic/en_czengvallex_frames
 elif [[ $type == "ce" ]]; then
 	python3 vallex/match.py \
 		ce \
-		../data/pic/cs_en_ext_"$name".pic \
-		../data/pic/cs_czengvallex_frames.pic \
-		../data/pic/en_czengvallex_frames.pic \
-		../data/pic/matched_dicts_"$name".pic
+		$data/ext_pic/$name \
+		$data/val_pic/cs_czengvallex_frames \
+		$data/val_pic/en_czengvallex_frames \
+		$data/match_pic/$name
 fi

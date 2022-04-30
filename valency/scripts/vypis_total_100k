@@ -1,0 +1,18 @@
+AIC:ubuntu 18.04: SGE 8.1.9 configured...
+
+19:29:54	Preparation of the corpus - selection of sentences
+
+19:30:00	Extraction of frames from a parallel corpus
+2021-05-12 19:30:00,188 [   INFO] execute -  ---- ROUND ----
+2021-05-12 19:30:00,188 [   INFO] execute - Executing block Conllu
+2021-05-12 19:33:52,875 [   INFO] execute - Finished block Conllu
+2021-05-12 19:33:52,875 [   INFO] execute - Executing block Cs_En_frame_aligner
+2021-05-12 19:35:42,325 [   INFO] _pickle_dict - 1000
+2021-05-12 19:35:42,325 [   INFO] _pickle_dict - 64
+2021-05-12 19:35:42,325 [   INFO] _pickle_dict - 50000
+2021-05-12 19:36:30,495 [   INFO] execute - Finished block Cs_En_frame_aligner
+======= EPILOG: Wed May 12 19:37:02 CEST 2021
+== Limits:   
+== Usage:    cpu=00:06:38, mem=1710.33196 GB s, io=2.39260 GB, vmem=8.382G, maxvmem=12.097G
+== Duration: 00:07:08 (428 s)
+== Server name: cpu-node22

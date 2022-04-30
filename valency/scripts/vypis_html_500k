@@ -1,0 +1,10 @@
+AIC:ubuntu 18.04: SGE 8.1.9 configured...
+
+00:10:59	Creation of HTML dictionary
+2021-05-13 00:16:59,793 [29982] INFO     root: Creating HTML...
+2021-05-13 00:19:29,129 [29982] INFO     root: HTML created.
+======= EPILOG: Thu May 13 00:35:06 CEST 2021
+== Limits:   
+== Usage:    cpu=00:23:43, mem=60242.95463 GB s, io=4.65489 GB, vmem=18.584G, maxvmem=53.464G
+== Duration: 00:24:07 (1447 s)
+== Server name: cpu-node15

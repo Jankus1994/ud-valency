@@ -8,20 +8,27 @@ used during development when not necessery to process the whole corpus
 selects corresponding lines from alignment file
 run from total.sh
 input:
-    cs_en_merged/cs_en_all_merged.conllu - parallel bilingual conllu file
-    cs_en_align/cs-en.ali - alignment file
-output: selected sentences
-    cs_en_merged/cs_en_"$name"_merged - parallel bilingual conllu file
-    cs_en_align/cs-en_"$name" - alignment file
+    parallel bilingual conllu file (b_conllu)
+    corresponding word alignment file (b_aligned)
+output:
+    analogous, but only first $sent_num sentences selected from both input files
 # '
 
 sents_num=$1
-name=$2
+select_name=$2
+corp_name=$3
+L1_mark=$4
+L2_mark=$5
+
+data=../data
 
 python3 sent_selector.py \
 	$sents_num \
-	../data/cs_en_merged/cs_en_all_merged.conllu \
-	../data/cs_en_merged/cs_en_"$name"_merged.conllu
+	"$data"/b_conllu/"$corp_name".conllu \
+	"$data"/b_conllu/"$corp_name"_"$select_name".conllu \
+	$L1_mark \
+	$L2_mark
 
-cat ../data/cs_en_align/cs-en.ali | \
-	head -n"$sents_num" > ../data/cs_en_align/cs-en_"$name".ali
+cat "$data"/b_aligned/"$corp_name" \
+| head -n"$sents_num" \
+> "$data"/b_aligned/"$corp_name"_"$select_name"

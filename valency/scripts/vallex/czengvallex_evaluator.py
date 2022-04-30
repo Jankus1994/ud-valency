@@ -89,7 +89,7 @@ def evaluate( cs_en_ext_dict, en_cs_ext_dict, cs_en_val_frame_pairs):
             #if hasattr( cs_frame_type, "visited") and cs_frame_type.visited:
             #    a_cs_visit += 1
             #    cs_frame_type.visited = False
-            for cs_en_frame_type_link in cs_frame_type.frame_type_links:
+            for cs_en_frame_type_link in cs_frame_type.links:
                 en_frame_type = cs_en_frame_type_link.get_the_other_frame_type( \
                                     cs_frame_type)
                 #if not hasattr( en_frame_type, "subtotal"):

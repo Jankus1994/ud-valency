@@ -14,6 +14,8 @@ output:
 
 name=$1
 
+data=../data
+
 python3 vallex/czengvallex_evaluator.py \
-	../data/czengvallex/frames_pairs.xml \
-	../data/pic/matched_dicts_"$name".pic
+	$data/czengvallex/frames_pairs.xml \
+	$data/match_pic/$name

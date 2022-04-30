@@ -26,16 +26,27 @@ data=../data
 models=../../udpipe/models
 
 # language-specific parameters
-L1=$1  # CS
-L2=$2  # EN
-udpipe_model_L1=$3  # czech-pdt-ud-2.3-181115.udpipe
-udpipe_model_L2=$4  # english-lines-ud-2.3-181115.udpipe
-corp_name=$5  # acquis_cs_en
-corp_file=$6  # acquis/alignedCorpus_cs_en.xml
+#L1=$1  # CS
+#L2=$2  # EN
+#udpipe_model_L1=$3  # czech-pdt-ud-2.3-181115.udpipe
+#udpipe_model_L2=$4  # english-lines-ud-2.3-181115.udpipe
+#corp_name=$5  # acquis_cs_en
+#corp_file=$6  # acquis/alignedCorpus_cs_en.xml
+
+L1=EN
+L1_zone_mark=en
+L2=ES
+L2_zone_mark=es
+udpipe_model_L1=english-lines-ud-2.3-181115.udpipe
+udpipe_model_L2=spanish-ancora-ud-2.3-181115.udpipe
+corp_name=acquis_cs_es
+corp_file=acquis/alignedCorpus_cs_es.xml
+
 
 
 : '
-# >> Extraction of sentences from paralle corpus <<
+# >> Extraction of sentences from parallel corpus <<
+# duration: 16 sec
 act_time=$(date +"%T")
 echo -e "\n$act_time\tCorpus preparation: extraction of sentences"
 # corpora - input: initial corpus file (format dependent on the corpus)
@@ -46,8 +57,9 @@ python3 acquis_extract.py \
 	$data/sents/$corp_name.$L2
 # '
 
-#: '
+: '
 # >> Tokenization <<
+# duration: 27 min
 act_time=$(date +"%T")
 echo -e "\n$act_time\tCorpus preparation: tokenization of senteces"
 # sents - udpipe input: plain text sentences extracted from the corpus
@@ -55,22 +67,23 @@ echo -e "\n$act_time\tCorpus preparation: tokenization of senteces"
 # fast_align - merged tokenized sentences, each pair on one line,
 #              in format required by Fast align
 cat $data/sents/$corp_name.$L1\
-| udpipe --tokenizer='presegmented' --output=horizontal \
+| udpipe --tokenizer="presegmented" --output=horizontal \
 	$models/$udpipe_model_L1 \
 	> $data/toksents/$corp_name.$L1
 cat $data/sents/$corp_name.$L2 \
-| udpipe --tokenizer='presegmented' --output=horizontal \
+| udpipe --tokenizer="presegmented" --output=horizontal \
 	$models/$udpipe_model_L2 \
 	> $data/toksents/$corp_name.$L2
 paste \
 	$data/toksents/$corp_name.$L1 \
 	$data/toksents/$corp_name.$L2 \
-| sed 's/\t/ ||| /' \
+| sed "s/\t/ ||| /" \
 > $data/fast_align/$corp_name
 # '
 
-#: '
+: '
 # >> Word alignment using Fast align <<
+# duration: 23 min 
 act_time=$(date +"%T")
 echo -e "\n$act_time\tCorpus preparation: word alignment"
 # fast_align - fast_align input: tokenized senteces, each pair on one line,
@@ -91,8 +104,9 @@ atools \
 	> $data/b_aligned/$corp_name
 # '
 
-#: '
+: '
 # >> UD annotation: tagging and parsing <<
+# duration: 6 h 56 min (cs - cca 4:40 h, en - cca  4:15)
 act_time=$(date +"%T")
 echo -e "\n$act_time\tCorpus preparation: tagging and parsing"
 # toksents - input: tokenized sentences, each on separate line
@@ -101,13 +115,13 @@ cat \
 	$data/toksents/$corp_name.$L1 \
 | udpipe --input=horizontal --tag --parse --output=conllu \
 	$models/$udpipe_model_L1 \
-> $data/m_conllu/$corp_name.$L1.connlu
+> $data/m_conllu/$corp_name.$L1.conllu
 
 cat \
 	$data/toksents/$corp_name.$L2 \
 | udpipe --input=horizontal --tag --parse --output=conllu \
 	$models/$udpipe_model_L2 \
-> $data/m_conllu/$corp_name.$L2.connlu
+> $data/m_conllu/$corp_name.$L2.conllu
 
 # partition version in case the "all" version does not worke
 #for i in `seq 2 5`;
@@ -119,15 +133,16 @@ cat \
 
 #: '
 # >> Merging two conllu files <<
+# duration: 2 min
 act_time=$(date +"%T")
 echo -e "\n$act_time\tCorpus preparation: merging two conllu files"
 # m_conllu - input: monolingual UD annotated corpus
 # L1, L2 - input: zone marks for distinguisging languages in the output file
 # b_conllu - output: parallel bilingual UD annotated corpus
 python3 merger.py \
-	$L1 \
+	$L1_zone_mark \
 	$data/m_conllu/$corp_name.$L1.conllu \
-	$L2 \
+	$L2_zone_mark \
 	$data/m_conllu/$corp_name.$L2.conllu \
 	$data/b_conllu/$corp_name.conllu
 # '

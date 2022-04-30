@@ -1,0 +1,15 @@
+AIC:ubuntu 18.04: SGE 8.1.9 configured...
+
+22:21:44	Extraction of frames from a parallel corpus
+2021-05-12 22:21:44,489 [   INFO] execute -  ---- ROUND ----
+2021-05-12 22:21:44,489 [   INFO] execute - >>> Conllu
+2021-05-12 22:21:44,489 [   INFO] execute - >>> Cs_En_frame_aligner
+2021-05-12 22:21:44,489 [   INFO] execute - Executing block Conllu
+2021-05-12 23:03:45,973 [   INFO] execute - Finished block Conllu
+2021-05-12 23:03:45,974 [   INFO] execute - Executing block Cs_En_frame_aligner
+frame_extraction.sh: line 28:  7708 Killed                  udapy read.Conllu files=$data/b_conllu/$name.conllu valency.Cs_En_frame_aligner align_file_name=$data/b_aligned/$name output_folder=$data/ext_pic/ output_name=$name
+======= EPILOG: Wed May 12 23:12:29 CEST 2021
+== Limits:   
+== Usage:    cpu=00:50:43, mem=88270.32695 GB s, io=3.46128 GB, vmem=556.000K, maxvmem=63.669G
+== Duration: 00:50:45 (3045 s)
+== Server name: cpu-node18

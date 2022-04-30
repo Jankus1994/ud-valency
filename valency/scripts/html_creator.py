@@ -251,6 +251,7 @@ class HTML_creator:
                     
 if ( len( sys.argv) == 3 ):
     hc = HTML_creator()
-    cs_dict_of_verbs, en_dict_of_verbs = pickle.load( open( sys.argv[ 1 ], "rb" ))
+    input_file_name = sys.argv[ 1 ]
+    cs_dict_of_verbs, en_dict_of_verbs = pickle.load( open( input_file_name, "rb" ))
     output_file_name = sys.argv[ 2 ]
     hc.create_html( cs_dict_of_verbs, output_file_name)

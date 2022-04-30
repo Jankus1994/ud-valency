@@ -4,7 +4,7 @@ TODO: prepositions and reflexive pronouns
 """
 
 import sys, logging
-from vallex_extractor import *
+from vallex_loader import *
 from vallex_matcher import Vallex_matcher
 from c_vallex_matcher import C_vallex_matcher
 from e_vallex_matcher import E_vallex_matcher
@@ -43,8 +43,8 @@ if __name__ == "__main__":
             cs_val_dict_filename = sys.argv[ 3 ]
             en_val_dict_filename = sys.argv[ 4 ]
             output_filename = sys.argv[ 5 ]
-            cs_val_dict = pickle.load( open( cs_val_dict_filename, "rb" ))
-            en_val_dict = pickle.load( open( en_val_dict_filename, "rb" ))
+            cs_val_dict = pickle.load( open( cs_val_dict_filename, "rb"))
+            en_val_dict = pickle.load( open( en_val_dict_filename, "rb"))
 
             cs_vallex_matcher = Cc_vallex_matcher( cs_ext_dict, cs_val_dict)
             cs_vallex_matcher.match_frames()

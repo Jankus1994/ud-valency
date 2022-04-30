@@ -2,9 +2,9 @@
 overriden methods of general classes, specific for Czech
 """
 
-from udapi.block.valency.frame_extractor import *
-from udapi.block.valency.frame import *
-from udapi.block.valency.token import Token
+from frame_extractor import *
+from frame_type import *
+from sent_token import Sent_token
 
 class Cs_frame_type_arg( Frame_type_arg):
     def __init__( self, node, deprel="", case_feat="", case_mark_rels=[]):
@@ -147,17 +147,17 @@ class Cs_frame_type( Frame_type):
         token = None
         if node.feats["Person"] == "1":
             if node.feats["Number"] == "Sing":
-                token = Token()
+                token = Sent_token()
                 token.set_form( "já")
             elif node.feats["Number"] == "Plur":
-                token = Token()
+                token = Sent_token()
                 token.set_form( "my")
         elif node.feats["Person"] == "2":
             if node.feats["Number"] == "Sing":
-                token = Token()
+                token = Sent_token()
                 token.set_form( "ty")
             elif node.feats["Number"] == "Plur":
-                token = Token()
+                token = Sent_token()
                 token.set_form( "vy")
         return token
 
@@ -218,13 +218,74 @@ class Cs_verb_record( Verb_record):
             return True
         return False
 
-        
     
 class Cs_frame_extractor( Frame_extractor):
     def __init__( self, pickle_output = None):
         super().__init__( pickle_output)
         self.verb_record_class = Cs_verb_record
         #self.cs_dict_of_verbs = {}
+        self.modal_lemmas = [ "muset", "moci", "mít", "smět", "chtít",
+                              "hodlat", "umět", "dovést" ]
+
+    def _process_frame( self, verb_record, verb_node):  # -> Frame_inst
+        """ called from process_node """
+        frame_type, frame_inst = self._process_frame_phase_1( verb_node)
+
+        # newly inserted !!
+        is_modal_verb = self._check_handle_modal_verbs(
+                                frame_inst, frame_type, verb_node)
+        if is_modal_verb:
+            return None
+
+        # adding the frame to the verb_record
+        verb_record.consider_new_frame_type( frame_type) #, frame_inst)
+
+        return frame_inst
+
+    def _process_frame_phase_1( self, verb_node):
+            # -> pair ( Frame_type, Frame_inst )
+        # new frame
+        frame_type = self.frame_type_class()
+        frame_type.set_verb_features( verb_node)
+        frame_inst = self.frame_inst_class()
+
+        # creating and adding args to the frame type/inst
+        # creating tokens for example sentence and adding them to frame_inst
+        self._process_sentence( frame_type, frame_inst, verb_node)
+
+        frame_type.sort_args()  # important for later frame comparision
+        frame_type.add_inst( frame_inst)  # connection between frame type and inst
+
+        return frame_type, frame_inst
+
+
+    def _check_handle_modal_verbs( self, frame_inst, frame_type, verb_node):
+        if verb_node.lemma in self.modal_lemmas:
+            for child in verb_node.children:
+                if child.feats[ "VerbForm" ] == "Inf":
+                    #print( "*** ", verb_node.lemma, child.lemma)
+                    return True  # modal verb -> frame should not be created
+
+        arg_deprels = [ arg.deprel for arg in frame_type.args ]
+        if verb_node.feats[ "VerbForm" ] == "Inf" and not "nsubj" in arg_deprels:
+            parent_node = verb_node.parent
+            if parent_node.lemma in self.modal_lemmas:
+                parent_frame_type, parent_frame_inst = \
+                        self._process_frame_phase_1( parent_node)
+                for parent_frame_type_arg in parent_frame_type.args:
+                    if parent_frame_type_arg.deprel == "nsubj":
+                        assert len( parent_frame_type_arg.insts) == 1
+                        parent_frame_inst_arg = parent_frame_type_arg.insts[ 0 ]
+                        parent_token_ord = parent_frame_inst_arg.token.ord
+                        for token in frame_inst.sent_tokens:
+                            if token.ord == parent_token_ord:
+                                token.set_arg( parent_frame_inst_arg)
+                        frame_inst.add_arg( parent_frame_inst_arg)
+                        frame_type.add_arg( parent_frame_type_arg)
+                        #print( ">>> ", verb_node.lemma, parent_node.lemma)
+                        frame_inst.has_modal = True
+                        break
+        return False
 
     def after_process_document( self, doc): # void
         for verb_record in self.dict_of_verbs.values():

@@ -6,7 +6,7 @@ TODO: prepositions and reflexive pronouns
 import logging
 import pickle
 from copy import copy
-from vallex_extractor import *
+from vallex_loader import *
 
 
 class Vallex_matcher:
@@ -50,10 +50,10 @@ class Vallex_matcher:
             ext_frames_num += len( ext_frame_types)
             val_frames_num += len( val_frames)
 
-            if print_frames:
-                print( "\n=================\n")
-                print( lemma)
-                print( "")
+            #if print_frames:
+            #    print( "\n=================\n")
+            #    print( lemma)
+            #    print( "")
             #if lemma == "watch":
             #    for ext_frame_type in ext_frame_types:
             #        print( ext_frame_type.args_to_one_string())

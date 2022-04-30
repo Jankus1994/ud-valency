@@ -1,0 +1,172 @@
+AIC:ubuntu 18.04: SGE 8.1.9 configured...
+22:30:36\tCorpus preparation: extraction of senteces
+Traceback (most recent call last):
+  File "acquis_extract.py", line 51, in <module>
+    parall_extractor_acquis.extract()
+  File "acquis_extract.py", line 29, in extract
+    self.out_file_1.write( text_1 + '\n')
+UnicodeEncodeError: 'ascii' codec can't encode character '\xe1' in position 8: ordinal not in range(128)
+22:30:48\tCorpus preparation: tokenization of senteces
+Loading UDPipe model: done.
+Loading UDPipe model: done.
+22:30:54\tCorpus preparation: word alignment
+ARG=d
+ARG=o
+ARG=v
+ARG=i
+INITIAL PASS 
+expected target length = source length * -nan
+ITERATION 1
+  log_e likelihood: 0
+  log_2 likelihood: 0
+     cross entropy: -nan
+        perplexity: -nan
+      posterior p0: -nan
+ posterior al-feat: -nan
+       size counts: 0
+ITERATION 2
+  log_e likelihood: 0
+  log_2 likelihood: 0
+     cross entropy: -nan
+        perplexity: -nan
+      posterior p0: -nan
+ posterior al-feat: -nan
+       size counts: 0
+  1  model al-feat: -nan (tension=4)
+  2  model al-feat: -nan (tension=-nan)
+  3  model al-feat: -nan (tension=-nan)
+  4  model al-feat: -nan (tension=-nan)
+  5  model al-feat: -nan (tension=-nan)
+  6  model al-feat: -nan (tension=-nan)
+  7  model al-feat: -nan (tension=-nan)
+  8  model al-feat: -nan (tension=-nan)
+     final tension: -nan
+ITERATION 3
+  log_e likelihood: 0
+  log_2 likelihood: 0
+     cross entropy: -nan
+        perplexity: -nan
+      posterior p0: -nan
+ posterior al-feat: -nan
+       size counts: 0
+  1  model al-feat: -nan (tension=-nan)
+  2  model al-feat: -nan (tension=-nan)
+  3  model al-feat: -nan (tension=-nan)
+  4  model al-feat: -nan (tension=-nan)
+  5  model al-feat: -nan (tension=-nan)
+  6  model al-feat: -nan (tension=-nan)
+  7  model al-feat: -nan (tension=-nan)
+  8  model al-feat: -nan (tension=-nan)
+     final tension: -nan
+ITERATION 4
+  log_e likelihood: 0
+  log_2 likelihood: 0
+     cross entropy: -nan
+        perplexity: -nan
+      posterior p0: -nan
+ posterior al-feat: -nan
+       size counts: 0
+  1  model al-feat: -nan (tension=-nan)
+  2  model al-feat: -nan (tension=-nan)
+  3  model al-feat: -nan (tension=-nan)
+  4  model al-feat: -nan (tension=-nan)
+  5  model al-feat: -nan (tension=-nan)
+  6  model al-feat: -nan (tension=-nan)
+  7  model al-feat: -nan (tension=-nan)
+  8  model al-feat: -nan (tension=-nan)
+     final tension: -nan
+ITERATION 5 (FINAL)
+  log_e likelihood: 0
+  log_2 likelihood: 0
+     cross entropy: -nan
+        perplexity: -nan
+      posterior p0: -nan
+ posterior al-feat: -nan
+       size counts: 0
+ARG=d
+ARG=o
+ARG=v
+ARG=r
+ARG=i
+INITIAL PASS 
+expected target length = source length * -nan
+ITERATION 1
+  log_e likelihood: 0
+  log_2 likelihood: 0
+     cross entropy: -nan
+        perplexity: -nan
+      posterior p0: -nan
+ posterior al-feat: -nan
+       size counts: 0
+ITERATION 2
+  log_e likelihood: 0
+  log_2 likelihood: 0
+     cross entropy: -nan
+        perplexity: -nan
+      posterior p0: -nan
+ posterior al-feat: -nan
+       size counts: 0
+  1  model al-feat: -nan (tension=4)
+  2  model al-feat: -nan (tension=-nan)
+  3  model al-feat: -nan (tension=-nan)
+  4  model al-feat: -nan (tension=-nan)
+  5  model al-feat: -nan (tension=-nan)
+  6  model al-feat: -nan (tension=-nan)
+  7  model al-feat: -nan (tension=-nan)
+  8  model al-feat: -nan (tension=-nan)
+     final tension: -nan
+ITERATION 3
+  log_e likelihood: 0
+  log_2 likelihood: 0
+     cross entropy: -nan
+        perplexity: -nan
+      posterior p0: -nan
+ posterior al-feat: -nan
+       size counts: 0
+  1  model al-feat: -nan (tension=-nan)
+  2  model al-feat: -nan (tension=-nan)
+  3  model al-feat: -nan (tension=-nan)
+  4  model al-feat: -nan (tension=-nan)
+  5  model al-feat: -nan (tension=-nan)
+  6  model al-feat: -nan (tension=-nan)
+  7  model al-feat: -nan (tension=-nan)
+  8  model al-feat: -nan (tension=-nan)
+     final tension: -nan
+ITERATION 4
+  log_e likelihood: 0
+  log_2 likelihood: 0
+     cross entropy: -nan
+        perplexity: -nan
+      posterior p0: -nan
+ posterior al-feat: -nan
+       size counts: 0
+  1  model al-feat: -nan (tension=-nan)
+  2  model al-feat: -nan (tension=-nan)
+  3  model al-feat: -nan (tension=-nan)
+  4  model al-feat: -nan (tension=-nan)
+  5  model al-feat: -nan (tension=-nan)
+  6  model al-feat: -nan (tension=-nan)
+  7  model al-feat: -nan (tension=-nan)
+  8  model al-feat: -nan (tension=-nan)
+     final tension: -nan
+ITERATION 5 (FINAL)
+  log_e likelihood: 0
+  log_2 likelihood: 0
+     cross entropy: -nan
+        perplexity: -nan
+      posterior p0: -nan
+ posterior al-feat: -nan
+       size counts: 0
+22:30:55\tCorpus preparation: tagging and parsing
+Loading UDPipe model: done.
+Loading UDPipe model: done.
+22:31:00\tCorpus preparation: merging two conllu files
+Traceback (most recent call last):
+  File "merger.py", line 34, in <module>
+    with open( a_file_name, 'r') as a_file, open( b_file_name, 'r') as b_file, \
+FileNotFoundError: [Errno 2] No such file or directory: '../data/m_conllu/acquis_cs_en.CS.conllu'
+======= EPILOG: Sat May 8 22:31:01 CEST 2021
+== Limits:   
+== Usage:    cpu=00:00:00, mem=0.00000 GB s, io=0.00000 GB, vmem=N/A, maxvmem=N/A
+== Duration: 00:00:25 (25 s)
+== Server name: cpu-node1

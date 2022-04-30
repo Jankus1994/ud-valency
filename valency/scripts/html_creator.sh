@@ -11,7 +11,8 @@ output:
 # '
 
 name=$1
+data=../data
 python3 html_creator.py \
-	../data/pic/cs_en_ext_"$name".pic \
-	../data/html/cs_en_dic_"$name".html
+	$data/ext_pic/$name \
+	$data/html/$name.html
 

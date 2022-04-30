@@ -1,8 +1,5 @@
-import pickle
+class Pokus(Block):
 
-from udapi.core.block import Block
-
-class Pokus( Block):
 
     def process_bundle( self, bundle): # void
         print( len( bundle.trees))

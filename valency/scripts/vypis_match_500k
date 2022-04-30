@@ -1,0 +1,14 @@
+AIC:ubuntu 18.04: SGE 8.1.9 configured...
+
+01:35:14	Matching CS and EN frames with CzEngVallex
+Traceback (most recent call last):
+  File "vallex/match.py", line 50, in <module>
+    cs_vallex_matcher.match_frames()
+  File "/lnet/aic/personal/faryadj/diplomka/ud-valency/valency/scripts/vallex/vallex_matcher.py", line 55, in match_frames
+    print( lemma)
+UnicodeEncodeError: 'ascii' codec can't encode character '\u017e' in position 4: ordinal not in range(128)
+======= EPILOG: Thu May 13 01:56:51 CEST 2021
+== Limits:   
+== Usage:    cpu=00:21:00, mem=52409.67947 GB s, io=4.41037 GB, vmem=21.738G, maxvmem=53.458G
+== Duration: 00:21:37 (1297 s)
+== Server name: cpu-node3

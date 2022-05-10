@@ -9,7 +9,6 @@
       <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/valency.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/backups/b_7_7_2021/align_linker.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/backups/b_7_7_2021/cs_en_frame_aligner.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/backups/b_7_7_2021/cs_module.py" afterDir="false" />
@@ -206,6 +205,7 @@
       <change beforePath="$PROJECT_DIR$/../util/see.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../util/split.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../util/wc.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cs_en_frame_aligner.py" beforeDir="false" afterPath="$PROJECT_DIR$/cs_en_frame_aligner.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cs_module.py" beforeDir="false" afterPath="$PROJECT_DIR$/cs_module.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/en_module.py" beforeDir="false" afterPath="$PROJECT_DIR$/en_module.py" afterDir="false" />

@@ -6,10 +6,9 @@ class Frame_type_arg:
         self.links = []
         self._insts = []
 
-        self.deprel = deprel
-        self.case_feat = case_feat
-        #self.case_mark_rels = case_mark_rels
-        self.case_mark_rels = self.process_case_mark_rels( case_mark_rels)
+        self._deprel = deprel
+        self._case_feat = case_feat
+        self._case_mark_rels = self.process_case_mark_rels( case_mark_rels)
 
     @staticmethod
     def process_case_mark_rels( case_mark_rels):
@@ -35,7 +34,9 @@ class Frame_type_arg:
         when reconnecting frame types
         """
         return self._insts
-
+    @insts.setter
+    def insts( self, insts):
+        self._insts = insts
     def add_inst( self, frame_inst_arg):  # void
         """ called from Frame_extractor._process_args
         and from Frame_type.reconnect_args
@@ -43,13 +44,34 @@ class Frame_type_arg:
         self._insts.append( frame_inst_arg)
         frame_inst_arg.type = self
 
-    def is_identical_with( self, another_frame_arg):  # -> bool
+    @property
+    def deprel( self):
+        return self._deprel
+    @deprel.setter
+    def deprel( self, deprel):
+        self._deprel = deprel
+
+    @property
+    def case_feat( self):
+        return self._case_feat
+    @case_feat.setter
+    def case_feat( self, case_feat):
+        self._case_feat = case_feat
+
+    @property
+    def case_mark_rels( self):
+        return self._case_mark_rels
+    @case_mark_rels.setter
+    def case_mark_rels( self, case_mark_rels):
+        self._case_mark_rels = case_mark_rels
+
+    def is_identical_with( self, other):  # -> bool
         """ called from Frame_type._has_identical_args_with
         when comparing two frame_types if they are identical
         """
-        if self.deprel == another_frame_arg.deprel and \
-                self.case_feat == another_frame_arg.case_feat and \
-                self.case_mark_rels == another_frame_arg.case_mark_rels:
+        if self.deprel == other.deprel and \
+                self.case_feat == other.case_feat and \
+                self.case_mark_rels == other.case_mark_rels:
             return True
         return False
 

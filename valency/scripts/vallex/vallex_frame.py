@@ -37,3 +37,8 @@ class Vallex_frame:
 
     def align_val_frame( self, aligned_val_frame):
         self.aligned_val_frames.append( aligned_val_frame)
+
+    def to_string( self):
+        lemmas_str = ' '.join( self.lemmas)
+        args_str = self.args_to_string()
+        return lemmas_str + " | " + args_str

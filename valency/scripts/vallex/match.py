@@ -3,24 +3,28 @@ script to match frames extracted from the corpus by frame extractor (EXT) with t
 TODO: prepositions and reflexive pronouns
 """
 
-import sys, logging
+import sys
+import logging
+import pickle
 from vallex_loader import *
 from vallex_matcher import Vallex_matcher
 from c_vallex_matcher import C_vallex_matcher
 from e_vallex_matcher import E_vallex_matcher
 from cc_vallex_matcher import Cc_vallex_matcher
-
+sys.path.append( "../../udapi-python/udapi/block/valency/")
 
 if __name__ == "__main__":
-    if len( sys.argv) == 6 or len( sys.argv) == 4:
+    if len( sys.argv) == 6 or len( sys.argv) == 5:
         matcher_type = sys.argv[ 1 ]
 
         cs_en_ext_dicts_filename = sys.argv[ 2 ]
-        cs_en_ext_dicts = pickle.load( open( cs_en_ext_dicts_filename, "rb" ))
+        ext_file = open( cs_en_ext_dicts_filename, "rb" )
+        cs_en_ext_dicts = pickle.load( ext_file)
         cs_ext_dict, en_ext_dict = cs_en_ext_dicts
 
         if matcher_type in [ "c", "e", "cc" ]:
             val_dict_filename = sys.argv[ 3 ]
+            output_filename = sys.argv[ 4 ]
             val_dict = pickle.load( open( val_dict_filename, "rb" ))
 
             #vallex_matcher_class = Vallex_matcher
@@ -34,9 +38,13 @@ if __name__ == "__main__":
             elif matcher_type == 'cc':  # cs czengvallex
                 vallex_matcher_class = Cc_vallex_matcher
                 ext_dict = cs_ext_dict
-
-            vallex_matcher = vallex_matcher_class( ext_dict, val_dict)
+            print( "tu", file=sys.stderr)
+            vallex_matcher = vallex_matcher_class( ext_dict, val_dict, unique_method=False)
             vallex_matcher.match_frames()
+
+            out_ext_dict, out_val_dict = vallex_matcher.get_matched()
+
+            pickle.dump( out_ext_dict, open( output_filename, 'wb'))
 
 
         elif matcher_type == "ce":

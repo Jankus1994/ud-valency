@@ -16,7 +16,7 @@ class Sent_token:
     @ord.setter
     def ord( self, ord):  # void
         self._ord = ord
-        print( ord)
+        #print( ord)
 
     @property
     def form( self):  # -> str
@@ -27,13 +27,15 @@ class Sent_token:
         """ called from Frame_extractor._create_token """
         self._form = form
 
-    def set_arg( self, frame_inst_arg):  # void
+    @property
+    def arg( self):  # -> Frame_inst_arg
+        """ called from Fa_linker.find_arg_pairs """
+        return self._frame_inst_arg
+    @arg.setter
+    def arg( self, frame_inst_arg):  # void
         """ called from Frame_extractor._process_sentence """
         self._frame_inst_arg = frame_inst_arg
         frame_inst_arg.token = self
-    def get_arg( self):  # -> Frame_inst_arg
-        """ called from Align_linker.find_arg_pairs """
-        return self._frame_inst_arg
     def is_frame_arg( self):  # -> bool
         """ called from HTML_creator.process_inst """
         return self._frame_inst_arg is not None

@@ -21,7 +21,11 @@ class C_vallex_matcher( Vallex_matcher):
                     return True
 
             for ext_case_mark_rel in ext_case_mark_rels:
-                relation, lemma = ext_case_mark_rel.split( '-')
+                try:
+                    relation, lemma = ext_case_mark_rel.split( '-')
+                except ValueError:
+                    #raise ValueError
+                    return False
                 if relation == "case":
                     ext_prep = lemma
                     if val_case == ext_case and val_prep == ext_prep:

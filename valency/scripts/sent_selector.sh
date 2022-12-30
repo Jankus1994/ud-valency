@@ -22,6 +22,7 @@ L2_mark=$5
 
 data=../data
 
+#: '
 python3 sent_selector.py \
 	$sents_num \
 	"$data"/b_conllu/"$corp_name".conllu \
@@ -32,3 +33,4 @@ python3 sent_selector.py \
 cat "$data"/b_aligned/"$corp_name" \
 | head -n"$sents_num" \
 > "$data"/b_aligned/"$corp_name"_"$select_name"
+# '

@@ -1,6 +1,8 @@
 """
 overriden methods of general classes, specific for English
 """
+import os
+print( os.getcwd())
 from verb_record import Verb_record
 from frame_extractor import Frame_extractor
 
@@ -21,17 +23,14 @@ class En_frame_extractor( Frame_extractor):
 
 
 
-    def _process_frame( self, verb_record, verb_node):  # -> Frame_inst
+    def _process_frame( self, verb_node):  # -> Frame_inst
         """ called from process_node """
         frame_type, frame_inst = self._process_frame_phase_1( verb_node)
 
         # newly inserted !!
         self._check_modal_verbs( frame_inst, frame_type, verb_node)
 
-        # adding the frame to the verb_record
-        verb_record.consider_new_frame_type( frame_type) #, frame_inst)
-
-        return frame_inst
+        return frame_type, frame_inst
 
     def _process_frame_phase_1( self, verb_node):
             # -> pair ( Frame_type, Frame_inst )

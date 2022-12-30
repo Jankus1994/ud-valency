@@ -39,7 +39,7 @@ class Frame_type_arg_link:
 
     def add_frame_inst_arg_link( self, frame_inst_arg_link):  # void
         """ called from Frame_type_link._link_args """
-        frame_inst_arg_link.set_frame_type_arg_link( self)
+        frame_inst_arg_link.frame_type_arg_link = self
         self.frame_inst_arg_links.append( frame_inst_arg_link)
 
     def links_type_arg( self, translation_frame_type_arg):  # -> bool
@@ -61,8 +61,8 @@ class Frame_inst_link:
         self.b_frame_inst = b_frame_inst
         self.frame_inst_arg_links = []
 
-        a_frame_inst.set_frame_inst_link( self)
-        b_frame_inst.set_frame_inst_link( self)
+        a_frame_inst.link = self
+        b_frame_inst.link = self
 
         self._link_args()
 
@@ -114,8 +114,8 @@ class Frame_type_link:
         MAIN ARG LINKING PROCEDURE
         IS IT OK THAT IT IS HERE??
         """
-        a_frame_type_args = self.a_frame_type.get_args()
-        b_frame_type_args = self.b_frame_type.get_args()
+        a_frame_type_args = self.a_frame_type.args
+        b_frame_type_args = self.b_frame_type.args
 
         arg_link_num = 0
         for a_frame_type_arg in a_frame_type_args:
@@ -142,9 +142,9 @@ class Frame_type_link:
     
     def get_the_other_frame_type( self, frame_type):  # -> Frame_type
         """ not used in the general system (called from vallex_evaluator) """
-        if frame_type == self.a_frame_type:
+        if frame_type is self.a_frame_type:
             return self.b_frame_type
-        elif frame_type == self.b_frame_type:
+        elif frame_type is self.b_frame_type:
             return self.b_frame_type
         else:
             return None

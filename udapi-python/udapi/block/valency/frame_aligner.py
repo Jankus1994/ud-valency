@@ -16,20 +16,39 @@ from linker import Linker
 from extraction_finalizer import Extraction_finalizer
 #from obl_examiner import Obl_examiner
 from modal_examiner import Modal_examiner
+from ud_linker import Ud_linker
 from fa_linker import Fa_linker
+from faud_linker import FaUd_linker
+from sim_linker import Sim_linker
+from dist_measurer import Dist_measurer
 
 class Frame_aligner( Block):
-    def __init__( self, align_file_name="", output_folder="", output_name="",
-                  obl_ratio_limit="0.5", min_obl_inst_num=2, **kwargs):
+    #def __init__( self, align_file_name="", output_folder="", output_name="",
+    #              obl_ratio_limit="0.5", min_obl_inst_num=2, **kwargs):
+    def __init__( self, run_num=0, align_file_name="", output_folder="", output_name="", **kwargs):
         """ overriden block method """
         super().__init__( **kwargs)
-        
+
+        self.run_num = run_num
         self.align_file = None
         self.output_folder = output_folder
         self.output_name = output_name
-        self.obl_ratio_limit = float( obl_ratio_limit)
-        self.min_obl_inst_num = int( min_obl_inst_num)
+        #self.obl_ratio_limit = float( obl_ratio_limit)
+        #self.min_obl_inst_num = int( min_obl_inst_num)
+
         self.linker = Linker()  # !!!
+
+        sim_treshold = 5
+
+        # run_dict = { 0: Fa_linker( incl_onedir=True),
+        #              1: Fa_linker( incl_onedir=False),
+        #              2: Ud_linker(),
+        #              3: FaUd_linker( incl_onedir=True),
+        #              4: FaUd_linker( incl_onedir=False),
+        #              5: Sim_linker( Dist_measurer( allow_substitution=True), sim_treshold),
+        #              6: Sim_linker( Dist_measurer( allow_substitution=False), sim_treshold)}
+        # self.linker = run_dict[ self.run_num ]
+
         if align_file_name != "":
             try:
                 self.align_file = open( align_file_name, 'r')
@@ -50,6 +69,11 @@ class Frame_aligner( Block):
         self.b_lang_mark = ""
         self.examiner = Modal_examiner()
 
+    def process_document( self, document):
+        #bundles_num = len( document.bundles)
+        #print( bundles_num)
+        super().process_document( document)
+
     def process_bundle( self, bundle):  # void
         """ overriden Block method """
         #logging.info( "bundle id: " + str( bundle.bundle_id))
@@ -65,10 +89,19 @@ class Frame_aligner( Block):
                         self.b_frame_extractor.process_tree( tree_root)
                 self.examiner.examine_sentence( tree_root, self.b_lang_mark)
         word_alignments = self.align_file.readline().split()
+        #word_alignments = []
 
         frame_pairs = self.linker.find_frame_pairs( a_frame_insts, b_frame_insts,
                                                     word_alignments)
-        print( len( frame_pairs))
+        a_verbs = ','.join( [ inst.type.verb_lemma for inst in a_frame_insts ])
+        b_verbs = ','.join( [ inst.type.verb_lemma for inst in b_frame_insts ])
+        #verb_pairs = '|'.join( [ frame_pair[0].a_frame_type.verb_lemma+'-'+frame_pair[0].b_frame_type.verb_lemma+'-'+str(frame_pair[1])
+        #               for frame_pair in frame_pairs ])
+        verb_pairs = '|'.join( [ frame_pair.a_frame_type.verb_lemma+'-'+frame_pair.b_frame_type.verb_lemma
+                       for frame_pair in frame_pairs ])
+        print( len( a_frame_insts), len( b_frame_insts), len( frame_pairs),
+               a_verbs, b_verbs, verb_pairs, bundle.bundle_id, word_alignments, sep='\t')
+        #return [], [], []
 
         for frame_pair in frame_pairs:
             # linking frame types
@@ -89,7 +122,7 @@ class Frame_aligner( Block):
 
     def after_process_document( self, doc):  # void
         """ overriden block method """
-        self.examiner.print_stats()
+        #self.examiner.print_stats()
         a_dict_of_verbs = self.a_frame_extractor.get_dict_of_verbs()
         b_dict_of_verbs = self.b_frame_extractor.get_dict_of_verbs()
         #self.end_obl( a_dict_of_verbs)

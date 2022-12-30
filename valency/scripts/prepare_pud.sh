@@ -3,16 +3,20 @@
 export PATH=../../fast_align/build:$PATH
 export PATH=../../udpipe/bin-linux64:$PATH
 
-data=../data
-models=../../udpipe/models
+models=../udpipe-models
+treebanks=../data/ud-treebanks-v2.3
 
 L1=CS
 L1_zone_mark=cs
-L2=EN
-L2_zone_mark=en
+#L2=EN
+#L2_zone_mark=en
+L2=SK
+L2_zone_mark=sk
 corp_name=UD_pud
-udpipe_model_L1=czech-pdt-ud-2.3-181115.udpipe
-udpipe_model_L2=english-lines-ud-2.3-181115.udpipe
+#udpipe_model_L1=czech-pdt-ud-2.3-181115.udpipe
+udpipe_model_L1=czech-pdt-ud-2.5-191206.udpipe
+#udpipe_model_L2=english-lines-ud-2.3-181115.udpipe
+udpipe_model_L2=slovak-snk-ud-2.5-191206.udpipe
 #
 #: '
 # >> Extraction of sentences from UD corpus <<
@@ -21,7 +25,7 @@ echo -e "\n$act_time\tCorpus preparation: extraction of sentences"
 # corpora - input: initial corpus file (format dependent on the corpus)
 # sents - output: plain text sentences extracted from the corpus, on separate lines
 python3 ud_sent_extractor.py \
-	$data/m_conllu/$corp_name.$L1.conllu \
+	$treebanks/$corp_name.$L1.conllu \
 	> $data/sents/$corp_name.$L1
 python3 ud_sent_extractor.py \
 	$data/m_conllu/$corp_name.$L2.conllu \
@@ -31,7 +35,7 @@ python3 ud_sent_extractor.py \
 #: '
 # >> Tokenization <<
 act_time=$(date +"%T")
-echo -e "\n$act_time\tCorpus preparation: tokenization of senteces"
+echo -e "\n$act_time\tCorpus preparation: tokenization of sentences"
 # sents - udpipe input: plain text sentences extracted from the corpus
 # toksents - udpipe output: tokenized plain text sentences
 # fast_align - merged tokenized sentences, each pair on one line,

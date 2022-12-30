@@ -36,34 +36,39 @@ data=../data
 
 # vallex CS
 if [[ $type == "c" ]]; then
-        python3 vallex/match.py \
-		c \
-		$data/ext_pic/$name \
-                $data/val_pic/cs_vallex_frames
+    python3 vallex/match.py \
+		    c \
+		    $data/ext_pic/$name \
+        $data/val_pic/cs_vallex_frames \
+        $data/match_pic/$name
 # vallex EN (engvallex)
 elif [[ $type == "e" ]]; then
-        python3 vallex/match.py \
-		e \
-		$data/ext_pic/$name \
-                $data/val_pic/en_vallex_frames
+    python3 vallex/match.py \
+		    e \
+		    $data/ext_pic/$name \
+        $data/val_pic/en_vallex_frames \
+        $data/match_pic/$name
 # czengvallex CS
 elif [[ $type == "cc" ]]; then
-        python3 vallex/match.py \
-		cc \
-                $data/ext_pic/$name \
-                $data/val_pic/cs_czengvallex_frames
+    python3 vallex/match.py \
+		    cc \
+        $data/ext_pic/$name \
+        $data/val_pic/cs_czengvallex_frames \
+        $data/match_pic/$name
 # czengvallex EN
-elif [[ $type == "ee" ]]; then
-        # not a mistake, "e" matcher also used for EN czengvallex
-        python3 vallex/match.py \
-		e \
-		$data/ext_pic/$name \
-                $data/val_pic/en_czengvallex_frames
+elif [[ $type == "e" ]]; then
+    # not a mistake, "e" matcher also used for EN czengvallex
+    python3 vallex/match.py \
+		    e \
+		    $data/ext_pic/$name \
+        $data/val_pic/en_czengvallex_frames \
+        $data/match_pic/$name
+# czengvallex CS-EN
 elif [[ $type == "ce" ]]; then
-	python3 vallex/match.py \
-		ce \
-		$data/ext_pic/$name \
-		$data/val_pic/cs_czengvallex_frames \
-		$data/val_pic/en_czengvallex_frames \
-		$data/match_pic/$name
+	  python3 vallex/match.py \
+		    ce \
+		    $data/ext_pic/$name \
+		    $data/val_pic/cs_czengvallex_frames \
+		    $data/val_pic/en_czengvallex_frames \
+		    $data/match_pic/$name
 fi

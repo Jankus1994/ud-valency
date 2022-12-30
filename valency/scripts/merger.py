@@ -24,7 +24,6 @@ def process_sentence( in_file, zone_mark, out_file):
                 return sent_id
     return None
 
-
 a_zone_mark = sys.argv[ 1 ]
 a_file_name = sys.argv[ 2 ]
 b_zone_mark = sys.argv[ 3 ]

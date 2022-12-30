@@ -23,24 +23,26 @@ e) [d] -> merging the two conllu files into one bilingual conllu file
 # '
 
 data=../data
-models=../../udpipe/models
+models=../udpipe-models
 
 # language-specific parameters
-#L1=$1  # CS
-#L2=$2  # EN
-#udpipe_model_L1=$3  # czech-pdt-ud-2.3-181115.udpipe
-#udpipe_model_L2=$4  # english-lines-ud-2.3-181115.udpipe
-#corp_name=$5  # acquis_cs_en
-#corp_file=$6  # acquis/alignedCorpus_cs_en.xml
+L1=$1  # CS
+L2=$2  # EN
+L1_zone_mark=$1
+L2_zone_mark=$2
+udpipe_model_L1=$3  # czech-pdt-ud-2.3-181115.udpipe
+udpipe_model_L2=$4  # english-lines-ud-2.3-181115.udpipe
+corp_name=$5  # acquis_cs_en
+corp_file=$6  # acquis/alignedCorpus_cs_en.xml
 
-L1=EN
-L1_zone_mark=en
-L2=ES
-L2_zone_mark=es
-udpipe_model_L1=english-lines-ud-2.3-181115.udpipe
-udpipe_model_L2=spanish-ancora-ud-2.3-181115.udpipe
-corp_name=acquis_cs_es
-corp_file=acquis/alignedCorpus_cs_es.xml
+#L1=EN
+#L1_zone_mark=en
+#L2=ES
+#L2_zone_mark=es
+#udpipe_model_L1=english-lines-ud-2.3-181115.udpipe
+#udpipe_model_L2=spanish-ancora-ud-2.3-181115.udpipe
+#corp_name=acquis_cs_es
+#corp_file=acquis/alignedCorpus_cs_es.xml
 
 
 
@@ -55,23 +57,26 @@ python3 acquis_extract.py \
 	$data/corpora/$corp_file \
 	$data/sents/$corp_name.$L1 \
 	$data/sents/$corp_name.$L2
+act_time=$(date +"%T")
+echo -e "\n"$act_time" DONE"
 # '
 
 : '
 # >> Tokenization <<
-# duration: 27 min
+# duration: 27 min (cs-en)
+# duration: 1h 15 min (cs-sk)
 act_time=$(date +"%T")
-echo -e "\n$act_time\tCorpus preparation: tokenization of senteces"
+echo -e "\n$act_time\tCorpus preparation: tokenization of sentences"
 # sents - udpipe input: plain text sentences extracted from the corpus
 # toksents - udpipe output: tokenized plain text sentences
 # fast_align - merged tokenized sentences, each pair on one line,
 #              in format required by Fast align
 cat $data/sents/$corp_name.$L1\
-| udpipe --tokenizer="presegmented" --output=horizontal \
+| ./udpipe --tokenizer="presegmented" --output=horizontal \
 	$models/$udpipe_model_L1 \
 	> $data/toksents/$corp_name.$L1
 cat $data/sents/$corp_name.$L2 \
-| udpipe --tokenizer="presegmented" --output=horizontal \
+| ./udpipe --tokenizer="presegmented" --output=horizontal \
 	$models/$udpipe_model_L2 \
 	> $data/toksents/$corp_name.$L2
 paste \
@@ -79,9 +84,11 @@ paste \
 	$data/toksents/$corp_name.$L2 \
 | sed "s/\t/ ||| /" \
 > $data/fast_align/$corp_name
+act_time=$(date +"%T")
+echo -e "\n"$act_time" DONE"
 # '
 
-: '
+#: '
 # >> Word alignment using Fast align <<
 # duration: 23 min 
 act_time=$(date +"%T")
@@ -91,17 +98,16 @@ echo -e "\n$act_time\tCorpus preparation: word alignment"
 # m_aligned - fast_align output / atools input: one(=mono)-directional alignment file
 # b_aligned - atools output: two(=bi)-directional alignment file,
 #                            intersection of the two above
-fast_align -d -o -v \
-	-i $data/fast_align/$corp_name \
-	> $data/m_aligned/$corp_name.$L1
-fast_align -d -o -v -r \
-	-i $data/fast_align/$corp_name \
-	> $data/m_aligned/$corp_name.$L2
-atools \
-	-i $data/m_aligned/$corp_name.$L1 \
-	-j $data/m_aligned/$corp_name.$L2 \
-	-c intersect \
-	> $data/b_aligned/$corp_name
+#fast_align -d -o -v \
+#	-i $data/fast_align/$corp_name \
+#	> $data/m_aligned/$corp_name.$L1
+#fast_align -d -o -v -r \
+#	-i $data/fast_align/$corp_name \
+#	> $data/m_aligned/$corp_name.$L2
+python3 fa_interpreter.py \
+  $data/m_aligned/$corp_name.$L1 \
+  $data/m_aligned/$corp_name.$L2 \
+	$data/b_aligned/$corp_name
 # '
 
 : '
@@ -116,14 +122,17 @@ cat \
 | udpipe --input=horizontal --tag --parse --output=conllu \
 	$models/$udpipe_model_L1 \
 > $data/m_conllu/$corp_name.$L1.conllu
-
+act_time=$(date +"%T")
+echo -e "\n$act_time"
 cat \
 	$data/toksents/$corp_name.$L2 \
 | udpipe --input=horizontal --tag --parse --output=conllu \
 	$models/$udpipe_model_L2 \
 > $data/m_conllu/$corp_name.$L2.conllu
+act_time=$(date +"%T")
+echo -e "\n$act_time"
 
-# partition version in case the "all" version does not worke
+# partition version in case the "all" version does not work
 #for i in `seq 2 5`;
 #do
 #    cat $data/cs/cs.tok.$i | udpipe --input=horizontal --tag --parse --output=conllu ../../udpipe/models/czech-pdt-ud-2.3-181115.udpipe > $data/cs/cs_$i.conllu
@@ -131,7 +140,7 @@ cat \
 #done
 # '
 
-#: '
+: '
 # >> Merging two conllu files <<
 # duration: 2 min
 act_time=$(date +"%T")
@@ -145,4 +154,6 @@ python3 merger.py \
 	$L2_zone_mark \
 	$data/m_conllu/$corp_name.$L2.conllu \
 	$data/b_conllu/$corp_name.conllu
+act_time=$(date +"%T")
+echo -e "\n$act_time"
 # '

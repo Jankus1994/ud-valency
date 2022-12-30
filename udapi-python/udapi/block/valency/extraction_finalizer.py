@@ -167,7 +167,7 @@ class Extraction_finalizer:
             # searching reduced frame in the verb record
             copy_obl_frame_type = copy( obl_frame_type)
             copy_obl_frame_type.args = copy( obl_frame_type.args)
-            copy_obl_frame_type.disconnect_arg( obl_frame_type_arg)
+            copy_obl_frame_type.remove_arg(obl_frame_type_arg)
             reduced_frame_type = verb_record.find_frame_type( copy_obl_frame_type)
 
 

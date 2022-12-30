@@ -16,11 +16,14 @@ class Verb_record:
         2 - called from Extraction_finalizer.finalize_extraction
         similar situation, but the considered frame type is an old frame
         with one (or more) arg removed, so it is chcecked whether after the removal
-        it is identical with anoter type. unlike new frames, a reduced frame
+        it is identical with another type. unlike new frames, a reduced frame
         can contain many instances
         it is necessary to ensure it is the same frame object
         otherwise the instances would be multiplied instead of reconnected
         """
+        if new_frame_type is None:
+            return  # for cases of language specific deletion of the frame
+
         # comparing with already existing frames
         for frame_type in self.frame_types:
             if frame_type.is_identical_with( new_frame_type) \

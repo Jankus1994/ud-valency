@@ -8,6 +8,8 @@ class Frame_inst:
         self._verb_parent_ord = None
         self._verb_parent_upos = None
         self._verb_deprel = None
+        self._verb_depth = None
+        self._verb_child_num = None
         self._bundle_id = None
         self._index = None  # order of the frame_inst in its sentence
         # self.verb_node_lemma = ""
@@ -32,7 +34,11 @@ class Frame_inst:
         """
         self._type = frame_type
 
-    def set_sent_tokens( self, sent_tokens, elided_tokens=[]):  # void
+    @property
+    def sent_tokens( self):
+        return self._sent_tokens
+    @sent_tokens.setter
+    def sent_tokens( self, sent_tokens, elided_tokens=[]):  # void
         """ called from Frame_extractor._process_sentence """
         self._sent_tokens = sent_tokens  # + elided_tokens
         for token in sent_tokens:
@@ -45,11 +51,11 @@ class Frame_inst:
         return self._args
     def add_arg( self, frame_inst_arg):  # void
         """ called from Frame_extractor._process_args """
-        self._args.append(frame_inst_arg)
+        self._args.append( frame_inst_arg)
         frame_inst_arg.frame_inst = self
     def disconnect_arg( self, frame_inst_arg):
         """ called from Frame_inst_arg.disconnect_yourself """
-        self._args.remove(frame_inst_arg)
+        self._args.remove( frame_inst_arg)
 
     @property
     def verb_node_ord( self):  # -> int
@@ -86,6 +92,22 @@ class Frame_inst:
     def verb_deprel( self, verb_deprel):
         """ called from Frame_extractor._process_sentence """
         self._verb_deprel = verb_deprel
+
+    @property
+    def verb_depth( self): # -> int
+        """ depth in dependency tree """
+        return self._verb_depth
+    @verb_depth.setter
+    def verb_depth( self, verb_depth):
+        self._verb_depth = verb_depth
+
+    @property
+    def verb_child_num( self): # -> int
+        """ depth in dependency tree """
+        return self._verb_child_num
+    @verb_child_num.setter
+    def verb_child_num( self, verb_child_num):
+        self._verb_child_num = verb_child_num
 
     @property
     def bundle_id( self):  # -> int

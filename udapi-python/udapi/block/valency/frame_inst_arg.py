@@ -1,11 +1,12 @@
 class Frame_inst_arg:
-    def __init__( self):
+    def __init__( self, upostag):
         """ called from Frame_extractor._process_sentence """
         self._frame_inst = None
         self._type = None
         self._link = None
         self._token = None
         self._definitive = True
+        self._upostag = upostag
 
     @property
     def type( self):  # -> Frame_type_arg
@@ -58,6 +59,10 @@ class Frame_inst_arg:
         else:
             return -1
 
+    @property
+    def upostag( self):  # -> str
+        return self._upostag
+
     def disconnect_yourself( self):
         """ called from Frame_type_arg._decide_candidates """
-        self.frame_inst.disconnect_arg( self)
+        self.frame_inst.remove_arg(self)

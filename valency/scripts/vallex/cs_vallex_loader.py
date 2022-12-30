@@ -82,5 +82,5 @@ if __name__ == "__main__":
         input_name = sys.argv[ 1 ] # "../data/vallex_3.0.xml"
         output_name = sys.argv[ 2 ] # "../data/vallex_frames.pic"
         vallex_loader = Cs_vallex_loader()
-        vallex_loader.loader( input_name, output_name)
+        vallex_loader.load( input_name, output_name)
 

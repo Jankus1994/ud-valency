@@ -13,8 +13,13 @@ class Frame_type:
 
         self._insts = []
         self._args = []
+
+        self._superframe = None  # for the purpose of frame reduction
+        self._subframes = []
         #self.str_args = [] # filled with _args_to_string_list
         self.links = []  # objects pairing corresponding frames from two languages
+
+        self.matched_frames = []
 
     @property
     def args( self):  # -> list of frame_type_args
@@ -31,11 +36,25 @@ class Frame_type:
         self._args = args
     def add_arg( self, frame_type_arg):  # void
         """ called from Frame_extractor._process_args """
-        self.args.append( frame_type_arg)
+        self._args.append( frame_type_arg)
         frame_type_arg.frame_type = self
-    def disconnect_arg( self, frame_type_arg):
+    def remove_arg(self, frame_type_arg):
         """ called from Extraction_finalizer.finalize_extraction """
-        self.args.remove( frame_type_arg)
+        arg_to_remove = [ arg for arg in self._args
+                          if arg.is_identical_with( frame_type_arg) ][ 0 ]
+        self._args.remove( arg_to_remove)
+    def substitute_arg( self, old_frame_arg, new_frame_arg):
+        """ not called in the general extractor, only in specifics
+        not only removes an old arg and adds a new one,
+        but also reconnects their instances
+        """
+        self.remove_arg( old_frame_arg)
+        new_frame_arg.insts = old_frame_arg.insts
+        self.add_arg( new_frame_arg)
+
+    def includes_arg( self, searched_arg):
+        """ not called in the general extractor, only in specifics """
+        return any( arg.is_identical_with( searched_arg) for arg in self._args)
 
     def sort_args( self):  # void
         """ called from Frame_extractor._process_frame after processing all args
@@ -43,7 +62,26 @@ class Frame_type:
         """
         # TODO: maybe move the sorting to frame_arg
         self._args = sorted( self._args, key =
-                lambda arg :( arg.deprel, arg.case_feat, arg.case_mark_rels ))
+                lambda arg :( arg.deprel, arg.case_feat, arg.case_mark_rels ))\
+
+    @property
+    def superframe( self):  # -> Frame_type
+        return self._superframe
+    @superframe.setter
+    def superframe( self, superframe):
+        self._superframe = superframe
+        superframe.add_subframe( self)
+        for subframe in self._subframes:
+            subframe.superframe = superframe
+
+    @property
+    def subframes( self):
+        return self._subframes
+    def add_subframe( self, subframe):
+        self._subframes.append( subframe)
+
+    def has_subject( self):
+        return any( arg.deprel in [ "nsubj", "csubj" ] for arg in self.args)
  
     # === frame extraction methods ===
 
@@ -68,7 +106,8 @@ class Frame_type:
         self._insts.append( frame_inst)
         frame_inst.type = self
 
-
+    def add_matched_frame( self, matched_frame):
+        self.matched_frames.append( matched_frame)
 
     def is_identical_with( self, another_frame_type):  # -> bool
         """ called from Verb_record.consider_new_frame_type
@@ -91,11 +130,28 @@ class Frame_type:
             return False            
 
         for i in range( len( self.args)):  # THIS IS NOT BIJECTION
+            # TODO ensure the args are always sorted
             self_arg = self.args[ i ]
             another_frame_type_arg = another_frame_type_args[ i ]
             if not self_arg.is_identical_with( another_frame_type_arg):
                 return False
         return True
+
+    def is_strict_subframe_of( self, another_frame_type):  # -> bool
+        """ used only in specific maodules ??? TODO """
+        another_frame_type_args = another_frame_type.args
+        if len( self.args) >= len( another_frame_type_args):
+            return False
+
+        for self_arg in self.args:
+            found_equivalent = False
+            for another_frame_arg in another_frame_type_args:
+                if self_arg.is_identical_with( another_frame_arg):
+                    found_equivalent = True
+            if not found_equivalent:
+                return False
+        return True
+
 
     def reconnect_args( self, another_frame_type):  # void
         """ called from Verb_record.consider_new_frame_type

@@ -2,13 +2,18 @@
 
 !.gitignore
 
+#!/scripts
+!/scripts/**
+/scripts/vypis_*
+/scripts/*.sh.o*
+
 #!/valency
 #/valency/*
 #!/valency/scripts
-!/valency/scripts/**
+#!/valency/scripts/**
 
-/valency/scripts/vypis_*
-/valency/scripts/*.sh.o*
+#/valency/scripts/vypis_*
+#/valency/scripts/*.sh.o*
 
 #!/udapi-python
 #/udapi-python/*

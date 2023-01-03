@@ -1,0 +1,396 @@
+0.0 cs
+0 50 50
+1 278 278
+2 328 328
+3 85 85
+4 8 8
+ccomp 18 18
+csubj 8 8
+csubj:pass 2 2
+expl:pass 30 30
+expl:pv 123 123
+iobj 22 22
+nsubj 467 467
+nsubj:pass 16 16
+obj 348 348
+obl 138 138
+xcomp 49 49
+
+0.0 en
+0 167 167
+1 465 465
+2 335 335
+3 58 58
+4 7 7
+ccomp 10 10
+csubj 3 3
+csubj:pass 1 1
+expl 6 6
+nsubj 544 544
+nsubj:pass 198 198
+obj 324 324
+obl 194 194
+obl:npmod 3 3
+obl:tmod 7 7
+xcomp 47 47
+
+0.1 cs
+0 50 50
+1 278 276
+2 328 315
+3 85 85
+4 8 8
+ccomp 18 18
+csubj 8 8
+csubj:pass 2 2
+expl:pass 30 30
+expl:pv 123 123
+iobj 22 22
+nsubj 467 452
+nsubj:pass 16 16
+obj 348 341
+obl 138 138
+xcomp 49 43
+
+0.1 en
+0 167 166
+1 465 464
+2 335 331
+3 58 58
+4 7 7
+ccomp 10 9
+csubj 3 3
+csubj:pass 1 1
+expl 6 3
+nsubj 544 540
+nsubj:pass 198 198
+obj 324 323
+obl 194 194
+obl:npmod 3 3
+obl:tmod 7 7
+xcomp 47 47
+
+0.2 cs
+0 50 50
+1 278 262
+2 328 311
+3 85 85
+4 8 8
+ccomp 18 17
+csubj 8 6
+csubj:pass 2 2
+expl:pass 30 30
+expl:pv 123 123
+iobj 22 22
+nsubj 467 447
+nsubj:pass 16 16
+obj 348 332
+obl 138 138
+xcomp 49 38
+
+0.2 en
+0 167 166
+1 465 461
+2 335 326
+3 58 58
+4 7 7
+ccomp 10 9
+csubj 3 3
+csubj:pass 1 1
+expl 6 3
+nsubj 544 534
+nsubj:pass 198 198
+obj 324 320
+obl 194 194
+obl:npmod 3 3
+obl:tmod 7 7
+xcomp 47 43
+
+0.3 cs
+0 50 50
+1 278 246
+2 328 304
+3 85 83
+4 8 8
+ccomp 18 17
+csubj 8 6
+csubj:pass 2 2
+expl:pass 30 30
+expl:pv 123 120
+iobj 22 22
+nsubj 467 429
+nsubj:pass 16 16
+obj 348 323
+obl 138 138
+xcomp 49 32
+
+0.3 en
+0 167 163
+1 465 445
+2 335 315
+3 58 58
+4 7 7
+ccomp 10 8
+csubj 3 3
+csubj:pass 1 1
+expl 6 3
+nsubj 544 514
+nsubj:pass 198 195
+obj 324 308
+obl 194 194
+obl:npmod 3 3
+obl:tmod 7 7
+xcomp 47 41
+
+0.4 cs
+0 50 50
+1 278 227
+2 328 297
+3 85 82
+4 8 8
+ccomp 18 17
+csubj 8 6
+csubj:pass 2 2
+expl:pass 30 30
+expl:pv 123 116
+iobj 22 21
+nsubj 467 409
+nsubj:pass 16 16
+obj 348 316
+obl 138 138
+xcomp 49 28
+
+0.4 en
+0 167 159
+1 465 431
+2 335 308
+3 58 58
+4 7 7
+ccomp 10 8
+csubj 3 3
+csubj:pass 1 1
+expl 6 3
+nsubj 544 500
+nsubj:pass 198 189
+obj 324 301
+obl 194 194
+obl:npmod 3 3
+obl:tmod 7 7
+xcomp 47 40
+
+0.5 cs
+0 50 50
+1 278 226
+2 328 297
+3 85 81
+4 8 8
+ccomp 18 17
+csubj 8 6
+csubj:pass 2 2
+expl:pass 30 30
+expl:pv 123 115
+iobj 22 21
+nsubj 467 408
+nsubj:pass 16 16
+obj 348 315
+obl 138 138
+xcomp 49 27
+
+0.5 en
+0 167 159
+1 465 430
+2 335 307
+3 58 58
+4 7 7
+ccomp 10 8
+csubj 3 3
+csubj:pass 1 1
+expl 6 3
+nsubj 544 498
+nsubj:pass 198 189
+obj 324 300
+obl 194 194
+obl:npmod 3 3
+obl:tmod 7 7
+xcomp 47 40
+
+0.6 cs
+0 50 0
+1 278 2
+2 328 2
+3 85 0
+4 8 0
+ccomp 18 0
+csubj 8 0
+csubj:pass 2 0
+expl:pass 30 0
+expl:pv 123 1
+iobj 22 0
+nsubj 467 4
+nsubj:pass 16 0
+obj 348 1
+obl 138 0
+xcomp 49 0
+
+0.6 en
+0 167 3
+1 465 5
+2 335 2
+3 58 0
+4 7 0
+ccomp 10 0
+csubj 3 0
+csubj:pass 1 0
+expl 6 0
+nsubj 544 5
+nsubj:pass 198 1
+obj 324 3
+obl 194 0
+obl:npmod 3 0
+obl:tmod 7 0
+xcomp 47 0
+
+0.7 cs
+0 50 0
+1 278 1
+2 328 1
+3 85 0
+4 8 0
+ccomp 18 0
+csubj 8 0
+csubj:pass 2 0
+expl:pass 30 0
+expl:pv 123 1
+iobj 22 0
+nsubj 467 2
+nsubj:pass 16 0
+obj 348 0
+obl 138 0
+xcomp 49 0
+
+0.7 en
+0 167 0
+1 465 1
+2 335 1
+3 58 0
+4 7 0
+ccomp 10 0
+csubj 3 0
+csubj:pass 1 0
+expl 6 0
+nsubj 544 2
+nsubj:pass 198 0
+obj 324 1
+obl 194 0
+obl:npmod 3 0
+obl:tmod 7 0
+xcomp 47 0
+
+0.8 cs
+0 50 0
+1 278 1
+2 328 0
+3 85 0
+4 8 0
+ccomp 18 0
+csubj 8 0
+csubj:pass 2 0
+expl:pass 30 0
+expl:pv 123 0
+iobj 22 0
+nsubj 467 1
+nsubj:pass 16 0
+obj 348 0
+obl 138 0
+xcomp 49 0
+
+0.8 en
+0 167 0
+1 465 0
+2 335 0
+3 58 0
+4 7 0
+ccomp 10 0
+csubj 3 0
+csubj:pass 1 0
+expl 6 0
+nsubj 544 0
+nsubj:pass 198 0
+obj 324 0
+obl 194 0
+obl:npmod 3 0
+obl:tmod 7 0
+xcomp 47 0
+
+0.9 cs
+0 50 0
+1 278 0
+2 328 0
+3 85 0
+4 8 0
+ccomp 18 0
+csubj 8 0
+csubj:pass 2 0
+expl:pass 30 0
+expl:pv 123 0
+iobj 22 0
+nsubj 467 0
+nsubj:pass 16 0
+obj 348 0
+obl 138 0
+xcomp 49 0
+
+0.9 en
+0 167 0
+1 465 0
+2 335 0
+3 58 0
+4 7 0
+ccomp 10 0
+csubj 3 0
+csubj:pass 1 0
+expl 6 0
+nsubj 544 0
+nsubj:pass 198 0
+obj 324 0
+obl 194 0
+obl:npmod 3 0
+obl:tmod 7 0
+xcomp 47 0
+
+1.0 cs
+0 50 0
+1 278 0
+2 328 0
+3 85 0
+4 8 0
+ccomp 18 0
+csubj 8 0
+csubj:pass 2 0
+expl:pass 30 0
+expl:pv 123 0
+iobj 22 0
+nsubj 467 0
+nsubj:pass 16 0
+obj 348 0
+obl 138 0
+xcomp 49 0
+
+1.0 en
+0 167 0
+1 465 0
+2 335 0
+3 58 0
+4 7 0
+ccomp 10 0
+csubj 3 0
+csubj:pass 1 0
+expl 6 0
+nsubj 544 0
+nsubj:pass 198 0
+obj 324 0
+obl 194 0
+obl:npmod 3 0
+obl:tmod 7 0
+xcomp 47 0
+

@@ -1,0 +1,365 @@
+-e 
+01:38:46	Extraction of frames from a parallel corpus
+0.0 cs
+0 22 22
+1 101 101
+2 111 111
+3 23 23
+4 2 2
+ccomp 11 11
+csubj 5 5
+expl:pass 12 12
+expl:pv 41 41
+iobj 10 10
+nsubj 143 143
+nsubj:pass 6 6
+obj 114 114
+obl 46 46
+xcomp 12 12
+
+0.0 en
+0 61 61
+1 144 144
+2 101 101
+3 9 9
+ccomp 6 6
+csubj 2 2
+expl 1 1
+nsubj 173 173
+nsubj:pass 33 33
+obj 111 111
+obl 32 32
+obl:npmod 2 2
+obl:tmod 4 4
+xcomp 9 9
+
+0.1 cs
+0 22 22
+1 101 101
+2 111 108
+3 23 23
+4 2 2
+ccomp 11 11
+csubj 5 5
+expl:pass 12 12
+expl:pv 41 41
+iobj 10 10
+nsubj 143 140
+nsubj:pass 6 6
+obj 114 112
+obl 46 46
+xcomp 12 11
+
+0.1 en
+0 61 61
+1 144 144
+2 101 101
+3 9 9
+ccomp 6 6
+csubj 2 2
+expl 1 1
+nsubj 173 173
+nsubj:pass 33 33
+obj 111 111
+obl 32 32
+obl:npmod 2 2
+obl:tmod 4 4
+xcomp 9 9
+
+0.2 cs
+0 22 22
+1 101 98
+2 111 105
+3 23 23
+4 2 2
+ccomp 11 10
+csubj 5 5
+expl:pass 12 12
+expl:pv 41 41
+iobj 10 10
+nsubj 143 135
+nsubj:pass 6 6
+obj 114 111
+obl 46 46
+xcomp 12 9
+
+0.2 en
+0 61 61
+1 144 143
+2 101 100
+3 9 9
+ccomp 6 5
+csubj 2 2
+expl 1 1
+nsubj 173 171
+nsubj:pass 33 33
+obj 111 111
+obl 32 32
+obl:npmod 2 2
+obl:tmod 4 4
+xcomp 9 9
+
+0.3 cs
+0 22 22
+1 101 93
+2 111 104
+3 23 23
+4 2 2
+ccomp 11 10
+csubj 5 5
+expl:pass 12 12
+expl:pv 41 41
+iobj 10 10
+nsubj 143 133
+nsubj:pass 6 6
+obj 114 108
+obl 46 46
+xcomp 12 7
+
+0.3 en
+0 61 59
+1 144 143
+2 101 98
+3 9 9
+ccomp 6 5
+csubj 2 2
+expl 1 1
+nsubj 173 169
+nsubj:pass 33 33
+obj 111 110
+obl 32 32
+obl:npmod 2 2
+obl:tmod 4 4
+xcomp 9 8
+
+0.4 cs
+0 22 22
+1 101 91
+2 111 103
+3 23 23
+4 2 2
+ccomp 11 10
+csubj 5 5
+expl:pass 12 12
+expl:pv 41 40
+iobj 10 10
+nsubj 143 132
+nsubj:pass 6 6
+obj 114 107
+obl 46 46
+xcomp 12 6
+
+0.4 en
+0 61 59
+1 144 141
+2 101 97
+3 9 9
+ccomp 6 5
+csubj 2 2
+expl 1 1
+nsubj 173 168
+nsubj:pass 33 32
+obj 111 108
+obl 32 32
+obl:npmod 2 2
+obl:tmod 4 4
+xcomp 9 8
+
+0.5 cs
+0 22 22
+1 101 90
+2 111 103
+3 23 23
+4 2 2
+ccomp 11 10
+csubj 5 5
+expl:pass 12 12
+expl:pv 41 40
+iobj 10 10
+nsubj 143 132
+nsubj:pass 6 6
+obj 114 106
+obl 46 46
+xcomp 12 6
+
+0.5 en
+0 61 59
+1 144 141
+2 101 97
+3 9 9
+ccomp 6 5
+csubj 2 2
+expl 1 1
+nsubj 173 168
+nsubj:pass 33 32
+obj 111 108
+obl 32 32
+obl:npmod 2 2
+obl:tmod 4 4
+xcomp 9 8
+
+0.6 cs
+0 22 0
+1 101 1
+2 111 0
+3 23 0
+4 2 0
+ccomp 11 0
+csubj 5 0
+expl:pass 12 0
+expl:pv 41 0
+iobj 10 0
+nsubj 143 1
+nsubj:pass 6 0
+obj 114 0
+obl 46 0
+xcomp 12 0
+
+0.6 en
+0 61 0
+1 144 1
+2 101 0
+3 9 0
+ccomp 6 0
+csubj 2 0
+expl 1 0
+nsubj 173 1
+nsubj:pass 33 0
+obj 111 0
+obl 32 0
+obl:npmod 2 0
+obl:tmod 4 0
+xcomp 9 0
+
+0.7 cs
+0 22 0
+1 101 1
+2 111 0
+3 23 0
+4 2 0
+ccomp 11 0
+csubj 5 0
+expl:pass 12 0
+expl:pv 41 0
+iobj 10 0
+nsubj 143 1
+nsubj:pass 6 0
+obj 114 0
+obl 46 0
+xcomp 12 0
+
+0.7 en
+0 61 0
+1 144 0
+2 101 0
+3 9 0
+ccomp 6 0
+csubj 2 0
+expl 1 0
+nsubj 173 0
+nsubj:pass 33 0
+obj 111 0
+obl 32 0
+obl:npmod 2 0
+obl:tmod 4 0
+xcomp 9 0
+
+0.8 cs
+0 22 0
+1 101 0
+2 111 0
+3 23 0
+4 2 0
+ccomp 11 0
+csubj 5 0
+expl:pass 12 0
+expl:pv 41 0
+iobj 10 0
+nsubj 143 0
+nsubj:pass 6 0
+obj 114 0
+obl 46 0
+xcomp 12 0
+
+0.8 en
+0 61 0
+1 144 0
+2 101 0
+3 9 0
+ccomp 6 0
+csubj 2 0
+expl 1 0
+nsubj 173 0
+nsubj:pass 33 0
+obj 111 0
+obl 32 0
+obl:npmod 2 0
+obl:tmod 4 0
+xcomp 9 0
+
+0.9 cs
+0 22 0
+1 101 0
+2 111 0
+3 23 0
+4 2 0
+ccomp 11 0
+csubj 5 0
+expl:pass 12 0
+expl:pv 41 0
+iobj 10 0
+nsubj 143 0
+nsubj:pass 6 0
+obj 114 0
+obl 46 0
+xcomp 12 0
+
+0.9 en
+0 61 0
+1 144 0
+2 101 0
+3 9 0
+ccomp 6 0
+csubj 2 0
+expl 1 0
+nsubj 173 0
+nsubj:pass 33 0
+obj 111 0
+obl 32 0
+obl:npmod 2 0
+obl:tmod 4 0
+xcomp 9 0
+
+1.0 cs
+0 22 0
+1 101 0
+2 111 0
+3 23 0
+4 2 0
+ccomp 11 0
+csubj 5 0
+expl:pass 12 0
+expl:pv 41 0
+iobj 10 0
+nsubj 143 0
+nsubj:pass 6 0
+obj 114 0
+obl 46 0
+xcomp 12 0
+
+1.0 en
+0 61 0
+1 144 0
+2 101 0
+3 9 0
+ccomp 6 0
+csubj 2 0
+expl 1 0
+nsubj 173 0
+nsubj:pass 33 0
+obj 111 0
+obl 32 0
+obl:npmod 2 0
+obl:tmod 4 0
+xcomp 9 0
+

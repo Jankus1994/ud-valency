@@ -1,0 +1,10 @@
+-e 
+04:56:09	Extraction of frames from a parallel corpus
+Verbs wit obl
+{'cs': 657, 'en': 935}
+Obl occurences (incl. multiple)
+{'cs': 790, 'en': 1119}
+Obls per verb
+{'cs': 1.2024353120243532, 'en': 1.1967914438502674}
+790
+1099

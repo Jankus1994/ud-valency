@@ -1,0 +1,31 @@
+2022-04-26 03:33:29.147551
+vyh·Ëkovat
+145
+2.7 ['vyluËovaù', 'vyhovovaù', 'vyËk·vaù', 'vyhovovaù']
+1 vyh·Ëkovat 2.7 ['vyluËovaù', 'vyhovovaù', 'vyËk·vaù', 'vyhovovaù']
+odstranit
+16
+0.4 ['odstr·niù']
+2 odstranit 0.4 ['odstr·niù']
+pokaöl·vat
+106
+2.9000000000000004 ['pozost·vaù', 'povys·vaù']
+3 pokaöl·vat 2.9000000000000004 ['pozost·vaù', 'povys·vaù']
+okr·dat
+43
+1.7 ['zakr·daù', 'zakr·daù']
+4 okr·dat 1.7 ['zakr·daù', 'zakr·daù']
+exportovat
+115
+2.7 ['existovaù', 'odporovaù']
+5 exportovat 2.7 ['existovaù', 'odporovaù']
+lÌt
+4
+0.2 ['lietaù']
+6 lÌt 0.2 ['lietaù']
+odhlasovat
+82
+1.2 ['ohlasovaù']
+7 odhlasovat 1.2 ['ohlasovaù']
+synchronizovat
+248

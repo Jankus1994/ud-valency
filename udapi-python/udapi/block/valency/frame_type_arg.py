@@ -1,13 +1,17 @@
 class Frame_type_arg:
     """ class representing verb frame argument """
-    def __init__( self, deprel, case_feat, case_mark_rels):
+    def __init__( self, deprel, form, case_mark_rels):
         """ called from Frame_extractor._process_args """
         self._frame_type = None
         self.links = []
         self._insts = []
+        self._id = None
+        self._definitive = True
+        self.removed = False
+        self._deleted = False
 
         self._deprel = deprel
-        self._case_feat = case_feat
+        self._form = form
         self._case_mark_rels = self.process_case_mark_rels( case_mark_rels)
 
     @staticmethod
@@ -19,6 +23,14 @@ class Frame_type_arg:
         return token_forms
 
     # === frame extraction methods ===
+
+    @property
+    def id( self):  # int
+        return self._id
+    @id.setter
+    def id( self, id):
+        """ called from Frame_type.sort_args """
+        self._id = id
 
     @property
     def frame_type( self):  # -> Frame_type
@@ -37,6 +49,8 @@ class Frame_type_arg:
     @insts.setter
     def insts( self, insts):
         self._insts = insts
+        for inst in insts:
+            inst.type = self
     def add_inst( self, frame_inst_arg):  # void
         """ called from Frame_extractor._process_args
         and from Frame_type.reconnect_args
@@ -52,11 +66,11 @@ class Frame_type_arg:
         self._deprel = deprel
 
     @property
-    def case_feat( self):
-        return self._case_feat
-    @case_feat.setter
-    def case_feat( self, case_feat):
-        self._case_feat = case_feat
+    def form( self):
+        return self._form
+    @form.setter
+    def form( self, form):
+        self._form = form
 
     @property
     def case_mark_rels( self):
@@ -65,12 +79,33 @@ class Frame_type_arg:
     def case_mark_rels( self, case_mark_rels):
         self._case_mark_rels = case_mark_rels
 
+    @property
+    def definitive( self):
+        return self._definitive
+    @definitive.setter
+    def definitive( self, definitive):
+        self._definitive = definitive
+
+    @property
+    def deleted( self):
+        return self._deleted
+    @deleted.setter
+    def deleted( self, bool_val):
+        self._deleted = bool_val
+
+    def get_description( self):
+        return self.deprel, self.form, self.case_mark_rels
+
+    def agrees_with( self, deprel, form, case_mark_rels):
+        return self.deprel == deprel and self.form == form and \
+                self.case_mark_rels == case_mark_rels
+
     def is_identical_with( self, other):  # -> bool
         """ called from Frame_type._has_identical_args_with
         when comparing two frame_types if they are identical
         """
         if self.deprel == other.deprel and \
-                self.case_feat == other.case_feat and \
+                self.form == other.form and \
                 self.case_mark_rels == other.case_mark_rels:
             return True
         return False
@@ -84,10 +119,10 @@ class Frame_type_arg:
         if self.deprel == "obl":
             extraction_finalizer.add_obl_arg( self)
 
-    def disconnect_yourself( self):
-        """ called from Extraction_finalizer.finalize_extraction """
-        for frame_inst_arg in self.insts:
-            frame_inst_arg.disconnect_yourself()
+    #def disconnect_yourself( self):
+    #    """ called from Extraction_finalizer.finalize_extraction """
+    #    for frame_inst_arg in self.insts:
+    #        frame_inst_arg.disconnect_yourself()
 
     # === frame linking methods ===
 
@@ -106,10 +141,18 @@ class Frame_type_arg:
 
     # === dictionary display methods ===
 
-    def to_string( self):  # -> str
-        """ called from HTML_creator.process_frame_type_link """
-        my_string = self.deprel + '-' + self.case_feat
+    def id_str( self):
+        my_string = self.deprel + '-' + self.form
         if self.case_mark_rels != []:
-            #my_string += '(' + ','.join( self.case_mark_rels) + ')'
             my_string += '|' + ','.join( self.case_mark_rels)
+        return my_string
+
+    def __str__( self):  # -> str
+        """ called from HTML_creator.process_frame_type_link """
+        my_string = '{' + str( self.id) + '}'
+        my_string += self.id_str()
+        if self.definitive == 2:
+            my_string = 'X' + my_string
+        elif not self.definitive:
+            my_string = '*' + my_string
         return my_string

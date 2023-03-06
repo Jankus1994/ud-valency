@@ -7,6 +7,7 @@ class Frame_inst_arg:
         self._token = None
         self._definitive = True
         self._upostag = upostag
+        self.used = False
 
     @property
     def type( self):  # -> Frame_type_arg
@@ -40,6 +41,10 @@ class Frame_inst_arg:
     def frame_inst( self, frame_inst):
         """ called from Frame_inst.add_arg """
         self._frame_inst = frame_inst
+        if frame_inst is not None:
+            self.used = True
+        #if frame_inst is None:
+        #    print(0+"f")
 
     @property
     def link( self):  # -> Frame_inst_arg_link
@@ -62,7 +67,10 @@ class Frame_inst_arg:
     @property
     def upostag( self):  # -> str
         return self._upostag
+    @upostag.setter
+    def upostag( self, upostag):
+        self._upostag = upostag
 
-    def disconnect_yourself( self):
-        """ called from Frame_type_arg._decide_candidates """
-        self.frame_inst.remove_arg(self)
+    #def disconnect_yourself( self):
+    #    """ called from Frame_type_arg._decide_candidates """
+    #    self.frame_inst.remove_arg( self)

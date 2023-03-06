@@ -63,7 +63,7 @@ class Obl_examiner( Block):
         else:
             return
             print( obl_node.root.text)
-            print( parent_upos, parent_node.form, obl_node.form)
+            print(parent_upos, parent_node._form, obl_node._form)
             print( "===")
 
     def get_obl_form( self, obl_node):

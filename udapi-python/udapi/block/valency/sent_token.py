@@ -10,6 +10,14 @@ class Sent_token:
         self._has_space = True  # for rebuilding the sentence
                            # with punctuation correctly
 
+    def __str__( self):
+        if self.is_frame_predicate():
+            return self._form + '{V}'
+        if self.arg is not None:
+            arg_id = self.arg.type.id
+            return self._form + '{' + str( arg_id) + '}'
+        return self._form
+
     @property
     def ord( self):  # -> num
         return self._ord
@@ -35,7 +43,8 @@ class Sent_token:
     def arg( self, frame_inst_arg):  # void
         """ called from Frame_extractor._process_sentence """
         self._frame_inst_arg = frame_inst_arg
-        frame_inst_arg.token = self
+        if frame_inst_arg is not None:
+            frame_inst_arg.token = self
     def is_frame_arg( self):  # -> bool
         """ called from HTML_creator.process_inst """
         return self._frame_inst_arg is not None

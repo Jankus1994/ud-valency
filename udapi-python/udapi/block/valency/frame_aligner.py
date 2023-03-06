@@ -25,7 +25,9 @@ from dist_measurer import Dist_measurer
 class Frame_aligner( Block):
     #def __init__( self, align_file_name="", output_folder="", output_name="",
     #              obl_ratio_limit="0.5", min_obl_inst_num=2, **kwargs):
-    def __init__( self, run_num=0, align_file_name="", output_folder="", output_name="", **kwargs):
+    def __init__( self, run_num=0, align_file_name="", output_folder="",
+                  output_name="", log_file_name="", **kwargs):
+
         """ overriden block method """
         super().__init__( **kwargs)
 
@@ -33,10 +35,12 @@ class Frame_aligner( Block):
         self.align_file = None
         self.output_folder = output_folder
         self.output_name = output_name
+        self.log_file = open( log_file_name, 'w')
         #self.obl_ratio_limit = float( obl_ratio_limit)
         #self.min_obl_inst_num = int( min_obl_inst_num)
 
         self.linker = Linker()  # !!!
+        self.linker.set_log_file( self.log_file)
 
         sim_treshold = 5
 
@@ -93,6 +97,7 @@ class Frame_aligner( Block):
 
         frame_pairs = self.linker.find_frame_pairs( a_frame_insts, b_frame_insts,
                                                     word_alignments)
+
         a_verbs = ','.join( [ inst.type.verb_lemma for inst in a_frame_insts ])
         b_verbs = ','.join( [ inst.type.verb_lemma for inst in b_frame_insts ])
         #verb_pairs = '|'.join( [ frame_pair[0].a_frame_type.verb_lemma+'-'+frame_pair[0].b_frame_type.verb_lemma+'-'+str(frame_pair[1])
@@ -136,6 +141,8 @@ class Frame_aligner( Block):
         #print( self.a_lang_mark, len( self._a_dict_of_verbs))
         #print( self.b_lang_mark, len( self._b_dict_of_verbs))
         #print( self.a_and_b, self.a_only, self.b_only)
+        self.linker.print_stats()
+        self.log_file.close()
         super().after_process_document( doc)
 
     def end_obl(self, dict_of_verbs):
@@ -160,10 +167,10 @@ class Frame_aligner( Block):
     def _pickle_dict( self, a_dict_of_verbs, b_dict_of_verbs):  # void
         """ called from after_process_document """
         a_b_dicts_of_verbs = a_dict_of_verbs, b_dict_of_verbs
-        logging.info( sys.getrecursionlimit())
-        logging.info( sys.getsizeof( a_b_dicts_of_verbs))
+        #logging.info( sys.getrecursionlimit())
+        #logging.info( sys.getsizeof( a_b_dicts_of_verbs))
         sys.setrecursionlimit( 50000)
-        logging.info( sys.getrecursionlimit())
+        #logging.info( sys.getrecursionlimit())
         #a_output_name = self.output_folder + self.a_lang_mark + \
         #        "_" + self.b_lang_mark + "_" + self.output_name
         #b_output_name = self.output_folder + self.b_lang_mark + \
@@ -181,4 +188,4 @@ class Frame_aligner( Block):
                 for fi in ft.insts:
                     for fia in fi.args:
                         fial = fia.frame_inst_arg_link
-                        print( fia.node.form, fial)
+                        print(fia.node._form, fial)

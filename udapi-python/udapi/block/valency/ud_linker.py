@@ -14,44 +14,48 @@ class Ud_linker( Linker):
             result += param * param_weight
         return result
 
-    def compute_pair_score( self, a_frame_inst, b_frame_inst):
-        params_points = []
+    def get_feats( self, a_frame_inst, b_frame_inst):
+        feats_points = []
 
         # verb parent ord
         a_verb_parent_ord = a_frame_inst.verb_parent_ord
         b_verb_parent_ord = b_frame_inst.verb_parent_ord
         ord_dist = abs( a_verb_parent_ord - b_verb_parent_ord)
-        params_points.append( 1 / (ord_dist + 1))
+        feats_points.append( 1 / (ord_dist + 1))
 
         # verb parent upos
         a_verb_parent_upos = a_frame_inst.verb_parent_upos
         b_verb_parent_upos = b_frame_inst.verb_parent_upos
-        params_points.append( a_verb_parent_upos == b_verb_parent_upos)
+        feats_points.append( a_verb_parent_upos == b_verb_parent_upos)
 
         # verb node ord
         a_verb_node_ord = a_frame_inst.verb_node_ord
         b_verb_node_ord = b_frame_inst.verb_node_ord
         ord_dist = abs( a_verb_node_ord - b_verb_node_ord)
-        params_points.append(  1 / (ord_dist + 1))
+        feats_points.append(  1 / (ord_dist + 1))
 
         # verb deprel
         a_verb_deprel = a_frame_inst.verb_deprel
         b_verb_deprel = b_frame_inst.verb_deprel
-        params_points.append( a_verb_deprel == b_verb_deprel)
+        feats_points.append( a_verb_deprel == b_verb_deprel)
 
         # verb depth
         a_verb_depth = a_frame_inst.verb_depth
         b_verb_depth = b_frame_inst.verb_depth
         ord_dist = abs( a_verb_depth - b_verb_depth)
-        params_points.append(  1 / (ord_dist + 1))
+        feats_points.append(  1 / (ord_dist + 1))
 
         # verb child num
         a_verb_child_num = a_frame_inst.verb_child_num
         b_verb_child_num = b_frame_inst.verb_child_num
         ord_dist = abs( a_verb_child_num - b_verb_child_num)
-        params_points.append( 1 / (ord_dist + 1))
+        feats_points.append( 1 / (ord_dist + 1))
 
-        return self.weigh_params( params_points)
+        return feats_points
+
+    def compute_pair_score( self, a_frame_inst, b_frame_inst):
+        feats_points = self.get_feats( a_frame_inst, b_frame_inst)
+        return self.weigh_params( feats_points)
 
     def build_score_table( self, a_frame_insts, b_frame_insts, _):
         score_table = []

@@ -5,21 +5,45 @@ class Frame_type:
     """ class representing verb frame with information about the verb
     and with a list of its arguments
     """
-    def __init__( self):
+    def __init__( self, deprel_order):
         """ called from Frame_extractor._process_frame """
+        self.deprel_order = deprel_order
+
         self.verb_lemma = ""
         self.verb_form = "0"
         self.voice = "0"
+        self._verb_record = None
 
         self._insts = []
         self._args = []
 
         self._superframe = None  # for the purpose of frame reduction
         self._subframes = []
+        self._deleted = False
         #self.str_args = [] # filled with _args_to_string_list
         self.links = []  # objects pairing corresponding frames from two languages
 
         self.matched_frames = []
+
+    @property
+    def verb_record( self):
+        return self._verb_record
+    @verb_record.setter
+    def verb_record( self, verb_record):
+        self._verb_record = verb_record
+        #if not self in self.verb_record.frame_types:
+        #    print( "tuu")
+
+    @property
+    def insts( self):  # -> list of Frame_insts
+        return self._insts
+    def add_inst( self, frame_inst):  # void
+        """ called from Frame_extractor._process_args for the first instance
+        called from Verb_frame.consider_new_frame_type for instances from identical frames
+        """
+        self._insts.append( frame_inst)
+        frame_inst.type = self
+
 
     @property
     def args( self):  # -> list of frame_type_args
@@ -38,31 +62,54 @@ class Frame_type:
         """ called from Frame_extractor._process_args """
         self._args.append( frame_type_arg)
         frame_type_arg.frame_type = self
-    def remove_arg(self, frame_type_arg):
+        self.sort_args()
+        if self.verb_record is not None:
+            self.verb_record.consider_merging( self)
+    def remove_arg( self, frame_type_arg):
         """ called from Extraction_finalizer.finalize_extraction """
-        arg_to_remove = [ arg for arg in self._args
-                          if arg.is_identical_with( frame_type_arg) ][ 0 ]
-        self._args.remove( arg_to_remove)
-    def substitute_arg( self, old_frame_arg, new_frame_arg):
-        """ not called in the general extractor, only in specifics
-        not only removes an old arg and adds a new one,
-        but also reconnects their instances
-        """
-        self.remove_arg( old_frame_arg)
-        new_frame_arg.insts = old_frame_arg.insts
-        self.add_arg( new_frame_arg)
+        #self.verb_record.check_coherence()
+        # TODO: co ked ich bude viac?
+        self._args.remove( frame_type_arg)
 
-    def includes_arg( self, searched_arg):
-        """ not called in the general extractor, only in specifics """
-        return any( arg.is_identical_with( searched_arg) for arg in self._args)
+        #self.verb_record.check_coherence()
+        #arg_to_remove.frame_type = None  # VYMAZAT!!!
+        #self.sort_args()
+
+            #print( res)
+        #return arg_to_remove
+
+    def get_arg( self, deprel, form, case_mark_rels):
+        return [ arg for arg in self.args
+                 if arg.agrees_with( deprel, form, case_mark_rels) ]
+
+    # def includes_arg( self, searched_arg):
+    #     """ called from Frame_extractor.search_one_verb_for_obl_arg
+    #     and in language-specific extractors
+    #     """
+    #     return any( arg.is_identical_with( searched_arg) for arg in self.args)
 
     def sort_args( self):  # void
         """ called from Frame_extractor._process_frame after processing all args
         important for comparing arguments
         """
+        sorted_args = []
+        used_indices = []
+        for deprel in self.deprel_order:
+            for i, arg in enumerate( self.args):
+                if i not in used_indices and deprel in arg.deprel:
+                    sorted_args.append( arg)
+                    used_indices.append( i)
+        if len( used_indices) < len( self.args):
+            for i, arg in enumerate( self.args):
+                if i not in used_indices:
+                    sorted_args.append( arg)
+
+        self.args = sorted_args
         # TODO: maybe move the sorting to frame_arg
-        self._args = sorted( self._args, key =
-                lambda arg :( arg.deprel, arg.case_feat, arg.case_mark_rels ))\
+        #self._args = sorted( self._args, key =
+        #        lambda arg :( arg.deprel, arg.case_feat, arg.case_mark_rels ))
+        for i, arg in enumerate( self.args):
+            arg.id = i + 1
 
     @property
     def superframe( self):  # -> Frame_type
@@ -80,8 +127,21 @@ class Frame_type:
     def add_subframe( self, subframe):
         self._subframes.append( subframe)
 
+    @property
+    def deleted( self):
+        return self._deleted
+    @deleted.setter
+    def deleted( self, bool_val):
+        self._deleted = bool_val
+        if bool_val == True:
+            for arg in self.args:
+                arg.deleted = True
+
     def has_subject( self):
-        return any( arg.deprel in [ "nsubj", "csubj" ] for arg in self.args)
+        for arg in self.args:
+            if "nsubj" in arg.deprel or "csubj" in arg.deprel:
+                return True
+        return False
  
     # === frame extraction methods ===
 
@@ -94,17 +154,6 @@ class Frame_type:
 
         if verb_node.feats[ "Voice" ] != "":
             self.voice = verb_node.feats[ "Voice" ]
-
-
-    @property
-    def insts( self):  # -> list of Frame_insts
-        return self._insts
-    def add_inst( self, frame_inst):  # void
-        """ called from Frame_extractor._process_args for the first instance
-        called from Verb_frame.consider_new_frame_type for instances from identical frames
-        """
-        self._insts.append( frame_inst)
-        frame_inst.type = self
 
     def add_matched_frame( self, matched_frame):
         self.matched_frames.append( matched_frame)
@@ -153,17 +202,19 @@ class Frame_type:
         return True
 
 
-    def reconnect_args( self, another_frame_type):  # void
+    def reconnect_args( self, other_frame_type):  # void
         """ called from Verb_record.consider_new_frame_type
         we suppose, that it has been tested that the frames are identical
         """
-        another_frame_type_args = another_frame_type.args
-        for i in range( len( self.args)):
+        for frame_inst in other_frame_type.insts:
+            self.add_inst( frame_inst)  # incl reversed link
+
+        assert len( self.args) == len( other_frame_type.args)
+        for i, other_frame_type_arg in enumerate( other_frame_type.args):
             self_frame_type_arg = self.args[ i ]
-            another_frame_type_arg = another_frame_type_args[ i ]
-            another_frame_type_arg_insts = another_frame_type_arg.insts
-            for i, frame_inst_arg in enumerate( another_frame_type_arg_insts):
-                self_frame_type_arg.add_inst( frame_inst_arg)
+            for frame_inst_arg in other_frame_type_arg.insts:
+                self_frame_type_arg.add_inst( frame_inst_arg)  # incl reversed link
+            other_frame_type_arg.deleted = True
 
     def finalize_extraction( self, extraction_finalizer):  # void
         """ called from Verb_record.finalize_extraction """
@@ -194,7 +245,7 @@ class Frame_type:
         """
         str_args = []
         for arg in self.args:
-            arg_string = arg.deprel + '-' + arg.case_feat
+            arg_string = arg.deprel + '-' + arg.form
             if arg.case_mark_rels != []:
                 arg_string += '(' + ','.join( arg.case_mark_rels) + ')'
             str_args.append( arg_string)

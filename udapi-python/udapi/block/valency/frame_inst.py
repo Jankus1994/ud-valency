@@ -3,7 +3,6 @@ class Frame_inst:
         """ called from Frame_extractor._process_frame """
         # self.example_sentence_class = Example_sentence
 
-        self._type = None
         self._verb_node_ord = None
         self._verb_parent_ord = None
         self._verb_parent_upos = None
@@ -13,10 +12,13 @@ class Frame_inst:
         self._bundle_id = None
         self._index = None  # order of the frame_inst in its sentence
         # self.verb_node_lemma = ""
+
+        self._type = None
         self._args = []
         # self.sentence = None
         self._link = None
         self._sent_tokens = []
+        self._elided_tokens = []
         self.predicate_token = None
         self._has_modal = False
 
@@ -46,6 +48,15 @@ class Frame_inst:
                 self.predicate_token = token
 
     @property
+    def elided_tokens( self):
+        return self._elided_tokens
+    @elided_tokens.setter
+    def elided_tokens( self, elided_tokens):
+        self._elided_tokens = elided_tokens
+    def add_elided_token( self, elided_token):
+        self._elided_tokens.append( elided_token)
+
+    @property
     def args( self):  # -> list of Frame_inst_args
         """ called from Frame_inst_link._link_args """
         return self._args
@@ -53,9 +64,13 @@ class Frame_inst:
         """ called from Frame_extractor._process_args """
         self._args.append( frame_inst_arg)
         frame_inst_arg.frame_inst = self
-    def disconnect_arg( self, frame_inst_arg):
+    def remove_arg( self, frame_inst_arg):
         """ called from Frame_inst_arg.disconnect_yourself """
+        #if frame_inst_arg not in self._args:
+        #    print( "jiii")
+        #    #print( str( frame_inst_arg), [t.form for t in self.sent_tokens], self.type.verb_lemma)
         self._args.remove( frame_inst_arg)
+        #frame_inst_arg.frame_inst = None  # VYMAZAT!!!
 
     @property
     def verb_node_ord( self):  # -> int

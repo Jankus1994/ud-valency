@@ -1,10 +1,8 @@
-class Pokus(Block):
+from frame_aligner import Frame_aligner
 
+class Pokus( Frame_aligner):
+    def __init__( self, **kwargs):
+        super().__init__( **kwargs)
 
-    def process_bundle( self, bundle): # void
-        print( len( bundle.trees))
-    #def process_node( self, node):
-    #    print( node.lemma)
-        #pass
-    #def process_document( self, doc):
-    #    print( len( doc.bundles))
+    def process_bundle( self, _):
+        pass

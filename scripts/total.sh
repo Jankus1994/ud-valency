@@ -55,7 +55,7 @@ sel_corp_name="$test_corp_name"_$sents_num
 #name="$corp_name"_"$select_name"
 run_num=$3
 
-#python3 rand_sent_selector.py $corp_name $test_corp_name $sents_num
+#python3 sampler.py $corp_name $test_corp_name $sents_num
 
 act_time=$(date +"%T")
 #echo -e "\n$act_time\tExtraction of frames from a parallel corpus"

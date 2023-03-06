@@ -39,10 +39,10 @@ def compare_pairs( all_gold_pairs, all_auto_pairs):
     print( gold_count, auto_count, comm_count)
     precision = comm_count / auto_count
     recall = comm_count / gold_count
-    print( "Precision:", round( precision, 3))
-    print( "Recall:   ", round( recall, 3))
+    print( "Precision:", round( 100 * precision, 1))
+    print( "Recall:   ", round( 100 * recall, 1))
     f1_score = 2 * precision * recall / ( precision + recall )
-    print( "F1 score: ", round( f1_score, 3))
+    print( "F1 score: ", round( 100 * f1_score, 1))
 
 
 def perform_test( gold_file_name, auto_file_name):
@@ -51,12 +51,11 @@ def perform_test( gold_file_name, auto_file_name):
     compare_pairs( gold_pairs, auto_pairs)
 
 if __name__ == "__main__":
-    corp_name = sys.argv[ 1 ]
-    sample_num = sys.argv[ 2 ]
-    run_num = sys.argv[ 3 ]
+    gold_file_name = sys.argv[ 1 ]
+    auto_file_name = sys.argv[ 2 ]
 
-    gold_file_name = "../data/test_results/gold_"+corp_name+"_"+sample_num
-    auto_file_name = "../data/test_results/"+corp_name+"_"+run_num+"_"+sample_num
+    #gold_file_name = "../data/test_results/gold_"+corp_name+"_"+sample_num
+    #auto_file_name = "../data/test_results/"+corp_name+"_"+run_num+"_"+sample_num
     perform_test( gold_file_name, auto_file_name)
     #print( "FA")
     #perform_test( "../data/test_results/gold_test_cssk_out", "../data/test_results/cssk_0_test_300_out")

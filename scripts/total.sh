@@ -74,7 +74,7 @@ echo -e "\n$act_time\tCreation of HTML dictionary"
 bash html_creator.sh $name #> /dev/null
 # '
 
-: '
+#: '
 # ((CZ)ENG)VALLEX FRAMES LOADING
 #act_time=$(date +"%T")
 #echo -e "\n$act_time\tLoading CS Vallexx frames"
@@ -90,7 +90,7 @@ echo -e "\n$act_time\tLoading EN CzEngVallex frames" > /dev/null
 bash vallex_loader.sh ee
 # '
 
-: '
+#: '
 # ((CZ)ENG)VALLEX MATCHING
 #act_time=$(date +"%T")
 #echo -e "\n$act_time\tMatching frames with CS Vallex"

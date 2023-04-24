@@ -4,8 +4,10 @@ TODO: prepositions and reflexive pronouns
 """
 
 import sys
+import pickle
+from collections import defaultdict
 from copy import copy
-sys.path.append('../../udapi-python/udapi/block/valency')
+sys.path.append('../udapi-python/udapi/block/valency')
 from matching_finder import Max_matching_finder
 
 
@@ -18,8 +20,9 @@ class Vallex_matcher:
         # on the two word alignments was performed
         self.ext_dict  = ext_dict
         self.val_dict = val_dict
-        self.cases = { "0":"0", "Nom":"1", "Gen":"2", "Dat":"3", \
+        self.cases = { "0":"0", "Nom":"1", "Gen":"2", "Dat":"3",
                 "Acc":"4", "Voc":"5", "Loc":"6", "Ins":"7" }
+        self.cases = defaultdict( lambda: "0", self.cases)
         self.matching_finder = Max_matching_finder()
         self.matching_method = self.unique_match
         if not unique_method:
@@ -146,7 +149,7 @@ class Vallex_matcher:
         """
         function_agreement = self.function_agreement( ext_arg.deprel, val_arg.functor)
         form_agreement = self.form_agreement(
-                            ext_arg.case_feat, ext_arg.case_mark_rels, val_arg.form)
+                            ext_arg.form, ext_arg.case_mark_rels, val_arg.form)
         # ext_arg does not have oblig attribute
         #oblig_agreement = self.oblig_agreement( ___, val_arg.oblig)
         if function_agreement and form_agreement:

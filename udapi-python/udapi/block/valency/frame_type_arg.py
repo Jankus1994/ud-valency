@@ -7,6 +7,7 @@ class Frame_type_arg:
         self._insts = []
         self._id = None
         self._definitive = True
+        #self._has_coord_inst = False
         self.removed = False
         self._deleted = False
 
@@ -57,6 +58,8 @@ class Frame_type_arg:
         """
         self._insts.append( frame_inst_arg)
         frame_inst_arg.type = self
+        #if frame_inst_arg.is_coord_arg:
+        #    self.has_coord_inst = True
 
     @property
     def deprel( self):
@@ -86,19 +89,60 @@ class Frame_type_arg:
     def definitive( self, definitive):
         self._definitive = definitive
 
+    # @property
+    # def has_coord_inst(self):
+    #     return self._has_coord_inst
+    # @has_coord_inst.setter
+    # def has_coord_inst(self, has_coord_inst):
+    #     self._has_coord_inst = has_coord_inst
+
     @property
     def deleted( self):
         return self._deleted
     @deleted.setter
     def deleted( self, bool_val):
         self._deleted = bool_val
+    def delete( self):
+        #assert frame_type is not None
+        #assert frame_type_arg in frame_type.args
+        self.frame_type.remove_arg( self)
+
+        for frame_inst_arg in self.insts:
+            #assert frame_inst_arg.type is frame_type_arg
+            frame_inst = frame_inst_arg.frame_inst
+            #assert frame_inst is not None
+            #assert frame_inst.type is frame_type
+            #assert frame_inst_arg in frame_inst.args
+            frame_inst.remove_arg( frame_inst_arg)
+
+            sent_token = frame_inst_arg.token
+            #assert sent_token is not None
+            #assert sent_token in frame_inst.sent_tokens + frame_inst.elided_tokens
+            #assert sent_token.arg is frame_inst_arg
+            sent_token.arg = None
+
+        self.deleted = True
 
     def get_description( self):
         return self.deprel, self.form, self.case_mark_rels
 
-    def agrees_with( self, deprel, form, case_mark_rels):
-        return self.deprel == deprel and self.form == form and \
-                self.case_mark_rels == case_mark_rels
+    def agrees_with( self, other_arg):
+        deprel, form, case_mark_rels = other_arg.get_description()
+        return self.agrees_with_desc( deprel, form, case_mark_rels)
+
+    def agrees_with_desc( self, deprel, form, case_mark_rels):
+        deprel_agree = self.deprel == deprel if deprel is not None else True
+        form_agree =  self.form == form if form is not None else True
+        case_mark_rels_agree = self.case_mark_rels == case_mark_rels \
+                if case_mark_rels is not None else True
+        return deprel_agree and form_agree and case_mark_rels_agree
+
+    def agrees_except_form( self, deprel, case_mark_rels):
+        """ used is specific modules """
+        deprel_agree = self.deprel == deprel if deprel is not None else True
+        case_mark_rels_agree = self.case_mark_rels == case_mark_rels \
+                if case_mark_rels is not None else True
+        return deprel_agree and case_mark_rels_agree
 
     def is_identical_with( self, other):  # -> bool
         """ called from Frame_type._has_identical_args_with
@@ -141,7 +185,7 @@ class Frame_type_arg:
 
     # === dictionary display methods ===
 
-    def id_str( self):
+    def to_str(self):
         my_string = self.deprel + '-' + self.form
         if self.case_mark_rels != []:
             my_string += '|' + ','.join( self.case_mark_rels)
@@ -150,7 +194,7 @@ class Frame_type_arg:
     def __str__( self):  # -> str
         """ called from HTML_creator.process_frame_type_link """
         my_string = '{' + str( self.id) + '}'
-        my_string += self.id_str()
+        my_string += self.to_str()
         if self.definitive == 2:
             my_string = 'X' + my_string
         elif not self.definitive:

@@ -40,5 +40,7 @@ class Vallex_frame:
 
     def to_string( self):
         lemmas_str = ' '.join( self.lemmas)
+        if self.refl:
+            lemmas_str += " +R"
         args_str = self.args_to_string()
-        return lemmas_str + " | " + args_str
+        return lemmas_str + " | " + args_str #+ "  " + ' '.join( self.examples)

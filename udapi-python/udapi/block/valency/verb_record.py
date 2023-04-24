@@ -1,4 +1,5 @@
 from frame_type import Frame_type
+from dag_fucntions import create_dag
 
 class Verb_record:
     """ class representing one verb with possibly more verb frames """
@@ -6,6 +7,7 @@ class Verb_record:
         """ called from Frame_extractor.process_node """
         self.lemma = lemma
         self._frame_types = []
+        self._subframes = []
 
     @property
     def frame_types( self):
@@ -13,13 +15,26 @@ class Verb_record:
     #@frame_types.setter
     #def frame_types( self, frame_types):
     #    self._frame_types = frame_types
-    def _add_frame( self, frame_type):
+    def add_frame( self, frame_type):
         self._frame_types.append( frame_type)
-    def _remove_frame( self, frame_type):
+    def remove_frame( self, frame_type):
         self._frame_types.remove( frame_type)
     def sort_frames( self):
         self._frame_types.sort( key=lambda frame_type: len( frame_type.insts),
-                               reverse=True)
+                                reverse=True)
+
+    @property
+    def subframes( self):
+        return self._subframes
+    def add_subframe( self, frame_type):
+        self._subframes.append( frame_type)
+    def remove_subframe( self, frame_type):
+        self._subframes.remove( frame_type)
+    def sort_subframes( self):
+        for subframe in self.subframes:
+            subframe.sort_subframes()
+        self._subframes.sort( key=lambda subframe: subframe.tree_inst_num,
+                              reverse=True)
 
     def consider_new_frame_type( self, new_frame_type): #, new_frame_inst):  # -> void
         """
@@ -41,17 +56,13 @@ class Verb_record:
 
         # comparing with already existing frames
         for frame_type in self.frame_types:
-            if frame_type.is_identical_with( new_frame_type) \
+            if frame_type.agrees_with( new_frame_type) \
                     and frame_type is not new_frame_type:
-                #self.check_coherence()
-                frame_type.reconnect_args( new_frame_type)
-                #self.check_coherence()
-                for frame_inst in new_frame_type.insts:
-                    frame_type.add_inst( frame_inst)
+                frame_type.reconnect_insts(new_frame_type)
                 new_frame_type.deleted = True
                 break
         else:  # no identical frame was found
-            self._add_frame( new_frame_type)
+            self.add_frame( new_frame_type)
             new_frame_type.verb_record = self
         #self.check_coherence()
 
@@ -65,24 +76,20 @@ class Verb_record:
         for frame_type in self.frame_types:
             if frame_type is changed_frame_type:
                 continue
-            if frame_type.is_identical_with( changed_frame_type):
-                #self.check_coherence()
-                frame_type.reconnect_args( changed_frame_type)
-                #self.check_coherence()
-                for frame_inst in changed_frame_type.insts:
-                    frame_type.add_inst( frame_inst)
-                self._remove_frame( changed_frame_type)
+            if frame_type.agrees_with( changed_frame_type):
+                frame_type.reconnect_insts(changed_frame_type)
+                self.remove_frame( changed_frame_type)
                 changed_frame_type.deleted = True
-                changed_frame_type.verb_record = None  # VYMAZAT !!!
+                #changed_frame_type.verb_record = None  # VYMAZAT !!!
                 #self.check_coherence()
                 return True
         #self.check_coherence()
         return False
 
-    def find_frame_type( self, searched_frame_type):
-        for frame_type in self.frame_types:
-            if frame_type.is_identical_with( searched_frame_type):
-                return frame_type
+    # def find_frame_type( self, searched_frame_type):
+    #     for frame_type in self.frame_types:
+    #         if frame_type.agrees_with( searched_frame_type):
+    #             return frame_type
 
     def check_coherence( self):
         for frame_type in self.frame_types:
@@ -111,6 +118,69 @@ class Verb_record:
                     assert sent_token in frame_inst.sent_tokens or \
                             sent_token in frame_inst.elided_tokens
             assert a_set == b_set
+
+    # def build_frame_tree( self):
+    #     for frame_type in self.frame_types:
+    #         frame_type.dive_into_frame_tree( self, 0)
+    #     for frame_type in self.subframes:
+    #         frame_type.superframe = None
+    #         frame_type.set_additional_args()
+    #         frame_type.sort_subframe_tree()
+    #     self.sort_subframes()
+
+    def build_frame_dag( self):
+        dag_table = create_dag( self.frame_types, self.compare_frame_args)
+        for i in range( len( self.frame_types)):
+            for j in range( len( self.frame_types)):
+                if i < j:
+                    ij_relation = dag_table[ i ][ j ]
+                    if ij_relation != 0:
+                        i_frame_type = self.frame_types[ i ]
+                        j_frame_type = self.frame_types[ j ]
+                        if ij_relation == 1:
+                            i_frame_type.add_subframe( j_frame_type)
+                            j_frame_type.add_superframe( i_frame_type)
+                        elif ij_relation == -1:
+                            j_frame_type.add_subframe( i_frame_type)
+                            i_frame_type.add_superframe( j_frame_type)
+        for frame_type in self.frame_types:
+            if frame_type.superframes == []:
+                self.add_subframe( frame_type)
+        self.sort_subframes()
+        self.index_subframes()
+        #else:
+        #    frame_type.choose_tree_superframe( self)  # incl. inverse relation
+
+
+    @staticmethod
+    def compare_frame_args( a_frame_type, b_frame_type):
+        """ whether ane of the frames is a superframe of the other
+        i. e. whether their args form a super-/subset
+         0: frames are not comparable
+         1: A is superframe of B
+        -1: B is superframe of A
+        """
+        if len( a_frame_type.args) < len( b_frame_type.args):
+            if a_frame_type.should_be_superframe_of( b_frame_type):
+                return 1
+            return 0
+        if len( a_frame_type.args) > len( b_frame_type.args):
+            if b_frame_type.should_be_superframe_of( a_frame_type):
+                return -1
+            return 0
+        # if len( self.args) == len( other_frame.args):
+        # assumed all frames are in the record are distinct
+        return 0
+
+    def index_subframes( self):
+        index = 1
+        for subframe in self.subframes:
+            index = subframe.index_subframes( index)
+
+    def frame_reduction( self, only_obl):
+        for frame in self.subframes:
+            frame.try_reduce_subtrees( only_obl)
+
 
     def finalize_extraction( self, extraction_finalizer):
         """ called from Frame_aligner.after_process_document

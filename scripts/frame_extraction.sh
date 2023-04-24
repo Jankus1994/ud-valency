@@ -53,8 +53,10 @@ if [ $output_form = "html" ] || [ $output_form = "htmlw" ]; then
   output_folder="$data""html_out/"
   output_suffix=".html"
 elif [ $output_form = "bin" ]; then
-  output_folder="$data""pickle/"
+  output_folder="$data""ext_bin/"
   output_suffix=".bin"
+elif [ $output_form = "test" ]; then
+  output_folder="$data""test_results/"
 fi
 
 extractor_block="Frame_extractor"
@@ -74,7 +76,8 @@ if [ $variant = m ]; then
           files="$input_folder""$treebank_name""$input_suffix" \
       valency."$extractor_block" \
           output_form=$output_form \
-          output_name="$output_folder""$treebank_name""$output_suffix" #\
+          output_name="$output_folder""$treebank_name""$output_suffix" \
+          config_name="config.txt"
           #modals="$modals"
 else
   #for i in 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0

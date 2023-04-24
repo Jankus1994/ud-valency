@@ -5,7 +5,8 @@ class Frame_inst_arg:
         self._type = None
         self._link = None
         self._token = None
-        self._definitive = True
+        #self._definitive = True
+        self._is_coord_arg = False
         self._upostag = upostag
         self.used = False
 
@@ -27,12 +28,19 @@ class Frame_inst_arg:
         """ called from Sent_token.set_arg """
         self._token = sent_token
 
+    # @property
+    # def definitive( self):
+    #     return self._definitive
+    # @definitive.setter
+    # def definitive( self, definitive):
+    #     self._definitive = definitive
+
     @property
-    def definitive( self):
-        return self._definitive
-    @definitive.setter
-    def definitive( self, definitive):
-        self._definitive = definitive
+    def is_coord_arg( self):
+        return self._is_coord_arg
+    @is_coord_arg.setter
+    def is_coord_arg( self, is_coord_arg):
+       self._is_coord_arg = is_coord_arg
 
     @property
     def frame_inst( self):  # -> Frame_inst

@@ -56,15 +56,17 @@ class Cs_vallex_loader( Vallex_loader):
                 self.add_frame_arguments( vallex_frame, slots)
     
                 output_str += '\n'
+                lu_gloss = lexical_unit.find( "gloss")
                 lu_example = lexical_unit.find( "example")
-                example_text = lu_example.text.strip()
-                coindexeds = lu_example.findall( "coindexed")
-                coindexed_text = [ coindexed.text for coindexed in coindexeds ]
-                examples = example_text.split( "; ")
-                coindexed_examples = "; ".join( coindexed_text).split( "; ")
-                for example in examples + coindexed_examples:
+                glosses = list( lu_gloss.itertext())
+                examples = list( lu_example.itertext())
+                #coindexeds = lu_example.findall( "coindexed")
+                #coindexed_text = [ coindexed.text for coindexed in coindexeds ]
+                #examples = example_text.split( "; ")
+                #coindexed_examples = "; ".join( coindexed_text).split( "; ")
+                for example in glosses + examples:# + coindexed_examples:
                     output_str += '\t' + example + '\n'
-                    vallex_frame.add_example( example)
+                    vallex_frame.add_example( example.strip())
     
                 output_str += "======================="  + '\n'
                 #vallex_frames.append( vallex_frame)

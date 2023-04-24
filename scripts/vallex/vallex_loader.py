@@ -52,11 +52,13 @@ class Vallex_loader:
                 self.add_frame_arguments( vallex_frame, elements)
     
                 output_str += '\n'
-                examples = frame.findall( ".//example")
-                for example in examples:
-                    output_str += '\t' + example.text + '\n'
-                    vallex_frame.add_example( example)
-    
+                example_elems = frame.findall( ".//example")
+                for example_elem in example_elems:
+                    examples = example_elem.itertext()
+                    for example in examples:
+                        output_str += '\t' + example + '\n'
+                        vallex_frame.add_example( example)
+
                 output_str += "=======================" + '\n'
                 #vallex_frames.append( vallex_frame)
                 vallex_dict[ lemma ].append( vallex_frame)
@@ -66,12 +68,24 @@ class Vallex_loader:
         print( len( vallex_dict))
         return vallex_dict
 
+    def print_dict( self, vallex_dict, output_name):
+        with open( output_name, 'w') as output_file:
+            for lemma in vallex_dict.keys():
+                vallex_frams_list = vallex_dict[ lemma ]
+                print( "=======================", file=output_file)
+                #print( lemma, file=output_file)
+                for vallex_frame in vallex_frams_list:
+                    frame_str = vallex_frame.to_string()
+                    #print( "------------", file=output_file)
+                    print( frame_str, file=output_file)
+
 
     def load( self, input_name, output_name):
         tree = et.ElementTree( file=input_name)
         root = tree.getroot()
 
         vallex_dict = self.get_dictionary( root)
+        self.print_dict( vallex_dict, "../data/logs/vallex_frames.txt")
     
         pickle.dump( vallex_dict, open( output_name, 'wb'))
     

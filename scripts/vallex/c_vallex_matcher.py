@@ -4,7 +4,7 @@ class C_vallex_matcher( Vallex_matcher):
     #def function_agreement( self, ext_arg_deprel, val_arg_functor):
     #    pass
 
-    def form_agreement( self, ext_case_feat, ext_case_mark_rels, val_form):
+    def form_agreement( self, ext_form, ext_case_mark_rels, val_form):
         if len( ext_case_mark_rels) > 1:
             print( "WARNING! TOO MUCH CASE MARK RELS OF EXT ARGUMENT")
         val_form_list = val_form.split( '-')
@@ -15,7 +15,7 @@ class C_vallex_matcher( Vallex_matcher):
             if val_case == "":
                 val_case = "0"
 
-            ext_case = self.cases[ ext_case_feat ]
+            ext_case = self.cases[ ext_form ]
             if ext_case_mark_rels == [] and val_prep == "" and val_conj == "":
                 if val_case == ext_case:
                     return True

@@ -12,7 +12,7 @@ class Cs_frame_extractor( Frame_extractor):
         is_numerative, original_case = self.consider_numerative( node)
         argument = super().create_argument( node)
         if is_numerative:
-            argument.case_feat = original_case
+            argument.form = original_case
         return argument
 
     def select_arguments( self, node): # -> list of Frame_arguments

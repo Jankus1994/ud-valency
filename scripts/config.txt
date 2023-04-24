@@ -1,0 +1,25 @@
+1	cs:mdin	inclusion of modal verbs
+1	cs:elis	further processing of added (previously elided) subjects
+1	cs:subj	adding missing nominative to subjects
+1	cs:vadj	creating valency frames also for verbal adjectives, including their head as argument
+1	cs:pfin	replacing "Part" VerbFrom with "Fin"
+1	cs:pass	depassivization (both proper and reflexive)
+1	cs:numr	replacing numerative genitives with nominatives or accusatives
+1	cs:auxf	replacing form of clausal arguments with "Fin" if they have an auxiliary with "Fin"
+
+1	en:mdex	exclusion of modal verbs
+1	en:case	adding cases when missing (Nom to subjects, Acc elsewhere - objects and obliques)
+1	en:pass	depassivization (both proper and reflexive)
+1	en:ptgr	for participles and gerunds, including their head as argument (obj / subj)
+1	en:auxf	replacing form of clausal arguments with "Fin" if they have an auxiliary with "Fin"
+1	en:that	adding "(that)" to ccomps without conjunction or bracketing it, if present
+1	en:cvex	excluding verbs acting like prepositions
+
+1	sk:mdin	inclusion of modal verbs
+1	sk:elis	further processing of added (previously elided) subjects
+1	sk:subj	adding missing nominative to subjects
+1	sk:vadj	creating valency frames also for verbal adjectives, including their head as argument
+1	sk:pfin	replacing "Part" VerbFrom with "Fin"
+1	sk:pass	depassivization (both proper and reflexive)
+1	sk:numr	replacing numerative genitives with nominatives or accusatives
+1	sk:auxf	replacing form of clausal arguments with "Fin" if they have an auxiliary with "Fin"

@@ -77,7 +77,7 @@ class Frame_type_arg:
         when comparing two frame_types if they are identical
         """
         if self.deprel == another_frame_arg.deprel and \
-                self.case_feat == another_frame_arg.case_feat and \
+                self.case_feat == another_frame_arg.form and \
                 self.case_mark_rels == another_frame_arg.case_mark_rels:
             return True
         return False
@@ -305,8 +305,8 @@ class Frame_type:
         important for comparing arguments
         """
         # TODO: maybe move the sorting to frame_arg
-        self.args = sorted( self.args, key =
-                lambda arg :( arg.deprel, arg.case_feat, arg.case_mark_rels ))
+        self.args = sorted(self.args, key =
+                lambda arg :(arg.deprel, arg.form, arg.case_mark_rels))
 
     def is_identical_with( self, another_frame_type):  # -> bool
         """ called from Verb_record.consider_new_frame_type
@@ -371,7 +371,7 @@ class Frame_type:
         """
         str_args = []
         for arg in self.args:
-            arg_string = arg.deprel + '-' + arg.case_feat
+            arg_string = arg.deprel + '-' + arg.form
             if arg.case_mark_rels != []:
                 arg_string += '(' + ','.join( arg.case_mark_rels) + ')'
             str_args.append( arg_string)

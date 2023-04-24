@@ -11,7 +11,7 @@ class Frame_argument:
     
     def is_identical_with( self, another_frame_argument): # -> bool
         if ( self.deprel == another_frame_argument.deprel and
-                self.case_feat == another_frame_argument.case_feat and
+                self.case_feat == another_frame_argument.form and
                 self.case_mark_rels == another_frame_argument.case_mark_rels ):
             return True
         return False
@@ -44,10 +44,10 @@ class Frame:
     def has_identical_arguments_with( self, another_frame): # -> bool
         """ chceks if this frame has identical arguments with another frame """
         if ( len( self.arguments) == len( another_frame.arguments) ):
-            sorted_self_args = sorted( self.arguments, key =
-                    lambda arg:( arg.deprel, arg.case_feat, arg.case_mark_rels ))
-            sorted_another_frame_args = sorted( another_frame.arguments, key =
-                    lambda arg:( arg.deprel, arg.case_feat, arg.case_mark_rels ))
+            sorted_self_args = sorted(self.arguments, key =
+                    lambda arg:(arg.deprel, arg.form, arg.case_mark_rels))
+            sorted_another_frame_args = sorted(another_frame.arguments, key =
+                    lambda arg:(arg.deprel, arg.form, arg.case_mark_rels))
             for i in range( len( sorted_self_args)):
                 if not ( sorted_self_args[ i ].is_identical_with( sorted_another_frame_args[ i ]) ):
                     return False
@@ -72,7 +72,7 @@ class Frame:
         """
         argument_strings_list = []
         for argument in self.arguments:
-            argument_string = argument.deprel + '-' + argument.case_feat
+            argument_string = argument.deprel + '-' + argument.form
             if ( argument.case_mark_rels != [] ):                
                 argument_string += '(' + ','.join( argument.case_mark_rels) + ')'
             argument_strings_list.append(  argument_string)

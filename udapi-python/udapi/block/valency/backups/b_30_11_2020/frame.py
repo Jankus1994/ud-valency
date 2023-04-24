@@ -34,7 +34,7 @@ class Frame_type_arg:
 
     def is_identical_with( self, another_frame_arg):  # -> bool
         if self.deprel == another_frame_arg.deprel and \
-                self.case_feat == another_frame_arg.case_feat and \
+                self.case_feat == another_frame_arg.form and \
                 self.case_mark_rels == another_frame_arg.case_mark_rels:
             return True
         return False
@@ -50,7 +50,7 @@ class Example_sentence:
         self.tokens = []
         for node in sentence_nodes:
             token = Token()
-            token.set_form( node.form)
+            token.set_form(node._form)
 
             if node is actual_node:
                 token.set_role( Role.PRED)
@@ -148,8 +148,8 @@ class Frame_type:
 
     def sort_args( self):
         # TODO: maybe move the sorting to frame_arg
-        self.args = sorted( self.args, key =
-                lambda arg :( arg.deprel, arg.case_feat, arg.case_mark_rels ))
+        self.args = sorted(self.args, key =
+                lambda arg :(arg.deprel, arg.form, arg.case_mark_rels))
 
     def process_first_inst( self):
         self.first_frame_inst.process_sentence()
@@ -206,7 +206,7 @@ class Frame_type:
         """
         self.str_args = []
         for arg in self.args:
-            arg_string = arg.deprel + '-' + arg.case_feat
+            arg_string = arg.deprel + '-' + arg.form
             if arg.case_mark_rels != []:
                 arg_string += '(' + ','.join( arg.case_mark_rels) + ')'
             self.str_args.append( arg_string)

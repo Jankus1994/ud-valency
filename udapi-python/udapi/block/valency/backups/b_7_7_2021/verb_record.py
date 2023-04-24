@@ -16,7 +16,7 @@ class Verb_record:
         # comparing with already existing frames
         for frame_type in self.frame_types:
             if frame_type.is_identical_with( new_frame_type):
-                frame_type.reconnect_args( new_frame_type)
+                frame_type.reconnect_insts(new_frame_type)
                 frame_type.add_inst( new_frame_inst)
                 break
         else:  # no identical frame was found

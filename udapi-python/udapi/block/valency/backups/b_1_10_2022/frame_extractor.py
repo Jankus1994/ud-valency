@@ -1,6 +1,10 @@
 import pickle
-from udapi.block.valency.verb_record import Verb_record
-from udapi.block.valency.frame import *
+from verb_record import Verb_record
+from frame_type import Frame_type
+from frame_inst_arg import Frame_inst_arg
+from frame_type_arg import Frame_type_arg
+from frame_inst import Frame_inst
+from sent_token import Sent_token
 
 class Frame_extractor():
     """ tool used by frame_aligner to extract frames from each verb node
@@ -12,8 +16,9 @@ class Frame_extractor():
         """ called from Frame_aligner.__init__ """
 
         self.appropriate_udeprels = \
-                [ "nsubj", "csubj", "obj", "iobj", "ccomp", "xcomp", "expl" ]
-        self.appropriate_deprels = [ "obl:arg", "obl:agent" ]
+                [ "nsubj", "csubj", "obj", "iobj", "ccomp", "xcomp", "expl" , "obl" ]
+        #self.appropriate_deprels = [ "obl:arg", "obl:agent" ]  # !! move to Czech module
+        #self.possible_udeprels = [ "obl" ]
         self.appropriate_child_rels = [ "case", "mark" ]
 
         self.verb_record_class = Verb_record
@@ -34,11 +39,11 @@ class Frame_extractor():
                 frame_insts.append( frame_inst)
         bundle_id = tree.bundle.bundle_id
         for index, frame_inst in enumerate( frame_insts):
-            frame_inst.set_bundle_id( bundle_id)
-            frame_inst.set_index( index)
+            frame_inst.bundle_id = bundle_id
+            frame_inst.index = index
         return frame_insts
     
-    def _process_node( self, node):  # void
+    def _process_node( self, node):  # -> Frame_inst
         """ called from process_tree
         searching verbs and calling create_frame for them
         """
@@ -70,7 +75,7 @@ class Frame_extractor():
         frame_type.add_inst( frame_inst)  # connection between frame type and inst
 
         # adding the frame to the verb_record
-        verb_record.consider_new_frame_type( frame_type, frame_inst)
+        verb_record.consider_new_frame_type( frame_type) #, frame_inst)
 
         return frame_inst
 
@@ -95,34 +100,47 @@ class Frame_extractor():
 
             # frame arguments
             if sent_node.parent is verb_node:
-                if sent_node.udeprel in self.appropriate_udeprels or \
-                        sent_node.deprel in self.appropriate_deprels:
+                #if sent_node.udeprel in self.appropriate_udeprels or \
+                #        sent_node.deprel in self.appropriate_deprels:
+                if sent_node.udeprel in self.appropriate_udeprels:
                     deprel, case_feat, child_rels = self._get_arg_features( sent_node)
                     frame_type_arg = self.frame_type_arg_class( \
                                         deprel, case_feat, child_rels)
                     frame_inst_arg = self.frame_inst_arg_class()
+                    if sent_node.udeprel == "obl":
+                        # oblique args may or may not be a part of the frame
+                        # will be decided later -> not definitive
+                        frame_inst_arg.definitive = False
                     token.set_arg( frame_inst_arg)  # connection of token and argument
                     frame_inst.add_arg( frame_inst_arg)
                     frame_type_arg.add_inst( frame_inst_arg)
+                    frame_type.add_arg( frame_type_arg)
 
-        frame_inst.set_sent_tokens( sent_tokens)
-        frame_inst.set_verb_node_ord( verb_node.ord)
+        frame_inst.sent_tokens = sent_tokens
+        frame_inst.verb_node_ord = verb_node.ord
         verb_parent_node = verb_node.parent
         if verb_parent_node is not None:
-            frame_inst.set_verb_parent_ord( verb_parent_node.ord)
-            frame_inst.set_verb_parent_upos( verb_parent_node.upos)
-        frame_inst.set_verb_deprel( verb_node.deprel)
+            frame_inst.verb_parent_ord = verb_parent_node.ord
+            frame_inst.verb_parent_upos = verb_parent_node.upos
+        frame_inst.verb_deprel = verb_node.deprel
+        frame_inst.verb_depth = int( verb_node.get_attrs( [ "depth" ])[ 0 ])
+        frame_inst.verb_child_num = int( verb_node.get_attrs( [ "children" ])[ 0 ])
 
     def _create_token( self, token_node):  # -> Token
         """ called from _process_sentence
-        creation and basic initializarion of token
+        creation and basic initialization of token
         """
-        token = Token()
-        token.set_form(token_node._form)
+        token = Sent_token(token_node.ord, token_node._form)
+
         no_space_after = token_node.no_space_after #or node is sentence_nodes[ -1 ]
         if no_space_after:
             token.unmark_space()  # space is default otherwise
         return token
+
+    def _udeprel_is_appropriate( self, udeprel):  # -> bool
+        if udeprel in self.appropriate_udeprels:
+            return 
+
 
     def _get_arg_features( self, node):  # -> tuple ( string, string, list of strings )
         """ called from _process_sentence """

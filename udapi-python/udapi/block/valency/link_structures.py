@@ -92,6 +92,14 @@ class Frame_inst_link:
                             ab_frame_inst_arg_link)
                     break
 
+    def get_other_frame_inst( self, frame_inst):  # -> Frame_type
+        """ not used in the general system (called from vallex_evaluator) """
+        if frame_inst is self.a_frame_inst:
+            return self.b_frame_inst
+        elif frame_inst is self.b_frame_inst:
+            return self.a_frame_inst
+        else:
+            return None
 
     #def add_frame_inst_arg_link( self, 
 
@@ -140,12 +148,12 @@ class Frame_type_link:
         # assymetric !
         return self.b_frame_type == translation_frame_type
     
-    def get_the_other_frame_type( self, frame_type):  # -> Frame_type
+    def get_other_frame_type( self, frame_type):  # -> Frame_type
         """ not used in the general system (called from vallex_evaluator) """
         if frame_type is self.a_frame_type:
             return self.b_frame_type
         elif frame_type is self.b_frame_type:
-            return self.b_frame_type
+            return self.a_frame_type
         else:
             return None
 

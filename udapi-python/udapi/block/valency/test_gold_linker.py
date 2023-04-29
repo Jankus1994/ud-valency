@@ -8,11 +8,11 @@ class Test_gold_linker( Linker):
     #    super().__init__()
     #    self.gold_file = None
 
-    #def set_gold_file( self, gold_file_name):
-    #    self.gold_file = open( gold_file_name, 'r')
+    def set_gold_file( self, gold_file_name):
+        self.gold_file = open( gold_file_name, 'r')
 
     def get_gold_pairs( self ):
-        #line = self.gold_file.readline()
+        line = self.gold_file.readline()
         fields = line.split( '\t')
         pairs_str = fields[ 0 ]
         pairs = []

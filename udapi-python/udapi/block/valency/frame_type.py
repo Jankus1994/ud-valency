@@ -356,18 +356,18 @@ class Frame_type:
         subtree is used here """
         return superframe.tree_inst_num
 
-    # def try_reduce_subtrees( self, only_obl):
-    #     tree_subframes_copy = self.tree_subframes.copy()
-    #     for tree_subframe in tree_subframes_copy:
-    #         if self.should_reduce( tree_subframe, only_obl):
-    #             frames_to_reduce = tree_subframe.get_subtree()
-    #             for frame_to_reduce in frames_to_reduce:
-    #                 self.absorb_frame( frame_to_reduce)
-    #                 assert frame_to_reduce in self.verb_record.frame_types
-    #                 self.verb_record.remove_frame( frame_to_reduce)
-    #             self.remove_subframe( tree_subframe)
-    #         else:
-    #             tree_subframe.try_reduce_subtrees( only_obl)
+    def try_reduce_subtrees( self, only_obl):
+        tree_subframes_copy = self.tree_subframes.copy()
+        for tree_subframe in tree_subframes_copy:
+            if self.should_reduce( tree_subframe, only_obl):
+                frames_to_reduce = tree_subframe.get_subtree()
+                for frame_to_reduce in frames_to_reduce:
+                    self.absorb_frame( frame_to_reduce)
+                    assert frame_to_reduce in self.verb_record.frame_types
+                    self.verb_record.remove_frame( frame_to_reduce)
+                self.remove_subframe( tree_subframe)
+            else:
+                tree_subframe.try_reduce_subtrees( only_obl)
 
     def try_reduce_itself( self, only_obl):
         #for superframe in self.superframes:

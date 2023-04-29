@@ -14,7 +14,7 @@ from collections import Counter
 
 class En_frame_extractor( Frame_extractor):
 
-    config_codes = [ "pass", "cvex", "case", "that", "auxf", "ptgr", "mdex" ]
+    #config_codes = [ "pass", "cvex", "case", "that", "auxf", "ptgr", "mdex" ]
 
     def __init__( self, **kwargs):
         self.modals_inclusion = False
@@ -101,8 +101,8 @@ class En_frame_extractor( Frame_extractor):
             if self._verb_is_modal( verb_node):
                 if verb_node.parent is arg_node:
                     frame_type_arg.deprel = "xcomp"
-        if self.config_dict[ "auxf" ]:
-            frame_type_arg = self._consider_aux_form( frame_type_arg, arg_node)
+        #if self.config_dict[ "auxf" ]:
+        #    frame_type_arg = self._consider_aux_form( frame_type_arg, arg_node)
         if self.config_dict[ "ptgr" ]:
             if verb_node.feats[ "VerbForm" ] in [ "Part", "Ger" ] and \
                     verb_node.udeprel in [ "acl", "amod" ] and \

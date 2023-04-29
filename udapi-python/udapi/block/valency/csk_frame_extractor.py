@@ -14,7 +14,7 @@ from collections import Counter
 
 class Csk_frame_extractor( Frame_extractor):
 
-    config_codes = [ "elis", "subj", "vadj", "pfin", "pass", "numr", "auxf", "mdin" ]
+    #config_codes = [ "elis", "subj", "vadj", "pfin", "pass", "numr", "auxf", "mdin" ]
 
     def __init__( self, **kwargs):
         self.modals_inclusion = True
@@ -23,7 +23,7 @@ class Csk_frame_extractor( Frame_extractor):
 
         if not self.modals_inclusion:
             self.config_dict[ "mdin" ] = False
-        self.elid_pron_counter = Counter()
+        #self.elid_pron_counter = Counter()
 
         self.pron_sg1 = ""
         self.pron_sg2 = "ty"
@@ -75,14 +75,8 @@ class Csk_frame_extractor( Frame_extractor):
                     if child.deprel in [ "nummod:gov", "det:numgov" ]:
                         self.arg_examples_counter["numerative"] += 1
                         frame_type_arg.form = "Num"
-        # if self.spec_allowed[ "copula_comps" ]:
-        #     if "comp" in frame_type_arg.deprel:
-        #         if frame_type_arg.form == "":
-        #             for child_node in arg_node.children:
-        #                 if child_node.lemma == self.verb_be:
-        #                     frame_type_arg.form = child_node.feats[ "VerbForm" ]
-        if self.config_dict[ "auxf" ]:
-            frame_type_arg = self._consider_aux_form( frame_type_arg, arg_node)
+        #if self.config_dict[ "auxf" ]:
+        #    frame_type_arg = self._consider_aux_form( frame_type_arg, arg_node)
         if self.config_dict[ "pfin" ]:
             if frame_type_arg.form == "Part":
                 self.arg_examples_counter["part_fin"] += 1
@@ -209,7 +203,7 @@ class Csk_frame_extractor( Frame_extractor):
             #     # the node can be a complement of a parent verb, which could confirm the 1./2. person
             #     if verb_node.deprel == "xcomp" and verb_node.parent.upos == "VERB":
             #         token_person_1_2 = self.try_getting_person_1_2( verb_node.parent)
-            self.elid_pron_counter[ subj_token.form ] += 1
+            #self.elid_pron_counter[ subj_token.form ] += 1
 
         return elided_type_arg, elided_inst_arg, subj_token
 
@@ -390,4 +384,4 @@ class Csk_frame_extractor( Frame_extractor):
 
     def _print_example_counts( self):
         super()._print_example_counts()
-        print( self.elid_pron_counter)
+        #print( self.elid_pron_counter)

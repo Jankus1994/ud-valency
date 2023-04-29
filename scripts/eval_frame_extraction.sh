@@ -68,7 +68,7 @@ if [ $variant = m ]; then
       read.Conllu \
           files="$input_folder""$treebank_name""$input_suffix" \
       valency."Eval_frame_extractor" \
-          lang=$lang_mark_1 \
+          lang_mark=$lang_mark_1 \
           gold_name="$gold_name" \
           mist_name="$mist_name" \
           output_form=$output_form \

@@ -1,30 +1,63 @@
 from udapi.core.block import Block
+from copy import deepcopy
+from collections import defaultdict
 from frame_extractor import Frame_extractor
 from cs_frame_extractor import Cs_frame_extractor
 from en_frame_extractor import En_frame_extractor
 from base_frame_extractor import Base_frame_extractor
 
 class Eval_frame_extractor( Block):
-    def __init__( self, lang="", gold_name="", mist_name="",
+    def __init__( self, lang_mark="", gold_name="", mist_name="",
                   output_form="text", output_name="", modals="", **kwargs):
         """ called from Frame_aligner.__init__ """
         super().__init__( **kwargs)
         extractor_class = Frame_extractor
-        if lang == "cs":
+        if lang_mark == "cs":
             extractor_class = Cs_frame_extractor
-        elif lang == "en":
+        elif lang_mark == "en":
             extractor_class = En_frame_extractor
         #extractor_class = Frame_extractor
-        self.extractor = extractor_class( output_form=output_form,
-                                          output_name=output_name,
-                                          modals=modals, **kwargs)
         self.base_extractor = Base_frame_extractor( output_form=output_form,
-                                                    output_name=output_name, **kwargs)
+                                                    output_name=output_name,
+                                                    **kwargs)
+        extractor = extractor_class( lang_mark=lang_mark,
+                                     output_form=output_form,
+                                     output_name=output_name,
+                                     modals=modals, **kwargs)
+        self.extractor_dict = self.clone_config_extractor( extractor)
+
         self.sent_id = 0
         self.gold_sent_frames = self.read_gold_data( gold_name)
         self.mist_file = open( mist_name, 'w')
-        self.extr_sent_frame_insts = []
         self.base_sent_frame_insts = []
+        self.extr_sent_frame_insts = defaultdict( list)
+
+    @staticmethod
+    def clone_config_extractor( extractor):
+        extractor.config_dict[ "coun" ] = False
+        extractor.config_dict[ "outp" ] = False
+        config_codes = list( extractor.config_dict.keys())
+        config_codes.remove( "coun")
+        config_codes.remove( "outp")
+        extractor_dict = {}
+
+        for actual_config_code in config_codes:
+            ext_only_copy = deepcopy( extractor)
+            ext_excl_copy = deepcopy( extractor)
+            for other_config_code in config_codes:
+                if other_config_code == actual_config_code:
+                    ext_only_copy.config_dict[ other_config_code ] = True
+                    ext_excl_copy.config_dict[ other_config_code ] = False
+                else:
+                    ext_only_copy.config_dict[ other_config_code ] = False
+                    ext_excl_copy.config_dict[ other_config_code ] = True
+            extractor_dict[ actual_config_code + "_only" ] = ext_only_copy
+            extractor_dict[ actual_config_code + "_excl" ] = ext_excl_copy
+
+        extractor.config_dict[ "coun" ] = True
+        extractor.config_dict[ "outp" ] = True
+        extractor_dict[ "full" ] = extractor
+        return extractor_dict
 
     @staticmethod
     def read_gold_data( gold_name):
@@ -55,25 +88,58 @@ class Eval_frame_extractor( Block):
         return sent_frames
 
     def process_tree( self, tree):  # -> list of Frame_inst
-        frame_insts = self.extractor.process_tree( tree)
-        base_frame_insts = self.base_extractor.process_tree( tree)
         self.sent_id += 1
+        base_frame_insts = self.base_extractor.process_tree( tree)
         if self.sent_id % 10 == 0:
-            self.extr_sent_frame_insts.append( frame_insts)
             self.base_sent_frame_insts.append( base_frame_insts)
 
-        return frame_insts
+        for code, extractor in self.extractor_dict.items():
+            frame_insts = extractor.process_tree( tree)
+            if self.sent_id % 10 == 0:
+                self.extr_sent_frame_insts[ code ].append( frame_insts)
+
+        return base_frame_insts
 
     def after_process_document( self, doc):
-        self.extractor.after_process_document( doc)
+        names = [ "names", "BASE" ]
+        frm_id = "FRM_ID"
+        lemmas = "LEMMAS"
+        arg_id = "ARG_ID"
+        argdsc = "ARGDSC"
+        self.bare_results = { frm_id: [ frm_id ], lemmas: [ lemmas ],
+                              arg_id: [ arg_id ], argdsc: [ argdsc ]}
+        self.impr_results = { frm_id: [ frm_id, "-" ], lemmas: [ lemmas, "-" ],
+                              arg_id: [ arg_id, "-" ], argdsc: [ argdsc, "-" ]}
+
         self.base_extractor.after_process_document( doc)
-        extr_sent_frames = self.get_extr_frames( self.extr_sent_frame_insts)
         base_sent_frames = self.get_extr_frames( self.base_sent_frame_insts)
         base_res = self.compare_sent_frames(
-                self.gold_sent_frames, base_sent_frames, "BASE")
-        extr_res = self.compare_sent_frames(
-                self.gold_sent_frames, extr_sent_frames, "EXTR")
-        self.compare_with_base( extr_res, base_res)
+                self.gold_sent_frames, base_sent_frames)
+
+
+        for code, extractor in self.extractor_dict.items():
+            #print( "\n==========================\n")
+            #print( ">>>", code, "<<<")
+            names.append( code)
+            extractor.after_process_document( doc)
+            extr_sent_frames = self.get_extr_frames(
+                    self.extr_sent_frame_insts[ code ])
+            extr_res = self.compare_sent_frames(
+                    self.gold_sent_frames, extr_sent_frames)
+            self.compare_with_base( extr_res, base_res)
+
+        print( '\t'.join( names))
+
+        print( '\t'.join( self.bare_results[ frm_id ]))
+        print( '\t'.join( self.bare_results[ lemmas ]))
+        print( '\t'.join( self.bare_results[ arg_id ]))
+        print( '\t'.join( self.bare_results[ argdsc ]))
+
+        print( '\t'.join( self.impr_results[ frm_id ]))
+        print( '\t'.join( self.impr_results[ lemmas ]))
+        print( '\t'.join( self.impr_results[ arg_id ]))
+        print( '\t'.join( self.impr_results[ argdsc ]))
+
 
     def get_extr_frames( self, sent_frame_insts):
         sent_frames = []
@@ -107,7 +173,7 @@ class Eval_frame_extractor( Block):
 
         return eval_frame
 
-    def compare_sent_frames( self, gold_sent_frames, extr_sent_frames, extr_name=""):
+    def compare_sent_frames( self, gold_sent_frames, extr_sent_frames):
         assert len( gold_sent_frames) == len( extr_sent_frames)
         zipped_sent_frames = zip( gold_sent_frames, extr_sent_frames)
         rel_frames = 0
@@ -122,6 +188,7 @@ class Eval_frame_extractor( Block):
             i += 1
             print( "======", file=self.mist_file)
             print( i, file=self.mist_file)
+
             rel_frames += len( gold_eval_frames)
             sel_frames += len( extr_eval_frames)
             unpaired_extr_indices = [ True ] * len( extr_eval_frames)
@@ -147,7 +214,6 @@ class Eval_frame_extractor( Block):
                     extr_eval_frame = extr_eval_frames[ j ]
                     print( "<<", extr_eval_frame.verb[ LEMMA ], file=self.mist_file)
 
-
         if agr_frames == 0:
             fr_id_perc = 0.0
             lemma_perc = 0.0
@@ -165,13 +231,15 @@ class Eval_frame_extractor( Block):
             arg_desc_perc_avg = round( arg_desc_perc_sum / agr_frames, 2)
 
         #print( sel_frames, rel_frames , agr_frames)
-        if extr_name:
-            print( "===")
-            print( extr_name)
-            print( "FRM ID: ", fr_id_perc)
-            print( "LEMMAS: ", lemma_perc)
-            print( "ARG ID: ", arg_id_perc_avg)
-            print( "ARGDSC: ", arg_desc_perc_avg)
+        #print( "===")
+        #print( "FRM ID: ", fr_id_perc)
+        #print( "LEMMAS: ", lemma_perc)
+        #print( "ARG ID: ", arg_id_perc_avg)
+        #print( "ARGDSC: ", arg_desc_perc_avg)
+        self.bare_results[ "FRM_ID" ].append( str( fr_id_perc))
+        self.bare_results[ "LEMMAS" ].append( str( lemma_perc))
+        self.bare_results[ "ARG_ID" ].append( str( arg_id_perc_avg))
+        self.bare_results[ "ARGDSC" ].append( str( arg_desc_perc_avg))
         return fr_id_perc, lemma_perc, arg_id_perc_avg, arg_desc_perc_avg
 
     def compare_eval_frame( self, gold_eval_frame, extr_eval_frame):
@@ -226,11 +294,10 @@ class Eval_frame_extractor( Block):
 
         return lemma_point, arg_id_perc, arg_desc_perc
 
-    @staticmethod
-    def compare_with_base( extr_results, base_results):
-        print( "===")
-        print( "IMPR")
-        val_names = [ "FRM ID", "LEMMAS", "ARG ID", "ARGDSC" ]
+    def compare_with_base( self, extr_results, base_results):
+        #print( "===")
+        #print( "IMPR")
+        val_names = [ "FRM_ID", "LEMMAS", "ARG_ID", "ARGDSC" ]
         for extr_val, base_val, val_name in zip( extr_results, base_results, val_names):
             resid = 100 - base_val
             over = extr_val - base_val
@@ -239,10 +306,8 @@ class Eval_frame_extractor( Block):
                 improve = "-INF"
             elif resid > 0:
                 improve = round( 100 / resid * over, 2)
-            print( val_name + ": ", improve)
-
-
-
+            #print( val_name + ": ", improve)
+            self.impr_results[ val_name ].append( str( improve))
 
 ID = 0
 LEMMA = 1

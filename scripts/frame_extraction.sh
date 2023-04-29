@@ -59,22 +59,25 @@ elif [ $output_form = "test" ]; then
   output_folder="$data""test_results/"
 fi
 
-extractor_block="Frame_extractor"
-if [ $lang_mark_1 = "en" ]; then
-  extractor_block="En_frame_extractor"
-elif [ $lang_mark_1 = "cs" ]; then
-  extractor_block="Cs_frame_extractor"
-elif [ $lang_mark_1 = "sk" ]; then
-  extractor_block="Sk_frame_extractor"
-fi
+
 
 if [ $variant = m ]; then
+  extractor_block="Frame_extractor"
+  if [ $lang_mark_1 = "en" ]; then
+    extractor_block="En_frame_extractor"
+  elif [ $lang_mark_1 = "cs" ]; then
+    extractor_block="Cs_frame_extractor"
+  elif [ $lang_mark_1 = "sk" ]; then
+    extractor_block="Sk_frame_extractor"
+  fi
+
   input_folder="$data""m_conllu/"
   input_suffix=".conllu"
   udapy \
       read.Conllu \
           files="$input_folder""$treebank_name""$input_suffix" \
       valency."$extractor_block" \
+          lang_mark="$lang_mark_1" \
           output_form=$output_form \
           output_name="$output_folder""$treebank_name""$output_suffix" \
           config_name="config.txt"
@@ -88,14 +91,30 @@ else
   #align_file_name=$data/b_aligned/$name \
   #for i in 0 1 2 3 4 5 6
   #do
+
+  extractor_block="Frame_aligner"
+  if [ $lang_mark_2 = "en" ]; then
+    #extractor_block="Cs_En_frame_aligner"
+    extractor_block="Cs_En_fral_tester"
+  elif [ $lang_mark_2 = "sk" ]; then
+    #extractor_block="Cs_Sk_frame_aligner"
+    extractor_block="Cs_Sk_fral_tester"
+  fi
+
+  run_num=21
+
+  input_folder="$data""b_conllu/"
+  input_suffix=".conllu"
   udapy \
       read.Conllu \
-          files=$data/b_conllu/$name.conllu \
-      valency.Cs_Sk_fral_tester \
+          files="$input_folder""$treebank_name""$input_suffix" \
+      valency."$extractor_block" \
           run_num=$run_num \
-          align_file_name=$data/b_aligned/$name \
-          output_form=$data/ext_pic/ \
-          output_name=$name #\
+          align_file_name=$data/b_aligned/$treebank_name \
+          output_form=$output_form \
+          output_name="$output_folder""$treebank_name""$output_suffix" \
+          config_name="config.txt"
+          #modals="$modals"
   #            obl_ratio_limit=0.5 \
   #            min_obl_inst_num=$i
   #done

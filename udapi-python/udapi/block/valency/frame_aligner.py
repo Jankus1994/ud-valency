@@ -21,26 +21,34 @@ from fa_linker import Fa_linker
 from faud_linker import FaUd_linker
 from sim_linker import Sim_linker
 from dist_measurer import Dist_measurer
+from dict_printer import Dict_printer
 
 class Frame_aligner( Block):
     #def __init__( self, align_file_name="", output_folder="", output_name="",
     #              obl_ratio_limit="0.5", min_obl_inst_num=2, **kwargs):
-    def __init__( self, run_num=0, align_file_name="", output_folder="",
-                  output_name="", log_file_name="", **kwargs):
+    def __init__( self, run_num=0, align_file_name="", output_form="",
+                  output_name="", config_name="config.txt", log_file_name="", **kwargs):
 
         """ overriden block method """
         super().__init__( **kwargs)
 
         self.run_num = run_num
         self.align_file = None
-        self.output_folder = output_folder
+        self.output_form = output_form
         self.output_name = output_name
-        self.log_file = open( log_file_name, 'w')
+        self.to_link_name = output_name + ".tolink"
+        self.linker = Linker()  # !!!
+        self.log_file_name = log_file_name
+        if log_file_name != "":
+            self.log_file = open( log_file_name, 'w')
+            self.linker.set_log_file( self.log_file)
         #self.obl_ratio_limit = float( obl_ratio_limit)
         #self.min_obl_inst_num = int( min_obl_inst_num)
 
-        self.linker = Linker()  # !!!
-        self.linker.set_log_file( self.log_file)
+        if config_name:
+            self.config_dict = Frame_extractor.process_config_file( config_name, "")
+
+
 
         sim_treshold = 5
 
@@ -73,6 +81,8 @@ class Frame_aligner( Block):
         self.b_lang_mark = ""
         self.examiner = Modal_examiner()
 
+        self.frame_insts_pairs = []
+
     def process_document( self, document):
         #bundles_num = len( document.bundles)
         #print( bundles_num)
@@ -92,8 +102,13 @@ class Frame_aligner( Block):
                 b_frame_insts = \
                         self.b_frame_extractor.process_tree( tree_root)
                 self.examiner.examine_sentence( tree_root, self.b_lang_mark)
+
+        frame_insts_pair = ( a_frame_insts, b_frame_insts )
+        self.frame_insts_pairs.append( frame_insts_pair)
+
         word_alignments = self.align_file.readline().split()
         #word_alignments = []
+
 
         frame_pairs = self.linker.find_frame_pairs( a_frame_insts, b_frame_insts,
                                                     word_alignments)
@@ -104,8 +119,8 @@ class Frame_aligner( Block):
         #               for frame_pair in frame_pairs ])
         verb_pairs = '|'.join( [ frame_pair.a_frame_type.verb_lemma+'-'+frame_pair.b_frame_type.verb_lemma
                        for frame_pair in frame_pairs ])
-        print( len( a_frame_insts), len( b_frame_insts), len( frame_pairs),
-               a_verbs, b_verbs, verb_pairs, bundle.bundle_id, word_alignments, sep='\t')
+        #print( len( a_frame_insts), len( b_frame_insts), len( frame_pairs),
+        #       a_verbs, b_verbs, verb_pairs, bundle.bundle_id, word_alignments, sep='\t')
         #return [], [], []
 
         for frame_pair in frame_pairs:
@@ -128,6 +143,10 @@ class Frame_aligner( Block):
     def after_process_document( self, doc):  # void
         """ overriden block method """
         #self.examiner.print_stats()
+
+        self.a_frame_extractor.after_process_document( doc)
+        self.b_frame_extractor.after_process_document( doc)
+
         a_dict_of_verbs = self.a_frame_extractor.get_dict_of_verbs()
         b_dict_of_verbs = self.b_frame_extractor.get_dict_of_verbs()
         #self.end_obl( a_dict_of_verbs)
@@ -142,7 +161,10 @@ class Frame_aligner( Block):
         #print( self.b_lang_mark, len( self._b_dict_of_verbs))
         #print( self.a_and_b, self.a_only, self.b_only)
         self.linker.print_stats()
-        self.log_file.close()
+        if self.log_file_name != "":
+            self.log_file.close()
+        Dict_printer.print_dict( self.output_form, a_dict_of_verbs, self.output_name,
+                                 b_dict_of_verbs)
         super().after_process_document( doc)
 
     def end_obl(self, dict_of_verbs):
@@ -175,7 +197,12 @@ class Frame_aligner( Block):
         #        "_" + self.b_lang_mark + "_" + self.output_name
         #b_output_name = self.output_folder + self.b_lang_mark + \
         #        "_" + self.a_lang_mark + "_" + self.output_name
-        a_b_output_name = self.output_folder + "_" + self.output_name
+        a_b_output_name = self.output_name
+
+        extractors = ( self.a_frame_extractor, self.b_frame_extractor )
+        data_to_link = self.frame_insts_pairs, extractors
+        pickle.dump( data_to_link, open( self.to_link_name, 'wb'))
+
         pickle.dump( a_b_dicts_of_verbs, open( a_b_output_name, 'wb'))
         #pickle.dump( a_dict_of_verbs, open( a_output_name, 'wb'))
         #pickle.dump( b_dict_of_verbs, open( b_output_name, 'wb'))

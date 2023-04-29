@@ -3,7 +3,7 @@ import sys
 
 from frame_aligner import Frame_aligner
 from cs_frame_extractor import Cs_frame_extractor
-from en_module import En_frame_extractor
+from en_frame_extractor import En_frame_extractor
 
 
 class Cs_En_frame_aligner( Frame_aligner):

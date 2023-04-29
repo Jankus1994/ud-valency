@@ -2,7 +2,6 @@ import logging
 
 from frame_aligner import Frame_aligner
 from frame_extractor import Frame_extractor
-from en_module import En_frame_extractor
 from cs_frame_extractor import Cs_frame_extractor
 
 from ud_linker import Ud_linker

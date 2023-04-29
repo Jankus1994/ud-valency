@@ -5,24 +5,29 @@ from collections import Counter
 class Dict_printer:
 
     @staticmethod
-    def print_dict( output_form, dict_of_verbs, output_name):
+    def print_dict( output_form, dict_of_verbs, output_name, other_dict=None):
+        is_bilignual = other_dict is not None
         if output_form == "stats":
-            Dict_printer.print_mono_stats( dict_of_verbs,
+            Dict_printer.print_stats( dict_of_verbs, is_bilignual,
                                            out_name=output_name)
         # elif output_form == "text":
         #     Dict_printer.print_mono_frames( dict_of_verbs,
         #                                     out_name=output_name)
         elif output_form == "text":
-            Dict_printer.print_mono_frames_by_tree( dict_of_verbs,
+            Dict_printer.print_frames_by_tree( dict_of_verbs, is_bilignual,
                                             out_name=output_name)
         # elif output_form == "textw":
         #     Dict_printer.print_mono_frames( dict_of_verbs, with_examples=False,
         #                                     out_name=output_name)
         elif output_form == "textw":
-            Dict_printer.print_mono_frames_by_tree( dict_of_verbs, with_examples=False,
-                                            out_name=output_name)
+            Dict_printer.print_frames_by_tree( dict_of_verbs, is_bilignual,
+                                              with_examples=False,
+                                              out_name=output_name)
         elif output_form == "bin":
-            pickle.dump( dict_of_verbs, open( output_name, 'wb'))
+            output_object = dict_of_verbs
+            if other_dict is not None:
+                output_object = ( dict_of_verbs, other_dict )
+            pickle.dump( output_object, open( output_name, 'wb'))
 
         elif output_form == "test":
             Dict_printer.print_test_sample( dict_of_verbs, output_name)
@@ -35,7 +40,7 @@ class Dict_printer:
             a_verb_record = a_b_valency_dict[ a_verb_lemma ]
             for a_frame_type in a_verb_record.frame_types:
                 for a_b_ft_link in a_frame_type.links:
-                    b_frame_type = a_b_ft_link.get_the_other_frame_type( a_frame_type)
+                    b_frame_type = a_b_ft_link.get_other_frame_type(a_frame_type)
                     b_verb_lemma = b_frame_type.verb_lemma
                     print( '\t', a_verb_lemma, b_verb_lemma)
 
@@ -57,13 +62,13 @@ class Dict_printer:
             for i, frame_type in enumerate( verb_record.frame_types):
                 index = i + 1
                 indent_num = 0
-                Dict_printer.print_mono_frame(
+                Dict_printer.print_frame(
                         frame_type, index, indent_num, output, with_examples)
         if out_name:
             output.close()
 
     @staticmethod
-    def print_mono_frames_by_tree( dict_of_verbs, with_examples=True, out_name=""):
+    def print_frames_by_tree( dict_of_verbs, is_bilignual, with_examples=True, out_name=""):
         if out_name:
             output = open( out_name, 'w')
         else:
@@ -77,26 +82,42 @@ class Dict_printer:
                                 for frame_type in verb_record.frame_types ])
             print( verb_lemma, "  [" + str( len( verb_record.frame_types))
                    + " frames] (" + str( verb_insts) + " occurs)", file=output)
-            index = 1
             indent_num = 0
             for frame_type in verb_record.subframes:
-                index = Dict_printer.print_mono_frame_by_tree(
-                        frame_type, index, indent_num, output,  with_examples)
+                Dict_printer.print_frame_by_tree(
+                        frame_type, indent_num, output,
+                        with_examples, is_bilignual)
         if out_name:
             output.close()
 
     @staticmethod
-    def print_examples( frame_type, indent_num, output):
+    def print_examples( frame_type, indent_num, output, is_bilignual):
         for j, frame_inst in enumerate( frame_type.insts):
             token_forms = [ str( token) for token in frame_inst.sent_tokens ]
             elided_token_forms = [ '[' + str( token) + ']'
                                    for token in frame_inst.elided_tokens ]
             exam_sent = ' '.join( token_forms + elided_token_forms)
-            print( indent_num * '\t' + "\t\t\t" + str( j+1) + ")  " +
+            example_indent = indent_num * '\t' + "\t\t\t"
+            print( example_indent + str( j+1) + ")  " +
                    exam_sent, file=output)
+            if is_bilignual and frame_inst.link is not None:
+                frame_inst_link = frame_inst.link
+                other_frame_inst = frame_inst_link.get_other_frame_inst( frame_inst)
+                other_frame_type = other_frame_inst.type
+                other_verb = other_frame_type.verb_lemma
+                other_args = "   ".join( [ str( arg) for arg in other_frame_type.args ])
+                other_type_str = other_verb + "  :  " + other_args
+                print( example_indent + '\t' + other_type_str, file=output)
+
+                token_forms = [ str( token) for token in other_frame_inst.sent_tokens ]
+                elided_token_forms = [ '[' + str( token) + ']'
+                                       for token in other_frame_inst.elided_tokens ]
+                exam_sent = ' '.join( token_forms + elided_token_forms)
+                print( example_indent + "\t\t" + exam_sent, file=output)
 
     @staticmethod
-    def print_mono_frame( frame_type, index, indent_num, output, with_examples):
+    def print_frame( frame_type, indent_num, output,
+                     with_examples, is_bilignual):
         index = frame_type.tree_index
         index_part = '\t' + str( index) + "]" + '\t'
         indent = indent_num * '\t'
@@ -110,27 +131,29 @@ class Dict_printer:
         if with_examples:
             occurnum_part = str( len( frame_type.insts)) + " occurs)"
             pre_frame_string = "\t\t" + indent
-            frame_string = "   ".join( [ str( arg) for arg in frame_type.args])
+            frame_string = "   ".join( [ str( arg) for arg in frame_type.args ])
         else:
             occurnum_part = str( len( frame_type.insts)) + ')'
             pre_frame_string = "\t\t\t" + indent
-            frame_string = "   ".join( [ arg.to_str() for arg in frame_type.args])
+            frame_string = "   ".join( [ arg.to_str() for arg in frame_type.args ])
         print( index_part + indent + argnum_part + occurnum_part + super_part,
                file=output)
         print( pre_frame_string + frame_string, file=output)
         if with_examples:
-            Dict_printer.print_examples( frame_type, indent_num, output)
+            Dict_printer.print_examples( frame_type, indent_num, output, is_bilignual)
+
 
     @staticmethod
-    def print_mono_frame_by_tree( frame_type, index, indent_num, output, with_examples):
-        Dict_printer.print_mono_frame( frame_type, index, indent_num,
-                                       output, with_examples)
-        index += 1
+    def print_frame_by_tree( frame_type, indent_num, output,
+                             with_examples, is_bilignual):
+        Dict_printer.print_frame(frame_type, indent_num,
+                                 output, with_examples, is_bilignual)
         for subframe in frame_type.subframes:
             if frame_type.tree_index < subframe.tree_index:
-                index = Dict_printer.print_mono_frame_by_tree(
-                        subframe, index, indent_num+1, output, with_examples)
-        return index
+                Dict_printer.print_frame_by_tree(
+                        subframe, indent_num+1, output,
+                        with_examples, is_bilignual)
+        return
 
     @staticmethod
     def print_test_sample( dict_of_verbs, out_name):
@@ -171,7 +194,7 @@ class Dict_printer:
             print( item)
 
     @staticmethod
-    def print_mono_stats( dict_of_verbs, out_name=""):
+    def print_stats(dict_of_verbs, out_name=""):
         if out_name:
             output = open( out_name, 'w')
         else:

@@ -28,7 +28,7 @@ process_corp () {
     gold_results=../data/test_results/gold_"$test_corp"
     log_file=../data/logs/"$test_corp"
     python3 data_examiner.py $gold_results >> $all_results
-    for run_num in 40
+    for run_num in 21
     do
       auto_results=../data/test_results/auto_"$test_corp"_"$run_num"
 
@@ -39,7 +39,8 @@ process_corp () {
               gold_file_name=$gold_results \
               run_num="$run_num" \
               align_file_name="$data"/b_aligned/"$test_corp" \
-              output_folder="$data"/ext_pic/ \
+              output_form=$output_form \
+              output_folder="$data"/ext_bin/ \
               output_name="$test_corp" \
               log_file_name="$log_file" \
           > $auto_results #> /dev/null
@@ -61,7 +62,7 @@ process_corp () {
 
 if [ $1 == en ]
 then
-  corp=acquis_cs_en
+  corp=UD_pud #acquis_cs_en
   frame_aligner=Cs_En_fral_tester
 elif [ $1 == sk ]
 then
@@ -69,6 +70,18 @@ then
   frame_aligner=Cs_Sk_fral_tester
 fi
 
-process_corp $corp $frame_aligner
+output_folder="$data""text_out/"
+output_suffix=".txt"
+if [ $output_form = "html" ] || [ $output_form = "htmlw" ]; then
+  output_folder="$data""html_out/"
+  output_suffix=".html"
+elif [ $output_form = "bin" ]; then
+  output_folder="$data""ext_bin/"
+  output_suffix=".bin"
+elif [ $output_form = "test" ]; then
+  output_folder="$data""test_results/"
+fi
+
+process_corp $corp $frame_aligner $output_form $output_suffix $output_folder
 
 

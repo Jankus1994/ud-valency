@@ -2,16 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="42aaa1d9-bf02-459a-8c9a-3c34862eea9e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../../../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../scripts/config.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../scripts/config.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../scripts/eval_frame_extraction.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../scripts/eval_frame_extraction.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../scripts/fral_testing_1.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../scripts/fral_testing_1.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../scripts/frame_extraction.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../scripts/frame_extraction.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backups/b_30_11_2020/frame.py" beforeDir="false" afterPath="$PROJECT_DIR$/backups/b_30_11_2020/frame.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backups/b_7_7_2021/frame.py" beforeDir="false" afterPath="$PROJECT_DIR$/backups/b_7_7_2021/frame.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backups/b_7_7_2021/frame_aligner.py" beforeDir="false" afterPath="$PROJECT_DIR$/backups/b_7_7_2021/frame_aligner.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backups/b_7_7_2021/frame_extractor.py" beforeDir="false" afterPath="$PROJECT_DIR$/backups/b_7_7_2021/frame_extractor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backups/b_7_7_2021/verb_record.py" beforeDir="false" afterPath="$PROJECT_DIR$/backups/b_7_7_2021/verb_record.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backups/frame_extractor_zal.py" beforeDir="false" afterPath="$PROJECT_DIR$/backups/frame_extractor_zal.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backups/old_cs_frame_extractor2.py" beforeDir="false" afterPath="$PROJECT_DIR$/backups/old_cs_frame_extractor2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backups/old_frame_extractor.py" beforeDir="false" afterPath="$PROJECT_DIR$/backups/old_frame_extractor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backups/old_frame_extractor2.py" beforeDir="false" afterPath="$PROJECT_DIR$/backups/old_frame_extractor2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backups/b_1_10_2022/dict_printer.py" beforeDir="false" afterPath="$PROJECT_DIR$/backups/b_1_10_2022/dict_printer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/base2_frame_extractor.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/base_frame_extractor.py" beforeDir="false" afterPath="$PROJECT_DIR$/base_frame_extractor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cs_en_fral_tester.py" beforeDir="false" afterPath="$PROJECT_DIR$/cs_en_fral_tester.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cs_en_frame_aligner.py" beforeDir="false" afterPath="$PROJECT_DIR$/cs_en_frame_aligner.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cs_sk_fral_tester.py" beforeDir="false" afterPath="$PROJECT_DIR$/cs_sk_fral_tester.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cs_sk_frame_aligner.py" beforeDir="false" afterPath="$PROJECT_DIR$/cs_sk_frame_aligner.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/csk_frame_extractor.py" beforeDir="false" afterPath="$PROJECT_DIR$/csk_frame_extractor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dict_printer.py" beforeDir="false" afterPath="$PROJECT_DIR$/dict_printer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/en_frame_extractor.py" beforeDir="false" afterPath="$PROJECT_DIR$/en_frame_extractor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eval_frame_extractor.py" beforeDir="false" afterPath="$PROJECT_DIR$/eval_frame_extractor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frame_aligner.py" beforeDir="false" afterPath="$PROJECT_DIR$/frame_aligner.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frame_extractor.py" beforeDir="false" afterPath="$PROJECT_DIR$/frame_extractor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frame_type.py" beforeDir="false" afterPath="$PROJECT_DIR$/frame_type.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/link_structures.py" beforeDir="false" afterPath="$PROJECT_DIR$/link_structures.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_gold_linker.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_gold_linker.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

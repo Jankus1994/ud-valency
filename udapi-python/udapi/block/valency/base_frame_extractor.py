@@ -7,6 +7,7 @@ from frame_inst import Frame_inst
 from sent_token import Sent_token
 from dict_printer import Dict_printer
 from collections import defaultdict, Counter
+from extraction_unit import Extraction_unit
 
 class Base_frame_extractor( Block):
     """ object for monolingual frame extraction
@@ -24,12 +25,19 @@ class Base_frame_extractor( Block):
     output: frame_insts from each sentece, dict
     """
 
-    config_codes = []  # overloaded
+    proper_unit_codes = [ "outp" ]
 
     def __init__( self, lang_mark="", output_form="text", output_name="",
                   config_name="config.txt", **kwargs):
         """ called from Frame_aligner.__init__ """
         super().__init__( **kwargs)
+
+        self.unit_classes = {}
+
+        #
+        #self.fill_unit_class_names( "Base", proper_unit_codes)
+        self.unit_classes[ "outp" ] = Base_outp_unit
+
         self.appropriate_udeprels = \
                 [ "nsubj", "csubj", "obj", "iobj", "ccomp", "xcomp", "expl" ]
         self.appropriate_child_rels = [ "case", "mark" ]
@@ -56,31 +64,45 @@ class Base_frame_extractor( Block):
         self.output_form = output_form
         self.output_name = output_name
 
-        self.config_dict = defaultdict( bool)
-        for config_code in self.config_codes:
-            self.config_dict[ config_code ] = True
-        if config_name:
-            self.config_dict = self.process_config_file( config_name, self.lang_mark)
+        self.unit_dict = defaultdict( lambda : Extraction_unit("", "", None, False))
+        self.config_name = config_name
 
         self.frame_examples_counter = Counter()
         self.arg_examples_counter = Counter()
 
-    @staticmethod
-    def process_config_file( config_name, lang_mark):
-        config_dict = defaultdict( bool)
-        with open( config_name, 'r') as config_file:
-            for line in config_file:
-                if line.rstrip( '\n') == "" or line.startswith( '#'):
-                    continue
-                value, precode, _ = line.split( '\t')
-                code = precode
-                if ':' in precode:
-                    act_lang_mark, code = precode.split( ':', 2)
-                    #print( self.lang_mark, lang_mark)
-                    if act_lang_mark != lang_mark:
+    def before_process_document( self, _):
+        self.process_config_file( self, self.lang_mark)
+
+    def process_config_file( self, lang_mark):
+        if self.config_name:
+            unit_dict = defaultdict( Extraction_unit)
+            with open( self.config_name, 'r') as config_file:
+                for line in config_file:
+                    if line.rstrip( '\n') == "" or line.startswith( '#'):
                         continue
-                config_dict[ code ] = bool( int( value))
-        return config_dict
+                    value, precode, params, _ = line.split( '\t')
+                    act_lang_mark, code = "", precode
+                    if ':' in precode:
+                        act_lang_mark, code = precode.split( ':', 2)
+                        #print( self.lang_mark, lang_mark)
+                        if act_lang_mark != lang_mark:
+                            continue
+                    extraction_unit_class, active = Extraction_unit, False
+                    if bool( int( value)):
+                        extraction_unit_class, active = self.unit_classes[ code ], True
+                    unit_dict[ code ] = \
+                            extraction_unit_class( code, act_lang_mark, self, active,
+                                                   params=params)
+            self.unit_dict = unit_dict
+
+    def after_config(self):
+        return
+
+    def print_units( self):
+        for unit in self.unit_dict.values():
+            print( unit.name, unit.active)
+        print( "---")
+
 
     def process_tree( self, tree):  # -> list of Frame_inst
         """ called as a Block method (monolingual use case)
@@ -96,13 +118,14 @@ class Base_frame_extractor( Block):
             frame_inst.bundle_id = bundle_id
             frame_inst.index = index
         #self._check_coherence()
+
         return frame_insts
 
     def _process_node( self, node):  # -> Frame_inst
         """ called from process_tree
         searching verbs and calling create_frame for them
         """
-        if self._node_is_appropriate( node):
+        if self.node_is_appropriate(node):
             if node.lemma in self.dict_of_verbs:
                 verb_record = self.dict_of_verbs[ node.lemma ]
             else:
@@ -119,7 +142,7 @@ class Base_frame_extractor( Block):
         #    if parent_node.upos in [ "NOUN", "PRON", "I
         return None
 
-    def _node_is_appropriate( self, node):
+    def node_is_appropriate( self, node):
         return node.upos == "VERB"
 
     def _process_frame( self, verb_node):  # -> Frame_inst
@@ -164,13 +187,13 @@ class Base_frame_extractor( Block):
             # frame arguments
             if self._node_is_good_arg( sent_node, verb_node):
                 frame_type_arg, frame_inst_arg = \
-                        self._process_arg( sent_node, verb_node)
+                        self.process_arg( sent_node, verb_node)
                 frame_type_arg, frame_inst_arg = \
                         self._after_arg( frame_type_arg, frame_inst_arg,
                                          sent_node, verb_node)
-                self._connect_arg_with_frame( frame_type, frame_inst,
-                                              frame_type_arg, frame_inst_arg,
-                                              token)
+                self.connect_arg_with_frame( frame_type, frame_inst,
+                                             frame_type_arg, frame_inst_arg,
+                                             token)
 
         frame_inst.sent_tokens = sent_tokens
         frame_inst.verb_node_ord = verb_node.ord
@@ -194,10 +217,12 @@ class Base_frame_extractor( Block):
         return result
 
     def _compl_conditions( self, sent_node, verb_node):
-        """ for overloading """
+        """ for overloading
+        other conditions for being a complement, other than the verb is the parent
+        """
         return False
 
-    def _process_arg( self, arg_node, verb_node):
+    def process_arg(self, arg_node, verb_node):
         deprel, form, child_rels, upostag = self._get_arg_features( arg_node)
         frame_type_arg = self.frame_type_arg_class(
                             deprel, form, child_rels)
@@ -214,15 +239,15 @@ class Base_frame_extractor( Block):
         return frame_type, frame_inst
 
     @staticmethod
-    def _connect_arg_with_frame( frame_type, frame_inst,
-                                 frame_type_arg, frame_inst_arg, token):
+    def connect_arg_with_frame( frame_type, frame_inst,
+                                frame_type_arg, frame_inst_arg, token):
         token.arg = frame_inst_arg
         frame_inst.add_arg( frame_inst_arg)
         frame_type_arg.add_inst( frame_inst_arg)
         frame_type.add_arg( frame_type_arg)
 
     @staticmethod
-    def _delete_arg( frame_type_arg):
+    def delete_arg( frame_type_arg):
         frame_type = frame_type_arg.frame_type
         verb_record = frame_type.verb_record
         frame_type_arg.delete()
@@ -230,7 +255,7 @@ class Base_frame_extractor( Block):
             verb_record.consider_merging( frame_type)
 
     @staticmethod
-    def _substitute_arg( old_frame_arg, new_frame_arg):
+    def substitute_arg( old_frame_arg, new_frame_arg):
         frame_type = old_frame_arg.frame_type
         #assert frame_type is not None
         #assert old_frame_arg in frame_type.args
@@ -252,7 +277,7 @@ class Base_frame_extractor( Block):
         """ called from _process_sentence
         creation and basic initialization of token
         """
-        token = Sent_token( token_node.ord, token_node.form)
+        token = Sent_token( token_node.ord, token_node.form, token_node.lemma)
 
         no_space_after = token_node.no_space_after #or node is sentence_nodes[ -1 ]
         if no_space_after:
@@ -289,11 +314,7 @@ class Base_frame_extractor( Block):
 
     def after_process_document( self, doc):  # void
         """ overriden block method - monolingual use case"""
-        #self._check_coherence()
-        for verb_record in self.dict_of_verbs.values():
-            verb_record.build_frame_dag()
-            print( len( verb_record.subframes))
-        #self._check_coherence()
+        self.unit_dict[ "outp" ].after_process_document( doc)
 
     def _check_coherence( self):
         for verb_lemma in self.dict_of_verbs.keys():
@@ -312,23 +333,64 @@ class Base_frame_extractor( Block):
                         formless_args_num += 1
         print( formless_args_num, frame_num)
 
-    def _print_example_counts( self):
+    def print_example_counts( self, extractor_name, exam_unit_names):
         frame_inst_count = 0
         arg_inst_count = 0
+        # logfile = open("log"+extractor_name, 'w')
         for verb_record in self.dict_of_verbs.values():
             for frame_type in verb_record.frame_types:
                 insts_count = len( frame_type.insts)
                 frame_inst_count += insts_count
                 arg_inst_count += len( frame_type.args) * insts_count
+        #         for arg in frame_type.args:
+        #             print(arg.deprel, file=logfile)
+        # logfile.close()
 
-        print( "\nframe insts:", frame_inst_count)
-        for key, val in self.frame_examples_counter.items():
-            print( key, val, round( val / frame_inst_count * 100, 1))
+        print( '\n'+extractor_name)
+        print( "frame insts:", frame_inst_count)
+        for unit_name in exam_unit_names:
+            unit = self.unit_dict[ unit_name ]
+            if unit.active :
+                for count_name, freq in unit.frm_example_counter.items():
+                    perc = round( freq / frame_inst_count * 100, 1)
+                    print( unit_name + ':' + count_name, freq, perc)
 
-        print( "\narg insts:", arg_inst_count)
-        for key, val in self.arg_examples_counter.items():
-            print( key, val, round( val / arg_inst_count * 100, 1))
+        print( "---\narg insts:", arg_inst_count)
+        for unit_name in exam_unit_names:
+            unit = self.unit_dict[ unit_name ]
+            if unit.active:
+                for count_name, freq in unit.arg_example_counter.items():
+                    perc = round( freq / arg_inst_count * 100, 1)
+                    print( unit_name + ':' + count_name, freq, perc)
 
-    def _output_result_dict(self):
+        print( "---\nother stats:")
+        for unit_name in exam_unit_names:
+            unit = self.unit_dict[ unit_name ]
+            if unit.active:
+                unit.print_other_stats()
+        print( "===\n")
+
+
+        # else:
+        #     unit = self.unit_dict[ exam_unit_name ]
+        #     if unit.frm_example_counter:
+        #         print( "\nframe insts:", frame_inst_count)
+        #     for count_name, freq in unit.frm_example_counter.items():
+        #         perc = round( freq / frame_inst_count * 100, 1)
+        #         print( exam_unit_name + ':' + count_name, freq, perc)
+        #
+        #     if unit.arg_example_counter:
+        #         print( "\narg insts:", arg_inst_count)
+        #     for count_name, freq in unit.arg_example_counter.items():
+        #         perc = round( freq / arg_inst_count * 100, 1)
+        #         print( exam_unit_name + ':' + count_name, freq, perc)
+
+
+    def output_result_dict( self):
         Dict_printer.print_dict( self.output_form, self.dict_of_verbs, self.output_name)
         #Dict_printer.print_verbs_by_arg_form( self.dict_of_verbs, "Dat")
+
+class Base_outp_unit( Extraction_unit):
+    """ Extraction unit for program output """
+    def after_process_document( self, _):
+        self.extractor.output_result_dict()

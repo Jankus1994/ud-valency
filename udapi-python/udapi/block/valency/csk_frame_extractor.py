@@ -1,236 +1,201 @@
-from frame_extractor import Frame_extractor
+from frame_extractor import Frame_extractor, Main_subj_unit
+from extraction_unit import Extraction_unit
 from sent_token import Sent_token
 from collections import Counter
 
 # config dict codes used
 #	mdin	inclusion of modal verbs
-#	elis	further processing of added (previously elided) subjects
-#	subj	adding missing nominative to subjects
+#	nomi	adding missing nominative to subjects (also to elided ones)
 #	vadj	creating valency frames also for verbal adjectives, including their head as argument
 #	pfin	replacing "Part" VerbFrom with "Fin"
 #	pass	depassivization (both proper and reflexive)
 #	numr	replacing numerative genitives with nominatives or accusatives
-#	auxf	replacing form of clausal arguments with "Fin" if they have an auxiliary with "Fin"
 
 class Csk_frame_extractor( Frame_extractor):
 
-    #config_codes = [ "elis", "subj", "vadj", "pfin", "pass", "numr", "auxf", "mdin" ]
+    proper_unit_codes = [ "nomi", "vadj", "pfin", "pass", "numr", "case", "mdex" ]
 
     def __init__( self, **kwargs):
-        self.modals_inclusion = True
+        # self.modals_inclusion = True
 
         super().__init__( **kwargs)
 
-        if not self.modals_inclusion:
-            self.config_dict[ "mdin" ] = False
-        #self.elid_pron_counter = Counter()
 
-        self.pron_sg1 = ""
-        self.pron_sg2 = "ty"
-        self.pron_pl1 = "my"
-        self.pron_pl2 = "vy"
+        # self.fill_unit_class_names( "Csk", proper_unit_codes)
+
+        self.unit_classes[ "nomi" ] = Csk_nomi_unit
+        self.unit_classes[ "vadj" ] = Csk_vadj_unit
+        self.unit_classes[ "pfin" ] = Csk_pfin_unit
+        self.unit_classes[ "pass" ] = Csk_pass_unit
+        self.unit_classes[ "numr" ] = Csk_numr_unit
+        self.unit_classes[ "case" ] = Csk_case_unit
+        self.unit_classes[ "mdex" ] = Csk_mdex_unit
+        # self.units[ "mdex" ] = Csk_mdex_unit
+        #
+        # if not self.modals_inclusion:
+        #     self.units[ "mdex" ] = Csk_mdex_unit
+
         self.verb_be = ""
 
-        self.filling_cases = [ "Acc", "Gen", "Dat", "Loc", "Ins" ]
+    def node_is_appropriate(self, node):
+        result = super().node_is_appropriate(node)
+        vadj_result = self.unit_dict[ "vadj" ].node_is_appropriate( node, result)
+        mdex_result = self.unit_dict[ "mdex" ].node_is_inappropriate( node, result)
 
-
-
-    def _node_is_appropriate( self, node):
-        result = super()._node_is_appropriate( node)
-        if self.config_dict[ "vadj" ]:
-            if node.upos == "ADJ" and node.feats[ "VerbForm" ] == "Part":
-                self.frame_examples_counter["part_incl"] += 1
-                return True
-        if node.upos == "VERB" and node.lemma in self.modal_lemmas:
-            for child_node in node.children:
-                if "comp" in child_node.deprel:
-                    self.frame_examples_counter["modals"] += 1
-                    if not self.config_dict[ "mdin" ]:
-                        return False
-                    break
-        return result
+        return ( result or vadj_result ) and not mdex_result
 
     def _node_is_good_arg( self, sent_node, verb_node):
         result = super()._node_is_good_arg( sent_node, verb_node)
-        if self.config_dict[ "vadj" ]:
-            parent_node = verb_node.parent
-            if sent_node is parent_node:
-                subj_or_aux = False
-                for child_node in verb_node.children:
-                    if "subj" in child_node.deprel or "aux" in child_node.deprel:
-                        subj_or_aux = True
-                if verb_node.upos == "ADJ" \
-                        and verb_node.feats[ "VerbForm" ] == "Part" \
-                        and verb_node.udeprel in [ "acl", "amod" ] \
-                        and not subj_or_aux:
-                    return True
-        return result
+        vadj_result = self.unit_dict[ "vadj" ].node_is_good_arg( sent_node, verb_node,
+                                                                 result)
+        return result or vadj_result
 
+    def process_arg(self, arg_node, verb_node):
+        frame_type_arg, frame_inst_arg = super().process_arg( arg_node, verb_node)
 
-    def _process_arg( self, arg_node, verb_node):
-        frame_type_arg, frame_inst_arg = super()._process_arg( arg_node, verb_node)
-        if self.config_dict[ "numr" ]:
-            if arg_node.feats[ "Case" ] == "Gen":
-                for child in arg_node.children:
-                    if child.deprel in [ "nummod:gov", "det:numgov" ]:
-                        self.arg_examples_counter["numerative"] += 1
-                        frame_type_arg.form = "Num"
-        #if self.config_dict[ "auxf" ]:
-        #    frame_type_arg = self._consider_aux_form( frame_type_arg, arg_node)
-        if self.config_dict[ "pfin" ]:
-            if frame_type_arg.form == "Part":
-                self.arg_examples_counter["part_fin"] += 1
-                frame_type_arg.form = "Fin"
-        if self.config_dict[ "vadj" ]:
-            if verb_node.upos == "ADJ" \
-                    and verb_node.feats[ "VerbForm" ] == "Part" \
-                    and verb_node.udeprel in [ "acl", "amod" ] \
-                    and arg_node is verb_node.parent:
-                if verb_node.feats[ "Voice" ] == "Pass":
-                    frame_type_arg.deprel = "nsubj:pass"
-                    self.arg_examples_counter[ "pass_adj" ] += 1
-                elif verb_node.feats[ "Voice" ] == "Act":
-                    frame_type_arg.deprel = "nsubj"
-                    self.arg_examples_counter[ "act_adj" ] += 1
-                frame_type_arg.form = "Nom"
-                frame_type_arg.case_mark_rels = []
-
+        frame_type_arg = self.unit_dict[ "numr" ].process_arg( frame_type_arg,
+                                                               arg_node, verb_node)
+        frame_type_arg = self.unit_dict[ "pfin" ].process_arg( frame_type_arg,
+                                                               arg_node, verb_node)
+        frame_type_arg = self.unit_dict[ "vadj" ].process_arg( frame_type_arg,
+                                                               arg_node, verb_node)
         return frame_type_arg, frame_inst_arg
 
     def _process_frame( self, verb_node):
         frame_type, frame_inst = super()._process_frame( verb_node)
-        if self.config_dict[ "subj" ]:
-            frame_type = self.add_subj_nom(frame_type)
 
-        if self.config_dict[ "numr" ]:
-            frame_type = self._finalize_numerative( frame_type)
-
-        if self.config_dict[ "vadj" ]:
-            self.participles_parents( frame_type, frame_inst, verb_node)
-
-        if self.config_dict[ "pass" ]:
-            frame_type = self.transform_proper_passive( frame_type, verb_node)
-            frame_type = self.transform_reflex_passive( frame_type)
-
-        # if self.spec_allowed[ "infin" ]:
-        #     arg_deprels = [ arg.deprel for arg in frame_type.args ]
-        #     if verb_node.feats[ "VerbForm" ] == "Inf" and not "nsubj" in arg_deprels:
-        #         frame_type, frame_inst = self._handle_subjectless_infinitive(
-        #                     frame_type, frame_inst, verb_node)
-
-        # if self.config_dict[ "elis" ]:
-        #     frame_type, frame_inst = self.process_elided_args(
-        #             frame_type, frame_inst, verb_node)
+        frame_type = self.unit_dict[ "nomi" ].process_frame( frame_type, verb_node)
+        frame_type = self.unit_dict[ "numr" ].process_frame( frame_type, verb_node)
+        frame_type = self.unit_dict[ "pass" ].process_frame( frame_type, verb_node)
 
         frame_type, frame_inst = \
-                self.adding_missng_subjects( frame_type, frame_inst, verb_node)
+                self.adding_missing_subjects( frame_type, frame_inst, verb_node)
 
-        if self.config_dict[ "subj" ]:
-            frame_type = self.add_subj_nom(frame_type)
+        frame_type = self.unit_dict[ "nomi" ].process_frame( frame_type, verb_node)
 
         return frame_type, frame_inst
 
-    # def _verb_is_modal(self, verb_node):
-    #     # modal verb with a child in infinitive -> not creating a frame
-    #     if verb_node.lemma in self.modal_lemmas:
-    #         for child in verb_node.children:
-    #             if child.feats[ "VerbForm" ] == "Inf":
-    #                 #print( "*** ", verb_node.lemma, child.lemma)
-    #                 return True  # modal verb -> frame should not be created
-    #     return False  # verb is not modal
+    def specific_postprocessing( self, frame_type):
+        self.unit_dict[ "case" ].specific_postprocessing( frame_type)
 
-    # def _verb_is_child_of_modal(self, frame_type, verb_node):
-    #     # infinitive without subject and with a modal head with subject ->
-    #     # -> adding the subject into this node's frame
-    #     arg_deprels = [ arg.deprel for arg in frame_type.args ]
-    #     if verb_node.feats[ "VerbForm" ] == "Inf" and not "nsubj" in arg_deprels:
-    #         parent_node = verb_node.parent
-    #         if parent_node.lemma in self.modal_lemmas:
-    #             return True  # verb is infinitive child of modal verb
-    #     return False
+class Csk_mdex_unit( Extraction_unit):
+    """ FRM level unit """
+    def node_is_inappropriate( self, node, _):
+        if node.upos == "VERB" and node.lemma in self.extractor.modal_lemmas:
+            for child_node in node.children:
+                if "comp" in child_node.deprel:
+                    self.frm_example_counter[ "" ] += 1
+                    self.frm_example_counter[ node.lemma ] += 1
+                    return True
+        return False
 
-    # def _handle_subjectless_infinitive( self, frame_type, frame_inst, verb_node): # -> bool
-    #     """ adds the subject of the modal is added to this verb's frame
-    #     returs bool if this verb is modal
-    #     """
-    #     parent_node = verb_node.parent
-    #     if parent_node.upos == "VERB":
-    #         parent_frame_type, parent_frame_inst = \
-    #                 super()._process_frame( parent_node)
-    #         for parent_arg in parent_frame_type.args:
-    #             if parent_arg.deprel == "nsubj":
-    #                 subject_arg_type = parent_arg
-    #                 subject_arg_inst = parent_arg.insts[ 0 ]
-    #
-    #                 # TODO maybe move to inst arg?
-    #                 subject_ord = subject_arg_inst.token.ord
-    #                 subject_token = [ token for token in frame_inst.sent_tokens
-    #                                   if token.ord == subject_ord ][ 0 ]
-    #                 self._connect_arg_with_frame(frame_type, frame_inst,
-    #                                              subject_arg_type, subject_arg_inst, subject_token)
-    #                 #print( ">>> ", verb_node.lemma, parent_node.lemma)
-    #                 frame_inst.has_modal = True
-    #                 break
-    #     return frame_type, frame_inst
+class Csk_nomi_unit( Main_subj_unit):
+    """ ARG level unit
+    adds nominative to formless and elided subjects
+    """
+    def process_frame( self, frame_type, _):
+        for arg in frame_type.args:
+            if arg.form == "" and "nsubj" in arg.deprel:
+                    arg.form = "Nom"
+                    self.arg_example_counter[ "cases-nom" ] += 1
+                #elif "obj" in arg.deprel:
+                #    # this includes "iobj" too
+                #    arg.form = "Acc"
+        return frame_type
 
-    def participles_parents( self, frame_type, frame_inst, verb_node):
-        if verb_node.upos == "ADJ" and verb_node.feats[ "VerbForm" ] == "Part" \
-                and not frame_type.has_subject and verb_node.deprel.startswith( "acl"):
-            parent_node = verb_node.parent
-            nsubj_type_arg, nsubj_inst_arg = \
-                    self._process_arg( parent_node, verb_node)
-            nsubj_arg = self.frame_type_arg_class( "nsubj", "Nom", [])
+    # def process_subj_elision( self, frame_type, frame_inst, elided_type_arg,
+    #                           elided_inst_arg, subj_token, verb_node):
+    #     """ """
+    #     print("TU")
+    #     self.arg_example_counter[ "elid_nom" ] += 1
+    #     elided_type_arg.form = "Nom"
+    #     return elided_type_arg, elided_inst_arg, subj_token
 
-    def process_subj_elision( self, frame_type, frame_inst, elided_type_arg,
-                              elided_inst_arg, subj_token, verb_node):
-        if self.config_dict[ "elis" ]:
-            self.arg_examples_counter["elid_nom"] += 1
-            elided_type_arg.form = "Nom"
+class Csk_numr_unit( Extraction_unit):
+    """ ARG level unit
+    resolves numerative genitives to nominatives or accusatives
+    """
+    def process_arg( self, frame_type_arg, arg_node, _):
+        """ marks numerative """
+        if arg_node.feats[ "Case" ] == "Gen":
+            for child in arg_node.children:
+                if child.deprel in [ "nummod:gov", "det:numgov" ]:
+                    self.arg_example_counter[ "num" ] += 1
+                    frame_type_arg.form = "Num"
+        return frame_type_arg
 
-            # DOPLNENIE PODMETOV ASI ZRUSENE
-            # subj_token.form = self.try_getting_person_1_2( verb_node)
-            # if subj_token.form == "":
-            #     # looking for an auxiliary verb, which would confirm the 1./2. person
-            #     for child_node in verb_node.children:
-            #         if child_node.upos == "AUX":
-            #             subj_token.form = self.try_getting_person_1_2( child_node)
-            #             break
-            # if subj_token.form == "":
-            #     subj_token.form = self.try_getting_person_3( verb_node)
+    def process_frame( self, frame_type, _):
+        """ resolves numerative """
+        for arg in frame_type.args:
+            if arg.form == "Num":
+                if frame_type.has_subject() and "nsubj" not in arg.deprel:
+                    arg.form = "Acc"
+                    self.arg_example_counter[ "acc" ] += 1
+                else:
+                    arg.form = "Nom"
+                    self.arg_example_counter[ "nom" ] += 1
+        return frame_type
 
-            # this should be already handled by modal verbs
-            # if subj_token is None:
-            #     # the node can be a complement of a parent verb, which could confirm the 1./2. person
-            #     if verb_node.deprel == "xcomp" and verb_node.parent.upos == "VERB":
-            #         token_person_1_2 = self.try_getting_person_1_2( verb_node.parent)
-            #self.elid_pron_counter[ subj_token.form ] += 1
+class Csk_vadj_unit( Extraction_unit):
+    """ FRM level unit
+    inclusion of verbal adjectives
+    """
+    def node_is_appropriate( self, node, _):
+        for child_node in node.children:
+            if "subj" in child_node.deprel or "aux" in child_node.deprel:
+                subj_or_aux = True
+        if node.upos == "ADJ" and node.feats[ "VerbForm" ] == "Part" and node.udeprel in [ "acl", "amod" ]:
+            return True
 
-        return elided_type_arg, elided_inst_arg, subj_token
+    def node_is_good_arg( self, sent_node, verb_node, _):
+        parent_node = verb_node.parent
+        if sent_node is parent_node:
+            subj_or_aux = False
+            for child_node in verb_node.children:
+                if "subj" in child_node.deprel or "aux" in child_node.deprel:
+                    subj_or_aux = True
+            if verb_node.upos == "ADJ" \
+                    and verb_node.feats[ "VerbForm" ] == "Part" \
+                    and verb_node.udeprel in [ "acl", "amod" ] \
+                    and not subj_or_aux:
+                self.arg_example_counter[ "total" ] += 1
+                return True
 
-    def try_getting_person_1_2( self, verb_node):
-        token_form = ""
-        if verb_node.feats[ "Person" ] == "1":
-            if verb_node.feats[ "Number" ] == "Sing":
-                token_form = "1sg:" + self.pron_sg1
-            elif verb_node.feats[ "Number" ] == "Plur":
-                token_form = "1pl:" + self.pron_pl1
-        elif verb_node.feats[ "Person" ] == "2":
-            if verb_node.feats[ "Number" ] == "Sing":
-                token_form = "2sg:" + self.pron_sg2
-            elif verb_node.feats[ "Number" ] == "Plur":
-                token_form = "2pl:" + self.pron_pl2
-        return token_form
+    def process_arg( self, frame_type_arg, arg_node, verb_node):
+        if verb_node.upos == "ADJ" \
+                and verb_node.feats[ "VerbForm" ] == "Part" \
+                and verb_node.udeprel in [ "acl", "amod" ] \
+                and arg_node is verb_node.parent:
+            if verb_node.feats[ "Voice" ] == "Pass":
+                frame_type_arg.deprel = "nsubj:pass"
+                self.arg_example_counter[ "pass_adj" ] += 1
+            elif verb_node.feats[ "Voice" ] == "Act":
+                frame_type_arg.deprel = "nsubj"
+                #print( verb_node.form)
+                self.arg_example_counter[ "act_adj" ] += 1
+            frame_type_arg.form = "Nom"
+            frame_type_arg.case_mark_rels = []
+        return frame_type_arg
 
-    @staticmethod
-    def try_getting_person_3( verb_node):
-        """ overloaded in cs/sk module"""
-        token_form = "3prs"
-        return token_form
+class Csk_pfin_unit( Extraction_unit):
+    """ ARG level unit"""
+    def process_arg( self, frame_type_arg, _, __):
+        if frame_type_arg.form == "Part":
+            self.arg_example_counter[ "" ] += 1
+            frame_type_arg.form = "Fin"
+        return frame_type_arg
+
+class Csk_pass_unit( Extraction_unit):
+    """ ARG level unit """
+    def process_frame( self, frame_type, verb_node):
+        frame_type = self.transform_proper_passive( frame_type, verb_node)
+        frame_type = self.transform_reflex_passive( frame_type)
+        return frame_type
 
     def transform_proper_passive( self, frame_type, verb_node):
         has_aux = False
         for child_node in verb_node.children:
-            if child_node.lemma == self.verb_be and child_node.upos == "AUX":
+            if child_node.lemma == self.extractor.verb_be and child_node.upos == "AUX":
                 has_aux = True
                 break
         if has_aux and frame_type.verb_form == "Part" and frame_type.voice == "Pass":
@@ -238,27 +203,27 @@ class Csk_frame_extractor( Frame_extractor):
             nsubj_args += frame_type.get_arg( "nsubj", "Nom", [])
             if nsubj_args != []:
                 old_nsubj_arg = nsubj_args[ 0 ]
-                obj_arg = self.frame_type_arg_class( "obj", "Acc", [])
-                self._substitute_arg( old_nsubj_arg, obj_arg)
-                self.frame_examples_counter[ "passive-nsubj-obj" ] += 1
+                obj_arg = self.extractor.frame_type_arg_class( "obj", "Acc", [])
+                self.extractor.substitute_arg( old_nsubj_arg, obj_arg)
+                self.frm_example_counter[ "proper-nsubj-obj" ] += 1
 
             csubj_args = frame_type.get_arg( "csubj:pass", None, None)
             csubj_args += frame_type.get_arg( "csubj", None, None)
             if csubj_args != []:
                 old_csubj_arg = csubj_args[ 0 ]
                 form = old_csubj_arg.form
-                comp_arg = self.frame_type_arg_class( "ccomp", form, [])
-                self._substitute_arg( old_csubj_arg, comp_arg)
-                self.frame_examples_counter[ "passive-csubj-ccomp" ] += 1
+                comp_arg = self.extractor.frame_type_arg_class( "ccomp", form, [])
+                self.extractor.substitute_arg( old_csubj_arg, comp_arg)
+                self.frm_example_counter[ "proper-csubj-ccomp" ] += 1
 
             obl_args = frame_type.get_arg( "obl:arg", "Ins", [])
             obl_args += frame_type.get_arg( "obl:agent", "Ins", [])
             obl_args += frame_type.get_arg( "obl", "Ins", [])
-            nsubj_arg = self.frame_type_arg_class( "nsubj", "Nom", [])
+            nsubj_arg = self.extractor.frame_type_arg_class( "nsubj", "Nom", [])
             if obl_args != []:
                 obl_arg = obl_args[ 0 ]
-                self._substitute_arg( obl_arg, nsubj_arg)
-                self.frame_examples_counter["passive-obl-nsubj"] += 1
+                self.extractor.substitute_arg( obl_arg, nsubj_arg)
+                self.frm_example_counter[ "proper-obl-nsubj" ] += 1
         return frame_type
 
     def transform_reflex_passive( self, frame_type):
@@ -277,52 +242,33 @@ class Csk_frame_extractor( Frame_extractor):
             expl_arg = expl_args[ 0 ]
             if nsubj_args != []:
                 nsubj_arg = nsubj_args[ 0 ]
-                obj_arg = self.frame_type_arg_class( "obj", "Acc", [])
-                self._delete_arg( expl_arg)
-                self._substitute_arg( nsubj_arg, obj_arg)
-                self.frame_examples_counter["passive-reflex-n"] += 1
+                obj_arg = self.extractor.frame_type_arg_class( "obj", "Acc", [])
+                self.extractor.delete_arg( expl_arg)
+                self.extractor.substitute_arg( nsubj_arg, obj_arg)
+                self.frm_example_counter[ "reflex-nsubj-obj" ] += 1
             elif csubj_args != []:
                 old_csubj_arg = csubj_args[ 0 ]
                 form = old_csubj_arg.form
-                comp_arg = self.frame_type_arg_class( "ccomp", form, [])
-                self._delete_arg( expl_arg)
-                self._substitute_arg( old_csubj_arg, comp_arg)
-                self.frame_examples_counter["passive-reflex-c"] += 1
+                comp_arg = self.extractor.frame_type_arg_class( "ccomp", form, [])
+                self.extractor.delete_arg( expl_arg)
+                self.extractor.substitute_arg( old_csubj_arg, comp_arg)
+                self.frm_example_counter[ "reflex-csubj-ccomp" ] += 1
 
+            obl_args = frame_type.get_arg( "obl:arg", "Ins", [])
+            obl_args += frame_type.get_arg( "obl:agent", "Ins", [])
+            obl_args += frame_type.get_arg( "obl", "Ins", [])
+            nsubj_arg = self.extractor.frame_type_arg_class( "nsubj", "Nom", [])
+            if obl_args != []:
+                obl_arg = obl_args[ 0 ]
+                self.extractor.substitute_arg( obl_arg, nsubj_arg)
+                self.frm_example_counter[ "reflex-obl-nsubj" ] += 1
 
         return frame_type
 
-    def add_subj_nom(self, frame_type):
-        for arg in frame_type.args:
-            if arg.form == "":
-                if "nsubj" in arg.deprel:
-                    arg.form = "Nom"
-                    self.arg_examples_counter["cases-nom"] += 1
-                #elif "obj" in arg.deprel:
-                #    # this includes "iobj" too
-                #    arg.form = "Acc"
-        return frame_type
-
-    def _finalize_numerative( self, frame_type):
-        for arg in frame_type.args:
-            if arg.form == "Num":
-                if frame_type.has_subject() and "nsubj" not in arg.deprel:
-                    arg.form = "Acc"
-                    self.arg_examples_counter["numer-acc"] += 1
-                else:
-                    arg.form = "Nom"
-                    self.arg_examples_counter["numer-nom"] += 1
-        return frame_type
-
-    def after_process_document( self, doc):  # void
-        super().after_process_document( doc)
-
+class Csk_case_unit(Extraction_unit):
+    """ ARG level unit """
     def specific_postprocessing( self, frame_type):
-        if self.config_dict["cases"]:
-            self.resolve_missing_cases( frame_type)
-
-
-    def resolve_missing_cases( self, frame_type):
+        """ resolving missing cases """
         if any( arg.form == "" for arg in frame_type.args):
             formless_args = [ arg for arg in frame_type.args if arg.form == "" ]
             verb_record = frame_type.verb_record
@@ -373,7 +319,7 @@ class Csk_frame_extractor( Frame_extractor):
                             b_arg.agrees_except_form( deprel, case_mark_rels):
                         free_indices[ index ] = False
                         b_arg.form = form
-                        self.arg_examples_counter["cases2-" + form] += 1
+                        self.arg_example_counter[ form ] += 1
                         break
                 else:
                     if free_indices[ index ] and \
@@ -381,7 +327,3 @@ class Csk_frame_extractor( Frame_extractor):
                         free_indices[ index ] = False
                         break
         return frame_type_b
-
-    def _print_example_counts( self):
-        super()._print_example_counts()
-        #print( self.elid_pron_counter)

@@ -1,0 +1,94 @@
+:root {
+  --verb-color: #FFE0C0;
+  --frame-color: #E0FFE0;
+  --link-color: #FFC0FF;
+  --exam-color: #FFFF80;
+}
+
+table, th, td {
+    border: 1px solid black;
+    table-layout: fixed;
+}
+.verb_header {
+    background-color: var( --verb-color);
+    table-layout: fixed;
+    width: 300px;
+}
+.frame_header {
+    background-color: var( --frame-color);
+    table-layout: fixed;
+    width: 300px;
+}
+.link_header {
+    background-color: var( --link-color);
+    table-layout: fixed;
+    width: 300px;
+}
+.examples {
+    background-color: var( --exam-color);
+    table-layout: fixed;
+    width: 300px;
+}
+.verb_aux {
+    background-color: var( --verb-color);
+    table-layout: fixed;
+    width: 100px;
+}
+.frame_aux {
+    background-color: var( --frame-color);
+    table-layout: fixed;
+    width: 100px;
+}
+.link_aux {
+    background-color: var( --link-color);
+    table-layout: fixed;
+    width: 100px;
+}
+.examples_aux {
+    background-color: var( --exam-color);
+    table-layout: fixed;
+    width: 100px;
+}
+.small_col {
+    background-color: #FFFF7F;
+    table-layout: fixed;
+    width: 30px;
+}
+.middle_col {
+    background-color: #FFFF7F;
+    table-layout: fixed;
+    width: 60px;
+}
+.large_col {
+    background-color: #FFFF7F;
+    table-layout: fixed;
+    width: 300px;
+}
+.verb_help_col {
+    background-color: var( --verb-color);
+    table-layout: fixed;
+    width: 50px;
+    text-align: center;
+}
+.frame_help_col {
+    background-color: var( --frame-color);
+    table-layout: fixed;
+    width: 20px;
+    text-align: center;
+}
+.link_help_col {
+    background-color: var( --link-color);
+    table-layout: fixed;
+    width: 20px;
+    text-align: center;
+}
+.verb {
+    color: #30A0F0;
+} 
+.arg {
+    color: #B00090;
+}
+.no_break {
+    /*white-space: nowrap;
+    overflow: hidden;*/
+}

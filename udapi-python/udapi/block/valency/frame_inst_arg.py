@@ -67,7 +67,7 @@ class Frame_inst_arg:
     def arg_num(self):  # -> int
         """ called from Sent_token.get_arg_num when creating html page """
         if self.link is not None:
-            arg_num = self.link.get_link_num()
+            arg_num = self.link.link_num
             return arg_num
         else:
             return -1
@@ -82,3 +82,8 @@ class Frame_inst_arg:
     #def disconnect_yourself( self):
     #    """ called from Frame_type_arg._decide_candidates """
     #    self.frame_inst.remove_arg( self)
+
+    def __str__( self):
+        type_str = self.type.to_str()
+        token_form = self.token.form
+        return token_form + ':' + type_str

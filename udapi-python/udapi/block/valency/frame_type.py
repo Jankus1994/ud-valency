@@ -5,8 +5,6 @@ class Frame_type:
     """ class representing verb frame with information about the verb
     and with a list of its arguments
     """
-    reduction_coef = 1
-
     def __init__( self, deprel_order):
         """ called from Frame_extractor._process_frame """
         self.deprel_order = deprel_order
@@ -31,7 +29,7 @@ class Frame_type:
         #self.str_args = [] # filled with _args_to_string_list
         self.links = []  # objects pairing corresponding frames from two languages
 
-        self.matched_frames = []
+        self.matched_frames = []  # TODO PROPERTY
 
     @property
     def verb_record( self):
@@ -122,20 +120,20 @@ class Frame_type:
     def add_superframe( self, superframe):
         self._superframes.append( superframe)
 
-    # @property
-    # def additional_args( self):
-    #     return self._additional_args
-    # def set_additional_args( self):
-    #     if self.superframe is not None:
-    #         self._additional_args = []
-    #         for self_arg in self.args:
-    #             for super_arg in self.superframe.args:
-    #                 if self_arg.agrees_with( super_arg):
-    #                     break
-    #             else:
-    #                 self._additional_args.append( self_arg)
-    #     for subframe in self.subframes:
-    #         subframe.set_additional_args()
+    @property
+    def additional_args( self):
+        return self._additional_args
+    def set_additional_args( self):
+        if self.superframe is not None:
+            self._additional_args = []
+            for self_arg in self.args:
+                for super_arg in self.superframe.args:
+                    if self_arg.agrees_with( super_arg):
+                        break
+                else:
+                    self._additional_args.append( self_arg)
+        for subframe in self.subframes:
+            subframe.set_additional_args()
 
     @property
     def subframes( self):
@@ -161,11 +159,14 @@ class Frame_type:
     def tree_superframe( self, tree_superframe):
         self._tree_superframe = tree_superframe
         tree_superframe.add_tree_subframe( self)
+
     @property
     def tree_subframes( self):
         return self._tree_subframes
     def add_tree_subframe( self, tree_subframe):
         self._tree_subframes.append( tree_subframe)
+    def remove_tree_subframe( self, subframe):
+        self._tree_subframes.remove( subframe)
 
     @property
     def tree_inst_num( self):
@@ -340,15 +341,15 @@ class Frame_type:
         return True
 
     def choose_tree_superframe( self):
-        opt_value = 0
-        opt_superframe = self.superframes[ 0 ]
-        for superframe in self.superframes:
-            superframe_value = self.compute_superframe_value( superframe)
-            if superframe_value > opt_value:
-                opt_value = superframe_value
-                opt_superframe = superframe
-        self.tree_superframe = opt_superframe
-        self.tree_superframe.add_tree_subframe( self)
+        if self.superframes:
+            opt_value = 0
+            opt_superframe = self.superframes[ 0 ]
+            for superframe in self.superframes:
+                superframe_value = self.compute_superframe_value( superframe)
+                if superframe_value > opt_value:
+                    opt_value = superframe_value
+                    opt_superframe = superframe
+            self.tree_superframe = opt_superframe
 
     def compute_superframe_value( self, superframe):
         """ method for choosing best superframe for tree structure
@@ -356,40 +357,26 @@ class Frame_type:
         subtree is used here """
         return superframe.tree_inst_num
 
-    def try_reduce_subtrees( self, only_obl):
-        tree_subframes_copy = self.tree_subframes.copy()
-        for tree_subframe in tree_subframes_copy:
-            if self.should_reduce( tree_subframe, only_obl):
-                frames_to_reduce = tree_subframe.get_subtree()
-                for frame_to_reduce in frames_to_reduce:
-                    self.absorb_frame( frame_to_reduce)
-                    assert frame_to_reduce in self.verb_record.frame_types
-                    self.verb_record.remove_frame( frame_to_reduce)
-                self.remove_subframe( tree_subframe)
-            else:
-                tree_subframe.try_reduce_subtrees( only_obl)
+    def try_reduce_subtrees( self, reduction_coef):
+        should_try_reduciton = True
+        while should_try_reduciton:
+            should_try_reduciton = False
+            tree_subframes_copy = self.tree_subframes.copy()
+            for tree_subframe in tree_subframes_copy:
+                if self.should_reduce( tree_subframe, reduction_coef):
+                    should_try_reduciton = True
+                    frames_to_reduce = tree_subframe.get_tree_subtree()
+                    for frame_to_reduce in frames_to_reduce:
+                        assert frame_to_reduce in self.verb_record.frame_types
+                        self.absorb_frame( frame_to_reduce)
+                        self.verb_record.remove_frame( frame_to_reduce)
+                    self.remove_tree_subframe( tree_subframe)
+        # recursive call on the subframes left
+        for tree_subframe in self.tree_subframes:
+            tree_subframe.try_reduce_subtrees( reduction_coef)
 
-    def try_reduce_itself( self, only_obl):
-        #for superframe in self.superframes:
-        #
-        tree_subframes_copy = self.tree_subframes.copy()
-        for tree_subframe in tree_subframes_copy:
-            if self.should_reduce( tree_subframe, only_obl):
-                frames_to_reduce = tree_subframe.get_subtree()
-                for frame_to_reduce in frames_to_reduce:
-                    self.absorb_frame( frame_to_reduce)
-                    assert frame_to_reduce in self.verb_record.frame_types
-                    self.verb_record.remove_frame( frame_to_reduce)
-                self.remove_subframe( tree_subframe)
-            else:
-                tree_subframe.try_reduce_subtrees( only_obl)
-
-    def should_reduce( self, subframe, only_obl):
-        result = len( self.insts) > self.reduction_coef * subframe.tree_inst_num
-        if only_obl:
-            for arg in subframe.additional_args:
-                if "obl" not in arg.deprel:
-                    return False
+    def should_reduce( self, subframe, reduction_coef):
+        result = len( self.insts) > reduction_coef * subframe.tree_inst_num
         return result
 
     def get_subtree( self):
@@ -397,6 +384,11 @@ class Frame_type:
         for subframe in self.subframes:
             subtree += subframe.get_subtree()
         return subtree
+    def get_tree_subtree( self):
+        tree_subtree = [ self ]
+        for tree_subframe in self.tree_subframes:
+            tree_subtree += tree_subframe.get_tree_subtree()
+        return tree_subtree
 
     def absorb_frame( self, other_frame):
         free_indices = [ True ] * len( other_frame.args)

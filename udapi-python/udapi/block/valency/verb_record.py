@@ -77,7 +77,7 @@ class Verb_record:
             if frame_type is changed_frame_type:
                 continue
             if frame_type.agrees_with( changed_frame_type):
-                frame_type.reconnect_insts(changed_frame_type)
+                frame_type.reconnect_insts( changed_frame_type)
                 self.remove_frame( changed_frame_type)
                 changed_frame_type.deleted = True
                 #changed_frame_type.verb_record = None  # VYMAZAT !!!
@@ -177,9 +177,9 @@ class Verb_record:
         for subframe in self.subframes:
             index = subframe.index_subframes( index)
 
-    def frame_reduction( self, only_obl):
+    def frame_reduction( self, reduction_coef):
         for frame in self.subframes:
-            frame.try_reduce_subtrees( only_obl)
+            frame.try_reduce_subtrees( reduction_coef)
 
 
     def finalize_extraction( self, extraction_finalizer):

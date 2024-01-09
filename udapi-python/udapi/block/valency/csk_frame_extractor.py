@@ -64,6 +64,7 @@ class Csk_frame_extractor( Frame_extractor):
     def _process_frame( self, verb_node):
         frame_type, frame_inst = super()._process_frame( verb_node)
 
+        frame_type = self.unit_dict[ "vadj" ].process_frame( frame_type, verb_node)
         frame_type = self.unit_dict[ "nomi" ].process_frame( frame_type, verb_node)
         frame_type = self.unit_dict[ "numr" ].process_frame( frame_type, verb_node)
         frame_type = self.unit_dict[ "pass" ].process_frame( frame_type, verb_node)
@@ -97,7 +98,7 @@ class Csk_nomi_unit( Main_subj_unit):
         for arg in frame_type.args:
             if arg.form == "" and "nsubj" in arg.deprel:
                     arg.form = "Nom"
-                    self.arg_example_counter[ "cases-nom" ] += 1
+                    self.arg_example_counter[ "" ] += 1
                 #elif "obj" in arg.deprel:
                 #    # this includes "iobj" too
                 #    arg.form = "Acc"
@@ -128,6 +129,7 @@ class Csk_numr_unit( Extraction_unit):
         """ resolves numerative """
         for arg in frame_type.args:
             if arg.form == "Num":
+                self.arg_example_counter[ "total" ] += 1
                 if frame_type.has_subject() and "nsubj" not in arg.deprel:
                     arg.form = "Acc"
                     self.arg_example_counter[ "acc" ] += 1
@@ -141,11 +143,14 @@ class Csk_vadj_unit( Extraction_unit):
     inclusion of verbal adjectives
     """
     def node_is_appropriate( self, node, _):
-        for child_node in node.children:
-            if "subj" in child_node.deprel or "aux" in child_node.deprel:
-                subj_or_aux = True
-        if node.upos == "ADJ" and node.feats[ "VerbForm" ] == "Part" and node.udeprel in [ "acl", "amod" ]:
+        if node.upos == "ADJ" and node.feats[ "VerbForm" ] == "Part":
+            self.frm_example_counter[ "total" ] += 1
             return True
+        # for child_node in node.children:
+        #     if "subj" in child_node.deprel or "aux" in child_node.deprel:
+        #         subj_or_aux = True
+        # if node.upos == "ADJ" and node.feats[ "VerbForm" ] == "Part":# and node.udeprel in [ "acl", "amod" ]:
+        #     return True
 
     def node_is_good_arg( self, sent_node, verb_node, _):
         parent_node = verb_node.parent
@@ -158,8 +163,16 @@ class Csk_vadj_unit( Extraction_unit):
                     and verb_node.feats[ "VerbForm" ] == "Part" \
                     and verb_node.udeprel in [ "acl", "amod" ] \
                     and not subj_or_aux:
-                self.arg_example_counter[ "total" ] += 1
+                self.frm_example_counter[ "attr_total" ] += 1
                 return True
+
+    def process_frame( self, frame_type, verb_node):
+        if verb_node.upos == "ADJ" and verb_node.feats[ "VerbForm" ] == "Part":
+            if verb_node.feats[ "Voice" ] == "Pass":
+                self.frm_example_counter[ "pass_adj" ] += 1
+            elif verb_node.feats[ "Voice" ] == "Act":
+                self.frm_example_counter[ "act_adj" ] += 1
+        return frame_type
 
     def process_arg( self, frame_type_arg, arg_node, verb_node):
         if verb_node.upos == "ADJ" \
@@ -168,11 +181,11 @@ class Csk_vadj_unit( Extraction_unit):
                 and arg_node is verb_node.parent:
             if verb_node.feats[ "Voice" ] == "Pass":
                 frame_type_arg.deprel = "nsubj:pass"
-                self.arg_example_counter[ "pass_adj" ] += 1
+                self.frm_example_counter[ "attr_pass" ] += 1
             elif verb_node.feats[ "Voice" ] == "Act":
                 frame_type_arg.deprel = "nsubj"
                 #print( verb_node.form)
-                self.arg_example_counter[ "act_adj" ] += 1
+                self.frm_example_counter[ "attr_act" ] += 1
             frame_type_arg.form = "Nom"
             frame_type_arg.case_mark_rels = []
         return frame_type_arg
@@ -193,12 +206,14 @@ class Csk_pass_unit( Extraction_unit):
         return frame_type
 
     def transform_proper_passive( self, frame_type, verb_node):
-        has_aux = False
-        for child_node in verb_node.children:
-            if child_node.lemma == self.extractor.verb_be and child_node.upos == "AUX":
-                has_aux = True
-                break
-        if has_aux and frame_type.verb_form == "Part" and frame_type.voice == "Pass":
+        # has_aux = False
+        # for child_node in verb_node.children:
+        #     if child_node.lemma == self.extractor.verb_be and child_node.upos == "AUX":
+        #         has_aux = True
+        #         break
+        # if has_aux and frame_type.verb_form == "Part" and frame_type.voice == "Pass":
+        if frame_type.verb_form == "Part" and frame_type.voice == "Pass":
+            self.frm_example_counter[ "proper-total" ] += 1
             nsubj_args = frame_type.get_arg( "nsubj:pass", "Nom", [])
             nsubj_args += frame_type.get_arg( "nsubj", "Nom", [])
             if nsubj_args != []:
@@ -240,6 +255,7 @@ class Csk_pass_unit( Extraction_unit):
 
         if expl_args != []:
             expl_arg = expl_args[ 0 ]
+            self.frm_example_counter[ "reflex-total" ] += 1
             if nsubj_args != []:
                 nsubj_arg = nsubj_args[ 0 ]
                 obj_arg = self.extractor.frame_type_arg_class( "obj", "Acc", [])
@@ -320,6 +336,7 @@ class Csk_case_unit(Extraction_unit):
                         free_indices[ index ] = False
                         b_arg.form = form
                         self.arg_example_counter[ form ] += 1
+                        self.arg_example_counter[ "total" ] += 1
                         break
                 else:
                     if free_indices[ index ] and \

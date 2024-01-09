@@ -9,12 +9,17 @@ from base_linker import Base_linker
 from fa_linker import Fa_linker
 from ud_linker import Ud_linker
 from sim_linker import Sim_linker
+from cs_sk_sim_linker import Cs_Sk_Sim_linker, Sk_Cs_Sim_linker
 from comb_linker import Comb_linker
-from dist_measurer import Dist_measurer
-from cs_sk_dist_measurer import Cs_Sk_dist_measurer
 from link_structures import Frame_type_link
 
-def get_linker( link_config_name):
+spec_sim_linkers = {
+    "cs-sk": Cs_Sk_Sim_linker,
+    "sk-cs": Sk_Cs_Sim_linker,
+    "main": Sim_linker
+}
+
+def get_linker( link_config_name, lang_marks):
     with open( link_config_name) as link_config:
         link_config_dict = yaml.load( link_config, Loader=yaml.FullLoader)
         base_linker = Base_linker()
@@ -37,16 +42,14 @@ def get_linker( link_config_name):
         ud_linker = Ud_linker( params_weights=ud_params, threshold=ud_threshold)
 
         sim_linker_dict = link_config_dict[ "Sim_linker" ]
-        sim_allow_subst = bool( int( sim_linker_dict[ "substitutions_allowed" ]))
-        sim_spec_cs_sk_measurer = bool( int( sim_linker_dict[ "spec_cs_sk_measurer" ]))
+        sim_allow_subst = bool( int( sim_linker_dict[ "allow_subst" ]))
+        sim_allow_specific = bool( int( sim_linker_dict[ "allow_specific" ]))
         sim_threshold = sim_linker_dict[ "threshold" ]
-        measurer = Dist_measurer()
-        if sim_spec_cs_sk_measurer:
-            measurer = Cs_Sk_dist_measurer
-        sim_linker = Sim_linker( measurer_features=( measurer,
-                                                     { "allow_substitution":
-                                                       bool( sim_allow_subst) }),
-                                threshold=sim_threshold)
+        sim_linker_class = Sim_linker
+        if sim_allow_specific and lang_marks in spec_sim_linkers:
+            sim_linker_class = spec_sim_linkers[ lang_marks ]
+        sim_linker = sim_linker_class( allow_subst=sim_allow_subst,
+                                       threshold=sim_threshold)
 
         comb_linker_dict = link_config_dict[ "Comb_linker" ]
         comb_base = comb_linker_dict[ "base_linker" ]
@@ -86,7 +89,7 @@ def create_align_maps( align_line):
 
 
 def link( lang_marks, insts_tuples, link_config_name, align_name):
-    linker, alignment_needed = get_linker( link_config_name)
+    linker, alignment_needed = get_linker( link_config_name, lang_marks)
     align_lines = [ "" ] * len( insts_tuples)
     if alignment_needed:
         with open( align_name, 'r') as align_file:

@@ -46,8 +46,8 @@ class Test_gold_linker( Linker):
                        sep='\t', file=self.log_file)
 
 
-    def build_score_table( self, a_frame_insts, b_frame_insts, word_alignments):
-        self.compare_frames_with_results( a_frame_insts, b_frame_insts)
+    def build_score_table(self, a_items, b_frame_insts, word_alignments):
+        self.compare_frames_with_results(a_items, b_frame_insts)
         return super().build_score_table(
-                a_frame_insts, b_frame_insts, word_alignments)
+                a_items, b_frame_insts, word_alignments)
 

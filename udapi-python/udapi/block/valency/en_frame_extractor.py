@@ -146,10 +146,12 @@ class En_case_unit( Extraction_unit):
                 if "nsubj" in arg.deprel:
                     arg.form = "Nom"
                     self.arg_example_counter[ "nom" ] += 1
+                    self.arg_example_counter[ "" ] += 1
                 elif "obj" in arg.deprel or "obl" in arg.deprel:
                     # this includes "iobj" too
                     arg.form = "Acc"
                     self.arg_example_counter[ "acc" ] += 1
+                    self.arg_example_counter[ "" ] += 1
         return frame_type
 
 class En_ptgr_unit( Extraction_unit):
@@ -173,9 +175,11 @@ class En_ptgr_unit( Extraction_unit):
             if verb_node.feats[ "VerbForm" ] == "Part":
                 frame_type_arg.deprel = "nsubj:pass"
                 self.arg_example_counter[ "part" ] += 1
+                self.arg_example_counter[ "" ] += 1
             elif verb_node.feats[ "VerbForm" ] == "Ger":
                 frame_type_arg.deprel = "nsubj"
                 self.arg_example_counter[ "ger" ] += 1
+                self.arg_example_counter[ "" ] += 1
             frame_type_arg.form = "Nom"
             frame_type_arg.case_mark_rels = []
         return frame_type_arg

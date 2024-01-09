@@ -83,7 +83,7 @@ class Frame_extractor( Base_frame_extractor):
         self.unit_dict[ "frdc" ].after_process_document( doc)
 
         #self._final_control()  # development method
-        super().after_process_document( doc)
+        #super().after_process_document( doc)
 
     def _postprocessing( self):
         for verb_record in self.dict_of_verbs.values():
@@ -95,12 +95,14 @@ class Frame_extractor( Base_frame_extractor):
 
 class Main_coor_unit( Extraction_unit):
     """ ARG level unit """
+    #def count_conjuncts( self, verb_node):
+
     def compl_conditions( self, sent_node, verb_node):
         return self._could_be_coord_arg(sent_node, verb_node)
 
     def _could_be_coord_arg( self, sent_node, verb_node):
         """ whether sent node is an argument of the verb, but because of the verb
-        is a conjunct, the sent node is """
+        is a conjunct, the sent node is its sibling """
         if verb_node.deprel == "conj":
             coord_head_node = verb_node.parent
             if sent_node.parent is coord_head_node:  # sent and verb nodes are siblings
@@ -145,7 +147,8 @@ class Main_subj_unit( Extraction_unit):
             subj_token.mark_elision()  # TODO rewrite with property
             elided_type_arg = self.extractor.frame_type_arg_class( "nsubj", "", [])
             elided_inst_arg = self.extractor.frame_inst_arg_class( "PRON")
-            self.frm_example_counter[ "added" ] += 1
+            self.frm_example_counter[ "total" ] += 1
+            self.frm_example_counter[ verb_node.feats["VerbForm"] ] += 1
 
             # elided_type_arg, elided_inst_arg, subj_token = \
             #         self.process_subj_elision( frame_type, frame_inst,
@@ -175,6 +178,7 @@ class Main_auxf_unit( Extraction_unit):
         if there are no AUX children, the original form remains (orig)
         """
         if "comp" in frame_type_arg.deprel or "csubj" in frame_type_arg.deprel:
+            self.arg_example_counter[ "total" ] += 1
             if frame_type_arg.form == "Fin":
                 self.arg_example_counter[ "orig_fin" ] += 1
                 return frame_type_arg
@@ -197,13 +201,15 @@ class Main_oblq_unit( Extraction_unit):
     HEURISTIC = 3
     ADJUNCT_RATHER = 4
     ADJUNCT_ALWAYS = 5
-    def __init__( self, *args, params=""):
+    def __init__( self, *args, params=()):
         super().__init__( *args, params=params)
         self.this_verb_portions = defaultdict( int)
         self.all_verbs_portions = defaultdict( int)
         self.important_values = defaultdict( float)
 
-        self.variant_num = int( params) if params else 3
+        self.variant_num = 3
+        if params:
+            self.variant_num = params[ 0 ]
 
     def change_udeprels( self, udeprels):
         udeprels = [ "nsubj", "csubj", "obj", "iobj",
@@ -393,14 +399,9 @@ class Main_oblq_unit( Extraction_unit):
 
 class Main_frdc_unit( Extraction_unit):
     """ ARG level unit """
-    def __init__( self, *args, params=""):
+    def __init__( self, *args, params=()):
         super().__init__( *args, params=params)
-        reduction_coef_str = params
-        try:
-            self.reduction_coef = float( reduction_coef_str)
-        except ValueError:
-            print( "Incorrect format of reduction coefficient!", file=sys.stderr)
-            exit()
+        self.reduction_coef = params[ 0 ]
         self.diff_dict = {}
 
     def after_process_document( self, _):

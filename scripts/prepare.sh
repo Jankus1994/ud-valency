@@ -57,7 +57,7 @@ tagging_parsing() {
   act_time=$(date +"%T")
   echo -e "\n$act_time\tCorpus preparation: tagging and parsing: ""$lang_mark"
   cat "$m_toksents""$treebank"".""$lang_mark" \
-  | udpipe --input=horizontal --tag --parse --output=conllu "$udpipe_model" \
+  | ./udpipe --input=horizontal --tag --parse --output=conllu "$udpipe_model" \
   > "$m_conllu""$treebank"".""$lang_mark"".conllu"
   act_time=$(date +"%T")
   echo -e "\n$act_time"" DONE"
@@ -72,7 +72,7 @@ whole_udpipe() {
   act_time=$(date +"%T")
   echo -e "\n$act_time\tCorpus preparation: tokenization, tagging and parsing: ""$lang_mark"
   cat "$sents_dir""$treebank"".""$lang_mark" \
-  | udpipe --tokenizer="presegmented" --tag --parse --output=conllu "$udpipe_model" \
+  | ./udpipe --tokenizer="presegmented" --tag --parse --output=conllu "$udpipe_model" \
   > "$m_conllu""$treebank"".""$lang_mark"".conllu"
   act_time=$(date +"%T")
   echo -e "\n$act_time"" DONE"

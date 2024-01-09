@@ -1,5 +1,5 @@
 class Sent_token:
-    def __init__( self, ord, form):
+    def __init__( self, ord, form, lemma):
         """ called from Frame_extractor._create_token """
         self._ord = ord
         self._form = form
@@ -9,6 +9,7 @@ class Sent_token:
         self._is_elided = False
         self._has_space = True  # for rebuilding the sentence
                            # with punctuation correctly
+        self._lemma = lemma
 
     def __str__( self):
         if self.is_frame_predicate():
@@ -34,6 +35,14 @@ class Sent_token:
     def form( self, form):
         """ called from Frame_extractor._create_token """
         self._form = form
+
+    @property
+    def lemma( self):  # -> num
+        return self._lemma
+    @lemma.setter
+    def lemma( self, lemma):  # void
+        self._lemma = lemma
+
 
     @property
     def arg( self):  # -> Frame_inst_arg

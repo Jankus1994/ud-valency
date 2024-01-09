@@ -1,3 +1,5 @@
+import yaml
+
 from udapi.core.block import Block
 from verb_record import Verb_record
 from frame_type import Frame_type
@@ -5,7 +7,6 @@ from frame_inst_arg import Frame_inst_arg
 from frame_type_arg import Frame_type_arg
 from frame_inst import Frame_inst
 from sent_token import Sent_token
-from dict_printer import Dict_printer
 from collections import defaultdict, Counter
 from extraction_unit import Extraction_unit
 
@@ -25,10 +26,9 @@ class Base_frame_extractor( Block):
     output: frame_insts from each sentece, dict
     """
 
-    proper_unit_codes = [ "outp" ]
+    # proper_unit_codes = [ "outp" ]
 
-    def __init__( self, lang_mark="", output_form="text", output_name="",
-                  config_name="config.txt", **kwargs):
+    def __init__( self, config_name="config.yaml", **kwargs):
         """ called from Frame_aligner.__init__ """
         super().__init__( **kwargs)
 
@@ -36,13 +36,13 @@ class Base_frame_extractor( Block):
 
         #
         #self.fill_unit_class_names( "Base", proper_unit_codes)
-        self.unit_classes[ "outp" ] = Base_outp_unit
+        # self.unit_classes[ "outp" ] = Base_outp_unit
 
         self.appropriate_udeprels = \
                 [ "nsubj", "csubj", "obj", "iobj", "ccomp", "xcomp", "expl" ]
         self.appropriate_child_rels = [ "case", "mark" ]
 
-        self.lang_mark = lang_mark
+        self.lang_mark = "none"  # redefined in language-specific extractors
 
         self.verb_record_class = Verb_record
         self.frame_type_class = Frame_type
@@ -60,9 +60,9 @@ class Base_frame_extractor( Block):
         self.frame_inst_args = []
         self.sent_and_elid_tokens = []
 
-        # output form - used in after_process_document
-        self.output_form = output_form
-        self.output_name = output_name
+        # # output form - used in after_process_document
+        # self.output_form = output_form
+        # self.output_name = output_name
 
         self.unit_dict = defaultdict( lambda : Extraction_unit("", "", None, False))
         self.config_name = config_name
@@ -71,22 +71,24 @@ class Base_frame_extractor( Block):
         self.arg_examples_counter = Counter()
 
     def before_process_document( self, _):
-        self.process_config_file( self, self.lang_mark)
+        self.process_config_file( self.lang_mark)
 
     def process_config_file( self, lang_mark):
         if self.config_name:
             unit_dict = defaultdict( Extraction_unit)
             with open( self.config_name, 'r') as config_file:
-                for line in config_file:
-                    if line.rstrip( '\n') == "" or line.startswith( '#'):
-                        continue
-                    value, precode, params, _ = line.split( '\t')
-                    act_lang_mark, code = "", precode
-                    if ':' in precode:
-                        act_lang_mark, code = precode.split( ':', 2)
-                        #print( self.lang_mark, lang_mark)
+                config_data = yaml.load( config_file, Loader=yaml.FullLoader)
+                for key, value in config_data.items():
+                    act_lang_mark, code = "", key
+                    if ':' in key:
+                        act_lang_mark, code = key.split( ':', 2)
                         if act_lang_mark != lang_mark:
                             continue
+                    params = []
+                    if type( value) == list:
+                        params = tuple( value[ 1: ])
+                        value = value[ 0 ]
+
                     extraction_unit_class, active = Extraction_unit, False
                     if bool( int( value)):
                         extraction_unit_class, active = self.unit_classes[ code ], True
@@ -311,10 +313,10 @@ class Base_frame_extractor( Block):
     def get_dict_of_verbs( self):  # -> dict
         """ called from Frame_aligner._pickle_dict """
         return self.dict_of_verbs
-
-    def after_process_document( self, doc):  # void
-        """ overriden block method - monolingual use case"""
-        self.unit_dict[ "outp" ].after_process_document( doc)
+    #
+    # def after_process_document( self, doc):  # void
+    #     """ overriden block method - monolingual use case"""
+    #     self.unit_dict[ "outp" ].after_process_document( doc)
 
     def _check_coherence( self):
         for verb_lemma in self.dict_of_verbs.keys():
@@ -334,6 +336,7 @@ class Base_frame_extractor( Block):
         print( formless_args_num, frame_num)
 
     def print_example_counts( self, extractor_name, exam_unit_names):
+        self.final_stats()
         frame_inst_count = 0
         arg_inst_count = 0
         # logfile = open("log"+extractor_name, 'w')
@@ -385,12 +388,42 @@ class Base_frame_extractor( Block):
         #         perc = round( freq / arg_inst_count * 100, 1)
         #         print( exam_unit_name + ':' + count_name, freq, perc)
 
-
-    def output_result_dict( self):
-        Dict_printer.print_dict( self.output_form, self.dict_of_verbs, self.output_name)
-        #Dict_printer.print_verbs_by_arg_form( self.dict_of_verbs, "Dat")
-
-class Base_outp_unit( Extraction_unit):
-    """ Extraction unit for program output """
-    def after_process_document( self, _):
-        self.extractor.output_result_dict()
+    def final_stats( self):
+        print( "\nOVERALL DICTIONARY STATS:")
+        Dict_printer.print_stats( self.dict_of_verbs, False)
+        deprel_counter = Counter()
+        form_rels_counter = Counter()
+        combined_counter = Counter()
+        obl_counter = Counter()
+        for verb_record in self.dict_of_verbs.values():
+            for frame_type in verb_record.frame_types:
+                for frame_type_arg in frame_type.args:
+                    deprel, form_rels = frame_type_arg.to_str().split( '-')
+                    deprel_counter[ deprel ] += 1
+                    form_rels_counter[ form_rels ] += 1
+                    combined_counter[ (deprel, form_rels) ] += len(frame_type_arg.insts)
+                    if "obl" in deprel:
+                        obl_counter[ form_rels ] += len(frame_type_arg.insts)
+        # print("ARG DEPRELS:")
+        # for key, value in deprel_counter.most_common( 10):
+        #     print( f"{key}:\t{value}")
+        # print("ARG FORMS + CASE/MARK RELS:")
+        # for key, value in form_rels_counter.most_common( 10):
+        #     print( f"{key}:\t{value}")
+        print("ARGS:")
+        for key, value in combined_counter.most_common( 10):
+            print( f"{' '.join(key)}:\t{value}")
+        print("OBL ARGS:")
+        for key, value in obl_counter.most_common( 10):
+            print( f"{key}:\t{value}")
+#
+#
+#
+#     def output_result_dict( self):
+#         Dict_printer.print_dict( self.output_form, self.dict_of_verbs, self.output_name)
+#         #Dict_printer.print_verbs_by_arg_form( self.dict_of_verbs, "Dat")
+#
+# class Base_outp_unit( Extraction_unit):
+#     """ Extraction unit for program output """
+#     def after_process_document( self, _):
+#         self.extractor.output_result_dict()

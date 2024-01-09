@@ -1,8 +1,14 @@
 from udapi.core.block import Block
 from collections import Counter, defaultdict
+from eval_frame_extractor import read_gold_data
 
-class Obl_examiner( Block):
-    def __init__( self, **kwargs):
+ID = 0
+LEMMA = 1
+FUNC = 1
+FORM = 2
+
+class Obl_examiner(Block):
+    def __init__( self, gold_name="", **kwargs):
         super().__init__( **kwargs)
         self.verb_num = 0
         self.verb_lemmas = set()
@@ -16,13 +22,26 @@ class Obl_examiner( Block):
         self.obl_on_verb_num_1 = 0
         self.obl_on_verb_num_2 = 0
         self.obl_parent_upos_counter = Counter()
+        self.verb_child_counter = 0
         self.verb_child_deprel_counter = Counter()
         self.verb_arg_num_counter = Counter()
+        self.gold_obl_counter = 0
         self.obl_form_counter = Counter()
         self.obl_form_lemmas = defaultdict( set)
         #self.relevant_deprels = [ "nsubj", "obj", "iobj",
         #                          "csubj", "ccomp", "xcomp",
         #                          "obl", "expl" ]
+        self.gold_sent_frames = read_gold_data( gold_name)
+        self.sent_id = 0
+        self.obl_actants_num = 0
+        self.obl_adjuncts_num = 0
+        self.actants_num = 0
+        self.adjuncts_num = 0
+
+    def process_tree( self, tree):
+        self.sent_id += 1
+        super().process_tree( tree)
+
     def process_node( self, node):
         if node.upos == "VERB":
             self.process_verb( node)
@@ -37,9 +56,13 @@ class Obl_examiner( Block):
             deprel = verb_child.deprel
             if deprel in [ "nsubj", "obj", "obl" ]:
                 self.verb_child_deprel_counter[ deprel ] += 1
+                self.verb_child_counter += 1
             elif deprel in [ "iobj", "csubj", "ccomp", "xcomp", "expl" ]:
                 self.verb_child_deprel_counter[ "other" ] += 1
+                self.verb_child_counter +=1
             if verb_child.deprel == "obl":
+                if self.sent_id % 10 == 0:
+                    self.gold_obl_counter += 1
                 obl_children.append( verb_child)
                 self.obl_on_verb_num_1 += 1
         if obl_children != []:
@@ -60,6 +83,7 @@ class Obl_examiner( Block):
             self.obl_form_counter[ obl_form ] += 1
             parent_lemma = parent_node.lemma
             self.obl_form_lemmas[ obl_form ].add( parent_lemma)
+            self.compare_obl_with_gold( obl_node)
         else:
             return
             print( obl_node.root.text)
@@ -79,10 +103,23 @@ class Obl_examiner( Block):
         obl_form = '+'.join( prepositions + [ obl_case ] + postpositions)
         return obl_form
 
+    def compare_obl_with_gold( self, obl_node):
+        if self.sent_id % 10 != 0:
+            return
+        index = self.sent_id // 10 - 1
+        gold_eval_frames = self.gold_sent_frames[ index ]
+        for gold_eval_frame in gold_eval_frames:
+            assert gold_eval_frame.verb is not None
+            for gold_arg in gold_eval_frame.args:
+                if gold_arg[ ID ] == str( obl_node.ord):
+                    self.obl_actants_num += 1
+                    return
+        self.obl_adjuncts_num += 1
 
     def after_process_document( self, _):
         self.basic_stats()
         self.counter_stats()
+        self.gold_stats()
 
     @staticmethod
     def percentage( part, whole):
@@ -124,10 +161,12 @@ class Obl_examiner( Block):
         for upos, freq in self.obl_parent_upos_counter.most_common():
             print( upos, freq)
         print( "------")
-        print( "deprels of verb children:")
+        print( "# of all verb complements:", self.verb_child_counter)
+        print( "deprels of verb complements:")
         for deprel, freq in self.verb_child_deprel_counter.most_common():
             #if deprel in self.relevant_deprels:
-            print( deprel, freq)
+            perc = round( freq / self.verb_child_counter * 100, 1)
+            print( deprel, freq, perc)
         print( "------")
         spec_records = []
         all_verb_lemma_count = len( self.verb_lemmas)
@@ -146,5 +185,14 @@ class Obl_examiner( Block):
         #    obl_form, overall_count, count_with_lemmas, portion_of_lemmas = spec_record
         #    print( obl_form, overall_count, count_with_lemmas, portion_of_lemmas)
 
+    def gold_stats( self):
+        print( "============")
+        print( "gold annotation of obls on verbs:")
+        self.measured_obls_num = self.obl_actants_num + self.obl_adjuncts_num
+        #print( "assertion:", self.measured_obls_num, self.gold_obl_counter)
+        actants_perc = round( 100 * self.obl_actants_num / self.measured_obls_num, 1)
+        adjuncts_perc = round( 100 * self.obl_adjuncts_num / self.measured_obls_num, 1)
+        print( "actants", self.obl_actants_num, actants_perc)
+        print( "adjuncts", self.obl_adjuncts_num, adjuncts_perc)
 
 

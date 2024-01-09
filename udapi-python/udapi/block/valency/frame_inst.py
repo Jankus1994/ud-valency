@@ -157,3 +157,8 @@ class Frame_inst:
     def has_modal( self, has_modal):
         """ called from language specific modules when modal verb attached detected"""
         self._has_modal = has_modal
+
+    def __str__( self):
+        lemma = self.type.verb_lemma
+        args_str = ' '.join( [ str( arg) for arg in self.args ])
+        return lemma + "  ::  " + args_str

@@ -15,6 +15,8 @@ class Frame_type_arg:
         self._form = form
         self._case_mark_rels = self.process_case_mark_rels( case_mark_rels)
 
+        self.matched_args = []
+
     @staticmethod
     def process_case_mark_rels( case_mark_rels):
         token_forms = []
@@ -182,6 +184,9 @@ class Frame_type_arg:
             if frame_type_arg_link.links_type_arg( translation_frame_type_arg):
                 return frame_type_arg_link
         return None
+
+    def add_matched_arg( self, matched_arg):
+        self.matched_args.append( matched_arg)
 
     # === dictionary display methods ===
 

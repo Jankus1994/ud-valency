@@ -3,8 +3,9 @@
 #treebank: UD_pud.cs
 treebank: UD_pud  # cs-en
 
-a_udpipe_model: ../udpipe/models/czech-pdt-ud-2.3-181115.udpipe
-b_udpipe_model: ../udpipe/models/english-lines-ud-2.3-181115.udpipe
+a_udpipe_model: ../udpipe_models/czech-pdt-ud-2.5-191206.udpipe
+#b_udpipe_model: ../udpipe_models/english-lines-ud-2.5-191206.udpipe
+b_udpipe_model: ../udpipe_models/slovak-snk-ud-2.5-191206.udpipe
 
 # FRAME EXTRACTION SETTINGS
 # can be used instead of the implicit extractor derived from language marks, can remain empty

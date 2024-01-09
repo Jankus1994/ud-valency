@@ -1,11 +1,18 @@
-*
+#/*
+#
+#!/.gitignore
+#
+#!/scripts
+#/scripts/vypis_*
+#/scripts/*.sh.o*
 
-!.gitignore
-
-!/scripts/**
-/scripts/vypis_*
-/scripts/*.sh.o*
-
-!/udapi-python/udapi/block/valency/**
+#!/udapi-python
+#/udapi-python/*
+#!/udapi-python/udapi
+#/udapi-python/udapi/*
+#!/udapi-python/udapi/block
+#/udapi-python/udapi/block/*
+#!/udapi-python/udapi/block/valency
 
 **/.idea
+**/__pycache__

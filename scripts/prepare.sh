@@ -2,8 +2,6 @@
 
 export PATH=../udapi-python/bin:$PATH
 export PYTHONPATH=../udapi-python:../udapi-python/udapi/block/valency:$PYTHONPATH
-export PATH=../fast_align/build:$PATH
-export PATH=../udpipe/bin-linux64:$PATH
 
 tokenization() {
   treebank="$1"
@@ -36,9 +34,9 @@ word_alignment() {
     "$m_toksents_dir""$treebank"."$a_lang_mark" \
     | sed "s/\t/ ||| /" \
     > "$b_toksents_dir""$treebank"
-  fast_align -d -o -v -i "$b_toksents_dir""$treebank" \
+  ./fast_align -d -o -v -i "$b_toksents_dir""$treebank" \
     > "$m_aligned_dir""$treebank"."$a_lang_mark"
-  fast_align -d -o -v -r -i "$b_toksents_dir""$treebank" \
+  ./fast_align -d -o -v -r -i "$b_toksents_dir""$treebank" \
     > "$m_aligned_dir""$treebank"."$b_lang_mark"
   python3 fa_interpreter.py \
     "$m_aligned_dir""$treebank"."$a_lang_mark" \

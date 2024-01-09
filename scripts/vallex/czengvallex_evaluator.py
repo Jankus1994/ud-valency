@@ -145,7 +145,7 @@ if __name__ == "__main__":
 
         cs_en_ext_dict, cs_val_dict, en_cs_ext_dict, en_val_dict = matched_dicts
 
-        cs_en_val_frame_pairs = get_val_frame_pairs( \
+        cs_en_val_frame_pairs = get_val_frame_pairs(
                 cs_val_dict, en_val_dict, align_filename)
 
         evaluate( cs_en_ext_dict, en_cs_ext_dict, cs_en_val_frame_pairs)

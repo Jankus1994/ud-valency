@@ -1,3 +1,8 @@
+from collections import defaultdict
+
+def get_none():
+    return None
+
 class Vallex_frame:
     def __init__( self, lang_mark, frame_id):
         self.lang_mark = lang_mark
@@ -17,6 +22,7 @@ class Vallex_frame:
         self.lemmas = lemmas
 
     def add_argument( self, argument):
+
         self.arguments.append( argument)
 
     def add_example( self, example):

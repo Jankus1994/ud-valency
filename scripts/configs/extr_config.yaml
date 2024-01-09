@@ -1,0 +1,39 @@
+# EXTACTION UNITS: 0=excluded, 1=included (default for most, unless said othrewise) + some parameters
+
+# Main extractor units (Frame_extractor)
+subj:      1  # subject adding
+auxf:      1  # replacing form of clausal arguments with "Fin" if they have an auxiliary with "Fin"
+coor:      1  # coordination handling
+oblq:         # handling of obliques
+  - 1           # actual inclusion value of the unit
+  - 4           # actant-adjunct preference parameter: 1/2/3/4/5 (1 = all actants, 5 = all adjuncts), original value: 4
+frdc:        # frame reduction
+  - 0           # actual inclusion value of the unit, originally EXCLUDED (=0)
+  - 1           # reduction coefficient, any meaningful numerical value, original value: 1
+
+# English extractor units (En_frame_extractor)
+"en:mdin": 0  # inclusion of modal verbs, originally EXCLUDED (=0)
+"en:case": 1  # adding cases when missing (Nom to subjects, Acc elsewhere - objects and obliques)
+"en:pass": 1  # depassivization (both proper and reflexive)
+"en:ptgr": 1  # for participles and gerunds, including their head as argument (obj / subj)
+"en:that": 1  # adding "(that)" to ccomps without conjunction or bracketing it, if present
+"en:cvex": 1  # excluding verbs acting like prepositions
+"en:cprt": 1  # inlcuding particles in phrasal verbs as arguments
+
+# Czech extractor units (Cs_frame_extractor)
+"cs:mdex": 0  # exclusion of modal verbs, originally EXCLUDED (=0)
+"cs:nomi": 1  # adding missing nominative to subjects
+"cs:vadj": 1  # creating valency frames also for verbal adjectives, including their head as argument
+"cs:pfin": 1  # replacing "Part" VerbFrom with "Fin"
+"cs:pass": 1  # depassivization (both proper and reflexive)
+"cs:numr": 1  # replacing numerative genitives with nominatives or accusatives
+"cs:case": 1  # adding cases when missing (other than nominative to subjects)
+
+# Slovak extractor options (Sk_frame_extractor)
+"sk:mdex": 0  # exclusion of modal verbs, originally EXCLUDED (=0)
+"sk:nomi": 1  # adding missing nominative to subjects
+"sk:vadj": 1  # creating valency frames also for verbal adjectives, including their head as argument
+"sk:pfin": 1  # replacing "Part" VerbFrom with "Fin"
+"sk:pass": 1  # depassivization (both proper and reflexive)
+"sk:numr": 1  # replacing numerative genitives with nominatives or accusatives
+"sk:case": 1  # adding cases when missing (other than nominative to subjects)

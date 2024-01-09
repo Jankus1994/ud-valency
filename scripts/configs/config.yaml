@@ -1,0 +1,36 @@
+# Basic configuration file
+
+#treebank: UD_pud.cs
+treebank: UD_pud  # cs-en
+
+a_udpipe_model: ../udpipe/models/czech-pdt-ud-2.3-181115.udpipe
+b_udpipe_model: ../udpipe/models/english-lines-ud-2.3-181115.udpipe
+
+# FRAME EXTRACTION SETTINGS
+# can be used instead of the implicit extractor derived from language marks, can remain empty
+# possible values: base, main, csk, cs, sk, en
+a_explicit_extractor:
+b_explicit_extractor:
+
+extr_config: configs/extr_config.yaml  # configuration file for frame extraction (original: extr_config.yaml)
+link_config: configs/link_config.yaml  # configuration file for frame linking (original: link_config.yaml)
+
+# Data folders (the original value is always equal to the "../data/[key]/")
+corpora: ../data/corpora/  # originals of non-UD corpora
+sents: ../data/sents/  # sentence-segmented text corpora (sentence per line)
+m_toksents: ../data/m_toksents/  # tokenized sentences
+b_toksents: ../data/b_toksents/  # joint tokenized sentences (separated by " ||| ")
+m_conllu: ../data/m_conllu/  # monolingual conllu treebanks
+b_conllu: ../data/b_conllu/  # bilingual conllu treebanks
+m_aligned: ../data/m_aligned/  # one-directional fast align alignments
+b_aligned: ../data/b_aligned/  # merged fast align alignments from both directions
+m_bin_extr: ../data/m_bin_extr/  # monolingual valency dictionaries in binary format - extracted, but unmatched
+m_bin_match: ../data/m_bin_match/  # monolingual valency dictionaries in binary format - matched (e.g. with vallex dictionaries)
+b_bin_extr: ../data/b_bin_extr/  # bilingual valency dictionaries in binary format - extracted, but unlinked
+b_bin_link: ../data/b_bin_link/  # bilingual valency dictionaries in binary format - linked, but unmatched
+b_bin_match: ../data/b_bin_match/  # bilingual valency dictionaries in binary format - matched (e.g. with vallex dictionaries)
+m_text: ../data/m_text/  # monolingual valency dictionaries in text format
+b_text: ../data/b_text/  # bilingual valency dictionaries in text format
+m_html: ../data/m_html/  # monolingual valency dictionaries in HTML format
+b_html: ../data/b_html/  # bilingual valency dictionaries in HTML format
+log: ../data/log/  # log files

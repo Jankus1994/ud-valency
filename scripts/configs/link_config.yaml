@@ -1,0 +1,26 @@
+# Configuration of individual linkers
+
+Fa_linker:
+  onedirectional: 1  # numerical
+  threshold: 0  # numerical
+
+Ud_linker:
+  verb_parent_ord: 1
+  verb_parent_upos: 1
+  verb_ord: 1
+  verb_deprel: 1
+  verb_depth: 1
+  verb_child_num: 1
+  threshold: 0  # numerical
+
+Sim_linker:
+  substitutions_allowed: 1
+  spec_cs_sk_measurer: 1
+  threshold: 0  # numerical
+
+Comb_linker:
+  base_linker: 1
+  fa_linker: 1
+  ud_linker: 1
+  sim_linker: 1
+  threshold: 0  # numerical

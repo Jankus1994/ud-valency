@@ -1,0 +1,9 @@
+# Configuration file for treebank preparation
+
+# Monolingual use or first corpus of bilingual use
+
+a_lang_mark: aa
+sentences: true  # the corpus is sentence-segmented (true/false) (only for monolingual variant; it must be for the bilingual)
+# Second corpus of bilingual use
+
+b_lang_mark

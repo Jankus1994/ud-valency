@@ -126,10 +126,22 @@ class Vallex_matcher:
     def connect_matched_frames( self, ext_frame, val_frame):
         val_frame.add_ext_frame( ext_frame)
         ext_frame.add_matched_frame( val_frame)
-        if self.print_frames:
-            print( ext_frame.args_to_one_string())
-            print( val_frame.args_to_string())
-            print( "")
+
+        matched_val_args = set()
+        for ext_frame_arg in ext_frame.args:
+            #arg_matched = False
+            for vallex_arg in val_frame.arguments:
+                if vallex_arg in matched_val_args:
+                    continue
+                if self.arg_agreement( ext_frame_arg, vallex_arg):
+                    vallex_arg.add_ext_arg( ext_frame_arg)
+                    ext_frame_arg.add_matched_arg( vallex_arg)
+                    matched_val_args.add( vallex_arg)
+                    break
+        # if self.print_frames:
+        #     print( ext_frame.args_to_one_string())
+        #     print( val_frame.args_to_string())
+        #     print( "")
 
     def function_agreement( self, ext_arg_deprel, val_arg_functor):
         """ not overloaded, same for all child classes

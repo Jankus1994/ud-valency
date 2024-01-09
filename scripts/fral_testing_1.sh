@@ -27,7 +27,7 @@ process_corp () {
     test_corp="$corp"_"$sample_id"
     gold_results=../data/test_results/gold_"$test_corp"
     log_file=../data/logs/"$test_corp"
-    python3 data_examiner.py $gold_results >> $all_results
+    #python3 data_examiner.py $gold_results >> $all_results
     for run_num in 21
     do
       auto_results=../data/test_results/auto_"$test_corp"_"$run_num"

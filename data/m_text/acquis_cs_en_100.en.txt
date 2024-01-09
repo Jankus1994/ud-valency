@@ -1,0 +1,729 @@
+========================================
+CHAPTERS  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}nsubj-Nom
+			1)  ( I{1} ) WHICH FALL WITHIN{2} CHAPTERS{V} 25 TO 99 OF THE BRUSSELS NOMENCLATURE EXCLUDING THE PRODUCTS LISTED IN ANNEX I ;
+========================================
+Condition  [1 frames] (1 occurs)
+	1]	1 args (1 occurs)
+		{1}nsubj-Nom
+			1)  DESIRING TO CONSOLIDATE AND TO EXTEND , UPON THE ENLARGEMENT OF THE EUROPEAN ECONOMIC COMMUNITY , THE ECONOMIC RELATIONS EXISTING BETWEEN THE COMMUNITY AND SWITZERLAND AND TO ENSURE , WITH DUE REGARD FOR FAIR{1} CONDITIONS{V} OF COMPETITION , THE HARMONIOUS DEVELOPMENT OF THEIR COMMERCE FOR THE PURPOSE OF CONTRIBUTING TO THE WORK OF CONSTRUCTING EUROPE ,
+========================================
+Desiring  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obl-Acc|upon
+			1)  DESIRING{V} TO CONSOLIDATE AND TO EXTEND , UPON THE ENLARGEMENT{2} OF THE EUROPEAN ECONOMIC COMMUNITY , THE ECONOMIC RELATIONS EXISTING BETWEEN THE COMMUNITY AND SWITZERLAND AND TO ENSURE , WITH DUE REGARD FOR FAIR CONDITIONS OF COMPETITION , THE HARMONIOUS DEVELOPMENT OF THEIR COMMERCE FOR THE PURPOSE OF CONTRIBUTING TO THE WORK OF CONSTRUCTING EUROPE , [{1}]
+========================================
+Exempt  [1 frames] (1 occurs)
+	1]	3 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc   {3}obl-Acc|from
+			1)  HAVE DECIDED , IN PURSUIT OF THESE OBJECTIVES AND CONSIDERING THAT NO PROVISION OF THIS AGREEMENT MAY BE INTERPRETED AS EXEMPTING{V} THE CONTRACTING PARTIES{2} FROM THE OBLIGATIONS{3} WHICH ARE INCUMBENT UPON THEM UNDER OTHER INTERNATIONAL AGREEMENTS , [{1}]
+========================================
+INCUMBENT  [1 frames] (1 occurs)
+	1]	4 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc   {3}obl-Acc|upon   {4}obl-Acc|under,other
+			1)  HAVE DECIDED , IN PURSUIT OF THESE OBJECTIVES AND CONSIDERING THAT NO PROVISION OF THIS AGREEMENT MAY BE INTERPRETED AS EXEMPTING THE CONTRACTING PARTIES FROM THE OBLIGATIONS WHICH{2} ARE INCUMBENT{V} UPON THEM{3} UNDER OTHER INTERNATIONAL{4} AGREEMENTS , [{1}]
+========================================
+READINESS  [1 frames] (1 occurs)
+	1]	1 args (1 occurs)
+		{1}nsubj-Nom
+			1)  DECLARING{1} THEIR READINESS{V} TO EXAMINE , IN THE LIGHT OF ANY RELEVANT FACTOR , AND IN PARTICULAR OF DEVELOPMENTS IN THE COMMUNITY , THE POSSIBILITY OF DEVELOPING AND DEEPENING THEIR RELATIONS WHERE IT WOULD APPEAR TO BE USEFUL IN THE INTERESTS OF THEIR ECONOMIES TO EXTEND THEM TO FIELDS NOT COVERED BY THIS AGREEMENT ,
+========================================
+REPLACE  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  2 . IF , AFTER 1 JANUARY 1972 , ANY TARIFF REDUCTIONS RESULTING FROM THE TARIFF AGREEMENTS CONCLUDED AS A RESULT OF THE TRADE CONFERENCE HELD IN GENEVA FROM 1964 TO 1967 BECOME APPLICABLE , SUCH REDUCED DUTIES{1} SHALL REPLACE{V} THE BASIC{2} DUTIES REFERRED TO IN PARAGRAPH 1 .
+========================================
+Replace  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  THE CONTRACTING PARTIES{1} MAY REPLACE{V} A CUSTOMS DUTY{2} OF A FISCAL NATURE OR THE FISCAL ELEMENT OF A CUSTOMS DUTY BY AN INTERNAL TAX .
+========================================
+SUBSTANTIALLY  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  RESOLVED TO THIS END TO ELIMINATE PROGRESSIVELY THE OBSTACLES{1} TO SUBSTANTIALLY{V} ALL THEIR TRADE{2} , IN ACCORDANCE WITH THE PROVISIONS OF THE GENERAL AGREEMENT ON TARIFFS AND TRADE CONCERNING THE ESTABLISHMENT OF FREE TRADE AREAS ,
+========================================
+United  [1 frames] (1 occurs)
+	1]	3 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc   {3}obl-Acc|kingdom
+			1)  2 . DENMARK{1} , IRELAND , NORWAY AND THE UNITED{V} KINGDOM MAY{3} RETAIN UNTIL 1 JANUARY 1976 A CUSTOMS DUTY{2} OF A FISCAL NATURE OR THE FISCAL ELEMENT OF A CUSTOMS DUTY IN THE EVENT OF IMPLEMENTATION OF ARTICLE 38 OF THE %quot% ACT CONCERNING THE CONDITIONS OF ACCESSION AND THE ADJUSTMENTS TO THE TREATIES %quot% DRAWN UP AND ADOPTED WITHIN THE CONFERENCE BETWEEN THE EUROPEAN COMMUNITIES AND THE KINGDOM OF DENMARK , IRELAND , THE KINGDOM OF NORWAY AND THE UNITED KINGDOM OF GREAT BRITAIN AND NORTHERN IRELAND .
+========================================
+abolish  [1 frames] (2 occurs)
+	1]	2 args (2 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  2 . CHARGES HAVING AN EFFECT EQUIVALENT TO CUSTOMS DUTIES ON IMPORTS INTRODUCED ON OR AFTER 1 JANUARY 1972 IN TRADE BETWEEN THE COMMUNITY AND SWITZERLAND{2} SHALL BE ABOLISHED{V} UPON THE ENTRY INTO FORCE OF THE AGREEMENT . [{1}]
+			2)  3 . CHARGES HAVING AN EFFECT EQUIVALENT TO CUSTOMS DUTIES ON IMPORTS SHALL BE{1} PROGRESSIVELY ABOLISHED{V} IN ACCORDANCE WITH THE FOLLOWING TIMETABLE{2} :
+========================================
+abolished  [1 frames] (1 occurs)
+	1]	3 args (1 occurs)
+		{1}nsubj-Nom   {2}nsubj-Nom   {3}obj-Acc
+			1)  2 . CUSTOMS DUTIES ON{1} IMPORTS SHALL BE{2} PROGRESSIVELY ABOLISHED{V} IN ACCORDANCE WITH THE FOLLOWING TIMETABLE{3} :
+========================================
+accompany  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  ( a ) Applications for new calibres of rough movements to be entered on the list shall be sent to the Chambre suisse de l' horlogerie by the associations of clock and watch makers in the Community or any manufacturer of rough movements established in the Community . applications{2} shall be accompanied{V} by a technical description{1} of the calibre of the rough movements . The Chambre suisse de l' horlogerie shall enter the new calibre or calibres on the said list forthwith .
+========================================
+accord  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  TAKING NOTE of the abolition , at the same time as this Agreement comes into force , of the rationalization grants{2} accorded{V} by Ebauches{1} SA and ASUAG and of the simultaneous abolition of the quota referred to in point B 3 ( b ) of the abovementioned Agreement , ( 1) The Agreement has been drawn up in the French language only .
+========================================
+adopt  [1 frames] (3 occurs)
+	1]	2 args (3 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  WHEREAS it is necessary for the proper functioning of that Agreement to adopt{V} additional provisions{2} ; [{1}]
+			2)  2 . DENMARK , IRELAND , NORWAY AND THE UNITED KINGDOM MAY RETAIN UNTIL 1 JANUARY 1976 A CUSTOMS DUTY OF A FISCAL NATURE OR THE FISCAL ELEMENT OF A CUSTOMS DUTY IN THE EVENT OF IMPLEMENTATION OF ARTICLE 38 OF THE %quot% ACT CONCERNING THE CONDITIONS OF ACCESSION AND THE ADJUSTMENTS{2} TO THE TREATIES %quot% DRAWN UP AND ADOPTED{V} WITHIN THE CONFERENCE BETWEEN THE EUROPEAN COMMUNITIES AND THE KINGDOM OF DENMARK , IRELAND , THE KINGDOM OF NORWAY AND THE UNITED KINGDOM OF GREAT BRITAIN AND NORTHERN IRELAND . [{1}]
+			3)  SUBJECT TO THE APPLICATION BY THE COMMUNITY OF ARTICLE 39 ( 5 ) OF THE %quot% ACT CONCERNING THE CONDITIONS OF ACCESSION AND THE ADJUSTMENTS TO THE TREATIES %quot%{2} DRAWN UP AND ADOPTED{V} WITHIN THE CONFERENCE BETWEEN THE EUROPEAN COMMUNITIES AND THE KINGDOM OF DENMARK , IRELAND , THE KINGDOM OF NORWAY AND THE UNITED KINGDOM OF GREAT BRITAIN AND NORTHERN IRELAND , AS REGARDS THE SPECIFIC DUTIES OR THE SPECIFIC PART OF THE MIXED DUTIES IN THE IRISH CUSTOMS TARIFF , ARTICLE 3 AND PROTOCOL NO 1 SHALL BE APPLIED , WITH ROUNDING TO THE FOURTH DECIMAL PLACE . [{1}]
+========================================
+agree  [1 frames] (1 occurs)
+	1]	3 args (1 occurs)
+		{1}nsubj-Nom   {2}obl-Acc|for   {3}obl-Acc|between
+			1)  For the purposes{2} of giving this expert opinion , the institutes{1} shall agree{V} between themselves{3} to take two sufficiently representative batches of watches or watch movements , each normally containing not more than 50 watches or watch movements , one in a Swiss enterprise , the other in a Community enterprise .
+========================================
+agreemend  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  AGREEMENT{V} BETWEEN THE EUROPEAN ECONOMIC COMMUNITY{2} AND THE SWISS CONFEDERATION [{1}]
+========================================
+agreement  [1 frames] (1 occurs)
+	1]	1 args (1 occurs)
+		{1}nsubj-Nom
+			1)  ADDITIONAL{1} AGREEMENT{V} to the Agreement concerning products of the clock and watch industry between the European Economic Community and its Member States and the Swiss Confederation
+========================================
+appear  [2 frames] (2 occurs)
+	1]	1 args (1 occurs)
+		{1}nsubj-Nom
+			1)  DECLARING THEIR READINESS TO EXAMINE , IN THE LIGHT OF ANY RELEVANT FACTOR , AND IN PARTICULAR OF DEVELOPMENTS IN THE COMMUNITY , THE POSSIBILITY OF DEVELOPING AND DEEPENING THEIR RELATIONS WHERE IT{1} WOULD APPEAR{V} TO BE USEFUL IN THE INTERESTS OF THEIR ECONOMIES TO EXTEND THEM TO FIELDS NOT COVERED BY THIS AGREEMENT ,
+	2]		2 args (1 occurs)  [1]
+			{1}nsubj-Nom   {2}obj-Acc
+				1)  ( b ) The withdrawal{2} of calibres of rough movements appearing{V} on the list shall be communicated to the Chambre suisse de l' horlogerie by the associations of the clock and watch makers in the Community or by the manufacturer who had previously applied for the calibre to be entered on the list . [{1}]
+========================================
+applie  [1 frames] (1 occurs)
+	1]	3 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc   {3}obl-Acc|On
+			1)  ( A ) BY 1 JANUARY 1974 AT THE LATEST EACH CHARGE SHALL BE REDUCED TO 60 % OF THE RATE{2} APPLIED{V} ON 1 JANUARY{3} 1972 ; [{1}]
+========================================
+apply  [3 frames] (4 occurs)
+	1]	1 args (2 occurs)
+		{1}nsubj-Nom
+			1)  ( b ) The withdrawal of calibres of rough movements appearing on the list shall be communicated to the Chambre suisse de l' horlogerie by the associations of the clock and watch makers in the Community or by the manufacturer who{1} had previously applied{V} for the calibre to be entered on the list .
+			2)  THE AGREEMENT{1} SHALL APPLY{V} TO PRODUCTS ORIGINATING IN THE COMMUNITY OR SWITZERLAND :
+	2]		2 args (1 occurs)  [1]
+			{1}nsubj-Nom   {2}obj-Acc
+				1)  ANY CHARGE HAVING AN EFFECT EQUIVALENT TO A CUSTOMS DUTY ON IMPORTS , THE RATE OF WHICH ON 31 DECEMBER 1972 IS HIGHER THAN THAT ACTUALLY{2} APPLIED{V} ON 1 JANUARY 1972 SHALL BE REDUCED TO THE LATTER RATE UPON THE ENTRY INTO FORCE OF THE AGREEMENT . [{1}]
+	3]			3 args (1 occurs)  [2]
+				{1}nsubj-Nom   {2}obj-Acc   {3}obj-Acc
+					1)  3 . THE REDUCED DUTIES CALCULATED IN ACCORDANCE WITH ARTICLE{3} 3 AND PROTOCOL NO 1 SHALL BE APPLIED{V} ROUNDED TO THE FIRST DECIMAL{2} PLACE . [{1}]
+========================================
+article  [1 frames] (1 occurs)
+	1]	5 args (1 occurs)
+		{1}nsubj-Nom   {2}nsubj-Nom   {3}nsubj-Nom   {4}nsubj-Acc   {5}xcomp-Part
+			1)  3 . SWITZERLAND{1} MAY RETAIN TEMPORARILY , WHILE{2} OBSERVING THE CONDITIONS{3} OF{4} ARTICLE{V} 18 , DUTIES CORRESPONDING{5} TO THE FISCAL ELEMENT CONTAINED IN CUSTOMS DUTIES ON IMPORTS OF PRODUCTS SPECIFIED IN ANNEX II .
+========================================
+assemble  [1 frames] (1 occurs)
+	1]	3 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc   {3}obl-Acc|from
+			1)  1 . Rough watch movements manufactured in the Community and listed in the Annex to the Agreement , and the regulating organs and other constituent watch-movement parts manufactured in the Community and complementary to rough movements of Swiss or Community manufacture , shall be considered to be equivalent in quality to rough movements and parts of Swiss manufacture with comparable technical characteristics . It shall be understood that watches and watch movements{2} assembled{V} from these rough movements{3} and parts must satisfy the statutory technical control requirements in Switzerland . [{1}]
+========================================
+be  [2 frames] (2 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  THE JOINT COMMITTEE PROVIDED FOR IN ARTICLE 29 SHALL EXAMINE WHETHER THE CONDITIONS SET OUT IN THE PRECEDING SUBPARAGRAPH ARE BEING{V} MET{2} , PARTICULARLY WHERE A CHANGE HAS BEEN MADE IN THE AMOUNT OF THE FISCAL ELEMENT . [{1}]
+	2]		3 args (1 occurs)  [1]
+			{1}nsubj-Nom   {2}nsubj-Nom   {3}obj-Acc
+				1)  1 . THE BASIC DUTY TO WHICH THE SUCCESSIVE REDUCTIONS PROVIDED FOR IN ARTICLE{1} 3 AND IN PROTOCOL NO{2} 1 ARE TO BE{V} APPLIED SHALL{3} , FOR EACH PRODUCT , BE THE DUTY ACTUALLY APPLIED ON 1 JANUARY 1972 .
+========================================
+begin  [1 frames] (1 occurs)
+	1]	4 args (1 occurs)
+		{1}nsubj-Nom   {2}obl-Acc   {3}obl-Acc|from   {4}obl-Acc|into
+			1)  Every three years{2} at least , beginning{V} from the entry{3} into force{4} of the Agreement , the Joint Committee shall review the list to take into account any items which have in the meantime been entered on or struck off the list . The new list shall be published and communicated in the same manner . [{1}]
+========================================
+bring  [1 frames] (1 occurs)
+	1]	3 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc   {3}compound:prt-
+			1)  2 . The list{2} specified in paragraph 1 of this Article of rough movements manufactured in the Community shall be brought{V} up{3} to date regularly in the following manner : [{1}]
+========================================
+calculate  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  3 . THE REDUCED DUTIES{2} CALCULATED{V} IN ACCORDANCE WITH ARTICLE 3 AND PROTOCOL NO 1 SHALL BE APPLIED ROUNDED TO THE FIRST DECIMAL PLACE . [{1}]
+========================================
+come  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obl-Acc|into
+			1)  TAKING NOTE of the abolition , at the same time as this Agreement comes{V} into force{2} , of the rationalization grants accorded by Ebauches SA and ASUAG and of the simultaneous abolition of the quota referred to in point B 3 ( b ) of the abovementioned Agreement , ( 1) The Agreement has been drawn up in the French language only . [{1}]
+========================================
+communicate  [3 frames] (4 occurs)
+	1]	1 args (2 occurs)
+		{1}nsubj-Nom
+			1)  Changes in the annexed list shall be published and communicated{V} in the same manner . [{1}]
+			2)  Every three years at least , beginning from the entry into force of the Agreement , the Joint Committee shall review the list to take into account any items which have in the meantime been entered on or struck off the list . The new list shall be published and communicated{V} in the same manner . [{1}]
+	2]		2 args (1 occurs)  [1]
+			{1}nsubj-Nom   {2}obj-Acc
+				1)  ( b ) The withdrawal{2} of calibres of rough movements appearing on the list shall be communicated{V} to the Chambre suisse de l' horlogerie by the associations of the clock and watch makers in the Community or by the manufacturer who had previously applied for the calibre to be entered on the list . [{1}]
+	3]	1 args (1 occurs)
+		{1}nsubj:pass-Nom
+			1)  The Agreement and the annexed list{1} shall be published in the official journals of the contracting parties and shall be communicated{V} to the watch and clock manufacturers by the trade associations concerned .
+========================================
+compare  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  After testing these batches in accordance with the technical control standards statutory in Switzerland , the institutes{1} shall compare{V} their results{2} and shall jointly draw up a report for the Joint Committee containing their conclusions and any proposals they may have .
+========================================
+concern  [4 frames] (10 occurs)
+	1]	1 args (6 occurs)
+		{1}nsubj-Nom
+			1)  ( c ) Should the statutory technical-control requirements in Switzerland not be satisfied , the Chambre suisse d' horlogerie may request that the calibres of rough movements concerned{V} be struck off the list and shall notify the party concerned of this request . In the event of a disagreement , the party concerned may , within two months , resort to the procedure provided for in paragraph 3 of this Article . [{1}]
+			2)  The Agreement and the annexed list shall be published in the official journals of the contracting parties and shall be communicated to the watch and clock manufacturers by the trade associations concerned{V} . [{1}]
+			3)  1 . THE PROVISIONS{1} CONCERNING{V} THE PROGRESSIVE ABOLITION OF CUSTOMS DUTIES ON IMPORTS SHALL ALSO APPLY TO CUSTOMS DUTIES OF A FISCAL NATURE .
+			4)  SUBJECT TO THE APPLICATION BY THE COMMUNITY OF ARTICLE 39 ( 5 ) OF THE %quot%{1} ACT CONCERNING{V} THE CONDITIONS OF ACCESSION AND THE ADJUSTMENTS TO THE TREATIES %quot% DRAWN UP AND ADOPTED WITHIN THE CONFERENCE BETWEEN THE EUROPEAN COMMUNITIES AND THE KINGDOM OF DENMARK , IRELAND , THE KINGDOM OF NORWAY AND THE UNITED KINGDOM OF GREAT BRITAIN AND NORTHERN IRELAND , AS REGARDS THE SPECIFIC DUTIES OR THE SPECIFIC PART OF THE MIXED DUTIES IN THE IRISH CUSTOMS TARIFF , ARTICLE 3 AND PROTOCOL NO 1 SHALL BE APPLIED , WITH ROUNDING TO THE FOURTH DECIMAL PLACE .
+			5)  ( c ) Should the statutory technical-control requirements in Switzerland not be satisfied , the Chambre suisse d' horlogerie may request that the calibres of rough movements concerned be struck off the list and shall notify the party{1} concerned{V} of this request . In the event of a disagreement , the party concerned may , within two months , resort to the procedure provided for in paragraph 3 of this Article .
+			6)  ( c ) Should the statutory technical-control requirements in Switzerland not be satisfied , the Chambre suisse d' horlogerie may request that the calibres of rough movements concerned be struck off the list and shall notify the party concerned of this request . In the event of a disagreement , the party{1} concerned{V} may , within two months , resort to the procedure provided for in paragraph 3 of this Article .
+	2]		2 args (2 occurs)  [1]
+			{1}nsubj-Nom   {2}obj-Acc
+				1)  WHEREAS an Agreement{1} concerning{V} products{2} of the clock and watch industry between the European Economic Community and its Member States and the Swiss Confederation was signed in Geneva on 30 June 1967 ;
+				2)  2 . DENMARK , IRELAND , NORWAY AND THE UNITED KINGDOM MAY RETAIN UNTIL 1 JANUARY 1976 A CUSTOMS DUTY OF A FISCAL NATURE OR THE FISCAL ELEMENT OF A CUSTOMS DUTY IN THE EVENT OF IMPLEMENTATION OF ARTICLE 38 OF THE %quot% ACT CONCERNING{V} THE CONDITIONS{2} OF ACCESSION AND THE ADJUSTMENTS TO THE TREATIES %quot% DRAWN UP AND ADOPTED WITHIN THE CONFERENCE BETWEEN THE EUROPEAN COMMUNITIES AND THE KINGDOM OF DENMARK , IRELAND , THE KINGDOM OF NORWAY AND THE UNITED KINGDOM OF GREAT BRITAIN AND NORTHERN IRELAND . [{1}]
+	3]			3 args (1 occurs)  [2]
+				{1}nsubj-Nom   {2}obj-Acc   {3}obj-Acc
+					1)  ADDITIONAL AGREEMENT to the Agreement{3} concerning{V} products{2} of the clock and watch industry between the European Economic Community and its Member States and the Swiss Confederation [{1}]
+	4]	1 args (1 occurs)
+		{1}nsubj:pass-Nom
+			1)  Any further information{1} can be obtained from the trade associations concerned{V} .
+========================================
+conclud  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj:pass-Nom   {2}obj-Acc
+			1)  Article 5{2} The Agreement{1} shall be concluded{V} and ratified by the Contracting Parties in accordance with their own procedures .
+========================================
+consider  [3 frames] (3 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  The Joint Committee{1} shall consider{V} this report{2} at its following meeting .
+	2]		3 args (1 occurs)  [1]
+			{1}nsubj-Nom   {2}obj-Acc   {3}xcomp-|to
+				1)  In order that a watch{2} with a movement of Swiss manufacture as regards not less than 50 % of the value of all the constituent parts including the cost of assembly by virtue of Article 2 ( 2) ( b ) of the ordinance of the Swiss Federal Council of 23 December 1971 governing the use of the description %quot%Swiss%quot% for watches can be considered{V} to be Swiss{3} , a certification procedure shall be established between Switzerland and the Community in accordance with the following rules : [{1}]
+	3]		3 args (1 occurs)  [1]
+			{1}nsubj-Nom   {2}obj-Acc   {3}ccomp-Part|to
+				1)  1 . Rough watch movements{2} manufactured in the Community and listed in the Annex to the Agreement , and the regulating organs and other constituent watch-movement parts manufactured in the Community and complementary to rough movements of Swiss or Community manufacture , shall be considered{V} to be equivalent{3} in quality to rough movements and parts of Swiss manufacture with comparable technical characteristics . It shall be understood that watches and watch movements assembled from these rough movements and parts must satisfy the statutory technical control requirements in Switzerland . [{1}]
+========================================
+consult  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  2 . IN SUCH CASES THE CONTRACTING PARTY IN QUESTION SHALL TAKE DUE ACCOUNT OF THE INTERESTS OF THE OTHER CONTRACTING PARTY . TO THIS END THE CONTRACTING PARTIES{1} MAY CONSULT{V} EACH{2} OTHER WITHIN THE JOINT COMMITTEE .
+========================================
+contain  [2 frames] (3 occurs)
+	1]	2 args (2 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  For the purposes of giving this expert opinion , the institutes shall agree between themselves to take two sufficiently representative batches of watches or watch movements , each{1} normally containing{V} not more than 50 watches or watch movements , one in a Swiss enterprise , the other{2} in a Community enterprise .
+			2)  3 . SWITZERLAND MAY RETAIN TEMPORARILY , WHILE OBSERVING THE CONDITIONS OF ARTICLE 18 , DUTIES CORRESPONDING TO THE FISCAL ELEMENT{2} CONTAINED{V} IN CUSTOMS DUTIES ON IMPORTS OF PRODUCTS SPECIFIED IN ANNEX II . [{1}]
+	2]		3 args (1 occurs)  [1]
+			{1}nsubj-Nom   {2}obj-Acc   {3}obj-Acc
+				1)  After testing these batches in accordance with the technical control standards statutory in Switzerland , the institutes shall compare their results and shall jointly draw up a report for the Joint Committee{3} containing{V} their conclusions{2} and any proposals they may have . [{1}]
+========================================
+contest  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  Should the entry be requested for a calibre of rough movements which has already been used in Switzerland and has failed to pass the statutory control in Switzerland , the Chambre suisse{1} de l' horlogerie may contest{V} the entry{2} . In this event , the applicant may resort to the procedure provided for in paragraph 3 of this Article .
+========================================
+contribute  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  ( C ) TO CONTRIBUTE{V} IN THIS WAY , BY{2} THE REMOVAL OF BARRIERS TO TRADE , TO THE HARMONIOUS DEVELOPMENT AND EXPANSION OF WORLD TRADE . [{1}]
+========================================
+correspond  [1 frames] (1 occurs)
+	1]	1 args (1 occurs)
+		{1}nsubj-Nom
+			1)  3 . SWITZERLAND MAY RETAIN TEMPORARILY , WHILE OBSERVING THE CONDITIONS OF ARTICLE 18 , DUTIES{1} CORRESPONDING{V} TO THE FISCAL ELEMENT CONTAINED IN CUSTOMS DUTIES ON IMPORTS OF PRODUCTS SPECIFIED IN ANNEX II .
+========================================
+cover  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obl-Acc|by
+			1)  DECLARING THEIR READINESS TO EXAMINE , IN THE LIGHT OF ANY RELEVANT FACTOR , AND IN PARTICULAR OF DEVELOPMENTS IN THE COMMUNITY , THE POSSIBILITY OF DEVELOPING AND DEEPENING THEIR RELATIONS WHERE IT WOULD APPEAR TO BE USEFUL IN THE INTERESTS OF THEIR ECONOMIES TO EXTEND THEM TO FIELDS NOT COVERED{V} BY THIS AGREEMENT{2} , [{1}]
+========================================
+custom  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  2 . CUSTOMS{V} DUTIES{2} ON IMPORTS SHALL BE PROGRESSIVELY ABOLISHED IN ACCORDANCE WITH THE FOLLOWING TIMETABLE : [{1}]
+========================================
+date  [1 frames] (1 occurs)
+	1]	1 args (1 occurs)
+		{1}nsubj-Nom
+			1)  2 . The list specified in paragraph 1 of this Article of rough movements manufactured in the Community shall be brought up to date{V} regularly in the following manner : [{1}]
+========================================
+decide  [1 frames] (2 occurs)
+	1]	1 args (2 occurs)
+		{1}nsubj-Nom
+			1)  HAVE DECIDED{V} , IN PURSUIT OF THESE OBJECTIVES AND CONSIDERING THAT NO PROVISION OF THIS AGREEMENT MAY BE INTERPRETED AS EXEMPTING THE CONTRACTING PARTIES FROM THE OBLIGATIONS WHICH ARE INCUMBENT UPON THEM UNDER OTHER INTERNATIONAL AGREEMENTS , [{1}]
+			2)  The first party{1} so to decide{V} shall , on its own initiative , seek a joint expert opinion from the institute for official quality control in the Swiss clock and watch industry and a corresponding qualified institute in the Community nominated by the Community interested party .
+========================================
+denounce  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  Either Contracting Party{1} may denounce{V} the Agreement{2} by giving 12 months'notice .
+========================================
+development  [3 frames] (3 occurs)
+	1]	1 args (1 occurs)
+		{1}nsubj-Nom
+			1)  ( A ) TO PROMOTE THROUGH THE EXPANSION OF RECIPROCAL TRADE THE HARMONIOUS{1} DEVELOPMENT{V} OF ECONOMIC RELATIONS BETWEEN THE EUROPEAN ECONOMIC COMMUNITY AND THE SWISS CONFEDERATION AND THUS TO FOSTER IN THE COMMUNITY AND IN SWITZERLAND THE ADVANCE OF ECONOMIC ACTIVITY , THE IMPROVEMENT OF LIVING AND EMPLOYMENT CONDITIONS , AND INCREASED PRODUCTIVITY AND FINANCIAL STABILITY ,
+	2]		2 args (1 occurs)  [1]
+			{1}nsubj-Nom   {2}nsubj-Nom
+				1)  DESIRING TO CONSOLIDATE AND TO EXTEND , UPON THE ENLARGEMENT OF THE EUROPEAN ECONOMIC COMMUNITY , THE ECONOMIC RELATIONS EXISTING BETWEEN THE COMMUNITY AND SWITZERLAND AND TO ENSURE , WITH DUE{1} REGARD FOR FAIR CONDITIONS OF COMPETITION , THE{2} HARMONIOUS DEVELOPMENT{V} OF THEIR COMMERCE FOR THE PURPOSE OF CONTRIBUTING TO THE WORK OF CONSTRUCTING EUROPE ,
+	3]		2 args (1 occurs)  [1]
+			{1}nsubj-Nom   {2}obj-Acc
+				1)  ( C ) TO CONTRIBUTE IN THIS WAY , BY THE REMOVAL OF BARRIERS TO TRADE , TO THE HARMONIOUS DEVELOPMENT{V} AND{2} EXPANSION OF WORLD TRADE . [{1}]
+========================================
+draw  [2 frames] (2 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  After testing these batches in accordance with the technical control standards statutory in Switzerland , the institutes{1} shall compare their results and shall jointly draw{V} up a report{2} for the Joint Committee containing their conclusions and any proposals they may have .
+	2]		3 args (1 occurs)  [1]
+			{1}nsubj-Nom   {2}obj-Acc   {3}compound:prt-
+				1)  TAKING NOTE of the abolition , at the same time as this Agreement comes into force , of the rationalization grants accorded by Ebauches SA and ASUAG and of the simultaneous abolition of the quota referred to in point B 3 ( b ) of the abovementioned Agreement , ( 1) The Agreement{2} has been drawn{V} up{3} in the French language only . [{1}]
+========================================
+drawn  [1 frames] (2 occurs)
+	1]	3 args (2 occurs)
+		{1}nsubj-Nom   {2}obj-Acc   {3}obl-Acc|up
+			1)  2 . DENMARK , IRELAND , NORWAY AND THE UNITED KINGDOM MAY RETAIN UNTIL 1 JANUARY 1976 A CUSTOMS DUTY OF A FISCAL NATURE OR THE FISCAL ELEMENT OF A CUSTOMS DUTY IN THE EVENT OF IMPLEMENTATION OF ARTICLE 38 OF THE %quot% ACT CONCERNING THE CONDITIONS OF ACCESSION AND THE ADJUSTMENTS TO THE TREATIES %quot%{2} DRAWN{V} UP AND{3} ADOPTED WITHIN THE CONFERENCE BETWEEN THE EUROPEAN COMMUNITIES AND THE KINGDOM OF DENMARK , IRELAND , THE KINGDOM OF NORWAY AND THE UNITED KINGDOM OF GREAT BRITAIN AND NORTHERN IRELAND . [{1}]
+			2)  SUBJECT TO THE APPLICATION BY THE COMMUNITY OF ARTICLE 39 ( 5 ) OF THE %quot% ACT CONCERNING THE CONDITIONS OF ACCESSION AND THE ADJUSTMENTS TO THE TREATIES %quot%{2} DRAWN{V} UP AND{3} ADOPTED WITHIN THE CONFERENCE BETWEEN THE EUROPEAN COMMUNITIES AND THE KINGDOM OF DENMARK , IRELAND , THE KINGDOM OF NORWAY AND THE UNITED KINGDOM OF GREAT BRITAIN AND NORTHERN IRELAND , AS REGARDS THE SPECIFIC DUTIES OR THE SPECIFIC PART OF THE MIXED DUTIES IN THE IRISH CUSTOMS TARIFF , ARTICLE 3 AND PROTOCOL NO 1 SHALL BE APPLIED , WITH ROUNDING TO THE FOURTH DECIMAL PLACE . [{1}]
+========================================
+dutie  [1 frames] (1 occurs)
+	1]	3 args (1 occurs)
+		{1}nsubj-Nom   {2}obl-Acc|on   {3}xcomp-Fin
+			1)  CUSTOMS{1} DUTIES{V} ON EXPORTS{2} AND CHARGES HAVING EQUIVALENT EFFECT SHALL BE ABOLISHED{3} NOT LATER THAN 1 JANUARY 1974 .
+========================================
+duty  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  1 . THE PROVISIONS CONCERNING THE PROGRESSIVE{1} ABOLITION OF CUSTOMS DUTIES{V} ON IMPORTS SHALL ALSO{2} APPLY TO CUSTOMS DUTIES OF A FISCAL NATURE .
+========================================
+element  [2 frames] (2 occurs)
+	1]	3 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc|of   {3}obl-Acc|of
+			1)  THE CONTRACTING PARTIES MAY REPLACE A CUSTOMS DUTY OF A FISCAL{3} NATURE{1} OR THE FISCAL ELEMENT{V} OF A CUSTOMS DUTY{2} BY AN INTERNAL TAX .
+	2]	3 args (1 occurs)
+		{1}nsubj-Nom   {2}obl-Acc|of   {3}obl-Acc|of
+			1)  2 . DENMARK , IRELAND , NORWAY AND THE UNITED KINGDOM MAY RETAIN UNTIL 1 JANUARY 1976 A CUSTOMS DUTY OF A FISCAL{2} NATURE{1} OR THE FISCAL ELEMENT{V} OF A CUSTOMS DUTY{3} IN THE EVENT OF IMPLEMENTATION OF ARTICLE 38 OF THE %quot% ACT CONCERNING THE CONDITIONS OF ACCESSION AND THE ADJUSTMENTS TO THE TREATIES %quot% DRAWN UP AND ADOPTED WITHIN THE CONFERENCE BETWEEN THE EUROPEAN COMMUNITIES AND THE KINGDOM OF DENMARK , IRELAND , THE KINGDOM OF NORWAY AND THE UNITED KINGDOM OF GREAT BRITAIN AND NORTHERN IRELAND .
+========================================
+eliminate  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  RESOLVED{1} TO THIS END TO ELIMINATE{V} PROGRESSIVELY{2} THE OBSTACLES TO SUBSTANTIALLY ALL THEIR TRADE , IN ACCORDANCE WITH THE PROVISIONS OF THE GENERAL AGREEMENT ON TARIFFS AND TRADE CONCERNING THE ESTABLISHMENT OF FREE TRADE AREAS ,
+========================================
+enter  [3 frames] (7 occurs)
+	1]	1 args (3 occurs)
+		{1}nsubj-Nom
+			1)  The tariff reductions{1} specified in Articles 1 and 5 of the Agreement of 30 June 1967 shall enter{V} into force at the same time as this Agreement .
+			2)  The Agreement{1} shall enter{V} into force on 1 January 1973 provided that the Contracting Parties have exchanged their instruments of ratification by that date .
+			3)  Should the instruments of ratification be exchanged between 1 January and 30 November 1973 , the Agreement{1} shall enter{V} into force on the first day of the second month following that exchange .
+	2]		2 args (3 occurs)  [1]
+			{1}nsubj-Nom   {2}obj-Acc
+				1)  ( a ) Applications for new calibres of rough movements{2} to be entered{V} on the list shall be sent to the Chambre suisse de l' horlogerie by the associations of clock and watch makers in the Community or any manufacturer of rough movements established in the Community . applications shall be accompanied by a technical description of the calibre of the rough movements . The Chambre suisse de l' horlogerie shall enter the new calibre or calibres on the said list forthwith . [{1}]
+				2)  ( a ) Applications for new calibres of rough movements to be entered on the list shall be sent to the Chambre suisse de l' horlogerie by the associations of clock and watch makers in the Community or any manufacturer of rough movements established in the Community . applications shall be accompanied by a technical description of the calibre of the rough movements . The Chambre suisse{1} de l' horlogerie shall enter{V} the new calibre{2} or calibres on the said list forthwith .
+				3)  ( b ) The withdrawal of calibres of rough movements appearing on the list shall be communicated to the Chambre suisse de l' horlogerie by the associations of the clock and watch makers in the Community or by the manufacturer who had previously applied for the calibre to be entered{V} on the list . [{2}] [{1}]
+	3]			3 args (1 occurs)  [2]
+				{1}nsubj-Nom   {2}obj-Acc   {3}compound:prt-
+					1)  Every three years at least , beginning from the entry into force of the Agreement , the Joint Committee shall review the list to take into account any items which have{2} in the meantime been entered{V} on{3} or struck off the list . The new list shall be published and communicated in the same manner . [{1}]
+========================================
+equivalend  [1 frames] (2 occurs)
+	1]	2 args (2 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  1 . NO NEW{2} CHARGE HAVING AN EFFECT EQUIVALENT{V} TO A CUSTOMS DUTY ON IMPORTS SHALL BE INTRODUCED IN TRADE BETWEEN THE COMMUNITY AND SWITZERLAND . [{1}]
+			2)  ANY CHARGE{2} HAVING AN EFFECT EQUIVALENT{V} TO A CUSTOMS DUTY ON IMPORTS , THE RATE OF WHICH ON 31 DECEMBER 1972 IS HIGHER THAN THAT ACTUALLY APPLIED ON 1 JANUARY 1972 SHALL BE REDUCED TO THE LATTER RATE UPON THE ENTRY INTO FORCE OF THE AGREEMENT . [{1}]
+========================================
+equivalent  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  1 . Rough watch movements manufactured in the Community and listed in the Annex to the Agreement , and the regulating organs and other constituent watch-movement parts manufactured in the Community and complementary to rough movements of Swiss or Community manufacture , shall be considered to be equivalent{V} in quality to rough movements and parts of Swiss manufacture with comparable technical characteristics . It shall be understood that watches and watch movements assembled from these rough movements and parts must satisfy the statutory technical control requirements in Switzerland . [{2}] [{1}]
+========================================
+establish  [2 frames] (3 occurs)
+	1]	2 args (2 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  In order that a watch with a movement of Swiss manufacture as regards not less than 50 % of the value of all the constituent parts including the cost of assembly by virtue of Article 2 ( 2) ( b ) of the ordinance of the Swiss Federal Council of 23 December 1971 governing the use of the description %quot%Swiss%quot% for watches can be considered to be Swiss , a certification procedure{2} shall be established{V} between Switzerland and the Community in accordance with the following rules : [{1}]
+			2)  ( a ) Applications for new calibres of rough movements to be entered on the list shall be sent to the Chambre suisse de l' horlogerie by the associations of clock and watch makers in the Community or any manufacturer{2} of rough movements established{V} in the Community . applications shall be accompanied by a technical description of the calibre of the rough movements . The Chambre suisse de l' horlogerie shall enter the new calibre or calibres on the said list forthwith . [{1}]
+	2]	2 args (1 occurs)
+		{1}nsubj-Nom|in   {2}obj-Acc
+			1)  1 . IN THE EVENT{1} OF SPECIFIC RULES BEING ESTABLISHED{V} AS{2} OR OF ANY ALTERATION OF THE CURRENT RULES THE CONTRACTING PARTY IN QUESTION MAY ADAPT THE ARRANGEMENTS RESULTING FROM THIS AGREEMENT IN RESPECT OF THE PRODUCTS WHICH ARE THE SUBJECT OF THOSE RULES OR ALTERATIONS .
+========================================
+examine  [1 frames] (1 occurs)
+	1]	3 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc   {3}obl-Acc|with
+			1)  THE JOINT{1} COMMITTEE SHALL EXAMINE{V} THE POSITION{2} WITH A VIEW{3} TO THE CONVERSION OF SUCH DUTIES INTO INTERNAL CHARGES BEFORE 1 JANUARY 1980 OR BEFORE ANY OTHER DATE WHICH IT MIGHT DETERMINE IN THE LIGHT OF CIRCUMSTANCES .
+========================================
+exchange  [1 frames] (2 occurs)
+	1]	2 args (2 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  The Agreement shall enter into force on 1 January 1973 provided that the Contracting Parties{1} have exchanged{V} their instruments{2} of ratification by that date .
+			2)  Should the instruments{2} of ratification be exchanged{V} between 1 January and 30 November 1973 , the Agreement shall enter into force on the first day of the second month following that exchange . [{1}]
+========================================
+exist  [1 frames] (2 occurs)
+	1]	1 args (2 occurs)
+		{1}nsubj-Nom
+			1)  WHEREAS close cooperation{1} exists{V} in the clock and watch industry between the European Economic Community and Switzerland ;
+			2)  DESIRING TO CONSOLIDATE AND TO EXTEND , UPON THE ENLARGEMENT OF THE EUROPEAN ECONOMIC COMMUNITY , THE ECONOMIC{1} RELATIONS EXISTING{V} BETWEEN THE COMMUNITY AND SWITZERLAND AND TO ENSURE , WITH DUE REGARD FOR FAIR CONDITIONS OF COMPETITION , THE HARMONIOUS DEVELOPMENT OF THEIR COMMERCE FOR THE PURPOSE OF CONTRIBUTING TO THE WORK OF CONSTRUCTING EUROPE ,
+========================================
+fail  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj:pass-Nom   {2}xcomp-Inf|to
+			1)  Should the entry{1} be requested for a calibre of rough movements which has already been used in Switzerland and has failed{V} to pass{2} the statutory control in Switzerland , the Chambre suisse de l' horlogerie may contest the entry . In this event , the applicant may resort to the procedure provided for in paragraph 3 of this Article .
+========================================
+follow  [3 frames] (3 occurs)
+	1]	1 args (1 occurs)
+		{1}nsubj-Nom
+			1)  HAVE AGREED as follows{V} : [{1}]
+	2]		2 args (1 occurs)  [1]
+			{1}nsubj-Nom   {2}xcomp-Part
+				1)  The Joint Committee shall consider this report at its following{V} meeting{2} . [{1}]
+	3]		3 args (1 occurs)  [1]
+			{1}nsubj-Nom   {2}obj-Acc   {3}obj-Acc
+				1)  Should the instruments of ratification be exchanged between 1 January and 30 November 1973 , the Agreement shall enter into force on the first day of the second month{3} following{V} that exchange{2} . [{1}]
+========================================
+function  [1 frames] (1 occurs)
+	1]	3 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc   {3}obl-Acc|of
+			1)  WHEREAS it is necessary for the proper{2} functioning{V} of that Agreement{3} to adopt additional provisions ; [{1}]
+========================================
+give  [2 frames] (3 occurs)
+	1]	2 args (2 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  The institutes shall have three months in which to give{V} the expert opinion{2} requested . [{1}]
+			2)  Either Contracting Party may denounce the Agreement by giving{V} 12 months'notice{2} . [{1}]
+	2]		3 args (1 occurs)  [1]
+			{1}nsubj-Nom   {2}obj-Acc   {3}obj-Acc
+				1)  For the purposes{3} of giving{V} this expert opinion{2} , the institutes shall agree between themselves to take two sufficiently representative batches of watches or watch movements , each normally containing not more than 50 watches or watch movements , one in a Swiss enterprise , the other in a Community enterprise . [{1}]
+========================================
+govern  [2 frames] (2 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  WHEREAS the ordinance{1} of the Swiss Federal Council of 23 December 1971 governs{V} the use{2} of the description %quot%Swiss%quot% for watches ;
+	2]		3 args (1 occurs)  [1]
+			{1}nsubj-Nom   {2}obj-Acc   {3}obj-Acc
+				1)  In order that a watch with a movement of Swiss manufacture as regards not less than 50 % of the value of all the constituent parts including the cost of assembly by virtue of Article 2 ( 2) ( b ) of the ordinance of the Swiss Federal Council of 23 December{3} 1971 governing{V} the use{2} of the description %quot%Swiss%quot% for watches can be considered to be Swiss , a certification procedure shall be established between Switzerland and the Community in accordance with the following rules : [{1}]
+========================================
+have  [3 frames] (6 occurs)
+	1]	1 args (2 occurs)
+		{1}nsubj-Nom
+			1)  After testing these batches in accordance with the technical control standards statutory in Switzerland , the institutes shall compare their results and shall jointly draw up a report for the Joint Committee containing their conclusions and any proposals they{1} may have{V} .
+			2)  Every three years at least , beginning from the entry into force of the Agreement , the Joint Committee shall review the list to take into account any items which{1} have{V} in the meantime been entered on or struck off the list . The new list shall be published and communicated in the same manner .
+	2]		2 args (3 occurs)  [1]
+			{1}nsubj-Nom   {2}obj-Acc
+				1)  HAVE{V} AGREED{2} as follows : [{1}]
+				2)  2 . CHARGES HAVING{V} AN EFFECT EQUIVALENT{2} TO CUSTOMS DUTIES ON IMPORTS INTRODUCED ON OR AFTER 1 JANUARY 1972 IN TRADE BETWEEN THE COMMUNITY AND SWITZERLAND SHALL BE ABOLISHED UPON THE ENTRY INTO FORCE OF THE AGREEMENT . [{1}]
+				3)  3 . CHARGES HAVING{V} AN EFFECT EQUIVALENT{2} TO CUSTOMS DUTIES ON IMPORTS SHALL BE PROGRESSIVELY ABOLISHED IN ACCORDANCE WITH THE FOLLOWING TIMETABLE : [{1}]
+	3]		2 args (1 occurs)  [1]
+			{1}nsubj-Nom   {2}ccomp-Fin|(that)
+				1)  The institutes{1} shall have{V} three months in which to give the expert opinion requested{2} .
+========================================
+held  [1 frames] (1 occurs)
+	1]	3 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc   {3}obl-Acc
+			1)  2 . IF , AFTER 1 JANUARY 1972 , ANY TARIFF REDUCTIONS RESULTING FROM THE TARIFF AGREEMENTS CONCLUDED AS A RESULT OF THE TRADE CONFERENCE{2} HELD{V} IN GENEVA FROM 1964 TO 1967 BECOME APPLICABLE{3} , SUCH REDUCED DUTIES SHALL REPLACE THE BASIC DUTIES REFERRED TO IN PARAGRAPH 1 . [{1}]
+========================================
+horlogerie  [1 frames] (3 occurs)
+	1]	1 args (3 occurs)
+		{1}nsubj-Nom
+			1)  ( d ) All applications for amendments to the list , in accordance with subparagraphs ( a ) , ( b ) and ( c ) above , shall be notified to the Joint Committee by the Chambre suisse de l' horlogerie{V} forthwith . [{1}]
+			2)  ( a ) Applications for new calibres of rough movements to be entered on the list shall be sent to the Chambre suisse de l' horlogerie{V} by the associations of clock and watch makers in the Community or any manufacturer of rough movements established in the Community . applications shall be accompanied by a technical description of the calibre of the rough movements . The Chambre suisse de l' horlogerie shall enter the new calibre or calibres on the said list forthwith . [{1}]
+			3)  ( b ) The withdrawal of calibres of rough movements appearing on the list shall be communicated to the Chambre suisse de l' horlogerie{V} by the associations of the clock and watch makers in the Community or by the manufacturer who had previously applied for the calibre to be entered on the list . [{1}]
+========================================
+implement  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  2 . IN THE CASE OF PRODUCTS LISTED IN ANNEX III , THE CONTRACTING PARTIES MAY TAKE , IN SUCH MANNER AS THEY SHALL DETERMINE , THE MEASURES{1} THEY CONSIDER NECESSARY TO IMPLEMENT{V} THEIR{2} SUPPLY POLICIES .
+========================================
+increase  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  ( A ) TO PROMOTE THROUGH THE EXPANSION OF RECIPROCAL TRADE THE HARMONIOUS DEVELOPMENT OF ECONOMIC RELATIONS BETWEEN THE EUROPEAN ECONOMIC COMMUNITY AND THE SWISS CONFEDERATION AND THUS TO FOSTER IN THE COMMUNITY AND IN SWITZERLAND THE ADVANCE OF ECONOMIC ACTIVITY , THE IMPROVEMENT OF LIVING AND EMPLOYMENT CONDITIONS , AND{1} INCREASED{V} PRODUCTIVITY{2} AND FINANCIAL STABILITY ,
+========================================
+interpret  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  HAVE DECIDED , IN PURSUIT OF THESE OBJECTIVES AND CONSIDERING THAT NO{2} PROVISION OF THIS AGREEMENT MAY BE INTERPRETED{V} AS EXEMPTING THE CONTRACTING PARTIES FROM THE OBLIGATIONS WHICH ARE INCUMBENT UPON THEM UNDER OTHER INTERNATIONAL AGREEMENTS , [{1}]
+========================================
+introduce  [2 frames] (4 occurs)
+	1]	2 args (3 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  1 . NO NEW{2} CUSTOMS DUTY ON IMPORTS SHALL BE INTRODUCED{V} IN TRADE BETWEEN THE COMMUNITY AND SWITZERLAND . [{1}]
+			2)  1 . NO NEW{2} CHARGE HAVING AN EFFECT EQUIVALENT TO A CUSTOMS DUTY ON IMPORTS SHALL BE INTRODUCED{V} IN TRADE BETWEEN THE COMMUNITY AND SWITZERLAND . [{1}]
+			3)  2 . CHARGES HAVING AN EFFECT EQUIVALENT TO CUSTOMS DUTIES ON IMPORTS INTRODUCED{V} ON{2} OR AFTER 1 JANUARY 1972 IN TRADE BETWEEN THE COMMUNITY AND SWITZERLAND SHALL BE ABOLISHED UPON THE ENTRY INTO FORCE OF THE AGREEMENT . [{1}]
+	2]	2 args (1 occurs)
+		{1}nsubj:pass-Part   {2}obj-Acc
+			1)  1 . NO CUSTOMS DUTY{2} ON EXPORTS OR CHARGE HAVING{1} EQUIVALENT EFFECT SHALL BE INTRODUCED{V} IN TRADE BETWEEN THE COMMUNITY AND SWITZERLAND .
+========================================
+late  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}ccomp-Fin|(that)
+			1)  ( A ) BY 1 JANUARY{1} 1974 AT THE LATEST{V} EACH CHARGE SHALL BE REDUCED{2} TO 60 % OF THE RATE APPLIED ON 1 JANUARY 1972 ;
+========================================
+list  [1 frames] (3 occurs)
+	1]	1 args (3 occurs)
+		{1}nsubj-Nom
+			1)  1 . Rough watch movements manufactured in the Community and listed{V} in the Annex to the Agreement , and the regulating organs and other constituent watch-movement parts manufactured in the Community and complementary to rough movements of Swiss or Community manufacture , shall be considered to be equivalent in quality to rough movements and parts of Swiss manufacture with comparable technical characteristics . It shall be understood that watches and watch movements assembled from these rough movements and parts must satisfy the statutory technical control requirements in Switzerland . [{1}]
+			2)  2 . IN THE CASE OF PRODUCTS{1} LISTED{V} IN ANNEX III , THE CONTRACTING PARTIES MAY TAKE , IN SUCH MANNER AS THEY SHALL DETERMINE , THE MEASURES THEY CONSIDER NECESSARY TO IMPLEMENT THEIR SUPPLY POLICIES .
+			3)  ( I ) WHICH FALL WITHIN CHAPTERS 25 TO 99 OF THE BRUSSELS NOMENCLATURE EXCLUDING THE{1} PRODUCTS LISTED{V} IN ANNEX I ;
+========================================
+made  [1 frames] (3 occurs)
+	1]	2 args (3 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  ( B ) FOUR FURTHER REDUCTIONS OF 20 % EACH{2} SHALL BE MADE{V} ON : [{1}]
+			2)  THE JOINT COMMITTEE PROVIDED FOR IN ARTICLE 29 SHALL EXAMINE WHETHER THE CONDITIONS SET OUT IN THE PRECEDING SUBPARAGRAPH ARE BEING MET , PARTICULARLY WHERE A CHANGE{2} HAS BEEN MADE{V} IN THE AMOUNT OF THE FISCAL ELEMENT . [{1}]
+			3)  ( B ) THREE FURTHER REDUCTIONS OF 20 % EACH{1} SHALL BE MADE{V} ON{2} :
+========================================
+manufacture  [1 frames] (3 occurs)
+	1]	2 args (3 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  1 . Rough watch movements{2} manufactured{V} in the Community and listed in the Annex to the Agreement , and the regulating organs and other constituent watch-movement parts manufactured in the Community and complementary to rough movements of Swiss or Community manufacture , shall be considered to be equivalent in quality to rough movements and parts of Swiss manufacture with comparable technical characteristics . It shall be understood that watches and watch movements assembled from these rough movements and parts must satisfy the statutory technical control requirements in Switzerland . [{1}]
+			2)  1 . Rough watch movements manufactured in the Community and listed in the Annex to the Agreement , and the regulating organs and other constituent watch-movement parts{2} manufactured{V} in the Community and complementary to rough movements of Swiss or Community manufacture , shall be considered to be equivalent in quality to rough movements and parts of Swiss manufacture with comparable technical characteristics . It shall be understood that watches and watch movements assembled from these rough movements and parts must satisfy the statutory technical control requirements in Switzerland . [{1}]
+			3)  2 . The list specified in paragraph 1 of this Article of rough movements{2} manufactured{V} in the Community shall be brought up to date regularly in the following manner : [{1}]
+========================================
+meet  [1 frames] (1 occurs)
+	1]	1 args (1 occurs)
+		{1}nsubj-Nom
+			1)  The Joint Committee shall consider this report at its following meeting{V} . [{1}]
+========================================
+nominate  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  The first party so to decide shall , on its own initiative , seek a joint expert opinion from the institute for official quality control in the Swiss clock and watch industry and a corresponding qualified institute in the Community{2} nominated{V} by the Community interested party{1} .
+========================================
+notify  [2 frames] (2 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}ccomp-Nom
+			1)  ( c ) Should the statutory technical-control requirements in Switzerland not be satisfied , the Chambre suisse d' horlogerie may request that the calibres{1} of rough movements concerned be struck off the list and shall notify{V} the party concerned{2} of this request . In the event of a disagreement , the party concerned may , within two months , resort to the procedure provided for in paragraph 3 of this Article .
+	2]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  ( d ) All applications for amendments to the list , in accordance with subparagraphs ( a ) , ( b{2} ) and ( c ) above , shall be notified{V} to the Joint Committee by the Chambre suisse de l' horlogerie forthwith . [{1}]
+========================================
+objective  [1 frames] (1 occurs)
+	1]	3 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc   {3}ccomp-Fin|(that)
+			1)  HAVE DECIDED , IN PURSUIT OF THESE{1} OBJECTIVES{V} AND{2} CONSIDERING THAT NO PROVISION OF THIS AGREEMENT MAY BE INTERPRETED{3} AS EXEMPTING THE CONTRACTING PARTIES FROM THE OBLIGATIONS WHICH ARE INCUMBENT UPON THEM UNDER OTHER INTERNATIONAL AGREEMENTS ,
+========================================
+obtain  [2 frames] (2 occurs)
+	1]	1 args (1 occurs)
+		{1}nsubj-Nom
+			1)  PROTOCOL NO 2 LAYS{1} DOWN THE TARIFF TREATMENT AND ARRANGEMENTS APPLICABLE TO CERTAIN GOODS OBTAINED{V} BY PROCESSING AGRICULTURAL PRODUCTS .
+	2]		2 args (1 occurs)  [1]
+			{1}nsubj-Nom   {2}obj-Acc
+				1)  Any further information{2} can be obtained{V} from the trade associations concerned . [{1}]
+========================================
+pass  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  Should the entry be requested for a calibre of rough movements which has already been used in Switzerland and has failed to pass{V} the statutory control{2} in Switzerland , the Chambre suisse de l' horlogerie may contest the entry . In this event , the applicant may resort to the procedure provided for in paragraph 3 of this Article . [{1}]
+========================================
+promote  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obl-Acc|through
+			1)  ( A ) TO PROMOTE{V} THROUGH THE{2} EXPANSION OF RECIPROCAL TRADE THE HARMONIOUS DEVELOPMENT OF ECONOMIC RELATIONS BETWEEN THE EUROPEAN ECONOMIC COMMUNITY AND THE SWISS CONFEDERATION AND THUS TO FOSTER IN THE COMMUNITY AND IN SWITZERLAND THE ADVANCE OF ECONOMIC ACTIVITY , THE IMPROVEMENT OF LIVING AND EMPLOYMENT CONDITIONS , AND INCREASED PRODUCTIVITY AND FINANCIAL STABILITY , [{1}]
+========================================
+provide  [3 frames] (7 occurs)
+	1]	1 args (2 occurs)
+		{1}nsubj-Nom
+			1)  ( II{1} ) WHICH ARE SPECIFIED IN PROTOCOL NO 2 , WITH DUE REGARD TO THE ARRANGEMENTS PROVIDED{V} FOR IN THAT PROTOCOL .
+			2)  THE JOINT{1} COMMITTEE PROVIDED{V} FOR IN ARTICLE 29 SHALL EXAMINE WHETHER THE CONDITIONS SET OUT IN THE PRECEDING SUBPARAGRAPH ARE BEING MET , PARTICULARLY WHERE A CHANGE HAS BEEN MADE IN THE AMOUNT OF THE FISCAL ELEMENT .
+	2]		2 args (4 occurs)  [1]
+			{1}nsubj-Nom   {2}obj-Acc
+				1)  Should the entry be requested for a calibre of rough movements which has already been used in Switzerland and has failed to pass the statutory control in Switzerland , the Chambre suisse de l' horlogerie may contest the entry . In this event , the applicant may resort to the procedure{2} provided{V} for in paragraph 3 of this Article . [{1}]
+				2)  ( c ) Should the statutory technical-control requirements in Switzerland not be satisfied , the Chambre suisse d' horlogerie may request that the calibres of rough movements concerned be struck off the list and shall notify the party concerned of this request . In the event of a disagreement , the party concerned may , within two months , resort to the procedure{2} provided{V} for in paragraph 3 of this Article . [{1}]
+				3)  3 . In the event of a dispute about the equivalence of quality , the matter shall be referred forthwith by any interested party to the Joint Committee{2} provided{V} for in Article 9 of the Agreement of 30 June 1967 . [{1}]
+				4)  ( B ) TO PROVIDE{V} FAIR{2} CONDITIONS OF COMPETITION FOR TRADE BETWEEN THE CONTRACTING PARTIES , [{1}]
+	3]		2 args (1 occurs)  [1]
+			{1}nsubj-Nom   {2}ccomp-Fin|(that)
+				1)  The Agreement shall enter into force on 1 January 1973 provided{V} that the Contracting Parties have exchanged{2} their instruments of ratification by that date . [{1}]
+========================================
+publish  [2 frames] (3 occurs)
+	1]	2 args (2 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  Changes{2} in the annexed list shall be published{V} and communicated in the same manner . [{1}]
+			2)  Every three years at least , beginning from the entry into force of the Agreement , the Joint Committee shall review the list to take into account any items which have in the meantime been entered on or struck off the list . The new list{2} shall be published{V} and communicated in the same manner . [{1}]
+	2]	2 args (1 occurs)
+		{1}nsubj:pass-Nom   {2}obj-Acc
+			1)  The Agreement{2} and the annexed list{1} shall be published{V} in the official journals of the contracting parties and shall be communicated to the watch and clock manufacturers by the trade associations concerned .
+========================================
+pursuit  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}ccomp-Fin|of
+			1)  HAVE DECIDED , IN{1} PURSUIT{V} OF THESE OBJECTIVES{2} AND CONSIDERING THAT NO PROVISION OF THIS AGREEMENT MAY BE INTERPRETED AS EXEMPTING THE CONTRACTING PARTIES FROM THE OBLIGATIONS WHICH ARE INCUMBENT UPON THEM UNDER OTHER INTERNATIONAL AGREEMENTS ,
+========================================
+ratify  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj:pass-Nom   {2}obl-Acc|by
+			1)  Article 5 The Agreement{1} shall be concluded and ratified{V} by the Contracting Parties{2} in accordance with their own procedures .
+========================================
+reduce  [1 frames] (3 occurs)
+	1]	2 args (3 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  ( A ) ON{2} 1 APRIL 1973 EACH DUTY SHALL BE REDUCED{V} TO 80 % OF THE BASIC DUTY ; [{1}]
+			2)  ( A ) BY 1 JANUARY 1974 AT THE LATEST EACH{2} CHARGE SHALL BE REDUCED{V} TO 60 % OF THE RATE APPLIED ON 1 JANUARY 1972 ; [{1}]
+			3)  ANY CHARGE HAVING AN EFFECT EQUIVALENT TO A CUSTOMS DUTY ON IMPORTS , THE RATE OF WHICH ON 31 DECEMBER 1972 IS HIGHER THAN THAT ACTUALLY{2} APPLIED ON 1 JANUARY 1972 SHALL BE REDUCED{V} TO THE LATTER RATE UPON THE ENTRY INTO FORCE OF THE AGREEMENT . [{1}]
+========================================
+refer  [2 frames] (3 occurs)
+	1]	1 args (1 occurs)
+		{1}nsubj-Nom
+			1)  2 . IF , AFTER 1 JANUARY 1972 , ANY TARIFF REDUCTIONS RESULTING FROM THE TARIFF AGREEMENTS CONCLUDED AS A RESULT OF THE TRADE CONFERENCE HELD IN GENEVA FROM 1964 TO 1967 BECOME APPLICABLE , SUCH REDUCED DUTIES SHALL REPLACE THE BASIC DUTIES REFERRED{V} TO IN PARAGRAPH 1 . [{1}]
+	2]		2 args (2 occurs)  [1]
+			{1}nsubj-Nom   {2}obj-Acc
+				1)  TAKING NOTE of the abolition , at the same time as this Agreement comes into force , of the rationalization grants accorded by Ebauches SA and ASUAG and of the simultaneous abolition of the quota{2} referred{V} to in point B 3 ( b ) of the abovementioned Agreement , ( 1) The Agreement has been drawn up in the French language only . [{1}]
+				2)  3 . In the event of a dispute about the equivalence of quality , the matter{2} shall be referred{V} forthwith by any interested party{1} to the Joint Committee provided for in Article 9 of the Agreement of 30 June 1967 .
+========================================
+regard  [1 frames] (1 occurs)
+	1]	1 args (1 occurs)
+		{1}nsubj-Nom
+			1)  In order that a watch with a movement of Swiss manufacture as regards{V} not less than 50 % of the value of all the constituent parts including the cost of assembly by virtue of Article 2 ( 2) ( b ) of the ordinance of the Swiss Federal Council of 23 December 1971 governing the use of the description %quot%Swiss%quot% for watches can be considered to be Swiss , a certification procedure shall be established between Switzerland and the Community in accordance with the following rules : [{1}]
+========================================
+regards  [1 frames] (1 occurs)
+	1]	4 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc   {3}obl-Acc|of   {4}obl-Acc|or
+			1)  SUBJECT TO THE APPLICATION BY THE COMMUNITY OF ARTICLE 39 ( 5 ) OF THE %quot% ACT CONCERNING THE CONDITIONS OF ACCESSION AND THE ADJUSTMENTS TO THE TREATIES %quot% DRAWN UP AND ADOPTED WITHIN THE CONFERENCE BETWEEN THE EUROPEAN COMMUNITIES AND THE KINGDOM OF DENMARK , IRELAND , THE KINGDOM OF NORWAY AND THE UNITED KINGDOM OF GREAT{3} BRITAIN{1} AND NORTHERN IRELAND , AS REGARDS{V} THE SPECIFIC{2} DUTIES OR THE SPECIFIC{4} PART OF THE MIXED DUTIES IN THE IRISH CUSTOMS TARIFF , ARTICLE 3 AND PROTOCOL NO 1 SHALL BE APPLIED , WITH ROUNDING TO THE FOURTH DECIMAL PLACE .
+========================================
+request  [3 frames] (3 occurs)
+	1]	1 args (1 occurs)
+		{1}nsubj-Nom
+			1)  The institutes shall have three months{1} in which to give the expert opinion requested{V} .
+	2]		2 args (1 occurs)  [1]
+			{1}nsubj-Nom   {2}obj-Acc
+				1)  Should the entry{2} be requested{V} for a calibre of rough movements which has already been used in Switzerland and has failed to pass the statutory control in Switzerland , the Chambre suisse de l' horlogerie may contest the entry . In this event , the applicant may resort to the procedure provided for in paragraph 3 of this Article . [{1}]
+	3]		3 args (1 occurs)  [1]
+			{1}nsubj-Nom   {2}nsubj-Nom   {3}ccomp-Part|that
+				1)  ( c ) Should the statutory technical-control requirements in Switzerland not be satisfied , the Chambre suisse{1} d' horlogerie{2} may request{V} that the calibres of rough movements concerned be struck{3} off the list and shall notify the party concerned of this request . In the event of a disagreement , the party concerned may , within two months , resort to the procedure provided for in paragraph 3 of this Article .
+========================================
+requirement  [1 frames] (1 occurs)
+	1]	1 args (1 occurs)
+		{1}nsubj-Nom
+			1)  ( c ) Should the statutory technical-control{1} requirements{V} in Switzerland not be satisfied , the Chambre suisse d' horlogerie may request that the calibres of rough movements concerned be struck off the list and shall notify the party concerned of this request . In the event of a disagreement , the party concerned may , within two months , resort to the procedure provided for in paragraph 3 of this Article .
+========================================
+resort  [1 frames] (2 occurs)
+	1]	1 args (2 occurs)
+		{1}nsubj-Nom
+			1)  ( c ) Should the statutory technical-control{1} requirements in Switzerland not be satisfied , the Chambre suisse d' horlogerie may request that the calibres of rough movements concerned be struck off the list and shall notify the party concerned of this request . In the event of a disagreement , the party concerned may , within two months , resort{V} to the procedure provided for in paragraph 3 of this Article .
+			2)  Should the entry be requested for a calibre of rough movements which has already been used in Switzerland and has failed to pass the statutory control in Switzerland , the Chambre suisse de l' horlogerie may contest the entry . In this event , the applicant{1} may resort{V} to the procedure provided for in paragraph 3 of this Article .
+========================================
+result  [2 frames] (2 occurs)
+	1]	1 args (1 occurs)
+		{1}nsubj-Nom
+			1)  2 . IF , AFTER 1 JANUARY 1972 , ANY{1} TARIFF REDUCTIONS RESULTING{V} FROM THE TARIFF AGREEMENTS CONCLUDED AS A RESULT OF THE TRADE CONFERENCE HELD IN GENEVA FROM 1964 TO 1967 BECOME APPLICABLE , SUCH REDUCED DUTIES SHALL REPLACE THE BASIC DUTIES REFERRED TO IN PARAGRAPH 1 .
+	2]		2 args (1 occurs)  [1]
+			{1}nsubj-Nom   {2}obj-Acc
+				1)  1 . IN THE EVENT OF SPECIFIC RULES BEING ESTABLISHED AS OR OF ANY ALTERATION OF THE CURRENT RULES THE CONTRACTING PARTY IN QUESTION MAY ADAPT THE ARRANGEMENTS{2} RESULTING{V} FROM THIS AGREEMENT IN RESPECT OF THE PRODUCTS WHICH ARE THE SUBJECT OF THOSE RULES OR ALTERATIONS . [{1}]
+========================================
+review  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  Every three years at least , beginning from the entry into force of the Agreement , the Joint Committee{1} shall review{V} the list{2} to take into account any items which have in the meantime been entered on or struck off the list . The new list shall be published and communicated in the same manner .
+========================================
+satisfied  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  ( c ) Should the statutory technical-control requirements in Switzerland not be satisfied{V} , the Chambre suisse d' horlogerie may request that the calibres of rough movements concerned be struck off the list and shall notify the party concerned of this request . In the event of a disagreement , the party concerned may , within two months , resort to the procedure provided for in paragraph 3 of this Article . [{2}] [{1}]
+========================================
+satisfy  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  1 . Rough watch movements manufactured in the Community and listed in the Annex to the Agreement , and the regulating organs and other constituent watch-movement parts manufactured in the Community and complementary to rough movements of Swiss or Community manufacture , shall be considered to be equivalent in quality to rough movements and parts of Swiss manufacture with comparable technical characteristics . It shall be understood that watches{1} and watch movements assembled from these rough movements and parts must satisfy{V} the statutory technical control requirements{2} in Switzerland .
+========================================
+seek  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  The first party so to decide shall , on its own initiative , seek{V} a joint expert{2} opinion from the institute for official quality control in the Swiss clock and watch industry and a corresponding qualified institute in the Community nominated by the Community interested party . [{1}]
+========================================
+send  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  ( a ) Applications{2} for new calibres of rough movements to be entered on the list shall be sent{V} to the Chambre suisse de l' horlogerie by the associations of clock and watch makers in the Community or any manufacturer of rough movements established in the Community . applications shall be accompanied by a technical description of the calibre of the rough movements . The Chambre suisse de l' horlogerie shall enter the new calibre or calibres on the said list forthwith . [{1}]
+========================================
+set  [1 frames] (1 occurs)
+	1]	4 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc   {3}ccomp-Part   {4}compound:prt-
+			1)  THE JOINT COMMITTEE PROVIDED FOR IN ARTICLE 29 SHALL EXAMINE WHETHER THE{1} CONDITIONS SET{V} OUT{4} IN THE PRECEDING SUBPARAGRAPH ARE BEING MET , PARTICULARLY{2} WHERE A CHANGE HAS BEEN MADE{3} IN THE AMOUNT OF THE FISCAL ELEMENT .
+========================================
+sign  [1 frames] (1 occurs)
+	1]	3 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc   {3}obl-Acc|on
+			1)  WHEREAS an Agreement concerning products of the clock and watch industry between the European Economic Community and its Member States and the Swiss Confederation{2} was signed{V} in Geneva on 30 June{3} 1967 ; [{1}]
+========================================
+specify  [2 frames] (4 occurs)
+	1]	1 args (2 occurs)
+		{1}nsubj-Nom
+			1)  ( II ) WHICH{1} ARE SPECIFIED{V} IN PROTOCOL NO 2 , WITH DUE REGARD TO THE ARRANGEMENTS PROVIDED FOR IN THAT PROTOCOL .
+			2)  3 . SWITZERLAND MAY RETAIN TEMPORARILY , WHILE OBSERVING THE CONDITIONS OF ARTICLE 18 , DUTIES CORRESPONDING TO THE FISCAL ELEMENT CONTAINED IN CUSTOMS DUTIES ON IMPORTS OF PRODUCTS{1} SPECIFIED{V} IN ANNEX II .
+	2]		2 args (2 occurs)  [1]
+			{1}nsubj-Nom   {2}obj-Acc
+				1)  The tariff reductions{2} specified{V} in Articles 1 and 5 of the Agreement of 30 June 1967 shall enter into force at the same time as this Agreement . [{1}]
+				2)  2 . The list{2} specified{V} in paragraph 1 of this Article of rough movements manufactured in the Community shall be brought up to date regularly in the following manner : [{1}]
+========================================
+standard  [1 frames] (1 occurs)
+	1]	1 args (1 occurs)
+		{1}nsubj-Nom
+			1)  After testing these batches in accordance with the technical control{1} standards{V} statutory in Switzerland , the institutes shall compare their results and shall jointly draw up a report for the Joint Committee containing their conclusions and any proposals they may have .
+========================================
+strike  [1 frames] (2 occurs)
+	1]	2 args (2 occurs)
+		{1}nsubj-Nom   {2}obl-Acc|off
+			1)  ( c ) Should the statutory technical-control requirements in Switzerland not be satisfied , the Chambre suisse d' horlogerie may request that the calibres{1} of rough movements concerned be struck{V} off the list{2} and shall notify the party concerned of this request . In the event of a disagreement , the party concerned may , within two months , resort to the procedure provided for in paragraph 3 of this Article .
+			2)  Every three years at least , beginning from the entry into force of the Agreement , the Joint Committee shall review the list to take into account any items which have in the meantime been entered on or struck{V} off the list{2} . The new list shall be published and communicated in the same manner . [{1}]
+========================================
+subject  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  SUBJECT{V} TO THE APPLICATION BY THE COMMUNITY{2} OF ARTICLE 39 ( 5 ) OF THE %quot% ACT CONCERNING THE CONDITIONS OF ACCESSION AND THE ADJUSTMENTS TO THE TREATIES %quot% DRAWN UP AND ADOPTED WITHIN THE CONFERENCE BETWEEN THE EUROPEAN COMMUNITIES AND THE KINGDOM OF DENMARK , IRELAND , THE KINGDOM OF NORWAY AND THE UNITED KINGDOM OF GREAT BRITAIN AND NORTHERN IRELAND , AS REGARDS THE SPECIFIC DUTIES OR THE SPECIFIC PART OF THE MIXED DUTIES IN THE IRISH CUSTOMS TARIFF , ARTICLE 3 AND PROTOCOL NO 1 SHALL BE APPLIED , WITH ROUNDING TO THE FOURTH DECIMAL PLACE . [{1}]
+========================================
+take  [2 frames] (4 occurs)
+	1]	1 args (1 occurs)
+		{1}nsubj-Nom
+			1)  Every three years at least , beginning from the entry into force of the Agreement , the Joint Committee shall review the list to take{V} into account any items which have in the meantime been entered on or struck off the list . The new list shall be published and communicated in the same manner . [{1}]
+	2]		2 args (3 occurs)  [1]
+			{1}nsubj-Nom   {2}obj-Acc
+				1)  For the purposes of giving this expert opinion , the institutes shall agree between themselves to take{V} two sufficiently representative batches{2} of watches or watch movements , each normally containing not more than 50 watches or watch movements , one in a Swiss enterprise , the other in a Community enterprise . [{1}]
+				2)  TAKING{V} NOTE{2} of the abolition , at the same time as this Agreement comes into force , of the rationalization grants accorded by Ebauches SA and ASUAG and of the simultaneous abolition of the quota referred to in point B 3 ( b ) of the abovementioned Agreement , ( 1) The Agreement has been drawn up in the French language only . [{1}]
+				3)  2 . IN SUCH CASES THE CONTRACTING PARTY{1} IN QUESTION SHALL TAKE{V} DUE{2} ACCOUNT OF THE INTERESTS OF THE OTHER CONTRACTING PARTY . TO THIS END THE CONTRACTING PARTIES MAY CONSULT EACH OTHER WITHIN THE JOINT COMMITTEE .
+========================================
+tes  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  After testing{V} these batches{2} in accordance with the technical control standards statutory in Switzerland , the institutes shall compare their results and shall jointly draw up a report for the Joint Committee containing their conclusions and any proposals they may have . [{1}]
+========================================
+three  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  ( B ) THREE{V} FURTHER REDUCTIONS{2} OF 20 % EACH SHALL BE MADE ON : [{1}]
+========================================
+thus  [1 frames] (1 occurs)
+	1]	1 args (1 occurs)
+		{1}nsubj-Nom
+			1)  ( A ) TO PROMOTE THROUGH THE EXPANSION OF RECIPROCAL TRADE THE HARMONIOUS DEVELOPMENT OF ECONOMIC RELATIONS BETWEEN THE EUROPEAN ECONOMIC COMMUNITY AND THE SWISS{1} CONFEDERATION AND THUS{V} TO FOSTER IN THE COMMUNITY AND IN SWITZERLAND THE ADVANCE OF ECONOMIC ACTIVITY , THE IMPROVEMENT OF LIVING AND EMPLOYMENT CONDITIONS , AND INCREASED PRODUCTIVITY AND FINANCIAL STABILITY ,
+========================================
+trade  [2 frames] (6 occurs)
+	1]	1 args (5 occurs)
+		{1}nsubj-Nom
+			1)  ( A ) TO PROMOTE THROUGH THE EXPANSION OF RECIPROCAL{1} TRADE{V} THE HARMONIOUS DEVELOPMENT OF ECONOMIC RELATIONS BETWEEN THE EUROPEAN ECONOMIC COMMUNITY AND THE SWISS CONFEDERATION AND THUS TO FOSTER IN THE COMMUNITY AND IN SWITZERLAND THE ADVANCE OF ECONOMIC ACTIVITY , THE IMPROVEMENT OF LIVING AND EMPLOYMENT CONDITIONS , AND INCREASED PRODUCTIVITY AND FINANCIAL STABILITY ,
+			2)  ( C ) TO CONTRIBUTE IN THIS WAY , BY THE REMOVAL OF BARRIERS{1} TO TRADE{V} , TO THE HARMONIOUS DEVELOPMENT AND EXPANSION OF WORLD TRADE .
+			3)  ( C ) TO CONTRIBUTE IN THIS WAY , BY THE REMOVAL OF BARRIERS TO TRADE , TO THE HARMONIOUS DEVELOPMENT AND EXPANSION OF WORLD{1} TRADE{V} .
+			4)  RESOLVED TO THIS END TO ELIMINATE PROGRESSIVELY THE OBSTACLES TO SUBSTANTIALLY ALL THEIR TRADE , IN ACCORDANCE WITH THE PROVISIONS{1} OF THE GENERAL AGREEMENT ON TARIFFS AND TRADE{V} CONCERNING THE ESTABLISHMENT OF FREE TRADE AREAS ,
+			5)  ( B ) TO PROVIDE FAIR CONDITIONS OF COMPETITION FOR TRADE{V} BETWEEN THE CONTRACTING PARTIES , [{1}]
+	2]		2 args (1 occurs)  [1]
+			{1}nsubj-Nom   {2}obj-Acc
+				1)  RESOLVED TO THIS END TO ELIMINATE PROGRESSIVELY THE OBSTACLES TO SUBSTANTIALLY ALL THEIR TRADE , IN ACCORDANCE WITH THE PROVISIONS OF THE GENERAL AGREEMENT ON TARIFFS AND TRADE CONCERNING THE ESTABLISHMENT OF FREE{1} TRADE{V} AREAS{2} ,
+========================================
+treatment  [1 frames] (2 occurs)
+	1]	2 args (2 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  PROTOCOL NO 1 LAYS DOWN THE TARIFF{2} TREATMENT{V} AND ARRANGEMENTS APPLICABLE TO CERTAIN PRODUCTS . [{1}]
+			2)  PROTOCOL NO 2 LAYS DOWN THE TARIFF{2} TREATMENT{V} AND ARRANGEMENTS APPLICABLE TO CERTAIN GOODS OBTAINED BY PROCESSING AGRICULTURAL PRODUCTS . [{1}]
+========================================
+understand  [1 frames] (1 occurs)
+	1]	3 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc   {3}ccomp-Fin|(that)
+			1)  1 . Rough watch movements manufactured in the Community and listed in the Annex to the Agreement , and the regulating organs and other constituent watch-movement parts manufactured in the Community and complementary to rough movements of Swiss or Community manufacture , shall be considered to be equivalent in quality to rough movements and parts of Swiss manufacture with comparable technical characteristics . It{2} shall be understood{V} that watches and watch movements assembled from these rough movements and parts must satisfy{3} the statutory technical control requirements in Switzerland . [{1}]
+========================================
+use  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  Should the entry be requested for a calibre of rough movements which{2} has already been used{V} in Switzerland and has failed to pass the statutory control in Switzerland , the Chambre suisse de l' horlogerie may contest the entry . In this event , the applicant may resort to the procedure provided for in paragraph 3 of this Article . [{1}]
+========================================
+which  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  1 . THE BASIC DUTY TO WHICH{V} THE SUCCESSIVE{2} REDUCTIONS PROVIDED FOR IN ARTICLE 3 AND IN PROTOCOL NO 1 ARE TO BE APPLIED SHALL , FOR EACH PRODUCT , BE THE DUTY ACTUALLY APPLIED ON 1 JANUARY 1972 . [{1}]

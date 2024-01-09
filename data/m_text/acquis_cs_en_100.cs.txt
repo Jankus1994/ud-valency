@@ -1,0 +1,547 @@
+========================================
+PŘEJÍCE  [1 frames] (1 occurs)
+	1]	4 args (1 occurs)
+		{1}nsubj-Nom   {2}iobj-Acc   {3}obl-Gen|v   {4}xcomp-Inf
+			1)  PŘEJÍCE{V} SI upevnit{4} a rozšířit , v důsledku rozšíření{3} Evropského hospodářského společenství , hospodářské vztahy{2} mezi Společenstvím a Švýcarskem a zajistit s náležitým ohledem na poctivé podmínky hospodářské soutěže harmonický rozvoj obchodu mezi stranami jako příspěvek k budování Evropy , [{1}]
+========================================
+Vyhlašut  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}xcomp-Inf
+			1)  VYHLAŠUJÍCE{V} svoji připravenost zvážit{2} na základě všech souvisejících hledisek , a zejména s ohledem na vývoj ve Společenství , možnost rozvoje a prohlubování vzájemných vztahů , bude - li v zájmu jejich ekonomik užitečné rozšířit je do oblastí , na které se tato dohoda nevztahuje , [{1}]
+========================================
+aktualizovat  [2 frames] (2 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}expl:pv-Acc
+			1)  2 . Seznam{1} polotovarů hodinových strojků vyrobených ve Společenství uvedený v odstavci 1 tohoto článku se{2} pravidelně aktualizuje{V} tímto způsobem :
+	2]	3 args (1 occurs)
+		{1}nsubj-Nom   {2}nsubj-Nom   {3}obj-Conv
+			1)  Nejméně každé tři roky počínaje{3} vstupem Dohody v platnost Smíšený výbor{1} seznam{2} aktualizuje{V} , aby by zohlednil všechny zápisy nebo výmazy které v něm byly v dané době provedeny . Nový seznam se zveřejňuje a oznamuje stejným způsobem . Jakékoli další informace je možno získat od příslušných obchodních sdružení .
+========================================
+být  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  Nejméně každé tři roky počínaje vstupem Dohody v platnost Smíšený výbor seznam aktualizuje , aby by zohlednil všechny zápisy{2} nebo výmazy které v něm byly{V} v dané době provedeny . Nový seznam se zveřejňuje a oznamuje stejným způsobem . Jakékoli další informace je možno získat od příslušných obchodních sdružení . [{1}]
+========================================
+clo  [1 frames] (1 occurs)
+	1]	3 args (1 occurs)
+		{1}nsubj-Fin   {2}obl-Gen|do   {3}obl-Loc|při
+			1)  2 . Dánsko , Irsko , Norsko a Spojené království mohou{1} ponechat clo fiskální povahy nebo fiskální prvek cla{V} do 1 . ledna{2} 1976 při použití{3} článku 38 aktu o podmínkách přistoupení a úpravách Smluv , vypracovaného a přijatého na konferenci mezi Evropskými společenstvími a Dánským královstvím , Irskem , Norským královstvím a Spojeným královstvím Velké Británie a Severního Irska .
+========================================
+den  [1 frames] (1 occurs)
+	1]	3 args (1 occurs)
+		{1}nsubj-Nom   {2}obl-Gen   {3}obl-Gen|za
+			1)  Dohoda vstupuje v platnost dnem{V} 1 . ledna{2} 1973 za předpokladu{3} , že k tomuto dni si smluvní strany vymění své ratifikační listiny . [{1}]
+========================================
+dohodnout  [2 frames] (2 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}expl:pv-Acc
+			1)  SE{2} DOHODLY{V} takto : [{1}]
+	2]	4 args (1 occurs)
+		{1}nsubj-Gen   {2}obj-Ins   {3}obl:arg-Loc|na   {4}expl:pv-Acc
+			1)  Za účelem předložení tohoto odborného stanoviska se{4} instituty{1} mezi sebou dohodnou{V} na odběru{3} dvou dostatečně reprezentativních sérií{2} hodinek nebo hodinových strojků , z nichž každá obsahuje nejvýše 50 hodinek nebo hodinových strojků , přičemž jedna bude ze švýcarského podniku a druhá z podniku Společenství .
+========================================
+dojít  [2 frames] (2 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obl:arg-Dat|k
+			1)  Smíšený výbor zřízený článkem 29 přezkoumá , zda jsou splněny podmínky stanovené v předchozím pododstavci , zejména pokud došlo{V} ke změně{2} v množství fiskálních prvků . [{1}]
+	2]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obl:arg-Ins|k
+			1)  2 . Pokud po 1 . lednu 1972 dojde{V} ke snížením{2} celních sazeb plynoucím z dohod uzavřených na základě obchodní konference konané v Ženevě v letech 1964 až 1967 , nahradí takto snížená cla základní cla uvedená v odstavci 1 . [{1}]
+========================================
+doplňující  [1 frames] (2 occurs)
+	1]	1 args (2 occurs)
+		{1}nsubj-Nom
+			1)  VZHLEDEM K TOMU , ŽE pro řádné fungování této dohody je nezbytné , aby by byla přijata doplňující{V} ustanovení{1} ;
+			2)  1 . Polotovary hodinkových strojků , vyrobené ve Společenství a uvedené v seznamu v příloze této dohody , a seřizovací ústrojí a jiné základní součásti hodinkových strojků , vyrobené ve Společenství a doplňující{V} polotovary{1} hodinkových strojků vyrobené ve Švýcarsku nebo ve Společenství , se považují svou kvalitou za rovnocenné polotovarům a součástem švýcarské výroby se srovnatelnými technickými vlastnostmi . Rozumí se , že hodinky a hodinkové strojky sestavené z těchto polotovarů a součástí musejí vyhovovat požadavkům zákonem stanovené technické kontroly ve Švýcarsku .
+========================================
+doprovázet  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  a ) Žádosti o zápis nových kalibrů polotovarů do tohoto seznamu zasílají Švýcarské hodinářské komoře sdružení výrobců hodin a hodinek ve Společenství nebo výrobci polotovarů hodinových strojků usazení ve Společenství . Žádosti doprovází{V} technický popis{2} kalibrů polotovarů hodinových strojků . Švýcarská hodinářská komora{1} nový kalibr nebo nové kalibry bezodkladně zapisuje do uvedeného seznamu .
+========================================
+existovat  [1 frames] (1 occurs)
+	1]	1 args (1 occurs)
+		{1}nsubj-Nom
+			1)  VZHLEDEM K TOMU , ŽE v hodinářském průmyslu existuje{V} úzká spolupráce{1} mezi Evropským hospodářským společenstvím a Švýcarskem ;
+========================================
+jít  [1 frames] (2 occurs)
+	1]	2 args (2 occurs)
+		{1}nsubj-Nom   {2}obl:arg-Acc|o
+			1)  S výhradou použití čl . 39 odst . 5 aktu o podmínkách přistoupení a úpravách Smluv , vypracovaného a přijatého na konferenci mezi Evropskými společenstvími a Dánským královstvím , Irskem , Norským královstvím a Spojeným královstvím Velké Británie a Severního Irska , ze strany Společenství , pokud jde{V} o zvláštní cla{2} nebo zvláštní část smíšených cel v irském celním sazebníku , použijí se tento článek a protokol č . 1 se zaokrouhlením na čtyři desetinná místa . [{1}]
+			2)  Aby by hodinky se strojkem švýcarské výroby , pokud jde{V} nejméně o 50{2} % hodnoty všech částí a součástí , včetně nákladů na montáž , mohly být považovány za švýcarské podle čl . 2 odst . 2 , písm . b ) nařízení Švýcarské spolkové rady ze dne 23 . prosince 1971 , kterým se řídí označení " švýcarské " pro hodinky , zavádí se postup pro vydávání osvědčení mezi Švýcarskem a Společenstvím v souladu s těmito pravidly : [{1}]
+========================================
+konzultovat  [1 frames] (1 occurs)
+	1]	3 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Nom   {3}obl-Gen|v
+			1)  2 . V těchto případech dotčená smluvní strana náležitě zohlední zájmy{2} druhé smluvní strany . Za tímto účelem mohou smluvní strany spolu konzultovat{V} v rámci smíšeného výboru{3} . [{1}]
+========================================
+lze  [1 frames] (1 occurs)
+	1]	1 args (1 occurs)
+		{1}csubj-Inf
+			1)  SE ROZHODLY vzhledem k dosažení těchto cílů a s uvážením skutečnosti , že žádná ustanovení této dohody nelze{V} vykládat{1} jako zproštění závazků smluvních stran , které přijaly na základě jiných mezinárodních dohod ,
+========================================
+moci  [3 frames] (13 occurs)
+	1]	2 args (10 occurs)
+		{1}nsubj-Nom   {2}xcomp-Inf
+			1)  c ) Pokud by nebyly splněny požadavky zákonem stanovené technické kontroly , Švýcarská hodinářská komora{1} může{V} žádat{2} , aby by příslušné kalibry polotovarů hodinových strojků byly vyškrtnuty ze seznamu , a tento záměr oznamuje příslušné straně . V případě neshody se příslušná strana může do dvou měsíců uchýlit k postupu uvedenému v odstavci 3 tohoto článku .
+			2)  Článek 4 Kterákoli smluvní strana{1} může{V} dohodu vypovědět{2} oznámením s dvanáctiměsíční výpovědní lhůtou .
+			3)  Smluvní strany{1} mohou{V} clo fiskální povahy nebo fiskální prvek cla nahradit{2} vnitřní daní .
+			4)  2 . Dánsko{1} , Irsko , Norsko a Spojené království mohou{V} ponechat{2} clo fiskální povahy nebo fiskální prvek cla do 1 . ledna 1976 při použití článku 38 aktu o podmínkách přistoupení a úpravách Smluv , vypracovaného a přijatého na konferenci mezi Evropskými společenstvími a Dánským královstvím , Irskem , Norským královstvím a Spojeným královstvím Velké Británie a Severního Irska .
+			5)  Pokud by byl požadován zápis kalibru polotovarů , který se již ve Švýcarsku používal a neprošel ve Švýcarsku zákonem stanovenou kontrolou , Švýcarská hodinářská komora{1} může{V} zápis zamítnout{2} . V tomto případě se může žadatel uchýlit k postupu uvedenému v odstavci 3 tohoto článku .
+			6)  Pokud by byl požadován zápis kalibru polotovarů , který se již ve Švýcarsku používal a neprošel ve Švýcarsku zákonem stanovenou kontrolou , Švýcarská hodinářská komora může zápis zamítnout . V tomto případě se může{V} žadatel{1} uchýlit{2} k postupu uvedenému v odstavci 3 tohoto článku .
+			7)  c ) Pokud by nebyly splněny požadavky zákonem stanovené technické kontroly , Švýcarská hodinářská komora může žádat , aby by příslušné kalibry polotovarů hodinových strojků byly vyškrtnuty ze seznamu , a tento záměr oznamuje příslušné straně . V případě neshody se příslušná strana{1} může{V} do dvou měsíců uchýlit{2} k postupu uvedenému v odstavci 3 tohoto článku .
+			8)  1 . V případě zavádění zvláštních pravidel v rámci zemědělské politiky nebo změny stávajících pravidel může{V} dotčená smluvní strana{1} upravit{2} opatření vyplývající z této dohody s ohledem na produkty , které jsou předmětem těchto pravidel nebo změn .
+			9)  Smíšený výbor přezkoumá situaci s ohledem na možnost přeměny takových cel na vnitřní poplatky před 1 . lednem 1980 nebo před jiným dnem , které může{V} podle okolností stanovit{2} . [{1}]
+			10)  2 . U produktů uvedených v příloze III mohou{V} smluvní strany{1} způsobem , který samy určí , přijmout{2} opatření , jež jsou nezbytná k provádění jejich dodavatelské politiky .
+	2]		3 args (2 occurs)  [1]
+			{1}nsubj-Nom   {2}nsubj-Nom   {3}xcomp-Inf
+				1)  3 . Při dodržení podmínek článku 18 může{V} Švýcarsko{1} dočasně ponechat{3} cla{2} odpovídající fiskálnímu prvku dovozního cla na produkty uvedené v příloze II .
+				2)  2 . V těchto případech dotčená smluvní strana{1} náležitě zohlední zájmy druhé smluvní strany . Za tímto účelem mohou{V} smluvní strany{2} spolu konzultovat{3} v rámci smíšeného výboru .
+	3]	3 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Fin   {3}obj-Acc
+			1)  Aby by hodinky{1} se strojkem švýcarské výroby , pokud jde nejméně o 50 % hodnoty všech částí a součástí , včetně nákladů na montáž , mohly{V} být považovány{2} za švýcarské podle čl . 2 odst . 2 , písm . b ) nařízení{3} Švýcarské spolkové rady ze dne 23 . prosince 1971 , kterým se řídí označení " švýcarské " pro hodinky , zavádí se postup pro vydávání osvědčení mezi Švýcarskem a Společenstvím v souladu s těmito pravidly :
+========================================
+muset  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}xcomp-Inf
+			1)  1 . Polotovary hodinkových strojků , vyrobené ve Společenství a uvedené v seznamu v příloze této dohody , a seřizovací ústrojí a jiné základní součásti hodinkových strojků , vyrobené ve Společenství a doplňující polotovary hodinkových strojků vyrobené ve Švýcarsku nebo ve Společenství , se považují svou kvalitou za rovnocenné polotovarům a součástem švýcarské výroby se srovnatelnými technickými vlastnostmi . Rozumí se , že hodinky a hodinkové strojky sestavené z těchto polotovarů a součástí musejí{V} vyhovovat{2} požadavkům zákonem stanovené technické kontroly ve Švýcarsku . [{1}]
+========================================
+mít  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  Instituty{1} mají{V} tříměsíční lhůtu{2} na předložení požadovaného odborného stanoviska .
+========================================
+nahradit  [2 frames] (2 occurs)
+	1]	1 args (1 occurs)
+		{1}nsubj-Nom
+			1)  2 . Pokud po 1 . lednu 1972 dojde ke snížením celních sazeb plynoucím z dohod uzavřených na základě obchodní konference konané v Ženevě v letech 1964 až 1967 , nahradí{V} takto snížená cla{1} základní cla uvedená v odstavci 1 .
+	2]		2 args (1 occurs)  [1]
+			{1}nsubj-Nom   {2}obj-Acc
+				1)  Smluvní strany mohou clo{2} fiskální povahy nebo fiskální prvek cla nahradit{V} vnitřní daní . [{1}]
+========================================
+následující  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obl:arg-Loc|po
+			1)  Pokud by ratifikační listiny byly vyměněny mezi 1 . lednem a 30 . listopadem 1973 , dohoda vstupuje v platnost prvním dnem druhého měsíce{1} následujícího{V} po této výměně{2} .
+========================================
+obsahovat  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  Za účelem předložení tohoto odborného stanoviska se instituty mezi sebou dohodnou na odběru dvou dostatečně reprezentativních sérií hodinek nebo hodinových strojků , z nichž každá{1} obsahuje{V} nejvýše 50 hodinek{2} nebo hodinových strojků , přičemž jedna bude ze švýcarského podniku a druhá z podniku Společenství .
+========================================
+obsahující  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  Po vyzkoušení těchto sérií v souladu se zákonnými standardy technické kontroly platnými ve Švýcarsku instituty porovnají své výsledky a společně vypracují zprávu{1} pro smíšený výbor , obsahující{V} jejich závěry{2} a případné návrhy .
+========================================
+odpovídající  [1 frames] (2 occurs)
+	1]	1 args (2 occurs)
+		{1}nsubj-Nom
+			1)  První strana , která se tak rozhodne , ze své vlastní iniciativy požádá o společné odborné stanovisko institutu pro oficiální kontrolu kvality ve švýcarském hodinářském průmyslu a odpovídajícího{V} kvalifikovaného institutu{1} ve Společenství , navrženého zúčastněnou stranou Společenství .
+			2)  3 . Při dodržení podmínek článku 18 může Švýcarsko dočasně ponechat cla odpovídající{V} fiskálnímu prvku{1} dovozního cla na produkty uvedené v příloze II .
+========================================
+omezit  [1 frames] (1 occurs)
+	1]	4 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc   {3}obl-Ins|za   {4}obl-Acc|s
+			1)  ODHODLÁNY za tímto účelem{3} postupně omezit{V} překážky{2} obchodu v souladu s ustanoveními Všeobecné dohody o clech a obchodu s ohledem na budování{4} oblastí volného obchodu , [{1}]
+========================================
+oznamovat  [4 frames] (5 occurs)
+	1]	2 args (2 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  Změny{2} seznamu v příloze se zveřejňují a oznamují{V} stejným způsobem{1} .
+			2)  Nejméně každé tři roky počínaje vstupem Dohody v platnost Smíšený výbor seznam aktualizuje , aby by zohlednil všechny zápisy nebo výmazy které v něm byly v dané době provedeny . Nový seznam se zveřejňuje a oznamuje{V} stejným způsobem{1} . Jakékoli další informace{2} je možno získat od příslušných obchodních sdružení .
+	2]		3 args (1 occurs)  [1]
+			{1}nsubj-Nom   {2}obj-Acc   {3}iobj-Dat
+				1)  Dohoda a seznam v příloze se zveřejňují v úředních věstnících smluvních stran a příslušná obchodní sdružení{1} je{2} oznamují{V} výrobcům{3} hodin a hodinek .
+	3]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Dat
+			1)  c ) Pokud by nebyly splněny požadavky zákonem stanovené technické kontroly , Švýcarská hodinářská komora může žádat , aby by příslušné kalibry polotovarů hodinových strojků byly vyškrtnuty ze seznamu , a tento záměr{1} oznamuje{V} příslušné straně{2} . V případě neshody se příslušná strana může do dvou měsíců uchýlit k postupu uvedenému v odstavci 3 tohoto článku .
+	4]		3 args (1 occurs)  [3]
+			{1}nsubj-Nom   {2}nsubj-Nom   {3}obj-Dat
+				1)  d ) Všechny žádosti{1} o změnu tohoto seznamu podle výše uvedených pododstavců a ) , b ) a c ) Švýcarská hodinářská komora{2} bez prodlení oznamuje{V} Smíšenému výboru{3} .
+========================================
+platit  [1 frames] (1 occurs)
+	1]	3 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc   {3}obl-Acc|pro
+			1)  1 . Ustanovení{2} o postupném zrušení dovozních cel platí{V} rovněž pro cla{3} fiskální povahy . [{1}]
+========================================
+plynoucí  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obl-Gen|z
+			1)  2 . Pokud po 1 . lednu 1972 dojde ke snížením celních sazeb{1} plynoucím{V} z dohod{2} uzavřených na základě obchodní konference konané v Ženevě v letech 1964 až 1967 , nahradí takto snížená cla základní cla uvedená v odstavci 1 .
+========================================
+pocházející  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obl-Gen|z
+			1)  Tato dohoda se použije na produkty{1} pocházející{V} ze Společenství{2} a ze Švýcarska
+========================================
+podepsaný  [1 frames] (1 occurs)
+	1]	3 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc   {3}obl-Gen
+			1)  VZHLEDEM K TOMU , ŽE dne{3} 30 . června 1967 byla v Ženevě podepsána{V} Dohoda{2} o výrobcích hodinářského průmyslu mezi Evropským hospodářským společenstvím a jeho členskými státy a Švýcarskou konfederací ; [{1}]
+========================================
+podporovat  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Ins
+			1)  a ) podporovat{V} rozšířením{2} vzájemného obchodu harmonický rozvoj hospodářských vztahů mezi Evropským hospodářským společenstvím a Švýcarskou konfederací a přispívat tak ke zvyšování hospodářské činnosti , zlepšování životních podmínek a podmínek zaměstnanosti , růstu produktivity a finanční stabilitě ve Společenství a ve Švýcarsku , [{1}]
+========================================
+ponechat  [1 frames] (2 occurs)
+	1]	2 args (2 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  2 . Dánsko , Irsko , Norsko a Spojené království mohou ponechat{V} clo{2} fiskální povahy nebo fiskální prvek cla do 1 . ledna 1976 při použití článku 38 aktu o podmínkách přistoupení a úpravách Smluv , vypracovaného a přijatého na konferenci mezi Evropskými společenstvími a Dánským královstvím , Irskem , Norským královstvím a Spojeným královstvím Velké Británie a Severního Irska . [{1}]
+			2)  3 . Při dodržení podmínek článku 18 může Švýcarsko dočasně ponechat{V} cla odpovídající fiskálnímu prvku{2} dovozního cla na produkty uvedené v příloze II . [{1}]
+========================================
+porovnat  [1 frames] (1 occurs)
+	1]	4 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc   {3}obj-Acc   {4}obl-Loc|po
+			1)  Po vyzkoušení{4} těchto sérií v souladu se zákonnými standardy technické kontroly platnými ve Švýcarsku instituty{2} porovnají{V} své výsledky{3} a společně vypracují zprávu pro smíšený výbor , obsahující jejich závěry a případné návrhy . [{1}]
+========================================
+posoudit  [1 frames] (1 occurs)
+	1]	3 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc   {3}obl-Loc|na
+			1)  Smíšený výbor{1} tuto zprávu{2} posoudí{V} na svém nejbližším zasedání{3} .
+========================================
+použít  [2 frames] (2 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  Tato dohoda{2} se použije{V} na produkty pocházející ze Společenství a ze Švýcarska [{1}]
+	2]		3 args (1 occurs)  [1]
+			{1}nsubj-Nom   {2}obj-Acc   {3}obl:arg-Ins|se
+				1)  S výhradou použití čl . 39 odst . 5 aktu o podmínkách přistoupení a úpravách Smluv , vypracovaného a přijatého na konferenci mezi Evropskými společenstvími a Dánským královstvím , Irskem , Norským královstvím a Spojeným královstvím Velké Británie a Severního Irska , ze strany Společenství , pokud jde o zvláštní cla nebo zvláštní část smíšených cel v irském celním sazebníku , použijí{V} se tento článek{2} a protokol č . 1 se zaokrouhlením{3} na čtyři desetinná místa . [{1}]
+========================================
+používat  [2 frames] (2 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}expl:pv-Acc
+			1)  Pokud by byl požadován zápis kalibru polotovarů , který{1} se{2} již ve Švýcarsku používal{V} a neprošel ve Švýcarsku zákonem stanovenou kontrolou , Švýcarská hodinářská komora může zápis zamítnout . V tomto případě se může žadatel uchýlit k postupu uvedenému v odstavci 3 tohoto článku .
+	2]	3 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc   {3}xcomp-Nom
+			1)  3 . Snížená cla{2} vypočtená podle článku 3 a protokolu č . 1 se používají{V} zaokrouhlená{3} na jedno desetinné místo . [{1}]
+========================================
+považovaný  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  Aby by hodinky se strojkem švýcarské výroby , pokud jde nejméně o 50 % hodnoty všech částí a součástí , včetně nákladů na montáž , mohly být považovány{V} za švýcarské podle čl . 2 odst . 2 , písm . b ) nařízení Švýcarské spolkové rady ze dne 23 . prosince 1971 , kterým se řídí označení " švýcarské " pro hodinky , zavádí se postup pro vydávání osvědčení mezi Švýcarskem a Společenstvím v souladu s těmito pravidly : [{2}] [{1}]
+========================================
+považovat  [1 frames] (1 occurs)
+	1]	3 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Ins   {3}obj-Acc
+			1)  1 . Polotovary{3} hodinkových strojků , vyrobené ve Společenství a uvedené v seznamu v příloze této dohody , a seřizovací ústrojí a jiné základní součásti hodinkových strojků , vyrobené ve Společenství a doplňující polotovary hodinkových strojků vyrobené ve Švýcarsku nebo ve Společenství , se považují{V} svou kvalitou{2} za rovnocenné polotovarům a součástem švýcarské výroby se srovnatelnými technickými vlastnostmi . Rozumí se , že hodinky a hodinkové strojky sestavené z těchto polotovarů a součástí musejí vyhovovat požadavkům zákonem stanovené technické kontroly ve Švýcarsku . [{1}]
+========================================
+počínat  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obl-Acc
+			1)  Nejméně každé tři roky{2} počínaje{V} vstupem Dohody v platnost Smíšený výbor seznam aktualizuje , aby by zohlednil všechny zápisy nebo výmazy které v něm byly v dané době provedeny . Nový seznam se zveřejňuje a oznamuje stejným způsobem . Jakékoli další informace je možno získat od příslušných obchodních sdružení . [{1}]
+========================================
+požadováný  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  Pokud by byl požadován{V} zápis{2} kalibru polotovarů , který se již ve Švýcarsku používal a neprošel ve Švýcarsku zákonem stanovenou kontrolou , Švýcarská hodinářská komora může zápis zamítnout . V tomto případě se může žadatel uchýlit k postupu uvedenému v odstavci 3 tohoto článku . [{1}]
+========================================
+požádat  [1 frames] (1 occurs)
+	1]	3 args (1 occurs)
+		{1}nsubj-Nom   {2}obl-Gen|z   {3}obl:arg-Acc|o
+			1)  První strana{1} , která se tak rozhodne , ze své vlastní iniciativy{2} požádá{V} o společné odborné stanovisko{3} institutu pro oficiální kontrolu kvality ve švýcarském hodinářském průmyslu a odpovídajícího kvalifikovaného institutu ve Společenství , navrženého zúčastněnou stranou Společenství .
+========================================
+projít  [1 frames] (1 occurs)
+	1]	1 args (1 occurs)
+		{1}nsubj-Nom
+			1)  Pokud by byl požadován zápis kalibru polotovarů , který{1} se již ve Švýcarsku používal a neprošel{V} ve Švýcarsku zákonem stanovenou kontrolou , Švýcarská hodinářská komora může zápis zamítnout . V tomto případě se může žadatel uchýlit k postupu uvedenému v odstavci 3 tohoto článku .
+========================================
+provedený  [1 frames] (1 occurs)
+	1]	3 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc   {3}obj-Acc
+			1)  Nejméně každé tři roky počínaje vstupem Dohody v platnost Smíšený výbor seznam aktualizuje , aby by zohlednil všechny zápisy nebo výmazy které{2} v něm byly v dané době provedeny{V} . Nový seznam se zveřejňuje a oznamuje stejným způsobem . Jakékoli další informace je možno získat od příslušných obchodních sdružení . [{3}] [{1}]
+========================================
+provést  [1 frames] (2 occurs)
+	1]	2 args (2 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  b ) další čtyři snížení cel , vždy o 20 % , se provedou{V} [{2}] [{1}]
+			2)  b ) další tři snížení , vždy o 20 % , se provedou{V} [{2}] [{1}]
+========================================
+předložit  [1 frames] (1 occurs)
+	1]	4 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc   {3}obj-Dat   {4}obl-Gen|v
+			1)  3 . V případě sporu{4} o rovnocennost kvality kterákoli zúčastněná strana{1} záležitost{2} okamžitě předloží{V} Smíšenému výboru{3} zřízenému podle článku 9 dohody ze dne 30 . června 1967 .
+========================================
+přezkoumat  [2 frames] (2 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Fin|zda
+			1)  Smíšený výbor{1} zřízený článkem 29 přezkoumá{V} , zda jsou splněny{2} podmínky stanovené v předchozím pododstavci , zejména pokud došlo ke změně v množství fiskálních prvků .
+	2]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  Smíšený výbor{1} přezkoumá{V} situaci{2} s ohledem na možnost přeměny takových cel na vnitřní poplatky před 1 . lednem 1980 nebo před jiným dnem , které může podle okolností stanovit .
+========================================
+přijatý  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  VZHLEDEM K TOMU , ŽE pro řádné fungování této dohody je nezbytné , aby by byla přijata{V} doplňující ustanovení{2} ; [{1}]
+========================================
+přijmout  [2 frames] (2 occurs)
+	1]	1 args (1 occurs)
+		{1}nsubj-Nom
+			1)  SE ROZHODLY vzhledem k dosažení těchto cílů a s uvážením skutečnosti , že žádná ustanovení této dohody nelze vykládat jako zproštění závazků smluvních stran , které{1} přijaly{V} na základě jiných mezinárodních dohod ,
+	2]		2 args (1 occurs)  [1]
+			{1}nsubj-Nom   {2}obj-Acc
+				1)  2 . U produktů uvedených v příloze III mohou smluvní strany způsobem , který samy určí , přijmout{V} opatření{2} , jež jsou nezbytná k provádění jejich dodavatelské politiky . [{1}]
+========================================
+přispívat  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obl:arg-Dat|k
+			1)  a ) podporovat rozšířením vzájemného obchodu harmonický rozvoj hospodářských vztahů mezi Evropským hospodářským společenstvím a Švýcarskou konfederací a přispívat{V} tak ke zvyšování{2} hospodářské činnosti , zlepšování životních podmínek a podmínek zaměstnanosti , růstu produktivity a finanční stabilitě ve Společenství a ve Švýcarsku , [{1}]
+========================================
+přispět  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Ins
+			1)  c ) přispět{V} odstraněním{2} obchodních překážek k harmonickému rozvoji a rozšíření světového obchodu . [{1}]
+========================================
+ratifikovat  [1 frames] (1 occurs)
+	1]	1 args (1 occurs)
+		{1}nsubj-Nom
+			1)  Dohodu smluvní strany uzavírají a ratifikují{V} v souladu s jejich vlastními postupy . [{1}]
+========================================
+rozhodnout  [2 frames] (2 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}expl:pv-Acc
+			1)  První strana , která{1} se{2} tak rozhodne{V} , ze své vlastní iniciativy požádá o společné odborné stanovisko institutu pro oficiální kontrolu kvality ve švýcarském hodinářském průmyslu a odpovídajícího kvalifikovaného institutu ve Společenství , navrženého zúčastněnou stranou Společenství .
+	2]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  SE ROZHODLY{V} vzhledem k dosažení těchto cílů a s uvážením skutečnosti , že žádná ustanovení této dohody nelze vykládat jako zproštění závazků smluvních stran , které přijaly na základě jiných mezinárodních dohod , [{2}] [{1}]
+========================================
+rozumět  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}ccomp-Fin
+			1)  1 . Polotovary hodinkových strojků , vyrobené ve Společenství a uvedené v seznamu v příloze této dohody , a seřizovací ústrojí a jiné základní součásti hodinkových strojků , vyrobené ve Společenství a doplňující polotovary hodinkových strojků vyrobené ve Švýcarsku nebo ve Společenství , se považují{2} svou kvalitou za rovnocenné polotovarům a součástem švýcarské výroby se srovnatelnými technickými vlastnostmi . Rozumí{V} se , že hodinky a hodinkové strojky sestavené z těchto polotovarů a součástí musejí vyhovovat požadavkům zákonem stanovené technické kontroly ve Švýcarsku . [{1}]
+========================================
+rozšířit  [2 frames] (2 occurs)
+	1]	1 args (1 occurs)
+		{1}nsubj-Nom
+			1)  PŘEJÍCE SI upevnit a rozšířit{V} , v důsledku rozšíření Evropského hospodářského společenství , hospodářské vztahy mezi Společenstvím a Švýcarskem a zajistit s náležitým ohledem na poctivé podmínky hospodářské soutěže harmonický rozvoj obchodu mezi stranami jako příspěvek k budování Evropy , [{1}]
+	2]		2 args (1 occurs)  [1]
+			{1}nsubj-Nom   {2}obj-Acc
+				1)  VYHLAŠUJÍCE svoji připravenost zvážit na základě všech souvisejících hledisek , a zejména s ohledem na vývoj ve Společenství , možnost rozvoje a prohlubování vzájemných vztahů , bude - li v zájmu jejich ekonomik užitečné rozšířit{V} je{2} do oblastí , na které se tato dohoda nevztahuje , [{1}]
+========================================
+sdělovat  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Nom
+			1)  b ) Odnětí{2} kalibrů polotovarů hodinových strojků zapsaných na seznamu sdělují{V} Švýcarské hodinářské komoře{1} sdružení výrobců hodin a hodinek ve Společenství nebo výrobci , kteří předtím žádali o zápis těchto kalibrů do seznamu .
+========================================
+sepsaný  [1 frames] (1 occurs)
+	1]	3 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc   {3}obl-
+			1)  [ 1{3} ] Dohoda{2} je sepsána{V} pouze ve francouzském jazyce . - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - [{1}]
+========================================
+snižovat  [1 frames] (2 occurs)
+	1]	2 args (2 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  a ) dnem 1 . dubna 1973 se všechna cla{2} snižují{V} na 80 % základního cla , [{1}]
+			2)  Všechny poplatky{2} s účinkem rovnocenným dovoznímu clu , jejichž výše dne 31 . prosince 1972 je vyšší než poplatky skutečně používané dne 1 . ledna 1972 , se vstupem{1} této dohody v platnost snižují{V} na tuto nižší hodnotu .
+========================================
+snížit  [1 frames] (2 occurs)
+	1]	2 args (2 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  3 . Poplatky{2} s účinkem rovnocenným dovoznímu clu se postupně sníží{V} podle tohoto časového plánu : [{1}]
+			2)  a ) nejpozději dne 1 . ledna 1974 se všechny poplatky{2} sníží{V} na 60 % hodnoty používané dne 1 . ledna 1972 ; [{1}]
+========================================
+související  [1 frames] (1 occurs)
+	1]	1 args (1 occurs)
+		{1}nsubj-Nom
+			1)  VYHLAŠUJÍCE svoji připravenost zvážit na základě všech souvisejících{V} hledisek{1} , a zejména s ohledem na vývoj ve Společenství , možnost rozvoje a prohlubování vzájemných vztahů , bude - li v zájmu jejich ekonomik užitečné rozšířit je do oblastí , na které se tato dohoda nevztahuje ,
+========================================
+splněný  [2 frames] (2 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  Smíšený výbor zřízený článkem 29 přezkoumá , zda jsou splněny{V} podmínky{2} stanovené v předchozím pododstavci , zejména pokud došlo ke změně v množství fiskálních prvků . [{1}]
+	2]		3 args (1 occurs)  [1]
+			{1}nsubj-Nom   {2}obj-Ins   {3}obj-Acc
+				1)  c ) Pokud by nebyly splněny{V} požadavky{2} zákonem stanovené technické kontroly , Švýcarská hodinářská komora může žádat , aby by příslušné kalibry polotovarů hodinových strojků byly vyškrtnuty ze seznamu , a tento záměr oznamuje příslušné straně . V případě neshody se příslušná strana může do dvou měsíců uchýlit k postupu uvedenému v odstavci 3 tohoto článku . [{3}] [{1}]
+========================================
+společenství  [1 frames] (2 occurs)
+	1]	1 args (2 occurs)
+		{1}nsubj-Nom
+			1)  2 . Dánsko , Irsko , Norsko a Spojené království mohou ponechat clo fiskální povahy nebo fiskální prvek cla do 1 . ledna 1976 při použití článku 38 aktu o podmínkách přistoupení a úpravách Smluv , vypracovaného a přijatého na konferenci mezi Evropskými společenstvími{V} a Dánským královstvím{1} , Irskem , Norským královstvím a Spojeným královstvím Velké Británie a Severního Irska .
+			2)  S výhradou použití čl . 39 odst . 5 aktu o podmínkách přistoupení a úpravách Smluv , vypracovaného a přijatého na konferenci mezi Evropskými společenstvími{V} a Dánským královstvím{1} , Irskem , Norským královstvím a Spojeným královstvím Velké Británie a Severního Irska , ze strany Společenství , pokud jde o zvláštní cla nebo zvláštní část smíšených cel v irském celním sazebníku , použijí se tento článek a protokol č . 1 se zaokrouhlením na čtyři desetinná místa .
+========================================
+stanovit  [1 frames] (3 occurs)
+	1]	2 args (3 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  Smíšený výbor přezkoumá situaci s ohledem na možnost přeměny takových cel na vnitřní poplatky před 1 . lednem 1980 nebo před jiným dnem , které{2} může podle okolností stanovit{V} . [{1}]
+			2)  Protokol{1} č . 1 stanoví{V} celní režim{2} a opatření pro některé produkty .
+			3)  Protokol{1} č . 2 stanoví{V} celní režim{2} a opatření pro některé zboží získané zpracováním zemědělských produktů .
+========================================
+uchýlit  [2 frames] (2 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}expl:pv-Acc
+			1)  c ) Pokud by nebyly splněny požadavky zákonem stanovené technické kontroly , Švýcarská hodinářská komora může žádat , aby by příslušné kalibry polotovarů hodinových strojků byly vyškrtnuty ze seznamu , a tento záměr oznamuje příslušné straně . V případě neshody se{2} příslušná strana může do dvou měsíců uchýlit{V} k postupu uvedenému v odstavci 3 tohoto článku . [{1}]
+	2]		3 args (1 occurs)  [1]
+			{1}nsubj-Nom   {2}obl:arg-Dat|k   {3}expl:pv-Acc
+				1)  Pokud by byl požadován zápis kalibru polotovarů , který se již ve Švýcarsku používal a neprošel ve Švýcarsku zákonem stanovenou kontrolou , Švýcarská hodinářská komora může zápis zamítnout . V tomto případě se{3} může žadatel uchýlit{V} k postupu{2} uvedenému v odstavci 3 tohoto článku . [{1}]
+========================================
+upevnit  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Dat
+			1)  PŘEJÍCE SI{2} upevnit{V} a rozšířit , v důsledku rozšíření Evropského hospodářského společenství , hospodářské vztahy mezi Společenstvím a Švýcarskem a zajistit s náležitým ohledem na poctivé podmínky hospodářské soutěže harmonický rozvoj obchodu mezi stranami jako příspěvek k budování Evropy , [{1}]
+========================================
+upravit  [1 frames] (1 occurs)
+	1]	4 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc   {3}obl-   {4}obl-Acc|s
+			1)  1{3} . V případě zavádění zvláštních pravidel v rámci zemědělské politiky nebo změny stávajících pravidel může dotčená smluvní strana upravit{V} opatření{2} vyplývající z této dohody s ohledem na produkty{4} , které jsou předmětem těchto pravidel nebo změn . [{1}]
+========================================
+určit  [1 frames] (1 occurs)
+	1]	1 args (1 occurs)
+		{1}nsubj-Nom
+			1)  2 . U produktů uvedených v příloze III mohou smluvní strany způsobem , který{1} samy určí{V} , přijmout opatření , jež jsou nezbytná k provádění jejich dodavatelské politiky .
+========================================
+uzavírat  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  Dohodu{2} smluvní strany uzavírají{V} a ratifikují v souladu s jejich vlastními postupy . [{1}]
+========================================
+uzavřít  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  UZAVŘÍT{V} TUTO DOHODU{2} : [{1}]
+========================================
+vstupovat  [3 frames] (3 occurs)
+	1]	1 args (1 occurs)
+		{1}nsubj-Nom
+			1)  Snížení{1} celních sazeb uvedená v článcích 1 a 5 Dohody ze dne 30 . června 1967 vstupují{V} v platnost současně s touto dohodou .
+	2]		2 args (1 occurs)  [1]
+			{1}nsubj-Nom   {2}xcomp-Fin
+				1)  Dohoda{1} vstupuje{V} v platnost dnem{2} 1 . ledna 1973 za předpokladu , že k tomuto dni si smluvní strany vymění své ratifikační listiny .
+	3]		2 args (1 occurs)  [1]
+			{1}nsubj-Nom   {2}obl:arg-Acc|v
+				1)  Pokud by ratifikační listiny byly vyměněny mezi 1 . lednem a 30 . listopadem 1973 , dohoda{1} vstupuje{V} v platnost{2} prvním dnem druhého měsíce následujícího po této výměně .
+========================================
+vyhovovat  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Dat
+			1)  1 . Polotovary hodinkových strojků , vyrobené ve Společenství a uvedené v seznamu v příloze této dohody , a seřizovací ústrojí a jiné základní součásti hodinkových strojků , vyrobené ve Společenství a doplňující polotovary hodinkových strojků vyrobené ve Švýcarsku nebo ve Společenství , se považují svou kvalitou za rovnocenné polotovarům a součástem švýcarské výroby se srovnatelnými technickými vlastnostmi . Rozumí se , že hodinky a hodinkové strojky sestavené z těchto polotovarů a součástí musejí vyhovovat{V} požadavkům{2} zákonem stanovené technické kontroly ve Švýcarsku . [{1}]
+========================================
+vykládat  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc|jako
+			1)  SE ROZHODLY vzhledem k dosažení těchto cílů a s uvážením skutečnosti , že žádná ustanovení této dohody nelze vykládat{V} jako zproštění{2} závazků smluvních stran , které přijaly na základě jiných mezinárodních dohod , [{1}]
+========================================
+vyměněný  [1 frames] (1 occurs)
+	1]	3 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc   {3}obl-Ins|mezi
+			1)  Pokud by ratifikační listiny{2} byly vyměněny{V} mezi 1 . lednem{3} a 30 . listopadem 1973 , dohoda vstupuje v platnost prvním dnem druhého měsíce následujícího po této výměně . [{1}]
+========================================
+vyplývající  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obl:arg-Gen|z
+			1)  1 . V případě zavádění zvláštních pravidel v rámci zemědělské politiky nebo změny stávajících pravidel může dotčená smluvní strana upravit opatření{1} vyplývající{V} z této dohody{2} s ohledem na produkty , které jsou předmětem těchto pravidel nebo změn .
+========================================
+vypovědět  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  Článek 4 Kterákoli smluvní strana může dohodu{2} vypovědět{V} oznámením s dvanáctiměsíční výpovědní lhůtou . [{1}]
+========================================
+vypracovat  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  Po vyzkoušení těchto sérií v souladu se zákonnými standardy technické kontroly platnými ve Švýcarsku instituty porovnají své výsledky a společně vypracují{V} zprávu{2} pro smíšený výbor , obsahující jejich závěry a případné návrhy . [{1}]
+========================================
+vyškrtnutý  [1 frames] (1 occurs)
+	1]	3 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc   {3}obl:arg-Gen|z
+			1)  c ) Pokud by nebyly splněny požadavky zákonem stanovené technické kontroly , Švýcarská hodinářská komora může žádat , aby by příslušné kalibry{2} polotovarů hodinových strojků byly vyškrtnuty{V} ze seznamu{3} , a tento záměr oznamuje příslušné straně . V případě neshody se příslušná strana může do dvou měsíců uchýlit k postupu uvedenému v odstavci 3 tohoto článku . [{1}]
+========================================
+vztahovat  [2 frames] (2 occurs)
+	1]	3 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc   {3}obl:arg-Acc|na
+			1)  VYHLAŠUJÍCE svoji připravenost zvážit na základě všech souvisejících hledisek , a zejména s ohledem na vývoj ve Společenství , možnost rozvoje a prohlubování vzájemných vztahů , bude - li v zájmu jejich ekonomik užitečné rozšířit je do oblastí , na které{3} se tato dohoda{2} nevztahuje{V} , [{1}]
+	2]	3 args (1 occurs)
+		{1}nsubj-Nom   {2}obl:arg-Acc|na   {3}expl:pv-Acc
+			1)  1 . Základním clem , na které{2} se{3} vztahují{V} postupná snižování{1} stanovená v článku 3 a v protokolu č . 1 , je pro všechny produkty clo skutečně používané dne 1 . ledna 1972 .
+========================================
+vývozní  [1 frames] (1 occurs)
+	1]	1 args (1 occurs)
+		{1}nsubj-Nom
+			1)  Vývozní{V} cla{1} a poplatky s rovnocenným účinkem se zruší nejpozději dne 1 . ledna 1974 .
+========================================
+zajistit  [2 frames] (2 occurs)
+	1]	1 args (1 occurs)
+		{1}nsubj-Nom
+			1)  PŘEJÍCE SI upevnit a rozšířit , v důsledku rozšíření Evropského hospodářského společenství , hospodářské vztahy mezi Společenstvím a Švýcarskem a zajistit{V} s náležitým ohledem na poctivé podmínky hospodářské soutěže harmonický rozvoj obchodu mezi stranami jako příspěvek k budování Evropy , [{1}]
+	2]		2 args (1 occurs)  [1]
+			{1}nsubj-Nom   {2}obj-Acc
+				1)  b ) zajistit{V} poctivé podmínky{2} hospodářské soutěže při obchodu mezi smluvními stranami , [{1}]
+========================================
+zamítnout  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  Pokud by byl požadován zápis kalibru polotovarů , který se již ve Švýcarsku používal a neprošel ve Švýcarsku zákonem stanovenou kontrolou , Švýcarská hodinářská komora může zápis{2} zamítnout{V} . V tomto případě se může žadatel uchýlit k postupu uvedenému v odstavci 3 tohoto článku . [{1}]
+========================================
+zapisovat  [1 frames] (1 occurs)
+	1]	3 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc   {3}obl-Gen|do
+			1)  a ) Žádosti o zápis nových kalibrů polotovarů do tohoto seznamu zasílají Švýcarské hodinářské komoře sdružení výrobců hodin a hodinek ve Společenství nebo výrobci polotovarů hodinových strojků usazení ve Společenství . Žádosti doprovází technický popis kalibrů polotovarů hodinových strojků . Švýcarská hodinářská komora nový kalibr{2} nebo nové kalibry bezodkladně zapisuje{V} do uvedeného seznamu{3} . [{1}]
+========================================
+zasílat  [1 frames] (1 occurs)
+	1]	3 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc   {3}iobj-Acc
+			1)  a ) Žádosti{2} o zápis nových kalibrů polotovarů do tohoto seznamu zasílají{V} Švýcarské hodinářské komoře{3} sdružení výrobců hodin a hodinek ve Společenství nebo výrobci polotovarů hodinových strojků usazení ve Společenství . Žádosti doprovází technický popis kalibrů polotovarů hodinových strojků . Švýcarská hodinářská komora nový kalibr nebo nové kalibry bezodkladně zapisuje do uvedeného seznamu . [{1}]
+========================================
+zavádět  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  Aby by hodinky se strojkem švýcarské výroby , pokud jde nejméně o 50 % hodnoty všech částí a součástí , včetně nákladů na montáž , mohly být považovány za švýcarské podle čl . 2 odst . 2 , písm . b ) nařízení Švýcarské spolkové rady ze dne 23 . prosince 1971 , kterým se řídí označení " švýcarské " pro hodinky , zavádí{V} se postup{2} pro vydávání osvědčení mezi Švýcarskem a Společenstvím v souladu s těmito pravidly : [{1}]
+========================================
+zavést  [2 frames] (3 occurs)
+	1]	2 args (2 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  1 . V obchodu mezi Společenstvím a Švýcarskem se nezavedou{V} žádné nové poplatky{2} s účinkem rovnocenným dovoznímu clu . [{1}]
+			2)  1 . V obchodu mezi Společenstvím a Švýcarskem se nezavedou{V} žádná vývozní cla{2} nebo poplatky s rovnocenným účinkem . [{1}]
+	2]		3 args (1 occurs)  [1]
+			{1}nsubj-Nom   {2}obj-Acc   {3}obj-Acc
+				1)  1 . V obchodu mezi Společenstvím a Švýcarskem se nezavedou{V} žádná nová dovozní cla{2} . [{3}] [{1}]
+========================================
+zohlednit  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}xcomp-Fin
+			1)  Nejméně každé tři roky počínaje vstupem Dohody v platnost Smíšený výbor seznam aktualizuje , aby by zohlednil{V} všechny zápisy nebo výmazy které v něm byly{2} v dané době provedeny . Nový seznam se zveřejňuje a oznamuje stejným způsobem . Jakékoli další informace je možno získat od příslušných obchodních sdružení . [{1}]
+========================================
+zrušit  [1 frames] (2 occurs)
+	1]	2 args (2 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  Vývozní cla a poplatky{2} s rovnocenným účinkem se zruší{V} nejpozději dne 1 . ledna 1974 . [{1}]
+			2)  2 . Dovozní cla{2} se postupně zruší{V} podle tohoto časového plánu : [{1}]
+========================================
+zrušovat  [1 frames] (1 occurs)
+	1]	3 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Ins   {3}expl:pv-Acc
+			1)  2 . Poplatky{1} s účinkem rovnocenným dovoznímu clu zavedené dne 1 . ledna 1972 nebo po tomto dni v obchodu mezi Společenstvím a Švýcarskem se{3} zrušují{V} vstupem{2} této dohody v platnost .
+========================================
+zveřejňovat  [1 frames] (3 occurs)
+	1]	2 args (3 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  Změny{2} seznamu v příloze se zveřejňují{V} a oznamují stejným způsobem . [{1}]
+			2)  Nejméně každé tři roky počínaje vstupem Dohody v platnost Smíšený výbor seznam aktualizuje , aby by zohlednil všechny zápisy nebo výmazy které v něm byly v dané době provedeny . Nový seznam{2} se zveřejňuje{V} a oznamuje stejným způsobem . Jakékoli další informace je možno získat od příslušných obchodních sdružení . [{1}]
+			3)  Dohoda{2} a seznam v příloze se zveřejňují{V} v úředních věstnících smluvních stran a příslušná obchodní sdružení je oznamují výrobcům hodin a hodinek . [{1}]
+========================================
+zvážit  [1 frames] (1 occurs)
+	1]	3 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc   {3}obl-Gen|na
+			1)  VYHLAŠUJÍCE svoji připravenost{2} zvážit{V} na základě všech souvisejících hledisek{3} , a zejména s ohledem na vývoj ve Společenství , možnost rozvoje a prohlubování vzájemných vztahů , bude - li v zájmu jejich ekonomik užitečné rozšířit je do oblastí , na které se tato dohoda nevztahuje , [{1}]
+========================================
+získat  [1 frames] (1 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obl:arg-Gen|od
+			1)  Nejméně každé tři roky počínaje vstupem Dohody v platnost Smíšený výbor seznam aktualizuje , aby by zohlednil všechny zápisy nebo výmazy které v něm byly v dané době provedeny . Nový seznam se zveřejňuje a oznamuje stejným způsobem . Jakékoli další informace je možno získat{V} od příslušných obchodních sdružení{2} . [{1}]
+========================================
+řídit  [2 frames] (2 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Acc
+			1)  VZHLEDEM K TOMU , ŽE používání{2} označení " švýcarské " pro hodinky se řídí{V} nařízením{1} Švýcarské spolkové rady ze dne 23 . prosince 1971 ;
+	2]		3 args (1 occurs)  [1]
+			{1}nsubj-Nom   {2}obj-Ins   {3}obj-Acc
+				1)  Aby by hodinky se strojkem švýcarské výroby , pokud jde nejméně o 50 % hodnoty všech částí a součástí , včetně nákladů na montáž , mohly být považovány za švýcarské podle čl . 2 odst . 2 , písm . b ) nařízení Švýcarské spolkové rady ze dne 23 . prosince 1971 , kterým{2} se řídí{V} označení{3} " švýcarské " pro hodinky , zavádí se postup pro vydávání osvědčení mezi Švýcarskem a Společenstvím v souladu s těmito pravidly : [{1}]
+========================================
+žádat  [2 frames] (2 occurs)
+	1]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obl:arg-Acc|o
+			1)  b ) Odnětí kalibrů polotovarů hodinových strojků zapsaných na seznamu sdělují Švýcarské hodinářské komoře sdružení výrobců hodin a hodinek ve Společenství nebo výrobci , kteří{1} předtím žádali{V} o zápis{2} těchto kalibrů do seznamu .
+	2]	2 args (1 occurs)
+		{1}nsubj-Nom   {2}obj-Fin|aby
+			1)  c ) Pokud by nebyly splněny požadavky zákonem stanovené technické kontroly , Švýcarská hodinářská komora může žádat{V} , aby by příslušné kalibry polotovarů hodinových strojků byly vyškrtnuty{2} ze seznamu , a tento záměr oznamuje příslušné straně . V případě neshody se příslušná strana může do dvou měsíců uchýlit k postupu uvedenému v odstavci 3 tohoto článku . [{1}]
